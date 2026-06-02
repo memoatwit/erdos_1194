@@ -1,0 +1,127 @@
+{
+  "N": 140,
+  "k": 8,
+  "status": "not_found",
+  "method": "seeded_one_swap_beam_repair",
+  "script": "erdos_156/repair_125_k8.py",
+  "command": "python3 erdos_156/repair_125_k8.py 140 8 3600 1408",
+  "seconds_requested": 3600.0,
+  "time_s": 3600.049108982086,
+  "seed": 1408,
+  "states_seen": 41841,
+  "iterations": 162,
+  "best_blocked": 139,
+  "best_A": [
+    8,
+    53,
+    57,
+    60,
+    84,
+    89,
+    90,
+    100
+  ],
+  "best_profile": {
+    "blocked": 139,
+    "addable_count": 1,
+    "addable": [
+      128
+    ]
+  },
+  "other_top_near_misses": [
+    {
+      "blocked": 139,
+      "A": [
+        3,
+        51,
+        52,
+        63,
+        77,
+        90,
+        92,
+        95
+      ],
+      "addable": [
+        114
+      ]
+    },
+    {
+      "blocked": 139,
+      "A": [
+        2,
+        50,
+        51,
+        62,
+        76,
+        89,
+        91,
+        94
+      ],
+      "addable": [
+        113
+      ]
+    }
+  ],
+  "local_repair_checks": [
+    {
+      "radius": 2,
+      "A": [
+        52,
+        53,
+        56,
+        62,
+        84,
+        89,
+        104,
+        133
+      ],
+      "status": "not_found",
+      "checked": 250572,
+      "best_blocked": 138,
+      "addable": [
+        6,
+        39
+      ]
+    },
+    {
+      "radius": 3,
+      "A": [
+        52,
+        53,
+        56,
+        62,
+        84,
+        89,
+        104,
+        133
+      ],
+      "status": "not_found",
+      "checked": 22706292,
+      "best_blocked": 138,
+      "addable": [
+        6,
+        39
+      ]
+    },
+    {
+      "radius": 3,
+      "A": [
+        2,
+        50,
+        51,
+        62,
+        76,
+        89,
+        91,
+        94
+      ],
+      "status": "not_found",
+      "checked": 22706292,
+      "best_blocked": 139,
+      "addable": [
+        113
+      ]
+    }
+  ],
+  "conclusion": "No N=140,k=8 witness was found in this run. This is not a proof of infeasibility. The best near-misses block 139 of 140 points."
+}

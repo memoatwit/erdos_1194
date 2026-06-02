@@ -1,0 +1,7827 @@
+{
+  "args": {
+    "seed_k": 8,
+    "seed_max": 190,
+    "core_size": 5,
+    "core_span": 18,
+    "core_limit": 20,
+    "min_core_offset": 20,
+    "offset_step": 5,
+    "inner_beam": 8,
+    "seed_limit": 8,
+    "include_known_seed": true,
+    "extend_k_max": 16,
+    "extend_beam_width": 48,
+    "x_factor": 0.35,
+    "x_window": 320,
+    "no_require_overlap": false,
+    "print_top": 6,
+    "output": "erdos_156/results/template_architecture_search_156_core5_k16.json"
+  },
+  "seeds": [
+    {
+      "interval": [
+        -7,
+        136
+      ],
+      "interval_length": 144,
+      "covered_N": [
+        113,
+        144
+      ],
+      "interval_length_over_k3": 0.28125,
+      "covered_end_over_k3": 0.28125,
+      "B": [
+        0,
+        40,
+        60,
+        61,
+        63,
+        67,
+        96,
+        112
+      ],
+      "k": 8,
+      "max_B": 112,
+      "W_size": 191,
+      "admissible_interval_count": 1,
+      "seed_source": {
+        "known_seed": true
+      }
+    },
+    {
+      "interval": [
+        -16,
+        113
+      ],
+      "interval_length": 130,
+      "covered_N": [
+        104,
+        130
+      ],
+      "interval_length_over_k3": 0.25390625,
+      "covered_end_over_k3": 0.25390625,
+      "B": [
+        0,
+        40,
+        44,
+        45,
+        47,
+        53,
+        73,
+        103
+      ],
+      "k": 8,
+      "max_B": 103,
+      "W_size": 175,
+      "admissible_interval_count": 1,
+      "seed_source": {
+        "core_pattern": [
+          0,
+          4,
+          5,
+          7,
+          13
+        ],
+        "core_offset": 40,
+        "base": [
+          0,
+          40,
+          44,
+          45,
+          47,
+          53
+        ]
+      }
+    },
+    {
+      "interval": [
+        -10,
+        119
+      ],
+      "interval_length": 130,
+      "covered_N": [
+        104,
+        130
+      ],
+      "interval_length_over_k3": 0.25390625,
+      "covered_end_over_k3": 0.25390625,
+      "B": [
+        0,
+        30,
+        50,
+        56,
+        58,
+        59,
+        63,
+        103
+      ],
+      "k": 8,
+      "max_B": 103,
+      "W_size": 175,
+      "admissible_interval_count": 1,
+      "seed_source": {
+        "core_pattern": [
+          0,
+          6,
+          8,
+          9,
+          13
+        ],
+        "core_offset": 50,
+        "base": [
+          0,
+          50,
+          56,
+          58,
+          59,
+          63
+        ]
+      }
+    },
+    {
+      "interval": [
+        -14,
+        114
+      ],
+      "interval_length": 129,
+      "covered_N": [
+        97,
+        129
+      ],
+      "interval_length_over_k3": 0.251953125,
+      "covered_end_over_k3": 0.251953125,
+      "B": [
+        0,
+        32,
+        45,
+        50,
+        54,
+        56,
+        57,
+        96
+      ],
+      "k": 8,
+      "max_B": 96,
+      "W_size": 163,
+      "admissible_interval_count": 1,
+      "seed_source": {
+        "core_pattern": [
+          0,
+          5,
+          9,
+          11,
+          12
+        ],
+        "core_offset": 45,
+        "base": [
+          0,
+          45,
+          50,
+          54,
+          56,
+          57
+        ]
+      }
+    },
+    {
+      "interval": [
+        -22,
+        104
+      ],
+      "interval_length": 127,
+      "covered_N": [
+        96,
+        127
+      ],
+      "interval_length_over_k3": 0.248046875,
+      "covered_end_over_k3": 0.248046875,
+      "B": [
+        0,
+        20,
+        35,
+        38,
+        39,
+        44,
+        46,
+        95
+      ],
+      "k": 8,
+      "max_B": 95,
+      "W_size": 167,
+      "admissible_interval_count": 1,
+      "seed_source": {
+        "core_pattern": [
+          0,
+          3,
+          4,
+          9,
+          11
+        ],
+        "core_offset": 35,
+        "base": [
+          0,
+          35,
+          38,
+          39,
+          44,
+          46
+        ]
+      }
+    },
+    {
+      "interval": [
+        -22,
+        103
+      ],
+      "interval_length": 126,
+      "covered_N": [
+        95,
+        126
+      ],
+      "interval_length_over_k3": 0.24609375,
+      "covered_end_over_k3": 0.24609375,
+      "B": [
+        0,
+        18,
+        35,
+        39,
+        40,
+        42,
+        48,
+        94
+      ],
+      "k": 8,
+      "max_B": 94,
+      "W_size": 165,
+      "admissible_interval_count": 1,
+      "seed_source": {
+        "core_pattern": [
+          0,
+          4,
+          5,
+          7,
+          13
+        ],
+        "core_offset": 35,
+        "base": [
+          0,
+          35,
+          39,
+          40,
+          42,
+          48
+        ]
+      }
+    },
+    {
+      "interval": [
+        -13,
+        112
+      ],
+      "interval_length": 126,
+      "covered_N": [
+        97,
+        126
+      ],
+      "interval_length_over_k3": 0.24609375,
+      "covered_end_over_k3": 0.24609375,
+      "B": [
+        0,
+        34,
+        45,
+        52,
+        54,
+        57,
+        58,
+        96
+      ],
+      "k": 8,
+      "max_B": 96,
+      "W_size": 163,
+      "admissible_interval_count": 1,
+      "seed_source": {
+        "core_pattern": [
+          0,
+          7,
+          9,
+          12,
+          13
+        ],
+        "core_offset": 45,
+        "base": [
+          0,
+          45,
+          52,
+          54,
+          57,
+          58
+        ]
+      }
+    },
+    {
+      "interval": [
+        -33,
+        91
+      ],
+      "interval_length": 125,
+      "covered_N": [
+        81,
+        125
+      ],
+      "interval_length_over_k3": 0.244140625,
+      "covered_end_over_k3": 0.244140625,
+      "B": [
+        0,
+        20,
+        22,
+        27,
+        28,
+        31,
+        63,
+        80
+      ],
+      "k": 8,
+      "max_B": 80,
+      "W_size": 163,
+      "admissible_interval_count": 1,
+      "seed_source": {
+        "core_pattern": [
+          0,
+          2,
+          7,
+          8,
+          11
+        ],
+        "core_offset": 20,
+        "base": [
+          0,
+          20,
+          22,
+          27,
+          28,
+          31
+        ]
+      }
+    }
+  ],
+  "runs": [
+    {
+      "seed_rank": 5,
+      "seed": {
+        "interval": [
+          -22,
+          104
+        ],
+        "interval_length": 127,
+        "covered_N": [
+          96,
+          127
+        ],
+        "interval_length_over_k3": 0.248046875,
+        "covered_end_over_k3": 0.248046875,
+        "B": [
+          0,
+          20,
+          35,
+          38,
+          39,
+          44,
+          46,
+          95
+        ],
+        "k": 8,
+        "max_B": 95,
+        "W_size": 167,
+        "admissible_interval_count": 1,
+        "seed_source": {
+          "core_pattern": [
+            0,
+            3,
+            4,
+            9,
+            11
+          ],
+          "core_offset": 35,
+          "base": [
+            0,
+            35,
+            38,
+            39,
+            44,
+            46
+          ]
+        }
+      },
+      "last": {
+        "interval": [
+          -152,
+          421
+        ],
+        "interval_length": 574,
+        "covered_N": [
+          407,
+          574
+        ],
+        "interval_length_over_k3": 0.14013671875,
+        "covered_end_over_k3": 0.14013671875,
+        "B": [
+          0,
+          20,
+          35,
+          38,
+          39,
+          44,
+          46,
+          95,
+          109,
+          126,
+          156,
+          185,
+          228,
+          278,
+          290,
+          406
+        ],
+        "k": 16,
+        "max_B": 406,
+        "W_size": 837,
+        "admissible_interval_count": 1,
+        "parent_B": [
+          0,
+          20,
+          35,
+          38,
+          39,
+          44,
+          46,
+          95,
+          109,
+          126,
+          156,
+          185,
+          228,
+          278,
+          290
+        ],
+        "appended": 406
+      },
+      "best_overall": {
+        "interval": [
+          -22,
+          104
+        ],
+        "interval_length": 127,
+        "covered_N": [
+          96,
+          127
+        ],
+        "interval_length_over_k3": 0.248046875,
+        "covered_end_over_k3": 0.248046875,
+        "B": [
+          0,
+          20,
+          35,
+          38,
+          39,
+          44,
+          46,
+          95
+        ],
+        "k": 8,
+        "max_B": 95,
+        "W_size": 167,
+        "admissible_interval_count": 1,
+        "appended": null,
+        "parent_B": null
+      },
+      "deepest_best_path": [
+        {
+          "interval": [
+            -22,
+            104
+          ],
+          "interval_length": 127,
+          "covered_N": [
+            96,
+            127
+          ],
+          "interval_length_over_k3": 0.248046875,
+          "covered_end_over_k3": 0.248046875,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95
+          ],
+          "k": 8,
+          "max_B": 95,
+          "W_size": 167,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -22,
+            121
+          ],
+          "interval_length": 144,
+          "covered_N": [
+            110,
+            144
+          ],
+          "interval_length_over_k3": 0.19753086419753085,
+          "covered_end_over_k3": 0.19753086419753085,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109
+          ],
+          "k": 9,
+          "max_B": 109,
+          "W_size": 217,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95
+          ],
+          "appended": 109
+        },
+        {
+          "interval": [
+            -22,
+            135
+          ],
+          "interval_length": 158,
+          "covered_N": [
+            127,
+            158
+          ],
+          "interval_length_over_k3": 0.158,
+          "covered_end_over_k3": 0.158,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126
+          ],
+          "k": 10,
+          "max_B": 126,
+          "W_size": 268,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109
+          ],
+          "appended": 126
+        },
+        {
+          "interval": [
+            -57,
+            167
+          ],
+          "interval_length": 225,
+          "covered_N": [
+            157,
+            225
+          ],
+          "interval_length_over_k3": 0.169045830202855,
+          "covered_end_over_k3": 0.169045830202855,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156
+          ],
+          "k": 11,
+          "max_B": 156,
+          "W_size": 335,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126
+          ],
+          "appended": 156
+        },
+        {
+          "interval": [
+            -57,
+            209
+          ],
+          "interval_length": 267,
+          "covered_N": [
+            186,
+            267
+          ],
+          "interval_length_over_k3": 0.1545138888888889,
+          "covered_end_over_k3": 0.1545138888888889,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156,
+            185
+          ],
+          "k": 12,
+          "max_B": 185,
+          "W_size": 404,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156
+          ],
+          "appended": 185
+        },
+        {
+          "interval": [
+            -84,
+            239
+          ],
+          "interval_length": 324,
+          "covered_N": [
+            229,
+            324
+          ],
+          "interval_length_over_k3": 0.14747382794720074,
+          "covered_end_over_k3": 0.14747382794720074,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156,
+            185,
+            228
+          ],
+          "k": 13,
+          "max_B": 228,
+          "W_size": 492,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156,
+            185
+          ],
+          "appended": 228
+        },
+        {
+          "interval": [
+            -84,
+            289
+          ],
+          "interval_length": 374,
+          "covered_N": [
+            279,
+            374
+          ],
+          "interval_length_over_k3": 0.13629737609329445,
+          "covered_end_over_k3": 0.13629737609329445,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156,
+            185,
+            228,
+            278
+          ],
+          "k": 14,
+          "max_B": 278,
+          "W_size": 594,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156,
+            185,
+            228
+          ],
+          "appended": 278
+        },
+        {
+          "interval": [
+            -123,
+            341
+          ],
+          "interval_length": 465,
+          "covered_N": [
+            291,
+            465
+          ],
+          "interval_length_over_k3": 0.13777777777777778,
+          "covered_end_over_k3": 0.13777777777777778,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156,
+            185,
+            228,
+            278,
+            290
+          ],
+          "k": 15,
+          "max_B": 290,
+          "W_size": 681,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156,
+            185,
+            228,
+            278
+          ],
+          "appended": 290
+        },
+        {
+          "interval": [
+            -152,
+            421
+          ],
+          "interval_length": 574,
+          "covered_N": [
+            407,
+            574
+          ],
+          "interval_length_over_k3": 0.14013671875,
+          "covered_end_over_k3": 0.14013671875,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156,
+            185,
+            228,
+            278,
+            290,
+            406
+          ],
+          "k": 16,
+          "max_B": 406,
+          "W_size": 837,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156,
+            185,
+            228,
+            278,
+            290
+          ],
+          "appended": 406
+        }
+      ],
+      "deepest_best_path_covered_union": [
+        [
+          96,
+          574
+        ]
+      ],
+      "best_by_k": [
+        {
+          "interval": [
+            -22,
+            104
+          ],
+          "interval_length": 127,
+          "covered_N": [
+            96,
+            127
+          ],
+          "interval_length_over_k3": 0.248046875,
+          "covered_end_over_k3": 0.248046875,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95
+          ],
+          "k": 8,
+          "max_B": 95,
+          "W_size": 167,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -41,
+            122
+          ],
+          "interval_length": 164,
+          "covered_N": [
+            112,
+            164
+          ],
+          "interval_length_over_k3": 0.22496570644718794,
+          "covered_end_over_k3": 0.22496570644718794,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            111
+          ],
+          "k": 9,
+          "max_B": 111,
+          "W_size": 221,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95
+          ],
+          "appended": 111
+        },
+        {
+          "interval": [
+            -58,
+            135
+          ],
+          "interval_length": 194,
+          "covered_N": [
+            125,
+            194
+          ],
+          "interval_length_over_k3": 0.194,
+          "covered_end_over_k3": 0.194,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            111,
+            124
+          ],
+          "k": 10,
+          "max_B": 124,
+          "W_size": 268,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            111
+          ],
+          "appended": 124
+        },
+        {
+          "interval": [
+            -57,
+            182
+          ],
+          "interval_length": 240,
+          "covered_N": [
+            159,
+            240
+          ],
+          "interval_length_over_k3": 0.18031555221637866,
+          "covered_end_over_k3": 0.18031555221637866,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            105,
+            118,
+            158
+          ],
+          "k": 11,
+          "max_B": 158,
+          "W_size": 329,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            105,
+            118
+          ],
+          "appended": 158
+        },
+        {
+          "interval": [
+            -75,
+            219
+          ],
+          "interval_length": 295,
+          "covered_N": [
+            193,
+            295
+          ],
+          "interval_length_over_k3": 0.1707175925925926,
+          "covered_end_over_k3": 0.1707175925925926,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156,
+            192
+          ],
+          "k": 12,
+          "max_B": 192,
+          "W_size": 409,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156
+          ],
+          "appended": 192
+        },
+        {
+          "interval": [
+            -97,
+            255
+          ],
+          "interval_length": 353,
+          "covered_N": [
+            247,
+            353
+          ],
+          "interval_length_over_k3": 0.16067364588074648,
+          "covered_end_over_k3": 0.16067364588074648,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            107,
+            132,
+            166,
+            198,
+            246
+          ],
+          "k": 13,
+          "max_B": 246,
+          "W_size": 516,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            107,
+            132,
+            166,
+            198
+          ],
+          "appended": 246
+        },
+        {
+          "interval": [
+            -121,
+            301
+          ],
+          "interval_length": 423,
+          "covered_N": [
+            260,
+            423
+          ],
+          "interval_length_over_k3": 0.15415451895043733,
+          "covered_end_over_k3": 0.15415451895043733,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            111,
+            124,
+            165,
+            193,
+            223,
+            259
+          ],
+          "k": 14,
+          "max_B": 259,
+          "W_size": 585,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            111,
+            124,
+            165,
+            193,
+            223
+          ],
+          "appended": 259
+        },
+        {
+          "interval": [
+            -131,
+            351
+          ],
+          "interval_length": 483,
+          "covered_N": [
+            308,
+            483
+          ],
+          "interval_length_over_k3": 0.1431111111111111,
+          "covered_end_over_k3": 0.1431111111111111,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            111,
+            124,
+            165,
+            193,
+            223,
+            259,
+            307
+          ],
+          "k": 15,
+          "max_B": 307,
+          "W_size": 685,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            111,
+            124,
+            165,
+            193,
+            223,
+            259
+          ],
+          "appended": 307
+        },
+        {
+          "interval": [
+            -152,
+            421
+          ],
+          "interval_length": 574,
+          "covered_N": [
+            407,
+            574
+          ],
+          "interval_length_over_k3": 0.14013671875,
+          "covered_end_over_k3": 0.14013671875,
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156,
+            185,
+            228,
+            278,
+            290,
+            406
+          ],
+          "k": 16,
+          "max_B": 406,
+          "W_size": 837,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            109,
+            126,
+            156,
+            185,
+            228,
+            278,
+            290
+          ],
+          "appended": 406
+        }
+      ]
+    },
+    {
+      "seed_rank": 6,
+      "seed": {
+        "interval": [
+          -22,
+          103
+        ],
+        "interval_length": 126,
+        "covered_N": [
+          95,
+          126
+        ],
+        "interval_length_over_k3": 0.24609375,
+        "covered_end_over_k3": 0.24609375,
+        "B": [
+          0,
+          18,
+          35,
+          39,
+          40,
+          42,
+          48,
+          94
+        ],
+        "k": 8,
+        "max_B": 94,
+        "W_size": 165,
+        "admissible_interval_count": 1,
+        "seed_source": {
+          "core_pattern": [
+            0,
+            4,
+            5,
+            7,
+            13
+          ],
+          "core_offset": 35,
+          "base": [
+            0,
+            35,
+            39,
+            40,
+            42,
+            48
+          ]
+        }
+      },
+      "last": {
+        "interval": [
+          -152,
+          407
+        ],
+        "interval_length": 560,
+        "covered_N": [
+          382,
+          560
+        ],
+        "interval_length_over_k3": 0.13671875,
+        "covered_end_over_k3": 0.13671875,
+        "B": [
+          0,
+          18,
+          35,
+          39,
+          40,
+          42,
+          48,
+          94,
+          106,
+          120,
+          156,
+          185,
+          217,
+          242,
+          280,
+          381
+        ],
+        "k": 16,
+        "max_B": 381,
+        "W_size": 791,
+        "admissible_interval_count": 1,
+        "parent_B": [
+          0,
+          18,
+          35,
+          39,
+          40,
+          42,
+          48,
+          94,
+          106,
+          120,
+          156,
+          185,
+          217,
+          242,
+          280
+        ],
+        "appended": 381
+      },
+      "best_overall": {
+        "interval": [
+          -22,
+          103
+        ],
+        "interval_length": 126,
+        "covered_N": [
+          95,
+          126
+        ],
+        "interval_length_over_k3": 0.24609375,
+        "covered_end_over_k3": 0.24609375,
+        "B": [
+          0,
+          18,
+          35,
+          39,
+          40,
+          42,
+          48,
+          94
+        ],
+        "k": 8,
+        "max_B": 94,
+        "W_size": 165,
+        "admissible_interval_count": 1,
+        "appended": null,
+        "parent_B": null
+      },
+      "deepest_best_path": [
+        {
+          "interval": [
+            -22,
+            103
+          ],
+          "interval_length": 126,
+          "covered_N": [
+            95,
+            126
+          ],
+          "interval_length_over_k3": 0.24609375,
+          "covered_end_over_k3": 0.24609375,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94
+          ],
+          "k": 8,
+          "max_B": 94,
+          "W_size": 165,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -32,
+            116
+          ],
+          "interval_length": 149,
+          "covered_N": [
+            107,
+            149
+          ],
+          "interval_length_over_k3": 0.20438957475994513,
+          "covered_end_over_k3": 0.20438957475994513,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106
+          ],
+          "k": 9,
+          "max_B": 106,
+          "W_size": 210,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94
+          ],
+          "appended": 106
+        },
+        {
+          "interval": [
+            -43,
+            130
+          ],
+          "interval_length": 174,
+          "covered_N": [
+            121,
+            174
+          ],
+          "interval_length_over_k3": 0.174,
+          "covered_end_over_k3": 0.174,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120
+          ],
+          "k": 10,
+          "max_B": 120,
+          "W_size": 260,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106
+          ],
+          "appended": 120
+        },
+        {
+          "interval": [
+            -46,
+            166
+          ],
+          "interval_length": 213,
+          "covered_N": [
+            157,
+            213
+          ],
+          "interval_length_over_k3": 0.16003005259203607,
+          "covered_end_over_k3": 0.16003005259203607,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156
+          ],
+          "k": 11,
+          "max_B": 156,
+          "W_size": 322,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120
+          ],
+          "appended": 156
+        },
+        {
+          "interval": [
+            -56,
+            212
+          ],
+          "interval_length": 269,
+          "covered_N": [
+            186,
+            269
+          ],
+          "interval_length_over_k3": 0.1556712962962963,
+          "covered_end_over_k3": 0.1556712962962963,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156,
+            185
+          ],
+          "k": 12,
+          "max_B": 185,
+          "W_size": 401,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156
+          ],
+          "appended": 185
+        },
+        {
+          "interval": [
+            -86,
+            241
+          ],
+          "interval_length": 328,
+          "covered_N": [
+            218,
+            328
+          ],
+          "interval_length_over_k3": 0.14929449248975876,
+          "covered_end_over_k3": 0.14929449248975876,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156,
+            185,
+            217
+          ],
+          "k": 13,
+          "max_B": 217,
+          "W_size": 479,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156,
+            185
+          ],
+          "appended": 217
+        },
+        {
+          "interval": [
+            -91,
+            279
+          ],
+          "interval_length": 371,
+          "covered_N": [
+            243,
+            371
+          ],
+          "interval_length_over_k3": 0.13520408163265307,
+          "covered_end_over_k3": 0.13520408163265307,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156,
+            185,
+            217,
+            242
+          ],
+          "k": 14,
+          "max_B": 242,
+          "W_size": 562,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156,
+            185,
+            217
+          ],
+          "appended": 242
+        },
+        {
+          "interval": [
+            -130,
+            316
+          ],
+          "interval_length": 447,
+          "covered_N": [
+            281,
+            447
+          ],
+          "interval_length_over_k3": 0.13244444444444445,
+          "covered_end_over_k3": 0.13244444444444445,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156,
+            185,
+            217,
+            242,
+            280
+          ],
+          "k": 15,
+          "max_B": 280,
+          "W_size": 650,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156,
+            185,
+            217,
+            242
+          ],
+          "appended": 280
+        },
+        {
+          "interval": [
+            -152,
+            407
+          ],
+          "interval_length": 560,
+          "covered_N": [
+            382,
+            560
+          ],
+          "interval_length_over_k3": 0.13671875,
+          "covered_end_over_k3": 0.13671875,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156,
+            185,
+            217,
+            242,
+            280,
+            381
+          ],
+          "k": 16,
+          "max_B": 381,
+          "W_size": 791,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156,
+            185,
+            217,
+            242,
+            280
+          ],
+          "appended": 381
+        }
+      ],
+      "deepest_best_path_covered_union": [
+        [
+          95,
+          560
+        ]
+      ],
+      "best_by_k": [
+        {
+          "interval": [
+            -22,
+            103
+          ],
+          "interval_length": 126,
+          "covered_N": [
+            95,
+            126
+          ],
+          "interval_length_over_k3": 0.24609375,
+          "covered_end_over_k3": 0.24609375,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94
+          ],
+          "k": 8,
+          "max_B": 94,
+          "W_size": 165,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -30,
+            118
+          ],
+          "interval_length": 149,
+          "covered_N": [
+            105,
+            149
+          ],
+          "interval_length_over_k3": 0.20438957475994513,
+          "covered_end_over_k3": 0.20438957475994513,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            104
+          ],
+          "k": 9,
+          "max_B": 104,
+          "W_size": 214,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94
+          ],
+          "appended": 104
+        },
+        {
+          "interval": [
+            -32,
+            156
+          ],
+          "interval_length": 189,
+          "covered_N": [
+            139,
+            189
+          ],
+          "interval_length_over_k3": 0.189,
+          "covered_end_over_k3": 0.189,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            138
+          ],
+          "k": 10,
+          "max_B": 138,
+          "W_size": 278,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106
+          ],
+          "appended": 138
+        },
+        {
+          "interval": [
+            -43,
+            183
+          ],
+          "interval_length": 227,
+          "covered_N": [
+            156,
+            227
+          ],
+          "interval_length_over_k3": 0.17054845980465816,
+          "covered_end_over_k3": 0.17054845980465816,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            105,
+            117,
+            155
+          ],
+          "k": 11,
+          "max_B": 155,
+          "W_size": 325,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            105,
+            117
+          ],
+          "appended": 155
+        },
+        {
+          "interval": [
+            -77,
+            219
+          ],
+          "interval_length": 297,
+          "covered_N": [
+            205,
+            297
+          ],
+          "interval_length_over_k3": 0.171875,
+          "covered_end_over_k3": 0.171875,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            109,
+            121,
+            132,
+            204
+          ],
+          "k": 12,
+          "max_B": 204,
+          "W_size": 405,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            109,
+            121,
+            132
+          ],
+          "appended": 204
+        },
+        {
+          "interval": [
+            -92,
+            247
+          ],
+          "interval_length": 340,
+          "covered_N": [
+            217,
+            340
+          ],
+          "interval_length_over_k3": 0.15475648611743287,
+          "covered_end_over_k3": 0.15475648611743287,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156,
+            185,
+            216
+          ],
+          "k": 13,
+          "max_B": 216,
+          "W_size": 478,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156,
+            185
+          ],
+          "appended": 216
+        },
+        {
+          "interval": [
+            -97,
+            303
+          ],
+          "interval_length": 401,
+          "covered_N": [
+            285,
+            401
+          ],
+          "interval_length_over_k3": 0.14613702623906705,
+          "covered_end_over_k3": 0.14613702623906705,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            110,
+            122,
+            154,
+            191,
+            218,
+            284
+          ],
+          "k": 14,
+          "max_B": 284,
+          "W_size": 594,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            110,
+            122,
+            154,
+            191,
+            218
+          ],
+          "appended": 284
+        },
+        {
+          "interval": [
+            -116,
+            346
+          ],
+          "interval_length": 463,
+          "covered_N": [
+            320,
+            463
+          ],
+          "interval_length_over_k3": 0.1371851851851852,
+          "covered_end_over_k3": 0.1371851851851852,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            109,
+            120,
+            143,
+            186,
+            230,
+            257,
+            319
+          ],
+          "k": 15,
+          "max_B": 319,
+          "W_size": 691,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            109,
+            120,
+            143,
+            186,
+            230,
+            257
+          ],
+          "appended": 319
+        },
+        {
+          "interval": [
+            -152,
+            407
+          ],
+          "interval_length": 560,
+          "covered_N": [
+            382,
+            560
+          ],
+          "interval_length_over_k3": 0.13671875,
+          "covered_end_over_k3": 0.13671875,
+          "B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156,
+            185,
+            217,
+            242,
+            280,
+            381
+          ],
+          "k": 16,
+          "max_B": 381,
+          "W_size": 791,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            18,
+            35,
+            39,
+            40,
+            42,
+            48,
+            94,
+            106,
+            120,
+            156,
+            185,
+            217,
+            242,
+            280
+          ],
+          "appended": 381
+        }
+      ]
+    },
+    {
+      "seed_rank": 3,
+      "seed": {
+        "interval": [
+          -10,
+          119
+        ],
+        "interval_length": 130,
+        "covered_N": [
+          104,
+          130
+        ],
+        "interval_length_over_k3": 0.25390625,
+        "covered_end_over_k3": 0.25390625,
+        "B": [
+          0,
+          30,
+          50,
+          56,
+          58,
+          59,
+          63,
+          103
+        ],
+        "k": 8,
+        "max_B": 103,
+        "W_size": 175,
+        "admissible_interval_count": 1,
+        "seed_source": {
+          "core_pattern": [
+            0,
+            6,
+            8,
+            9,
+            13
+          ],
+          "core_offset": 50,
+          "base": [
+            0,
+            50,
+            56,
+            58,
+            59,
+            63
+          ]
+        }
+      },
+      "last": {
+        "interval": [
+          -122,
+          428
+        ],
+        "interval_length": 551,
+        "covered_N": [
+          399,
+          551
+        ],
+        "interval_length_over_k3": 0.134521484375,
+        "covered_end_over_k3": 0.134521484375,
+        "B": [
+          0,
+          30,
+          50,
+          56,
+          58,
+          59,
+          63,
+          103,
+          128,
+          140,
+          164,
+          174,
+          215,
+          291,
+          306,
+          398
+        ],
+        "k": 16,
+        "max_B": 398,
+        "W_size": 814,
+        "admissible_interval_count": 1,
+        "parent_B": [
+          0,
+          30,
+          50,
+          56,
+          58,
+          59,
+          63,
+          103,
+          128,
+          140,
+          164,
+          174,
+          215,
+          291,
+          306
+        ],
+        "appended": 398
+      },
+      "best_overall": {
+        "interval": [
+          -10,
+          119
+        ],
+        "interval_length": 130,
+        "covered_N": [
+          104,
+          130
+        ],
+        "interval_length_over_k3": 0.25390625,
+        "covered_end_over_k3": 0.25390625,
+        "B": [
+          0,
+          30,
+          50,
+          56,
+          58,
+          59,
+          63,
+          103
+        ],
+        "k": 8,
+        "max_B": 103,
+        "W_size": 175,
+        "admissible_interval_count": 1,
+        "appended": null,
+        "parent_B": null
+      },
+      "deepest_best_path": [
+        {
+          "interval": [
+            -10,
+            119
+          ],
+          "interval_length": 130,
+          "covered_N": [
+            104,
+            130
+          ],
+          "interval_length_over_k3": 0.25390625,
+          "covered_end_over_k3": 0.25390625,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103
+          ],
+          "k": 8,
+          "max_B": 103,
+          "W_size": 175,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -17,
+            137
+          ],
+          "interval_length": 155,
+          "covered_N": [
+            129,
+            155
+          ],
+          "interval_length_over_k3": 0.21262002743484226,
+          "covered_end_over_k3": 0.21262002743484226,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128
+          ],
+          "k": 9,
+          "max_B": 128,
+          "W_size": 224,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103
+          ],
+          "appended": 128
+        },
+        {
+          "interval": [
+            -35,
+            150
+          ],
+          "interval_length": 186,
+          "covered_N": [
+            141,
+            186
+          ],
+          "interval_length_over_k3": 0.186,
+          "covered_end_over_k3": 0.186,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140
+          ],
+          "k": 10,
+          "max_B": 140,
+          "W_size": 280,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128
+          ],
+          "appended": 140
+        },
+        {
+          "interval": [
+            -40,
+            173
+          ],
+          "interval_length": 214,
+          "covered_N": [
+            165,
+            214
+          ],
+          "interval_length_over_k3": 0.16078136739293764,
+          "covered_end_over_k3": 0.16078136739293764,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164
+          ],
+          "k": 11,
+          "max_B": 164,
+          "W_size": 339,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140
+          ],
+          "appended": 164
+        },
+        {
+          "interval": [
+            -66,
+            194
+          ],
+          "interval_length": 261,
+          "covered_N": [
+            175,
+            261
+          ],
+          "interval_length_over_k3": 0.15104166666666666,
+          "covered_end_over_k3": 0.15104166666666666,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164,
+            174
+          ],
+          "k": 12,
+          "max_B": 174,
+          "W_size": 387,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164
+          ],
+          "appended": 174
+        },
+        {
+          "interval": [
+            -66,
+            252
+          ],
+          "interval_length": 319,
+          "covered_N": [
+            216,
+            319
+          ],
+          "interval_length_over_k3": 0.14519799726900318,
+          "covered_end_over_k3": 0.14519799726900318,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164,
+            174,
+            215
+          ],
+          "k": 13,
+          "max_B": 215,
+          "W_size": 457,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164,
+            174
+          ],
+          "appended": 215
+        },
+        {
+          "interval": [
+            -78,
+            305
+          ],
+          "interval_length": 384,
+          "covered_N": [
+            292,
+            384
+          ],
+          "interval_length_over_k3": 0.13994169096209913,
+          "covered_end_over_k3": 0.13994169096209913,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164,
+            174,
+            215,
+            291
+          ],
+          "k": 14,
+          "max_B": 291,
+          "W_size": 575,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164,
+            174,
+            215
+          ],
+          "appended": 291
+        },
+        {
+          "interval": [
+            -122,
+            321
+          ],
+          "interval_length": 444,
+          "covered_N": [
+            307,
+            444
+          ],
+          "interval_length_over_k3": 0.13155555555555556,
+          "covered_end_over_k3": 0.13155555555555556,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164,
+            174,
+            215,
+            291,
+            306
+          ],
+          "k": 15,
+          "max_B": 306,
+          "W_size": 675,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164,
+            174,
+            215,
+            291
+          ],
+          "appended": 306
+        },
+        {
+          "interval": [
+            -122,
+            428
+          ],
+          "interval_length": 551,
+          "covered_N": [
+            399,
+            551
+          ],
+          "interval_length_over_k3": 0.134521484375,
+          "covered_end_over_k3": 0.134521484375,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164,
+            174,
+            215,
+            291,
+            306,
+            398
+          ],
+          "k": 16,
+          "max_B": 398,
+          "W_size": 814,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164,
+            174,
+            215,
+            291,
+            306
+          ],
+          "appended": 398
+        }
+      ],
+      "deepest_best_path_covered_union": [
+        [
+          104,
+          551
+        ]
+      ],
+      "best_by_k": [
+        {
+          "interval": [
+            -10,
+            119
+          ],
+          "interval_length": 130,
+          "covered_N": [
+            104,
+            130
+          ],
+          "interval_length_over_k3": 0.25390625,
+          "covered_end_over_k3": 0.25390625,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103
+          ],
+          "k": 8,
+          "max_B": 103,
+          "W_size": 175,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -17,
+            137
+          ],
+          "interval_length": 155,
+          "covered_N": [
+            129,
+            155
+          ],
+          "interval_length_over_k3": 0.21262002743484226,
+          "covered_end_over_k3": 0.21262002743484226,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128
+          ],
+          "k": 9,
+          "max_B": 128,
+          "W_size": 224,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103
+          ],
+          "appended": 128
+        },
+        {
+          "interval": [
+            -38,
+            150
+          ],
+          "interval_length": 189,
+          "covered_N": [
+            141,
+            189
+          ],
+          "interval_length_over_k3": 0.189,
+          "covered_end_over_k3": 0.189,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            124,
+            140
+          ],
+          "k": 10,
+          "max_B": 140,
+          "W_size": 275,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            124
+          ],
+          "appended": 140
+        },
+        {
+          "interval": [
+            -54,
+            173
+          ],
+          "interval_length": 228,
+          "covered_N": [
+            161,
+            228
+          ],
+          "interval_length_over_k3": 0.17129977460555973,
+          "covered_end_over_k3": 0.17129977460555973,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            125,
+            137,
+            160
+          ],
+          "k": 11,
+          "max_B": 160,
+          "W_size": 332,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            125,
+            137
+          ],
+          "appended": 160
+        },
+        {
+          "interval": [
+            -76,
+            220
+          ],
+          "interval_length": 297,
+          "covered_N": [
+            188,
+            297
+          ],
+          "interval_length_over_k3": 0.171875,
+          "covered_end_over_k3": 0.171875,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            120,
+            139,
+            155,
+            187
+          ],
+          "k": 12,
+          "max_B": 187,
+          "W_size": 392,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            120,
+            139,
+            155
+          ],
+          "appended": 187
+        },
+        {
+          "interval": [
+            -91,
+            277
+          ],
+          "interval_length": 369,
+          "covered_N": [
+            258,
+            369
+          ],
+          "interval_length_over_k3": 0.1679563040509786,
+          "covered_end_over_k3": 0.1679563040509786,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            163,
+            202,
+            257
+          ],
+          "k": 13,
+          "max_B": 257,
+          "W_size": 507,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            163,
+            202
+          ],
+          "appended": 257
+        },
+        {
+          "interval": [
+            -116,
+            294
+          ],
+          "interval_length": 411,
+          "covered_N": [
+            254,
+            411
+          ],
+          "interval_length_over_k3": 0.14978134110787172,
+          "covered_end_over_k3": 0.14978134110787172,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164,
+            174,
+            215,
+            253
+          ],
+          "k": 14,
+          "max_B": 253,
+          "W_size": 543,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164,
+            174,
+            215
+          ],
+          "appended": 253
+        },
+        {
+          "interval": [
+            -127,
+            347
+          ],
+          "interval_length": 475,
+          "covered_N": [
+            333,
+            475
+          ],
+          "interval_length_over_k3": 0.14074074074074075,
+          "covered_end_over_k3": 0.14074074074074075,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            124,
+            138,
+            160,
+            175,
+            209,
+            286,
+            332
+          ],
+          "k": 15,
+          "max_B": 332,
+          "W_size": 689,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            124,
+            138,
+            160,
+            175,
+            209,
+            286
+          ],
+          "appended": 332
+        },
+        {
+          "interval": [
+            -122,
+            428
+          ],
+          "interval_length": 551,
+          "covered_N": [
+            399,
+            551
+          ],
+          "interval_length_over_k3": 0.134521484375,
+          "covered_end_over_k3": 0.134521484375,
+          "B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164,
+            174,
+            215,
+            291,
+            306,
+            398
+          ],
+          "k": 16,
+          "max_B": 398,
+          "W_size": 814,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            30,
+            50,
+            56,
+            58,
+            59,
+            63,
+            103,
+            128,
+            140,
+            164,
+            174,
+            215,
+            291,
+            306
+          ],
+          "appended": 398
+        }
+      ]
+    },
+    {
+      "seed_rank": 2,
+      "seed": {
+        "interval": [
+          -16,
+          113
+        ],
+        "interval_length": 130,
+        "covered_N": [
+          104,
+          130
+        ],
+        "interval_length_over_k3": 0.25390625,
+        "covered_end_over_k3": 0.25390625,
+        "B": [
+          0,
+          40,
+          44,
+          45,
+          47,
+          53,
+          73,
+          103
+        ],
+        "k": 8,
+        "max_B": 103,
+        "W_size": 175,
+        "admissible_interval_count": 1,
+        "seed_source": {
+          "core_pattern": [
+            0,
+            4,
+            5,
+            7,
+            13
+          ],
+          "core_offset": 40,
+          "base": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53
+          ]
+        }
+      },
+      "last": {
+        "interval": [
+          -125,
+          420
+        ],
+        "interval_length": 546,
+        "covered_N": [
+          406,
+          546
+        ],
+        "interval_length_over_k3": 0.13330078125,
+        "covered_end_over_k3": 0.13330078125,
+        "B": [
+          0,
+          40,
+          44,
+          45,
+          47,
+          53,
+          73,
+          103,
+          115,
+          130,
+          140,
+          151,
+          242,
+          264,
+          316,
+          405
+        ],
+        "k": 16,
+        "max_B": 405,
+        "W_size": 830,
+        "admissible_interval_count": 1,
+        "parent_B": [
+          0,
+          40,
+          44,
+          45,
+          47,
+          53,
+          73,
+          103,
+          115,
+          130,
+          140,
+          151,
+          242,
+          264,
+          316
+        ],
+        "appended": 405
+      },
+      "best_overall": {
+        "interval": [
+          -16,
+          113
+        ],
+        "interval_length": 130,
+        "covered_N": [
+          104,
+          130
+        ],
+        "interval_length_over_k3": 0.25390625,
+        "covered_end_over_k3": 0.25390625,
+        "B": [
+          0,
+          40,
+          44,
+          45,
+          47,
+          53,
+          73,
+          103
+        ],
+        "k": 8,
+        "max_B": 103,
+        "W_size": 175,
+        "admissible_interval_count": 1,
+        "appended": null,
+        "parent_B": null
+      },
+      "deepest_best_path": [
+        {
+          "interval": [
+            -16,
+            113
+          ],
+          "interval_length": 130,
+          "covered_N": [
+            104,
+            130
+          ],
+          "interval_length_over_k3": 0.25390625,
+          "covered_end_over_k3": 0.25390625,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103
+          ],
+          "k": 8,
+          "max_B": 103,
+          "W_size": 175,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -31,
+            124
+          ],
+          "interval_length": 156,
+          "covered_N": [
+            116,
+            156
+          ],
+          "interval_length_over_k3": 0.2139917695473251,
+          "covered_end_over_k3": 0.2139917695473251,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115
+          ],
+          "k": 9,
+          "max_B": 115,
+          "W_size": 219,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103
+          ],
+          "appended": 115
+        },
+        {
+          "interval": [
+            -33,
+            139
+          ],
+          "interval_length": 173,
+          "covered_N": [
+            131,
+            173
+          ],
+          "interval_length_over_k3": 0.173,
+          "covered_end_over_k3": 0.173,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130
+          ],
+          "k": 10,
+          "max_B": 130,
+          "W_size": 264,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115
+          ],
+          "appended": 130
+        },
+        {
+          "interval": [
+            -53,
+            150
+          ],
+          "interval_length": 204,
+          "covered_N": [
+            141,
+            204
+          ],
+          "interval_length_over_k3": 0.15326821938392185,
+          "covered_end_over_k3": 0.15326821938392185,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140
+          ],
+          "k": 11,
+          "max_B": 140,
+          "W_size": 304,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130
+          ],
+          "appended": 140
+        },
+        {
+          "interval": [
+            -64,
+            193
+          ],
+          "interval_length": 258,
+          "covered_N": [
+            152,
+            258
+          ],
+          "interval_length_over_k3": 0.14930555555555555,
+          "covered_end_over_k3": 0.14930555555555555,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140,
+            151
+          ],
+          "k": 12,
+          "max_B": 151,
+          "W_size": 348,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140
+          ],
+          "appended": 151
+        },
+        {
+          "interval": [
+            -68,
+            255
+          ],
+          "interval_length": 324,
+          "covered_N": [
+            243,
+            324
+          ],
+          "interval_length_over_k3": 0.14747382794720074,
+          "covered_end_over_k3": 0.14747382794720074,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140,
+            151,
+            242
+          ],
+          "k": 13,
+          "max_B": 242,
+          "W_size": 459,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140,
+            151
+          ],
+          "appended": 242
+        },
+        {
+          "interval": [
+            -96,
+            282
+          ],
+          "interval_length": 379,
+          "covered_N": [
+            265,
+            379
+          ],
+          "interval_length_over_k3": 0.1381195335276968,
+          "covered_end_over_k3": 0.1381195335276968,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140,
+            151,
+            242,
+            264
+          ],
+          "k": 14,
+          "max_B": 264,
+          "W_size": 564,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140,
+            151,
+            242
+          ],
+          "appended": 264
+        },
+        {
+          "interval": [
+            -96,
+            329
+          ],
+          "interval_length": 426,
+          "covered_N": [
+            317,
+            426
+          ],
+          "interval_length_over_k3": 0.12622222222222224,
+          "covered_end_over_k3": 0.12622222222222224,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140,
+            151,
+            242,
+            264,
+            316
+          ],
+          "k": 15,
+          "max_B": 316,
+          "W_size": 676,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140,
+            151,
+            242,
+            264
+          ],
+          "appended": 316
+        },
+        {
+          "interval": [
+            -125,
+            420
+          ],
+          "interval_length": 546,
+          "covered_N": [
+            406,
+            546
+          ],
+          "interval_length_over_k3": 0.13330078125,
+          "covered_end_over_k3": 0.13330078125,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140,
+            151,
+            242,
+            264,
+            316,
+            405
+          ],
+          "k": 16,
+          "max_B": 405,
+          "W_size": 830,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140,
+            151,
+            242,
+            264,
+            316
+          ],
+          "appended": 405
+        }
+      ],
+      "deepest_best_path_covered_union": [
+        [
+          104,
+          546
+        ]
+      ],
+      "best_by_k": [
+        {
+          "interval": [
+            -16,
+            113
+          ],
+          "interval_length": 130,
+          "covered_N": [
+            104,
+            130
+          ],
+          "interval_length_over_k3": 0.25390625,
+          "covered_end_over_k3": 0.25390625,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103
+          ],
+          "k": 8,
+          "max_B": 103,
+          "W_size": 175,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -31,
+            124
+          ],
+          "interval_length": 156,
+          "covered_N": [
+            116,
+            156
+          ],
+          "interval_length_over_k3": 0.2139917695473251,
+          "covered_end_over_k3": 0.2139917695473251,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115
+          ],
+          "k": 9,
+          "max_B": 115,
+          "W_size": 219,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103
+          ],
+          "appended": 115
+        },
+        {
+          "interval": [
+            -47,
+            139
+          ],
+          "interval_length": 187,
+          "covered_N": [
+            131,
+            187
+          ],
+          "interval_length_over_k3": 0.187,
+          "covered_end_over_k3": 0.187,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            119,
+            130
+          ],
+          "k": 10,
+          "max_B": 130,
+          "W_size": 267,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            119
+          ],
+          "appended": 130
+        },
+        {
+          "interval": [
+            -47,
+            184
+          ],
+          "interval_length": 232,
+          "covered_N": [
+            150,
+            232
+          ],
+          "interval_length_over_k3": 0.17430503380916604,
+          "covered_end_over_k3": 0.17430503380916604,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            114,
+            130,
+            149
+          ],
+          "k": 11,
+          "max_B": 149,
+          "W_size": 318,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            114,
+            130
+          ],
+          "appended": 149
+        },
+        {
+          "interval": [
+            -60,
+            240
+          ],
+          "interval_length": 301,
+          "covered_N": [
+            224,
+            301
+          ],
+          "interval_length_over_k3": 0.17418981481481483,
+          "covered_end_over_k3": 0.17418981481481483,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            119,
+            130,
+            142,
+            223
+          ],
+          "k": 12,
+          "max_B": 223,
+          "W_size": 415,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            119,
+            130,
+            142
+          ],
+          "appended": 223
+        },
+        {
+          "interval": [
+            -73,
+            267
+          ],
+          "interval_length": 341,
+          "covered_N": [
+            253,
+            341
+          ],
+          "interval_length_over_k3": 0.15521165225307237,
+          "covered_end_over_k3": 0.15521165225307237,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140,
+            151,
+            252
+          ],
+          "k": 13,
+          "max_B": 252,
+          "W_size": 469,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140,
+            151
+          ],
+          "appended": 252
+        },
+        {
+          "interval": [
+            -104,
+            292
+          ],
+          "interval_length": 397,
+          "covered_N": [
+            275,
+            397
+          ],
+          "interval_length_over_k3": 0.1446793002915452,
+          "covered_end_over_k3": 0.1446793002915452,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            119,
+            134,
+            144,
+            168,
+            186,
+            274
+          ],
+          "k": 14,
+          "max_B": 274,
+          "W_size": 537,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            119,
+            134,
+            144,
+            168,
+            186
+          ],
+          "appended": 274
+        },
+        {
+          "interval": [
+            -105,
+            357
+          ],
+          "interval_length": 463,
+          "covered_N": [
+            340,
+            463
+          ],
+          "interval_length_over_k3": 0.1371851851851852,
+          "covered_end_over_k3": 0.1371851851851852,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            114,
+            128,
+            149,
+            185,
+            247,
+            271,
+            339
+          ],
+          "k": 15,
+          "max_B": 339,
+          "W_size": 705,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            114,
+            128,
+            149,
+            185,
+            247,
+            271
+          ],
+          "appended": 339
+        },
+        {
+          "interval": [
+            -125,
+            420
+          ],
+          "interval_length": 546,
+          "covered_N": [
+            406,
+            546
+          ],
+          "interval_length_over_k3": 0.13330078125,
+          "covered_end_over_k3": 0.13330078125,
+          "B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140,
+            151,
+            242,
+            264,
+            316,
+            405
+          ],
+          "k": 16,
+          "max_B": 405,
+          "W_size": 830,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            44,
+            45,
+            47,
+            53,
+            73,
+            103,
+            115,
+            130,
+            140,
+            151,
+            242,
+            264,
+            316
+          ],
+          "appended": 405
+        }
+      ]
+    },
+    {
+      "seed_rank": 8,
+      "seed": {
+        "interval": [
+          -33,
+          91
+        ],
+        "interval_length": 125,
+        "covered_N": [
+          81,
+          125
+        ],
+        "interval_length_over_k3": 0.244140625,
+        "covered_end_over_k3": 0.244140625,
+        "B": [
+          0,
+          20,
+          22,
+          27,
+          28,
+          31,
+          63,
+          80
+        ],
+        "k": 8,
+        "max_B": 80,
+        "W_size": 163,
+        "admissible_interval_count": 1,
+        "seed_source": {
+          "core_pattern": [
+            0,
+            2,
+            7,
+            8,
+            11
+          ],
+          "core_offset": 20,
+          "base": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31
+          ]
+        }
+      },
+      "last": {
+        "interval": [
+          -126,
+          418
+        ],
+        "interval_length": 545,
+        "covered_N": [
+          358,
+          545
+        ],
+        "interval_length_over_k3": 0.133056640625,
+        "covered_end_over_k3": 0.133056640625,
+        "B": [
+          0,
+          20,
+          22,
+          27,
+          28,
+          31,
+          63,
+          80,
+          92,
+          113,
+          137,
+          179,
+          216,
+          263,
+          317,
+          357
+        ],
+        "k": 16,
+        "max_B": 357,
+        "W_size": 816,
+        "admissible_interval_count": 1,
+        "parent_B": [
+          0,
+          20,
+          22,
+          27,
+          28,
+          31,
+          63,
+          80,
+          92,
+          113,
+          137,
+          179,
+          216,
+          263,
+          317
+        ],
+        "appended": 357
+      },
+      "best_overall": {
+        "interval": [
+          -33,
+          91
+        ],
+        "interval_length": 125,
+        "covered_N": [
+          81,
+          125
+        ],
+        "interval_length_over_k3": 0.244140625,
+        "covered_end_over_k3": 0.244140625,
+        "B": [
+          0,
+          20,
+          22,
+          27,
+          28,
+          31,
+          63,
+          80
+        ],
+        "k": 8,
+        "max_B": 80,
+        "W_size": 163,
+        "admissible_interval_count": 1,
+        "appended": null,
+        "parent_B": null
+      },
+      "deepest_best_path": [
+        {
+          "interval": [
+            -33,
+            91
+          ],
+          "interval_length": 125,
+          "covered_N": [
+            81,
+            125
+          ],
+          "interval_length_over_k3": 0.244140625,
+          "covered_end_over_k3": 0.244140625,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80
+          ],
+          "k": 8,
+          "max_B": 80,
+          "W_size": 163,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -45,
+            104
+          ],
+          "interval_length": 150,
+          "covered_N": [
+            93,
+            150
+          ],
+          "interval_length_over_k3": 0.205761316872428,
+          "covered_end_over_k3": 0.205761316872428,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92
+          ],
+          "k": 9,
+          "max_B": 92,
+          "W_size": 203,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80
+          ],
+          "appended": 92
+        },
+        {
+          "interval": [
+            -45,
+            130
+          ],
+          "interval_length": 176,
+          "covered_N": [
+            114,
+            176
+          ],
+          "interval_length_over_k3": 0.176,
+          "covered_end_over_k3": 0.176,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113
+          ],
+          "k": 10,
+          "max_B": 113,
+          "W_size": 252,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92
+          ],
+          "appended": 113
+        },
+        {
+          "interval": [
+            -55,
+            146
+          ],
+          "interval_length": 202,
+          "covered_N": [
+            138,
+            202
+          ],
+          "interval_length_over_k3": 0.1517655897821187,
+          "covered_end_over_k3": 0.1517655897821187,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113,
+            137
+          ],
+          "k": 11,
+          "max_B": 137,
+          "W_size": 311,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113
+          ],
+          "appended": 137
+        },
+        {
+          "interval": [
+            -75,
+            191
+          ],
+          "interval_length": 267,
+          "covered_N": [
+            180,
+            267
+          ],
+          "interval_length_over_k3": 0.1545138888888889,
+          "covered_end_over_k3": 0.1545138888888889,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113,
+            137,
+            179
+          ],
+          "k": 12,
+          "max_B": 179,
+          "W_size": 391,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113,
+            137
+          ],
+          "appended": 179
+        },
+        {
+          "interval": [
+            -97,
+            233
+          ],
+          "interval_length": 331,
+          "covered_N": [
+            217,
+            331
+          ],
+          "interval_length_over_k3": 0.15065999089667728,
+          "covered_end_over_k3": 0.15065999089667728,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113,
+            137,
+            179,
+            216
+          ],
+          "k": 13,
+          "max_B": 216,
+          "W_size": 475,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113,
+            137,
+            179
+          ],
+          "appended": 216
+        },
+        {
+          "interval": [
+            -99,
+            292
+          ],
+          "interval_length": 392,
+          "covered_N": [
+            264,
+            392
+          ],
+          "interval_length_over_k3": 0.14285714285714285,
+          "covered_end_over_k3": 0.14285714285714285,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113,
+            137,
+            179,
+            216,
+            263
+          ],
+          "k": 14,
+          "max_B": 263,
+          "W_size": 583,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113,
+            137,
+            179,
+            216
+          ],
+          "appended": 263
+        },
+        {
+          "interval": [
+            -126,
+            350
+          ],
+          "interval_length": 477,
+          "covered_N": [
+            318,
+            477
+          ],
+          "interval_length_over_k3": 0.14133333333333334,
+          "covered_end_over_k3": 0.14133333333333334,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113,
+            137,
+            179,
+            216,
+            263,
+            317
+          ],
+          "k": 15,
+          "max_B": 317,
+          "W_size": 698,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113,
+            137,
+            179,
+            216,
+            263
+          ],
+          "appended": 317
+        },
+        {
+          "interval": [
+            -126,
+            418
+          ],
+          "interval_length": 545,
+          "covered_N": [
+            358,
+            545
+          ],
+          "interval_length_over_k3": 0.133056640625,
+          "covered_end_over_k3": 0.133056640625,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113,
+            137,
+            179,
+            216,
+            263,
+            317,
+            357
+          ],
+          "k": 16,
+          "max_B": 357,
+          "W_size": 816,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113,
+            137,
+            179,
+            216,
+            263,
+            317
+          ],
+          "appended": 357
+        }
+      ],
+      "deepest_best_path_covered_union": [
+        [
+          81,
+          545
+        ]
+      ],
+      "best_by_k": [
+        {
+          "interval": [
+            -33,
+            91
+          ],
+          "interval_length": 125,
+          "covered_N": [
+            81,
+            125
+          ],
+          "interval_length_over_k3": 0.244140625,
+          "covered_end_over_k3": 0.244140625,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80
+          ],
+          "k": 8,
+          "max_B": 80,
+          "W_size": 163,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -45,
+            104
+          ],
+          "interval_length": 150,
+          "covered_N": [
+            93,
+            150
+          ],
+          "interval_length_over_k3": 0.205761316872428,
+          "covered_end_over_k3": 0.205761316872428,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92
+          ],
+          "k": 9,
+          "max_B": 92,
+          "W_size": 203,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80
+          ],
+          "appended": 92
+        },
+        {
+          "interval": [
+            -58,
+            130
+          ],
+          "interval_length": 189,
+          "covered_N": [
+            106,
+            189
+          ],
+          "interval_length_over_k3": 0.189,
+          "covered_end_over_k3": 0.189,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            105
+          ],
+          "k": 10,
+          "max_B": 105,
+          "W_size": 248,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92
+          ],
+          "appended": 105
+        },
+        {
+          "interval": [
+            -63,
+            174
+          ],
+          "interval_length": 238,
+          "covered_N": [
+            162,
+            238
+          ],
+          "interval_length_over_k3": 0.17881292261457551,
+          "covered_end_over_k3": 0.17881292261457551,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            93,
+            105,
+            161
+          ],
+          "k": 11,
+          "max_B": 161,
+          "W_size": 325,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            93,
+            105
+          ],
+          "appended": 161
+        },
+        {
+          "interval": [
+            -84,
+            208
+          ],
+          "interval_length": 293,
+          "covered_N": [
+            198,
+            293
+          ],
+          "interval_length_over_k3": 0.16956018518518517,
+          "covered_end_over_k3": 0.16956018518518517,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            93,
+            103,
+            119,
+            197
+          ],
+          "k": 12,
+          "max_B": 197,
+          "W_size": 394,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            93,
+            103,
+            119
+          ],
+          "appended": 197
+        },
+        {
+          "interval": [
+            -97,
+            240
+          ],
+          "interval_length": 338,
+          "covered_N": [
+            227,
+            338
+          ],
+          "interval_length_over_k3": 0.15384615384615385,
+          "covered_end_over_k3": 0.15384615384615385,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            93,
+            103,
+            119,
+            197,
+            226
+          ],
+          "k": 13,
+          "max_B": 226,
+          "W_size": 490,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            93,
+            103,
+            119,
+            197
+          ],
+          "appended": 226
+        },
+        {
+          "interval": [
+            -120,
+            284
+          ],
+          "interval_length": 405,
+          "covered_N": [
+            240,
+            405
+          ],
+          "interval_length_over_k3": 0.14759475218658893,
+          "covered_end_over_k3": 0.14759475218658893,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            101,
+            120,
+            134,
+            157,
+            224,
+            239
+          ],
+          "k": 14,
+          "max_B": 239,
+          "W_size": 558,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            101,
+            120,
+            134,
+            157,
+            224
+          ],
+          "appended": 239
+        },
+        {
+          "interval": [
+            -126,
+            359
+          ],
+          "interval_length": 486,
+          "covered_N": [
+            347,
+            486
+          ],
+          "interval_length_over_k3": 0.144,
+          "covered_end_over_k3": 0.144,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            101,
+            114,
+            151,
+            170,
+            216,
+            242,
+            346
+          ],
+          "k": 15,
+          "max_B": 346,
+          "W_size": 716,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            101,
+            114,
+            151,
+            170,
+            216,
+            242
+          ],
+          "appended": 346
+        },
+        {
+          "interval": [
+            -126,
+            418
+          ],
+          "interval_length": 545,
+          "covered_N": [
+            358,
+            545
+          ],
+          "interval_length_over_k3": 0.133056640625,
+          "covered_end_over_k3": 0.133056640625,
+          "B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113,
+            137,
+            179,
+            216,
+            263,
+            317,
+            357
+          ],
+          "k": 16,
+          "max_B": 357,
+          "W_size": 816,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            20,
+            22,
+            27,
+            28,
+            31,
+            63,
+            80,
+            92,
+            113,
+            137,
+            179,
+            216,
+            263,
+            317
+          ],
+          "appended": 357
+        }
+      ]
+    },
+    {
+      "seed_rank": 1,
+      "seed": {
+        "interval": [
+          -7,
+          136
+        ],
+        "interval_length": 144,
+        "covered_N": [
+          113,
+          144
+        ],
+        "interval_length_over_k3": 0.28125,
+        "covered_end_over_k3": 0.28125,
+        "B": [
+          0,
+          40,
+          60,
+          61,
+          63,
+          67,
+          96,
+          112
+        ],
+        "k": 8,
+        "max_B": 112,
+        "W_size": 191,
+        "admissible_interval_count": 1,
+        "seed_source": {
+          "known_seed": true
+        }
+      },
+      "last": {
+        "interval": [
+          -127,
+          414
+        ],
+        "interval_length": 542,
+        "covered_N": [
+          401,
+          542
+        ],
+        "interval_length_over_k3": 0.13232421875,
+        "covered_end_over_k3": 0.13232421875,
+        "B": [
+          0,
+          40,
+          60,
+          61,
+          63,
+          67,
+          96,
+          112,
+          137,
+          146,
+          154,
+          165,
+          227,
+          257,
+          316,
+          400
+        ],
+        "k": 16,
+        "max_B": 400,
+        "W_size": 787,
+        "admissible_interval_count": 1,
+        "parent_B": [
+          0,
+          40,
+          60,
+          61,
+          63,
+          67,
+          96,
+          112,
+          137,
+          146,
+          154,
+          165,
+          227,
+          257,
+          316
+        ],
+        "appended": 400
+      },
+      "best_overall": {
+        "interval": [
+          -7,
+          136
+        ],
+        "interval_length": 144,
+        "covered_N": [
+          113,
+          144
+        ],
+        "interval_length_over_k3": 0.28125,
+        "covered_end_over_k3": 0.28125,
+        "B": [
+          0,
+          40,
+          60,
+          61,
+          63,
+          67,
+          96,
+          112
+        ],
+        "k": 8,
+        "max_B": 112,
+        "W_size": 191,
+        "admissible_interval_count": 1,
+        "appended": null,
+        "parent_B": null
+      },
+      "deepest_best_path": [
+        {
+          "interval": [
+            -7,
+            136
+          ],
+          "interval_length": 144,
+          "covered_N": [
+            113,
+            144
+          ],
+          "interval_length_over_k3": 0.28125,
+          "covered_end_over_k3": 0.28125,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112
+          ],
+          "k": 8,
+          "max_B": 112,
+          "W_size": 191,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -7,
+            141
+          ],
+          "interval_length": 149,
+          "covered_N": [
+            138,
+            149
+          ],
+          "interval_length_over_k3": 0.20438957475994513,
+          "covered_end_over_k3": 0.20438957475994513,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137
+          ],
+          "k": 9,
+          "max_B": 137,
+          "W_size": 239,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112
+          ],
+          "appended": 137
+        },
+        {
+          "interval": [
+            -7,
+            150
+          ],
+          "interval_length": 158,
+          "covered_N": [
+            147,
+            158
+          ],
+          "interval_length_over_k3": 0.158,
+          "covered_end_over_k3": 0.158,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146
+          ],
+          "k": 10,
+          "max_B": 146,
+          "W_size": 286,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137
+          ],
+          "appended": 146
+        },
+        {
+          "interval": [
+            -37,
+            164
+          ],
+          "interval_length": 202,
+          "covered_N": [
+            155,
+            202
+          ],
+          "interval_length_over_k3": 0.1517655897821187,
+          "covered_end_over_k3": 0.1517655897821187,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146,
+            154
+          ],
+          "k": 11,
+          "max_B": 154,
+          "W_size": 332,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146
+          ],
+          "appended": 154
+        },
+        {
+          "interval": [
+            -47,
+            218
+          ],
+          "interval_length": 266,
+          "covered_N": [
+            166,
+            266
+          ],
+          "interval_length_over_k3": 0.15393518518518517,
+          "covered_end_over_k3": 0.15393518518518517,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146,
+            154,
+            165
+          ],
+          "k": 12,
+          "max_B": 165,
+          "W_size": 366,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146,
+            154
+          ],
+          "appended": 165
+        },
+        {
+          "interval": [
+            -58,
+            252
+          ],
+          "interval_length": 311,
+          "covered_N": [
+            228,
+            311
+          ],
+          "interval_length_over_k3": 0.14155666818388712,
+          "covered_end_over_k3": 0.14155666818388712,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146,
+            154,
+            165,
+            227
+          ],
+          "k": 13,
+          "max_B": 227,
+          "W_size": 445,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146,
+            154,
+            165
+          ],
+          "appended": 227
+        },
+        {
+          "interval": [
+            -87,
+            274
+          ],
+          "interval_length": 362,
+          "covered_N": [
+            258,
+            362
+          ],
+          "interval_length_over_k3": 0.13192419825072887,
+          "covered_end_over_k3": 0.13192419825072887,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146,
+            154,
+            165,
+            227,
+            257
+          ],
+          "k": 14,
+          "max_B": 257,
+          "W_size": 529,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146,
+            154,
+            165,
+            227
+          ],
+          "appended": 257
+        },
+        {
+          "interval": [
+            -112,
+            327
+          ],
+          "interval_length": 440,
+          "covered_N": [
+            317,
+            440
+          ],
+          "interval_length_over_k3": 0.13037037037037036,
+          "covered_end_over_k3": 0.13037037037037036,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146,
+            154,
+            165,
+            227,
+            257,
+            316
+          ],
+          "k": 15,
+          "max_B": 316,
+          "W_size": 644,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146,
+            154,
+            165,
+            227,
+            257
+          ],
+          "appended": 316
+        },
+        {
+          "interval": [
+            -127,
+            414
+          ],
+          "interval_length": 542,
+          "covered_N": [
+            401,
+            542
+          ],
+          "interval_length_over_k3": 0.13232421875,
+          "covered_end_over_k3": 0.13232421875,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146,
+            154,
+            165,
+            227,
+            257,
+            316,
+            400
+          ],
+          "k": 16,
+          "max_B": 400,
+          "W_size": 787,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146,
+            154,
+            165,
+            227,
+            257,
+            316
+          ],
+          "appended": 400
+        }
+      ],
+      "deepest_best_path_covered_union": [
+        [
+          113,
+          542
+        ]
+      ],
+      "best_by_k": [
+        {
+          "interval": [
+            -7,
+            136
+          ],
+          "interval_length": 144,
+          "covered_N": [
+            113,
+            144
+          ],
+          "interval_length_over_k3": 0.28125,
+          "covered_end_over_k3": 0.28125,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112
+          ],
+          "k": 8,
+          "max_B": 112,
+          "W_size": 191,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -12,
+            148
+          ],
+          "interval_length": 161,
+          "covered_N": [
+            145,
+            161
+          ],
+          "interval_length_over_k3": 0.22085048010973937,
+          "covered_end_over_k3": 0.22085048010973937,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            144
+          ],
+          "k": 9,
+          "max_B": 144,
+          "W_size": 244,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112
+          ],
+          "appended": 144
+        },
+        {
+          "interval": [
+            -29,
+            157
+          ],
+          "interval_length": 187,
+          "covered_N": [
+            150,
+            187
+          ],
+          "interval_length_over_k3": 0.187,
+          "covered_end_over_k3": 0.187,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            144,
+            149
+          ],
+          "k": 10,
+          "max_B": 149,
+          "W_size": 293,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            144
+          ],
+          "appended": 149
+        },
+        {
+          "interval": [
+            -37,
+            175
+          ],
+          "interval_length": 213,
+          "covered_N": [
+            155,
+            213
+          ],
+          "interval_length_over_k3": 0.16003005259203607,
+          "covered_end_over_k3": 0.16003005259203607,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            142,
+            154
+          ],
+          "k": 11,
+          "max_B": 154,
+          "W_size": 326,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            142
+          ],
+          "appended": 154
+        },
+        {
+          "interval": [
+            -45,
+            229
+          ],
+          "interval_length": 275,
+          "covered_N": [
+            163,
+            275
+          ],
+          "interval_length_over_k3": 0.15914351851851852,
+          "covered_end_over_k3": 0.15914351851851852,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            138,
+            143,
+            151,
+            162
+          ],
+          "k": 12,
+          "max_B": 162,
+          "W_size": 360,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            138,
+            143,
+            151
+          ],
+          "appended": 162
+        },
+        {
+          "interval": [
+            -70,
+            271
+          ],
+          "interval_length": 342,
+          "covered_N": [
+            220,
+            342
+          ],
+          "interval_length_over_k3": 0.15566681838871188,
+          "covered_end_over_k3": 0.15566681838871188,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            144,
+            154,
+            169,
+            182,
+            219
+          ],
+          "k": 13,
+          "max_B": 219,
+          "W_size": 456,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            144,
+            154,
+            169,
+            182
+          ],
+          "appended": 219
+        },
+        {
+          "interval": [
+            -73,
+            330
+          ],
+          "interval_length": 404,
+          "covered_N": [
+            278,
+            404
+          ],
+          "interval_length_over_k3": 0.14723032069970846,
+          "covered_end_over_k3": 0.14723032069970846,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            144,
+            149,
+            162,
+            190,
+            220,
+            277
+          ],
+          "k": 14,
+          "max_B": 277,
+          "W_size": 555,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            144,
+            149,
+            162,
+            190,
+            220
+          ],
+          "appended": 277
+        },
+        {
+          "interval": [
+            -105,
+            353
+          ],
+          "interval_length": 459,
+          "covered_N": [
+            321,
+            459
+          ],
+          "interval_length_over_k3": 0.136,
+          "covered_end_over_k3": 0.136,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            144,
+            155,
+            170,
+            194,
+            235,
+            308,
+            320
+          ],
+          "k": 15,
+          "max_B": 320,
+          "W_size": 687,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            144,
+            155,
+            170,
+            194,
+            235,
+            308
+          ],
+          "appended": 320
+        },
+        {
+          "interval": [
+            -127,
+            414
+          ],
+          "interval_length": 542,
+          "covered_N": [
+            401,
+            542
+          ],
+          "interval_length_over_k3": 0.13232421875,
+          "covered_end_over_k3": 0.13232421875,
+          "B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146,
+            154,
+            165,
+            227,
+            257,
+            316,
+            400
+          ],
+          "k": 16,
+          "max_B": 400,
+          "W_size": 787,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            40,
+            60,
+            61,
+            63,
+            67,
+            96,
+            112,
+            137,
+            146,
+            154,
+            165,
+            227,
+            257,
+            316
+          ],
+          "appended": 400
+        }
+      ]
+    },
+    {
+      "seed_rank": 4,
+      "seed": {
+        "interval": [
+          -14,
+          114
+        ],
+        "interval_length": 129,
+        "covered_N": [
+          97,
+          129
+        ],
+        "interval_length_over_k3": 0.251953125,
+        "covered_end_over_k3": 0.251953125,
+        "B": [
+          0,
+          32,
+          45,
+          50,
+          54,
+          56,
+          57,
+          96
+        ],
+        "k": 8,
+        "max_B": 96,
+        "W_size": 163,
+        "admissible_interval_count": 1,
+        "seed_source": {
+          "core_pattern": [
+            0,
+            5,
+            9,
+            11,
+            12
+          ],
+          "core_offset": 45,
+          "base": [
+            0,
+            45,
+            50,
+            54,
+            56,
+            57
+          ]
+        }
+      },
+      "last": {
+        "interval": [
+          -114,
+          426
+        ],
+        "interval_length": 541,
+        "covered_N": [
+          379,
+          541
+        ],
+        "interval_length_over_k3": 0.132080078125,
+        "covered_end_over_k3": 0.132080078125,
+        "B": [
+          0,
+          32,
+          45,
+          50,
+          54,
+          56,
+          57,
+          96,
+          117,
+          137,
+          151,
+          170,
+          260,
+          296,
+          312,
+          378
+        ],
+        "k": 16,
+        "max_B": 378,
+        "W_size": 825,
+        "admissible_interval_count": 1,
+        "parent_B": [
+          0,
+          32,
+          45,
+          50,
+          54,
+          56,
+          57,
+          96,
+          117,
+          137,
+          151,
+          170,
+          260,
+          296,
+          312
+        ],
+        "appended": 378
+      },
+      "best_overall": {
+        "interval": [
+          -14,
+          114
+        ],
+        "interval_length": 129,
+        "covered_N": [
+          97,
+          129
+        ],
+        "interval_length_over_k3": 0.251953125,
+        "covered_end_over_k3": 0.251953125,
+        "B": [
+          0,
+          32,
+          45,
+          50,
+          54,
+          56,
+          57,
+          96
+        ],
+        "k": 8,
+        "max_B": 96,
+        "W_size": 163,
+        "admissible_interval_count": 1,
+        "appended": null,
+        "parent_B": null
+      },
+      "deepest_best_path": [
+        {
+          "interval": [
+            -14,
+            114
+          ],
+          "interval_length": 129,
+          "covered_N": [
+            97,
+            129
+          ],
+          "interval_length_over_k3": 0.251953125,
+          "covered_end_over_k3": 0.251953125,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96
+          ],
+          "k": 8,
+          "max_B": 96,
+          "W_size": 163,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -19,
+            124
+          ],
+          "interval_length": 144,
+          "covered_N": [
+            118,
+            144
+          ],
+          "interval_length_over_k3": 0.19753086419753085,
+          "covered_end_over_k3": 0.19753086419753085,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117
+          ],
+          "k": 9,
+          "max_B": 117,
+          "W_size": 211,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96
+          ],
+          "appended": 117
+        },
+        {
+          "interval": [
+            -33,
+            144
+          ],
+          "interval_length": 178,
+          "covered_N": [
+            138,
+            178
+          ],
+          "interval_length_over_k3": 0.178,
+          "covered_end_over_k3": 0.178,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137
+          ],
+          "k": 10,
+          "max_B": 137,
+          "W_size": 272,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117
+          ],
+          "appended": 137
+        },
+        {
+          "interval": [
+            -57,
+            165
+          ],
+          "interval_length": 223,
+          "covered_N": [
+            152,
+            223
+          ],
+          "interval_length_over_k3": 0.16754320060105185,
+          "covered_end_over_k3": 0.16754320060105185,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151
+          ],
+          "k": 11,
+          "max_B": 151,
+          "W_size": 322,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137
+          ],
+          "appended": 151
+        },
+        {
+          "interval": [
+            -75,
+            185
+          ],
+          "interval_length": 261,
+          "covered_N": [
+            171,
+            261
+          ],
+          "interval_length_over_k3": 0.15104166666666666,
+          "covered_end_over_k3": 0.15104166666666666,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170
+          ],
+          "k": 12,
+          "max_B": 170,
+          "W_size": 376,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151
+          ],
+          "appended": 170
+        },
+        {
+          "interval": [
+            -75,
+            276
+          ],
+          "interval_length": 352,
+          "covered_N": [
+            261,
+            352
+          ],
+          "interval_length_over_k3": 0.16021847974510697,
+          "covered_end_over_k3": 0.16021847974510697,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260
+          ],
+          "k": 13,
+          "max_B": 260,
+          "W_size": 498,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170
+          ],
+          "appended": 260
+        },
+        {
+          "interval": [
+            -78,
+            303
+          ],
+          "interval_length": 382,
+          "covered_N": [
+            297,
+            382
+          ],
+          "interval_length_over_k3": 0.1392128279883382,
+          "covered_end_over_k3": 0.1392128279883382,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260,
+            296
+          ],
+          "k": 14,
+          "max_B": 296,
+          "W_size": 604,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260
+          ],
+          "appended": 296
+        },
+        {
+          "interval": [
+            -111,
+            321
+          ],
+          "interval_length": 433,
+          "covered_N": [
+            313,
+            433
+          ],
+          "interval_length_over_k3": 0.1282962962962963,
+          "covered_end_over_k3": 0.1282962962962963,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260,
+            296,
+            312
+          ],
+          "k": 15,
+          "max_B": 312,
+          "W_size": 705,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260,
+            296
+          ],
+          "appended": 312
+        },
+        {
+          "interval": [
+            -114,
+            426
+          ],
+          "interval_length": 541,
+          "covered_N": [
+            379,
+            541
+          ],
+          "interval_length_over_k3": 0.132080078125,
+          "covered_end_over_k3": 0.132080078125,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260,
+            296,
+            312,
+            378
+          ],
+          "k": 16,
+          "max_B": 378,
+          "W_size": 825,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260,
+            296,
+            312
+          ],
+          "appended": 378
+        }
+      ],
+      "deepest_best_path_covered_union": [
+        [
+          97,
+          541
+        ]
+      ],
+      "best_by_k": [
+        {
+          "interval": [
+            -14,
+            114
+          ],
+          "interval_length": 129,
+          "covered_N": [
+            97,
+            129
+          ],
+          "interval_length_over_k3": 0.251953125,
+          "covered_end_over_k3": 0.251953125,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96
+          ],
+          "k": 8,
+          "max_B": 96,
+          "W_size": 163,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -22,
+            123
+          ],
+          "interval_length": 146,
+          "covered_N": [
+            117,
+            146
+          ],
+          "interval_length_over_k3": 0.20027434842249658,
+          "covered_end_over_k3": 0.20027434842249658,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            116
+          ],
+          "k": 9,
+          "max_B": 116,
+          "W_size": 212,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96
+          ],
+          "appended": 116
+        },
+        {
+          "interval": [
+            -42,
+            144
+          ],
+          "interval_length": 187,
+          "covered_N": [
+            138,
+            187
+          ],
+          "interval_length_over_k3": 0.187,
+          "covered_end_over_k3": 0.187,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            116,
+            137
+          ],
+          "k": 10,
+          "max_B": 137,
+          "W_size": 270,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            116
+          ],
+          "appended": 137
+        },
+        {
+          "interval": [
+            -60,
+            163
+          ],
+          "interval_length": 224,
+          "covered_N": [
+            155,
+            224
+          ],
+          "interval_length_over_k3": 0.16829451540195342,
+          "covered_end_over_k3": 0.16829451540195342,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            116,
+            137,
+            154
+          ],
+          "k": 11,
+          "max_B": 154,
+          "W_size": 320,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            116,
+            137
+          ],
+          "appended": 154
+        },
+        {
+          "interval": [
+            -61,
+            226
+          ],
+          "interval_length": 288,
+          "covered_N": [
+            160,
+            288
+          ],
+          "interval_length_over_k3": 0.16666666666666666,
+          "covered_end_over_k3": 0.16666666666666666,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            115,
+            123,
+            143,
+            159
+          ],
+          "k": 12,
+          "max_B": 159,
+          "W_size": 353,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            115,
+            123,
+            143
+          ],
+          "appended": 159
+        },
+        {
+          "interval": [
+            -75,
+            276
+          ],
+          "interval_length": 352,
+          "covered_N": [
+            261,
+            352
+          ],
+          "interval_length_over_k3": 0.16021847974510697,
+          "covered_end_over_k3": 0.16021847974510697,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260
+          ],
+          "k": 13,
+          "max_B": 260,
+          "W_size": 498,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170
+          ],
+          "appended": 260
+        },
+        {
+          "interval": [
+            -75,
+            324
+          ],
+          "interval_length": 400,
+          "covered_N": [
+            299,
+            400
+          ],
+          "interval_length_over_k3": 0.1457725947521866,
+          "covered_end_over_k3": 0.1457725947521866,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260,
+            298
+          ],
+          "k": 14,
+          "max_B": 298,
+          "W_size": 607,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260
+          ],
+          "appended": 298
+        },
+        {
+          "interval": [
+            -111,
+            363
+          ],
+          "interval_length": 475,
+          "covered_N": [
+            327,
+            475
+          ],
+          "interval_length_over_k3": 0.14074074074074075,
+          "covered_end_over_k3": 0.14074074074074075,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260,
+            296,
+            326
+          ],
+          "k": 15,
+          "max_B": 326,
+          "W_size": 713,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260,
+            296
+          ],
+          "appended": 326
+        },
+        {
+          "interval": [
+            -114,
+            426
+          ],
+          "interval_length": 541,
+          "covered_N": [
+            379,
+            541
+          ],
+          "interval_length_over_k3": 0.132080078125,
+          "covered_end_over_k3": 0.132080078125,
+          "B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260,
+            296,
+            312,
+            378
+          ],
+          "k": 16,
+          "max_B": 378,
+          "W_size": 825,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            32,
+            45,
+            50,
+            54,
+            56,
+            57,
+            96,
+            117,
+            137,
+            151,
+            170,
+            260,
+            296,
+            312
+          ],
+          "appended": 378
+        }
+      ]
+    },
+    {
+      "seed_rank": 7,
+      "seed": {
+        "interval": [
+          -13,
+          112
+        ],
+        "interval_length": 126,
+        "covered_N": [
+          97,
+          126
+        ],
+        "interval_length_over_k3": 0.24609375,
+        "covered_end_over_k3": 0.24609375,
+        "B": [
+          0,
+          34,
+          45,
+          52,
+          54,
+          57,
+          58,
+          96
+        ],
+        "k": 8,
+        "max_B": 96,
+        "W_size": 163,
+        "admissible_interval_count": 1,
+        "seed_source": {
+          "core_pattern": [
+            0,
+            7,
+            9,
+            12,
+            13
+          ],
+          "core_offset": 45,
+          "base": [
+            0,
+            45,
+            52,
+            54,
+            57,
+            58
+          ]
+        }
+      },
+      "last": {
+        "interval": [
+          -137,
+          395
+        ],
+        "interval_length": 533,
+        "covered_N": [
+          383,
+          533
+        ],
+        "interval_length_over_k3": 0.130126953125,
+        "covered_end_over_k3": 0.130126953125,
+        "B": [
+          0,
+          34,
+          45,
+          52,
+          54,
+          57,
+          58,
+          96,
+          118,
+          137,
+          145,
+          174,
+          204,
+          273,
+          306,
+          382
+        ],
+        "k": 16,
+        "max_B": 382,
+        "W_size": 797,
+        "admissible_interval_count": 1,
+        "parent_B": [
+          0,
+          34,
+          45,
+          52,
+          54,
+          57,
+          58,
+          96,
+          118,
+          137,
+          145,
+          174,
+          204,
+          273,
+          306
+        ],
+        "appended": 382
+      },
+      "best_overall": {
+        "interval": [
+          -13,
+          112
+        ],
+        "interval_length": 126,
+        "covered_N": [
+          97,
+          126
+        ],
+        "interval_length_over_k3": 0.24609375,
+        "covered_end_over_k3": 0.24609375,
+        "B": [
+          0,
+          34,
+          45,
+          52,
+          54,
+          57,
+          58,
+          96
+        ],
+        "k": 8,
+        "max_B": 96,
+        "W_size": 163,
+        "admissible_interval_count": 1,
+        "appended": null,
+        "parent_B": null
+      },
+      "deepest_best_path": [
+        {
+          "interval": [
+            -13,
+            112
+          ],
+          "interval_length": 126,
+          "covered_N": [
+            97,
+            126
+          ],
+          "interval_length_over_k3": 0.24609375,
+          "covered_end_over_k3": 0.24609375,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96
+          ],
+          "k": 8,
+          "max_B": 96,
+          "W_size": 163,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -24,
+            125
+          ],
+          "interval_length": 150,
+          "covered_N": [
+            119,
+            150
+          ],
+          "interval_length_over_k3": 0.205761316872428,
+          "covered_end_over_k3": 0.205761316872428,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118
+          ],
+          "k": 9,
+          "max_B": 118,
+          "W_size": 214,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96
+          ],
+          "appended": 118
+        },
+        {
+          "interval": [
+            -35,
+            144
+          ],
+          "interval_length": 180,
+          "covered_N": [
+            138,
+            180
+          ],
+          "interval_length_over_k3": 0.18,
+          "covered_end_over_k3": 0.18,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137
+          ],
+          "k": 10,
+          "max_B": 137,
+          "W_size": 267,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118
+          ],
+          "appended": 137
+        },
+        {
+          "interval": [
+            -55,
+            165
+          ],
+          "interval_length": 221,
+          "covered_N": [
+            146,
+            221
+          ],
+          "interval_length_over_k3": 0.16604057099924868,
+          "covered_end_over_k3": 0.16604057099924868,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137,
+            145
+          ],
+          "k": 11,
+          "max_B": 145,
+          "W_size": 313,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137
+          ],
+          "appended": 145
+        },
+        {
+          "interval": [
+            -66,
+            199
+          ],
+          "interval_length": 266,
+          "covered_N": [
+            175,
+            266
+          ],
+          "interval_length_over_k3": 0.15393518518518517,
+          "covered_end_over_k3": 0.15393518518518517,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137,
+            145,
+            174
+          ],
+          "k": 12,
+          "max_B": 174,
+          "W_size": 373,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137,
+            145
+          ],
+          "appended": 174
+        },
+        {
+          "interval": [
+            -75,
+            238
+          ],
+          "interval_length": 314,
+          "covered_N": [
+            205,
+            314
+          ],
+          "interval_length_over_k3": 0.14292216659080564,
+          "covered_end_over_k3": 0.14292216659080564,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137,
+            145,
+            174,
+            204
+          ],
+          "k": 13,
+          "max_B": 204,
+          "W_size": 436,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137,
+            145,
+            174
+          ],
+          "appended": 204
+        },
+        {
+          "interval": [
+            -103,
+            297
+          ],
+          "interval_length": 401,
+          "covered_N": [
+            274,
+            401
+          ],
+          "interval_length_over_k3": 0.14613702623906705,
+          "covered_end_over_k3": 0.14613702623906705,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137,
+            145,
+            174,
+            204,
+            273
+          ],
+          "k": 14,
+          "max_B": 273,
+          "W_size": 550,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137,
+            145,
+            174,
+            204
+          ],
+          "appended": 273
+        },
+        {
+          "interval": [
+            -125,
+            315
+          ],
+          "interval_length": 441,
+          "covered_N": [
+            307,
+            441
+          ],
+          "interval_length_over_k3": 0.13066666666666665,
+          "covered_end_over_k3": 0.13066666666666665,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137,
+            145,
+            174,
+            204,
+            273,
+            306
+          ],
+          "k": 15,
+          "max_B": 306,
+          "W_size": 655,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137,
+            145,
+            174,
+            204,
+            273
+          ],
+          "appended": 306
+        },
+        {
+          "interval": [
+            -137,
+            395
+          ],
+          "interval_length": 533,
+          "covered_N": [
+            383,
+            533
+          ],
+          "interval_length_over_k3": 0.130126953125,
+          "covered_end_over_k3": 0.130126953125,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137,
+            145,
+            174,
+            204,
+            273,
+            306,
+            382
+          ],
+          "k": 16,
+          "max_B": 382,
+          "W_size": 797,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137,
+            145,
+            174,
+            204,
+            273,
+            306
+          ],
+          "appended": 382
+        }
+      ],
+      "deepest_best_path_covered_union": [
+        [
+          97,
+          533
+        ]
+      ],
+      "best_by_k": [
+        {
+          "interval": [
+            -13,
+            112
+          ],
+          "interval_length": 126,
+          "covered_N": [
+            97,
+            126
+          ],
+          "interval_length_over_k3": 0.24609375,
+          "covered_end_over_k3": 0.24609375,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96
+          ],
+          "k": 8,
+          "max_B": 96,
+          "W_size": 163,
+          "admissible_interval_count": 1,
+          "appended": null,
+          "parent_B": null
+        },
+        {
+          "interval": [
+            -24,
+            125
+          ],
+          "interval_length": 150,
+          "covered_N": [
+            119,
+            150
+          ],
+          "interval_length_over_k3": 0.205761316872428,
+          "covered_end_over_k3": 0.205761316872428,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118
+          ],
+          "k": 9,
+          "max_B": 118,
+          "W_size": 214,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96
+          ],
+          "appended": 118
+        },
+        {
+          "interval": [
+            -40,
+            148
+          ],
+          "interval_length": 189,
+          "covered_N": [
+            140,
+            189
+          ],
+          "interval_length_over_k3": 0.189,
+          "covered_end_over_k3": 0.189,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            139
+          ],
+          "k": 10,
+          "max_B": 139,
+          "W_size": 272,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118
+          ],
+          "appended": 139
+        },
+        {
+          "interval": [
+            -36,
+            195
+          ],
+          "interval_length": 232,
+          "covered_N": [
+            166,
+            232
+          ],
+          "interval_length_over_k3": 0.17430503380916604,
+          "covered_end_over_k3": 0.17430503380916604,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            122,
+            137,
+            165
+          ],
+          "k": 11,
+          "max_B": 165,
+          "W_size": 332,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            122,
+            137
+          ],
+          "appended": 165
+        },
+        {
+          "interval": [
+            -62,
+            226
+          ],
+          "interval_length": 289,
+          "covered_N": [
+            200,
+            289
+          ],
+          "interval_length_over_k3": 0.16724537037037038,
+          "covered_end_over_k3": 0.16724537037037038,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            113,
+            129,
+            139,
+            199
+          ],
+          "k": 12,
+          "max_B": 199,
+          "W_size": 384,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            113,
+            129,
+            139
+          ],
+          "appended": 199
+        },
+        {
+          "interval": [
+            -72,
+            279
+          ],
+          "interval_length": 352,
+          "covered_N": [
+            238,
+            352
+          ],
+          "interval_length_over_k3": 0.16021847974510697,
+          "covered_end_over_k3": 0.16021847974510697,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            122,
+            136,
+            151,
+            168,
+            237
+          ],
+          "k": 13,
+          "max_B": 237,
+          "W_size": 470,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            122,
+            136,
+            151,
+            168
+          ],
+          "appended": 237
+        },
+        {
+          "interval": [
+            -98,
+            315
+          ],
+          "interval_length": 414,
+          "covered_N": [
+            261,
+            414
+          ],
+          "interval_length_over_k3": 0.15087463556851313,
+          "covered_end_over_k3": 0.15087463556851313,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            128,
+            155,
+            183,
+            230,
+            260
+          ],
+          "k": 14,
+          "max_B": 260,
+          "W_size": 564,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            128,
+            155,
+            183,
+            230
+          ],
+          "appended": 260
+        },
+        {
+          "interval": [
+            -101,
+            363
+          ],
+          "interval_length": 465,
+          "covered_N": [
+            357,
+            465
+          ],
+          "interval_length_over_k3": 0.13777777777777778,
+          "covered_end_over_k3": 0.13777777777777778,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            139,
+            155,
+            186,
+            234,
+            264,
+            356
+          ],
+          "k": 15,
+          "max_B": 356,
+          "W_size": 705,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            139,
+            155,
+            186,
+            234,
+            264
+          ],
+          "appended": 356
+        },
+        {
+          "interval": [
+            -137,
+            395
+          ],
+          "interval_length": 533,
+          "covered_N": [
+            383,
+            533
+          ],
+          "interval_length_over_k3": 0.130126953125,
+          "covered_end_over_k3": 0.130126953125,
+          "B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137,
+            145,
+            174,
+            204,
+            273,
+            306,
+            382
+          ],
+          "k": 16,
+          "max_B": 382,
+          "W_size": 797,
+          "admissible_interval_count": 1,
+          "parent_B": [
+            0,
+            34,
+            45,
+            52,
+            54,
+            57,
+            58,
+            96,
+            118,
+            137,
+            145,
+            174,
+            204,
+            273,
+            306
+          ],
+          "appended": 382
+        }
+      ]
+    }
+  ]
+}

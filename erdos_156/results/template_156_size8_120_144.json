@@ -1,0 +1,131 @@
+{
+  "template": "size8_shifted_golomb_ruler",
+  "B": [
+    0,
+    40,
+    60,
+    61,
+    63,
+    67,
+    96,
+    112
+  ],
+  "gaps": [
+    40,
+    20,
+    1,
+    2,
+    4,
+    29,
+    16
+  ],
+  "statement": "Original structural pass: for every N from 120 through 144 inclusive, at least one shift s in 1..8 makes A=s+B a maximal Sidon subset of [1,N]. Later parametrization extends this to N=113 through 144; see template_156_parametrized.json.",
+  "verified_examples": [
+    {
+      "N": 130,
+      "shift": 8,
+      "A": [
+        8,
+        48,
+        68,
+        69,
+        71,
+        75,
+        104,
+        120
+      ],
+      "verified_by": "python3 erdos_156/solve_156.py verify 130 8 48 68 69 71 75 104 120"
+    },
+    {
+      "N": 135,
+      "shift": 8,
+      "A": [
+        8,
+        48,
+        68,
+        69,
+        71,
+        75,
+        104,
+        120
+      ],
+      "verified_by": "python3 erdos_156/solve_156.py verify 135 8 48 68 69 71 75 104 120"
+    },
+    {
+      "N": 140,
+      "shift": 4,
+      "A": [
+        4,
+        44,
+        64,
+        65,
+        67,
+        71,
+        100,
+        116
+      ],
+      "verified_by": "python3 erdos_156/solve_156.py verify 140 4 44 64 65 67 71 100 116"
+    },
+    {
+      "N": 144,
+      "shift": 8,
+      "A": [
+        8,
+        48,
+        68,
+        69,
+        71,
+        75,
+        104,
+        120
+      ],
+      "verified_by": "python3 erdos_156/solve_156.py verify 144 8 48 68 69 71 75 104 120"
+    }
+  ],
+  "feasible_shift_counts_by_N": {
+    "120": 8,
+    "121": 8,
+    "122": 8,
+    "123": 8,
+    "124": 8,
+    "125": 8,
+    "126": 8,
+    "127": 8,
+    "128": 8,
+    "129": 8,
+    "130": 8,
+    "131": 8,
+    "132": 8,
+    "133": 8,
+    "134": 8,
+    "135": 8,
+    "136": 8,
+    "137": 8,
+    "138": 7,
+    "139": 6,
+    "140": 5,
+    "141": 4,
+    "142": 3,
+    "143": 2,
+    "144": 1,
+    "145": 0
+  },
+  "N145_best_from_this_template": {
+    "blocked": 144,
+    "shift": 8,
+    "A": [
+      8,
+      48,
+      68,
+      69,
+      71,
+      75,
+      104,
+      120
+    ],
+    "addable": [
+      145
+    ]
+  },
+  "interpretation": "This finite template is not an asymptotic construction, but it is the clearest evidence so far for the dense-core-plus-anchors pattern. The dense core [60,61,63,67] creates differences {1,2,3,4,6,7}; the anchors at 0,40,96,112 move those local blockers across the interval."
+}

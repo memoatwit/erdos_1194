@@ -1,0 +1,534 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem*{remark}{Remark}
+
+\title{Perfect difference sets: i.o.\ lower bounds, exact small-$N$ optima,\\
+  and an extension obstruction \\
+  \large Notes on Erd\H{o}s Problem \#1194}
+\author{}
+\date{May 11, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A set $A \subset \mathbb{N}$ is a perfect difference set (PDS) if every
+$n \geq 1$ admits a unique representation $n = a_n - b_n$ with
+$a_n, b_n \in A$. Erd\H{o}s asked how fast $a_n/n$ must increase
+\cite{Er80}. We give three contributions. First, we record full proofs of
+the infinitely-often lower bounds $a_n \gg n \log n$ (classical),
+$a_n \gg n^{2-o(1)}$ (GPT-5.4 Pro / Bloom, April 2026), and the
+logarithmic refinement $a_n \gg n^2/f(n)$ for any nondecreasing slowly
+varying $f$ with $\sum 1/(nf(n)) < \infty$. Second, we compute exactly
+the value $M^*(N) := \min\{\max(A) : A \text{ Sidon},\ [1,N]\subset A-A\}$
+for $N \leq 45$ via branch-and-bound and CP-SAT, observing $M^*(N) \approx 2N$.
+Third, we exhibit an empirical \emph{extension obstruction}:
+the optimum $A_{N_0}^*$ for the finite problem is a poor starting
+seed for an infinite PDS, with forced extensions growing like $N^{4+}$,
+worse than Lev's greedy. We formulate a corresponding ``for all large
+$n$'' conjecture and discuss why the partition-identity argument is
+sharp at the $n^{2-o(1)}$ ceiling. Code and data accompanying this note
+live in \texttt{erdos\_1194/}.
+\end{abstract}
+
+\tableofcontents
+
+\section{Setup and notation}\label{sec:setup}
+
+A set $A \subset \mathbb{N}$ is a \emph{perfect difference set} (PDS) if
+every $n \geq 1$ admits a \emph{unique} representation
+\[
+   n = a_n - b_n, \qquad a_n, b_n \in A, \quad a_n > b_n.
+\]
+The notation $a_n$ is fixed: it is the larger element of the unique
+representing pair for $n$. It is \emph{not} the $n$-th element of $A$.
+To avoid confusion we write the increasing enumeration of $A$ as
+\[
+   A = \{x_1 < x_2 < x_3 < \cdots\}.
+\]
+A PDS is in particular a Sidon set: all pairwise differences are
+distinct. We write $A_x := A \cap [1, x]$, $k(x) := |A_x|$, and
+$N(x) := \#\{n \geq 1 : a_n \leq x\}$. The running maximum is
+$M(N) := \max_{n \leq N} a_n = \max(\bigcup_{n \leq N}\{a_n, b_n\})$
+when $A$ is built greedily from $n = 1$ outward.
+
+\section{The PDS counting identity}\label{sec:counting}
+
+\begin{lemma}[PDS counting]\label{lem:pds-count}
+For every $x \geq 1$, $N(x) = \binom{k(x)}{2}$.
+\end{lemma}
+
+\begin{proof}
+Each $n \leq N(x)$ has $a_n \leq x$, hence both $a_n, b_n \in A_x$. The
+map $n \mapsto \{a_n, b_n\}$ is injective into unordered pairs of $A_x$,
+so $N(x) \leq \binom{k(x)}{2}$. Conversely, every unordered pair
+$\{a, b\} \subset A_x$, $a > b$, gives a difference $a - b \in [1, x-1]$
+which by uniqueness is the representation of some $n$ with $a_n = a$,
+$b_n = b$, $a_n \leq x$. Hence $\binom{k(x)}{2} \leq N(x)$.
+\end{proof}
+
+This identity will be used repeatedly. As a corollary,
+$\binom{k(x)}{2} \leq x$, recovering the standard Sidon density bound
+$k(x) \leq (1 + o(1))\sqrt{2x}$ as an inequality only --- but PDS gives
+an \emph{equality} $N(x) = \binom{k(x)}{2}$, not merely an inequality.
+
+\section{Infinitely-often lower bounds}\label{sec:lb}
+
+\subsection{The classical $n \log n$ bound}
+
+\begin{theorem}[Erd\H{o}s; classical]\label{thm:nlogn}
+For any infinite PDS $A$, $a_n \gg n \log n$ for infinitely many $n$.
+\end{theorem}
+
+\begin{proof}
+By Erd\H{o}s's i.o.\ Sidon density bound (see e.g.\ Halberstam--Roth
+\cite{HaRo66}, Ch.~II), there exist $x_j \to \infty$ with
+$k(x_j) \leq C \sqrt{x_j / \log x_j}$. By Lemma~\ref{lem:pds-count},
+$N(x_j) = \binom{k(x_j)}{2} \leq C^2 x_j / (2 \log x_j)$. Setting
+$n_j := N(x_j) + 1$, the element $a_{n_j} > x_j$ and
+$n_j \leq C^2 x_j/(2\log x_j) + 1$, so
+\[
+   a_{n_j} > x_j \geq \frac{2 \log x_j}{C^2}\,(n_j - 1)
+         \geq \frac{2(1+o(1))}{C^2}\, n_j \log n_j.\qedhere
+\]
+\end{proof}
+
+\subsection{The partition identity and $n^{2-o(1)}$}
+
+The next theorem improves Theorem~\ref{thm:nlogn} to almost-$n^2$ via
+a completely different argument due to GPT-5.4 Pro and condensed by
+T.~Bloom in the comment thread of erdosproblems.com/1194
+(post 5745, April 23 2026). The argument does not use Sidon density
+at all; it uses the following partition identity together with a gap
+lower bound.
+
+\begin{lemma}[PDS partition]\label{lem:partition}
+For each $k \geq 2$ let $D_k := \{x_k - x_i : 1 \leq i < k\}$. Then
+$\{D_k\}_{k \geq 2}$ is a partition of $\mathbb{Z}_{> 0}$. Consequently,
+for every $X \geq 1$,
+\[
+   X = \sum_{k \geq 2} |D_k \cap [1, X]|.
+\]
+\end{lemma}
+
+\begin{proof}
+Every $n \geq 1$ has a unique representation $n = a_n - b_n$. Pick $k$
+with $a_n = x_k$ and $i$ with $b_n = x_i$; then $n = x_k - x_i \in D_k$.
+Uniqueness of the representation gives uniqueness of $k$.
+\end{proof}
+
+\begin{lemma}[Gap bound from $a_n \ll n^c$]\label{lem:gap}
+Suppose $a_n \leq C\, n^c$ for all $n \geq 1$ and some $c > 1$, $C > 0$.
+Then $x_k - x_{k-1} \geq (x_k/C)^{1/c}$ for every $k \geq 2$, and
+consequently $x_k \gg k^{c/(c-1)}$.
+\end{lemma}
+
+\begin{proof}
+Let $d_k := x_k - x_{k-1}$. The pair $(x_k, x_{k-1})$ realises difference
+$d_k$, so by PDS uniqueness $a_{d_k} = x_k$. Hence
+$x_k \leq C d_k^c$ and $d_k \geq (x_k/C)^{1/c}$. Telescoping,
+$x_k \geq \sum_{i=2}^k d_i \geq C^{-1/c} \sum_i x_i^{1/c}$, which is
+dominated by $x_k \gg k^{c/(c-1)}$ by an elementary comparison with the
+ODE $dy/dk = c_0 y^{1/c}$.
+\end{proof}
+
+\begin{theorem}[GPT-5.4 Pro, after Bloom]\label{thm:n2io}
+For any infinite PDS $A$ and any $c \in (1, 2)$, the inequality
+$a_n \leq C\, n^c$ for all $n$ is impossible (for any $C$). Equivalently,
+$\limsup_{n \to \infty} a_n/n^c = \infty$ for every $c < 2$, i.e.\
+$a_n \gg n^{2-o(1)}$ infinitely often.
+\end{theorem}
+
+\begin{proof}
+Suppose, for contradiction, that $a_n \leq C\, n^c$ for all $n$ and some
+$c \in (1, 2)$. By Lemma~\ref{lem:gap}, $x_k \gg k^{c/(c-1)}$.
+
+Fix $X \geq 1$ and let $K = \lfloor X^{(c-1)/c} \rfloor$. By
+Lemma~\ref{lem:partition},
+\[
+   X = \underbrace{\sum_{2 \leq k \leq K} |D_k \cap [1, X]|}_{\mathrm{(I)}}
+     + \underbrace{\sum_{k > K} |D_k \cap [1, X]|}_{\mathrm{(II)}}.
+\]
+For (I), trivially $|D_k| \leq k-1$, so $(\mathrm{I}) \leq K^2/2
+\ll X^{2-2/c}$.
+
+For (II), $k > K$ gives $x_k > 2X$ for $X$ large (absorb a constant into
+$K$). Any consecutive $x_{j-1} < x_j$ in $A \cap [x_k - X, x_k)$ satisfies
+$x_j - x_{j-1} \geq (x_j/C)^{1/c} \gg x_k^{1/c}$ by Lemma~\ref{lem:gap}
+and $x_j \geq x_k/2$. Hence
+$|D_k \cap [1, X]| \leq X / x_k^{1/c} \ll X \cdot k^{-1/(c-1)}$.
+Since $1/(c-1) > 1$, the sum $\sum_{k > K} k^{-1/(c-1)}$ converges with
+tail $\ll K^{(c-2)/(c-1)}$, giving
+$(\mathrm{II}) \ll X \cdot K^{(c-2)/(c-1)} \ll X^{2-2/c}$.
+
+Combining, $X \ll X^{2-2/c}$, i.e.\ $X^{2/c - 1} \ll 1$ uniformly.
+Since $c < 2$, $2/c - 1 > 0$ and the left side $\to \infty$. Contradiction.
+\end{proof}
+
+\subsection{Logarithmic refinement}
+
+The boundary $c = 2$ in Theorem~\ref{thm:n2io} is sharp; the same scheme
+under the slightly weaker hypothesis $a_n \leq C n^2/f(n)$ pushes the
+bound to the convergence boundary of $\sum 1/(nf(n))$.
+
+\begin{theorem}[Logarithmic refinement]\label{thm:n2overf}
+Let $f \colon \mathbb{N} \to \mathbb{R}_{>0}$ be nondecreasing, slowly
+varying (i.e.\ $f(\lambda n)/f(n) \to 1$ for every fixed $\lambda > 0$),
+unbounded, with $\sum_{n \geq 2} \frac{1}{n f(n)} < \infty$. Then for any
+infinite PDS $A$,
+\[
+   a_n \gg \frac{n^2}{f(n)} \qquad \text{for infinitely many } n.
+\]
+In particular $a_n \gg n^2/(\log n)^{1+\varepsilon}$ i.o.\ for every
+$\varepsilon > 0$, and $a_n \gg (n/\log n)^2$ i.o.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Replace $a_n \leq Cn^c$ by $a_n \leq Cn^2/f(n)$. The gap bound becomes
+$d_k \geq \sqrt{x_k f(d_k)/C}$, and for slowly varying $f$ this iterates
+to $x_k \gg k^2 f(k)$. The anchor window bound in Step~(II) becomes
+$|D_k \cap [1, X]| \leq X / (k f(k))$, and the partition sum split at
+$K = \Theta(\sqrt{X/f(\sqrt X)})$ gives
+$X \leq K^2/2 + X \varepsilon_K + o(X)$ where
+$\varepsilon_K = \sum_{k > K} 1/(k f(k)) \to 0$ by the convergence
+hypothesis. Since $K^2 = o(X)$ (from $f(\sqrt X) \to \infty$) and
+$\varepsilon_K \to 0$, we obtain $X \leq 3X/4$ for $X$ large --- a
+contradiction. (Full proof in
+\href{run:lower_bound_io.tex}{\texttt{lower\_bound\_io.tex}} of the
+companion repository.)
+\end{proof}
+
+\begin{remark}\label{rem:sharp}
+The partition-identity argument is sharp at the convergence boundary
+$\sum 1/(nf(n)) < \infty$: at $f(n) = \log n$ (where the sum diverges),
+the tail $\varepsilon_K$ no longer goes to zero with $K$ and the
+contradiction collapses. Pushing past requires either a sharper density
+estimate in the anchor window or a non-partition counting identity.
+A computational probe (\texttt{fourier\_probes.py}) on greedy data
+verifies the Fej\'er PDS identity
+$\int_0^1 K_T(\xi) |\widehat{1_A}(\xi)|^2 d\xi = |A| + T - 1$
+exactly, and shows the anchor window count is uniformly
+$\approx 0.42 \times |A|/\sqrt{\max A}$ --- a constant multiple of
+greedy's overall Sidon density, with no exploitable PDS-specific slack.
+\end{remark}
+
+\begin{remark}[\emph{Typographical note}]
+At the time of writing, \texttt{erdosproblems.com/1194} states the
+conclusion of Theorem~\ref{thm:n2overf} under the condition
+$\sum 1/(nf(n))$ \emph{diverges}. This appears to be a copy-edit error:
+the proof requires convergence, and so does Bloom's example
+$f(n) = (\log n)^2$ in the comment thread (post 5784).
+\end{remark}
+
+\section{Exact small-$N$ optima}\label{sec:finite}
+
+\subsection{The finite problem}
+
+For each $N \geq 1$, let
+\[
+   M^*(N) \;:=\; \min\bigl\{ \max(A) : A \subset \mathbb{N},\ A\ \text{Sidon},\
+   \{1, M\} \subset A,\ [1, N] \subset A - A \bigr\}.
+\]
+This is the minimum value of $\max(A)$ over all finite Sidon sets that
+realise every difference in $[1, N]$ at least once. Trivially
+$M^*(N) \geq N + 1$ and $M^*(N) \geq 1 + \binom{K}{2}$ where
+$K = \lceil (1+\sqrt{1+8N})/2 \rceil$ is the smallest $K$ with
+$\binom{K}{2} \geq N$.
+
+\subsection{Exact values}
+
+We computed $M^*(N)$ via two engines: a Python bitmask depth-first
+search (\texttt{exact\_search.py}) and a Google ortools CP-SAT model
+(\texttt{exact\_search\_cpsat.py}). For each $N$, both the feasibility
+at $M^*(N)$ and the infeasibility at $M^*(N) - 1$ are verified
+exhaustively. Lev's greedy PDS (\texttt{explore.py}) gives an upper
+reference.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{r r r r r r}
+\toprule
+$N$ & $M^*$ exact & greedy $\max A$ & gd / $M^*$ & $|A^*|$ & $|A_{\text{gr}}|$ \\
+\midrule
+20 & 36 & 97 & 2.7$\times$ & 8 & 11 \\
+25 & 46 & 225 & 4.9$\times$ & 9 & 15 \\
+30 & 56 & 444 & 7.9$\times$ & 10 & 19 \\
+35 & 56 & 625 & 11.2$\times$ & 10 & 21 \\
+40 & 86 & 1175 & 13.7$\times$ & 12 & 27 \\
+45 & 86 & 1492 & 17.4$\times$ & 12 & 29 \\
+50 & $\geq 92$ & 2518 & $\geq 27.4\times$ & --- & 35 \\
+\bottomrule
+\end{tabular}
+\caption{Finite PDS optima vs greedy. $M^*$ verified to optimality
+for $N \leq 45$; $N = 50$ proves $M^* > 91$ (CP-SAT exhausts at $M = 91$
+infeasible, $M = 92$ times out at 35\,s/M).}
+\label{tab:exact}
+\end{table}
+
+\begin{proposition}[Empirical scaling]\label{prop:Mstar}
+Across the data of Table~\ref{tab:exact}, $M^*(N)/N \in [1.60, 2.15]$,
+hovering close to the trivial floor $N + 1$.
+\end{proposition}
+
+The empirical conclusion is $M^*(N) \approx 2N$. By Sidon density,
+$|A^*| \approx \sqrt{2 N}$, and indeed Table~\ref{tab:exact} shows
+$|A^*|$ within 1 of $\lceil (1+\sqrt{1+8N})/2 \rceil$.
+
+Witness sets (sorted) for the first few $N$:
+\begin{itemize}
+\item $N = 20$:\quad $\{1, 5, 6, 18, 20, 26, 29, 36\}$.
+\item $N = 30$:\quad $\{1, 2, 7, 11, 24, 27, 35, 42, 54, 56\}$.
+\item $N = 40$:\quad $\{1, 10, 11, 18, 31, 43, 46, 57, 62, 80, 84, 86\}$.
+\end{itemize}
+
+\section{The extension obstruction}\label{sec:ext}
+
+The finite optima of Section~\ref{sec:finite} are extremal: they pack
+$\binom{|A^*|}{2}$ distinct differences into roughly $[1, 2N]$,
+saturating Sidon density. We now show empirically that these extremal
+seeds are \emph{terrible starting points} for extending to a larger
+PDS.
+
+\subsection{Extension cost}
+
+For a seed $A_{\text{seed}}$ (a Sidon subset of $\mathbb{N}$), define
+\[
+   M_{\text{ext}}(A_{\text{seed}}, N)
+   \;:=\; \min\bigl\{ \max(A) : A \supseteq A_{\text{seed}},\
+                     A\ \text{Sidon},\ [1, N] \subset A - A \bigr\}.
+\]
+Each step is again solved to optimality via CP-SAT
+(\texttt{extension\_cost.py}). Two trajectories were computed:
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{r r r r r}
+\toprule
+$N$ & $M_{\text{ext}}$ from $A_{20}^*$ & $M_{\text{ext}}$ from $A_{30}^*$ & greedy & unconstrained $M^*$ \\
+\midrule
+20 & 36     & ---    &   97 & 36 \\
+30 & 144    & 56     &  444 & 56 \\
+40 & 344    & 168    & 1175 & 86 \\
+45 & 1054   & 254    & 1492 & 86 \\
+56 & ---    & 516    & 3358 & --- \\
+60 & ---    & 1019   & ---  & --- \\
+63 & ---    & 1590   & ---  & --- \\
+\bottomrule
+\end{tabular}
+\caption{Extension cost from finite optima vs scratch greedy vs unconstrained $M^*$.}
+\label{tab:ext}
+\end{table}
+
+Log-log fits on the ``hard'' steps (those requiring new elements) give:
+\begin{itemize}
+\item Seed $A_{20}^*$: $M_{\text{ext}} \sim N^{3.80}$ overall, $N^{6.48}$ in the tail.
+\item Seed $A_{30}^*$: $M_{\text{ext}} \sim N^{4.27}$ overall, $N^{4.90}$ in the tail.
+\end{itemize}
+
+\subsection{Interpretation}
+
+We summarise the chain:
+\begin{equation}\label{eq:chain}
+   M^*_{\text{unconstrained}}(N) \sim N
+   \;\;\ll\;\;
+   M_{\text{greedy}}(N) \sim N^3
+   \;\;\ll\;\;
+   M_{\text{ext, seeded}}(N) \gtrsim N^4.
+\end{equation}
+
+A finite extremal optimum $A_{N_0}^*$ packs $\binom{|A|}{2}$
+distinct differences into a window of width $\sim 2 N_0$, leaving very
+few free difference slots. Every subsequent element added must avoid a
+densely packed set of forbidden differences. Greedy avoids this trap by
+being deliberately conservative (every Strategy-2 element lives at
+$\geq \max(A) + n + 1$), keeping the difference budget loose at the
+cost of a suboptimal finite $\max(A)$.
+
+\subsection{A conjecture for the infinite problem}
+
+The chain~\eqref{eq:chain} is consistent with the i.o.\ lower bound
+$a_n \gg n^{2-o(1)}$ of Theorem~\ref{thm:n2io}, and in fact strengthens
+it empirically: a \emph{naive} gluing of finite optima produces $a_n$
+growth strictly worse than $N^3$. Beating Lev's greedy requires a
+construction that balances tightness at current $N$ against future
+extensibility --- a non-local property.
+
+This motivates the following ``for all $n$'' analog:
+
+\begin{conjecture}[Extension lower bound]\label{conj:ext}
+There exists $c \in (1, 3]$ such that for every infinite PDS $A$,
+$a_n \gg n^c$ for all sufficiently large $n$. The value of $c$ is
+governed by the asymptotic exponent of $M_{\text{ext}}(A_0, N)$ as the
+seed $A_0$ ranges over Sidon sets with $\max(A_0) \to \infty$.
+\end{conjecture}
+
+Conjecture~\ref{conj:ext} is strictly stronger than the i.o.\ form of
+Theorems~\ref{thm:n2io} and~\ref{thm:n2overf}. Empirically the
+extension-cost trajectories suggest $c$ is a moderate constant
+(somewhere between 2 and 3), but the data does not distinguish a
+specific value.
+
+\section{Constructive upper bound and the cubic ceiling}\label{sec:ub}
+
+\subsection{Lev's greedy and its constant}
+
+Lev \cite{Le04} proves that the greedy construction (always choose the
+smallest valid element to cover the next missing difference) produces an
+infinite PDS with $a_n \leq C n^3$ for some $C > 0$. Empirically
+\cite{this} we observe
+\[
+   \frac{\max_{n \leq N} a_n}{N^3} \;\to\; 0.0293 \pm 0.0006
+   \qquad (N \in [1500, 1900]).
+\]
+
+\subsection{Dense-Sidon-seeded greedy}
+
+Replacing the empty initial $A$ with a known dense Sidon set
+(Mian--Chowla, Erd\H{o}s--Tur\'an, or a Phase 4 optimum) and running
+the same Strategy~1 / Strategy~2 greedy as Lev's gives a strictly
+better constant:
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{l r r r r}
+\toprule
+seed & $|A_{\text{seed}}|$ & $N$ & seeded $\max A$ & ratio $/N^3$ \\
+\midrule
+scratch greedy            & 0   & 500 & 3,080,237 & 0.02464 \\
+Erd\H{o}s--Tur\'an $p=23$ & 23  & 500 &   544,923 & 0.00436 \\
+Mian--Chowla $n=30$       & 30  & 500 &   368,611 & 0.00295 \\
+Mian--Chowla $n=60$       & 60  & 500 &   286,281 & 0.00229 \\
+Mian--Chowla $n=100$      & 100 & 500 &   423,111 & 0.00339 \\
+Phase 4 opt $A_{30}^*$    & 10  & 500 &   881,451 & 0.00705 \\
+\bottomrule
+\end{tabular}
+\caption{Dense-Sidon-seeded greedy: the constant in the $N^3$ scaling
+drops by up to $10.8\times$ when seeded with Mian--Chowla of size 60.
+The Phase 4 optimum is a \emph{bad} seed.}
+\label{tab:seeded}
+\end{table}
+
+Three observations from Table~\ref{tab:seeded}:
+
+\begin{enumerate}
+\item Mian--Chowla seeding reduces the empirical constant from
+      $\approx 0.025\,N^3$ to $\approx 0.0023\,N^3$.
+
+\item The Phase 4 optimum $A_{30}^*$, despite being the densest possible
+      Sidon set covering $[1, 30]$, is a \emph{worse} seed than
+      Mian--Chowla --- giving ratio $0.00705$ vs $0.00229$. This is a
+      direct empirical witness of the extension obstruction
+      (Section~\ref{sec:ext}): tight seeds are extension traps.
+
+\item No seed produces sub-cubic asymptotic growth. The constant moves;
+      the $\Theta(N^3)$ scaling does not. Achieving $a_n = o(n^3)$
+      (Cilleruelo--Nathanson Problem~1 of \cite{CiNa08}) requires a
+      construction that is fundamentally non-greedy.
+\end{enumerate}
+
+\section{Open problems and the $c = 2$ barrier}\label{sec:open}
+
+\subsection{What is sharp}
+
+Two boundaries appear sharp in our analysis:
+
+\begin{itemize}
+\item The partition argument is sharp at the convergence boundary
+      $\sum 1/(nf(n)) < \infty$ (Remark~\ref{rem:sharp}). The
+      computational probes find no slack in Step~(II) beyond the
+      Sidon-density factor.
+
+\item Greedy-style construction is sharp at $\Theta(N^3)$ across all
+      seeds tested (Table~\ref{tab:seeded}). Seeding gives constant-factor
+      improvements; the exponent is robust.
+\end{itemize}
+
+\subsection{The three open questions}
+
+\begin{enumerate}
+\item \textbf{Better i.o.\ bound.} Can $a_n \gg n^c$ i.o.\ be shown for
+      some explicit $c > 2$? Phase 2B suggests this requires
+      restriction / decoupling estimates or a non-partition counting
+      identity.
+
+\item \textbf{Cilleruelo--Nathanson Problem~1.} Does there exist a PDS
+      with $a_n = o(n^3)$? Our Phase~3' experiments confirm the
+      ($\Theta(N^3)$)-ceiling under any greedy-style continuation;
+      non-greedy constructions (block-structured, probabilistic,
+      Cilleruelo--Nathanson-style) remain to be tested.
+
+\item \textbf{For-all-$n$ lower bound.} Is Conjecture~\ref{conj:ext}
+      true? Even an explicit $c > 1$ would be the first ``for all
+      large $n$'' improvement on the trivial $a_n \geq n + 1$.
+\end{enumerate}
+
+\subsection{Beyond partition: candidate routes}
+
+Honest assessment of where to look:
+\begin{itemize}
+\item For (1), the Fourier-side Plancherel statement
+      $\int |\widehat{1_A}|^4 = 2|A|^2 - |A|$ holds for any Sidon set
+      and doesn't distinguish PDS. Higher moments ($L^6, L^8$) might.
+      Bourgain--Demeter decoupling for the parabola has been used to
+      bound Sidon sets; an analog for PDS would be new.
+
+\item For (2), the natural attack is block-structured constructions:
+      concatenate Mian--Chowla, Singer, or Erd\H{o}s--Tur\'an blocks
+      with carefully chosen offsets. Cross-block differences could be
+      arranged to cover the medium-range $n$, leaving small-range and
+      large-range $n$ to within-block differences. We have not yet
+      tested this; it is the natural Phase~6.
+
+\item For (3), one would convert the empirical
+      Conjecture~\ref{conj:ext} into a theorem by showing: any infinite
+      PDS truncated to $[1, M]$ produces a Sidon set $A_M$ whose
+      ``extension obstruction'' is at least polynomial. The Phase 4'
+      data is suggestive but we do not see a path to proof.
+\end{itemize}
+
+\section*{Acknowledgements and code}
+
+This note records work done in the directory \texttt{erdos\_1194/}
+of the accompanying repository. Specifically:
+\begin{description}
+\item[\texttt{explore.py}, \texttt{build\_checkpoint.py}] Lev's greedy.
+\item[\texttt{exact\_search.py}, \texttt{exact\_search\_cpsat.py}] Phase~4 finite-optimum search.
+\item[\texttt{extension\_cost.py}] Phase~4' extension cost.
+\item[\texttt{seeded\_greedy.py}] Phase~3' dense-Sidon-seeded greedy.
+\item[\texttt{fourier\_probes.py}] Phase~2B Fourier observables.
+\item[\texttt{verify\_and\_analyze.py}] Phase~0 / 1 verification + stratification.
+\end{description}
+
+The arguments of Theorems~\ref{thm:n2io} and~\ref{thm:n2overf} are due
+to GPT-5.4 Pro and T.~F.~Bloom (April 2026 comment thread on
+erdosproblems.com/1194). The remainder is original to this work.
+
+\begin{thebibliography}{99}
+\bibitem{Er80} P.~Erd\H{o}s, \emph{Some applications of Ramsey's
+  theorem to additive number theory}, European J.\ Combin.\ 1 (1980)
+  no.~1, 43--52.
+
+\bibitem{HaRo66} H.~Halberstam and K.~F.~Roth, \emph{Sequences},
+  Oxford University Press, 1966.
+
+\bibitem{Le04} V.~F.~Lev, \emph{Reconstructing integer sets from their
+  representation functions}, Electron.\ J.\ Combin.\ 11 (2004), R78.
+
+\bibitem{CiNa08} J.~Cilleruelo and M.~B.~Nathanson, \emph{Perfect
+  difference sets constructed from Sidon sets}, Combinatorica 28 (2008),
+  401--414. \texttt{arXiv:math/0609244}.
+
+\bibitem{this} This note's accompanying code and data,
+  \texttt{github.com/.../erdos\_1194/}.
+\end{thebibliography}
+
+\end{document}

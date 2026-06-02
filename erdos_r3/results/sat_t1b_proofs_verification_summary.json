@@ -1,0 +1,55 @@
+{
+  "all_expected_present": true,
+  "all_verified": false,
+  "duplicate_chunks": [],
+  "expected_count": 17,
+  "lrat_chunks": [
+    14331,
+    15357,
+    24557,
+    32251,
+    32637,
+    36859,
+    65373,
+    89838,
+    93949,
+    97782,
+    110586
+  ],
+  "lrat_count": 11,
+  "missing_chunks": [],
+  "not_verified_chunks": [
+    40943,
+    63231,
+    64319,
+    77311,
+    81279,
+    110587
+  ],
+  "record_type": "summary",
+  "row_count": 17,
+  "status_counts": {
+    "TIMEOUT": 6,
+    "VERIFIED": 11
+  },
+  "total_cnf_bytes": 17220810,
+  "total_drat_bytes": 46238657790,
+  "total_drat_trim_seconds": 36782.7865459919,
+  "total_lrat_bytes": 6471521323,
+  "unexpected_chunks": [],
+  "unique_chunk_count": 17,
+  "verified_chunks": [
+    14331,
+    15357,
+    24557,
+    32251,
+    32637,
+    36859,
+    65373,
+    89838,
+    93949,
+    97782,
+    110586
+  ],
+  "verified_count": 11
+}

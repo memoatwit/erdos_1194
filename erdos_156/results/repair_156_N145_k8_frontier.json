@@ -1,0 +1,105 @@
+{
+  "N": 145,
+  "k": 8,
+  "status": "not_found",
+  "method": "seeded_one_swap_beam_repair",
+  "script": "erdos_156/repair_125_k8.py",
+  "commands": [
+    "python3 erdos_156/repair_125_k8.py 145 8 7200 1458",
+    "python3 erdos_156/repair_125_k8.py 145 8 7200 1468"
+  ],
+  "seconds_requested_each": 7200.0,
+  "best_blocked": 144,
+  "best_A": [
+    28,
+    42,
+    73,
+    75,
+    78,
+    79,
+    100,
+    138
+  ],
+  "best_profile": {
+    "blocked": 144,
+    "addable_count": 1,
+    "addable": [
+      2
+    ]
+  },
+  "alternate_near_misses": [
+    {
+      "blocked": 144,
+      "A": [
+        26,
+        42,
+        71,
+        75,
+        77,
+        78,
+        98,
+        138
+      ],
+      "addable": [
+        1
+      ]
+    },
+    {
+      "blocked": 144,
+      "A": [
+        8,
+        48,
+        68,
+        69,
+        71,
+        75,
+        104,
+        120
+      ],
+      "addable": [
+        145
+      ]
+    }
+  ],
+  "local_repair_checks": [
+    {
+      "radius": 2,
+      "A": [
+        28,
+        42,
+        73,
+        75,
+        78,
+        79,
+        100,
+        138
+      ],
+      "status": "not_found",
+      "checked": 269652,
+      "best_blocked": 144,
+      "addable": [
+        2
+      ]
+    },
+    {
+      "radius": 3,
+      "A": [
+        28,
+        42,
+        73,
+        75,
+        78,
+        79,
+        100,
+        138
+      ],
+      "status": "not_found",
+      "checked": 25334132,
+      "best_blocked": 144,
+      "addable": [
+        2
+      ]
+    }
+  ],
+  "conclusion": "No N=145,k=8 witness was found. This is not a proof of infeasibility. N=145,k=9 is feasible."
+}

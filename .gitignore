@@ -1,0 +1,38 @@
+# OS/editor
+.DS_Store
+
+# Python/runtime caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments and dependency caches
+.venv/
+venv/
+.env
+.env.*
+
+# Native build products
+*.o
+*.so
+*.dylib
+*.exe
+
+# LaTeX intermediates
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+
+# Scratch/temp
+*.tmp
+*.bak

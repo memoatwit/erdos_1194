@@ -1,0 +1,48 @@
+{
+  "N": 50,
+  "status": "in_progress",
+  "log": [
+    {
+      "M": 56,
+      "nodes": 801404,
+      "time_s": 3.4050276279449463,
+      "status": "infeasible",
+      "A_len": null
+    },
+    {
+      "M": 57,
+      "nodes": 897276,
+      "time_s": 3.7331604957580566,
+      "status": "infeasible",
+      "A_len": null
+    },
+    {
+      "M": 58,
+      "nodes": 1146633,
+      "time_s": 4.896816253662109,
+      "status": "infeasible",
+      "A_len": null
+    },
+    {
+      "M": 59,
+      "nodes": 1242709,
+      "time_s": 5.257740020751953,
+      "status": "infeasible",
+      "A_len": null
+    },
+    {
+      "M": 60,
+      "nodes": 1590812,
+      "time_s": 6.9054059982299805,
+      "status": "infeasible",
+      "A_len": null
+    },
+    {
+      "M": 61,
+      "nodes": 1761066,
+      "time_s": 7.73339581489563,
+      "status": "infeasible",
+      "A_len": null
+    }
+  ]
+}

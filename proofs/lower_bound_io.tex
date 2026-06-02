@@ -1,0 +1,456 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+\title{Lower bounds for perfect difference sets, infinitely often \\
+  \large Erd\H{o}s Problem \#1194 --- expository note}
+\author{}
+\date{April 30, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give two self-contained derivations of i.o.\ lower bounds on
+perfect difference sets. Theorem~\ref{thm:nlogn} reproves the classical
+$a_n \gg n \log n$ infinitely often via Sidon density (Erd\H{o}s,
+\cite{HaRo66}). Theorem~\ref{thm:n2io} recovers the recent refinement
+$a_n \gg n^{2-o(1)}$ infinitely often, due to GPT-5.4 Pro and
+streamlined by Bloom in the comment thread of erdosproblems.com/1194
+(April 23 2026). The latter argument does not use Sidon density at all;
+it uses only the PDS partition identity and a gap lower bound from
+the hypothetical pointwise upper bound on $a_n$. We also flag a
+typographical error on the live problem page (``diverges'' vs
+``converges'').
+\end{abstract}
+
+\section{Setup and notation}\label{sec:setup}
+
+A set $A \subset \mathbb{N}$ is a \emph{perfect difference set} (PDS) if
+every $n \geq 1$ admits a \emph{unique} representation
+\[
+   n = a_n - b_n, \qquad a_n, b_n \in A, \quad a_n > b_n.
+\]
+The notation $a_n$ is fixed by this definition: it is the larger element
+of the unique representing pair for $n$. It is \emph{not} the $n$-th
+element of $A$. To avoid confusion, we write the increasing enumeration
+of $A$ as
+\[
+   A = \{x_1 < x_2 < x_3 < \cdots\},
+\]
+and use $a_n$ exclusively for the representing pair.
+
+A PDS is in particular a Sidon set: all pairwise differences are
+distinct. We further write $A_x := A \cap [1, x]$, $k(x) := |A_x|$,
+and $N(x) := \#\{n \geq 1 : a_n \leq x\}$.
+
+\section{The PDS counting identity}\label{sec:counting}
+
+\begin{lemma}[PDS counting]\label{lem:pds-count}
+For every $x \geq 1$,
+\[
+   N(x) \;=\; \binom{k(x)}{2}.
+\]
+\end{lemma}
+
+\begin{proof}
+Each $n \leq N(x)$ has $a_n \leq x$ and so $b_n < a_n \leq x$, putting both
+elements of the unique representing pair in $A_x$. The map
+$n \mapsto \{a_n, b_n\}$ is therefore an injection from $\{n : a_n \leq x\}$
+into the unordered pairs of $A_x$, so $N(x) \leq \binom{k(x)}{2}$.
+Conversely, every unordered pair $\{a, b\} \subset A_x$ with $a > b$ produces
+a difference $a - b \in [1, x-1]$, which by uniqueness is the representation
+of some unique $n$ with $a_n = a$, $b_n = b$, and $a_n \leq x$. Hence
+$\binom{k(x)}{2} \leq N(x)$.
+\end{proof}
+
+\begin{corollary}\label{cor:trivial}
+$\binom{k(x)}{2} \leq x$ and so $k(x) \leq (1 + o(1)) \sqrt{2x}$.
+\end{corollary}
+
+\noindent
+This recovers the standard Sidon density bound; the PDS gives \emph{equality},
+not only inequality.
+
+\section{Classical $n \log n$ infinitely often}\label{sec:nlogn}
+
+\begin{theorem}[Erd\H{o}s, after \cite{HaRo66}]\label{thm:sidon-io}
+For every infinite Sidon set $B \subset \mathbb{N}$,
+\[
+   \liminf_{x \to \infty} \frac{|B \cap [1,x]|}{\sqrt{x/\log x}}
+   \;<\; \infty.
+\]
+\end{theorem}
+
+\noindent We use Theorem~\ref{thm:sidon-io} as a black box; the proof is
+elementary and standard.
+
+\begin{theorem}\label{thm:nlogn}
+For any perfect difference set, $a_n \gg n \log n$ for infinitely many $n$.
+\end{theorem}
+
+\begin{proof}
+Choose $x_j \to \infty$ with $k(x_j) \leq C \sqrt{x_j / \log x_j}$
+by Theorem~\ref{thm:sidon-io}. By Lemma~\ref{lem:pds-count},
+\[
+   N(x_j) \;=\; \binom{k(x_j)}{2}
+   \;\leq\; \frac{C^2 x_j}{2 \log x_j}.
+\]
+Setting $n_j := N(x_j) + 1$ gives $a_{n_j} > x_j$ and
+$n_j \leq C^2 x_j / (2 \log x_j) + 1$. Hence
+\[
+   a_{n_j} \;>\; x_j
+   \;\geq\; \frac{2 \log x_j}{C^2}\,(n_j - 1)
+   \;\geq\; \frac{2 (1+o(1))}{C^2}\, n_j \log n_j,
+\]
+using $\log x_j \geq (1+o(1)) \log a_{n_j} \geq (1+o(1)) \log n_j$.
+\end{proof}
+
+\section{The refinement to $n^{2-o(1)}$}\label{sec:n2}
+
+The refinement that follows is due to GPT-5.4 Pro and was condensed by
+Thomas Bloom in the comment thread on the problem page. It does not use
+Sidon density at all. The argument hinges on two structural facts about
+PDS that we extract first.
+
+\subsection{Two preparatory lemmas}
+
+For each $k \geq 2$, let
+\[
+   D_k \;:=\; \{ x_k - x_i \;:\; 1 \leq i < k \}.
+\]
+
+\begin{lemma}[PDS partition]\label{lem:partition}
+The family $\{D_k\}_{k \geq 2}$ is a partition of $\mathbb{Z}_{> 0}$.
+In particular, for every $X \geq 1$,
+\[
+   X \;=\; \sum_{k \geq 2} |D_k \cap [1, X]|.
+\]
+\end{lemma}
+
+\begin{proof}
+Every $n \geq 1$ has a unique representation $n = a_n - b_n$ with
+$a_n, b_n \in A$, $a_n > b_n$. Pick $k$ such that $a_n = x_k$ and let
+$i$ be such that $b_n = x_i$; then $i < k$ and $n = x_k - x_i \in D_k$.
+Conversely, every element $x_k - x_i \in D_k$ is a positive integer.
+Uniqueness in PDS gives that $n$ lies in exactly one $D_k$.
+\end{proof}
+
+\begin{lemma}[Gap lower bound from $a_n \ll n^c$]\label{lem:gap}
+Suppose $a_n \leq C\, n^c$ for all $n \geq 1$ and some $c > 1$. Then for
+every $k \geq 2$,
+\[
+   x_k - x_{k-1} \;\geq\; (x_k / C)^{1/c}.
+\]
+Consequently, $x_k \;\gg\; k^{c/(c-1)}$.
+\end{lemma}
+
+\begin{proof}
+Let $d_k := x_k - x_{k-1}$. The pair $(x_k, x_{k-1})$ realises the
+difference $d_k$; by PDS uniqueness, $a_{d_k} = x_k$. The hypothesis
+gives $x_k = a_{d_k} \leq C\, d_k^c$, so $d_k \geq (x_k/C)^{1/c}$.
+Telescoping,
+\[
+   x_k \;\geq\; x_k - x_1
+       \;=\; \sum_{i=2}^{k} d_i
+       \;\geq\; C^{-1/c} \sum_{i=2}^{k} x_i^{1/c}.
+\]
+Standard induction (or comparison with the ODE
+$y' = C^{-1/c} y^{1/c}$) yields $x_k \gg k^{c/(c-1)}$.
+\end{proof}
+
+\subsection{Main contradiction}
+
+\begin{theorem}[GPT-5.4 Pro, after Bloom's exposition]\label{thm:n2io}
+For any perfect difference set and any $c < 2$, the inequality
+$a_n \leq C n^c$ \emph{cannot} hold for all $n$ and any constant $C$.
+Equivalently, for every $c < 2$,
+\[
+   \limsup_{n \to \infty} \frac{a_n}{n^c} \;=\; \infty,
+\]
+i.e.\ $a_n \gg n^{2-o(1)}$ infinitely often.
+\end{theorem}
+
+\begin{proof}
+Suppose, for contradiction, that $a_n \leq C\, n^c$ holds for all $n$,
+for some constants $C > 0$ and $c \in (1, 2)$.
+Lemma~\ref{lem:gap} then gives $x_k \gg k^{c/(c-1)}$.
+
+Fix $X \geq 1$ and split the partition identity from
+Lemma~\ref{lem:partition}:
+\begin{equation}\label{eq:split}
+   X \;=\; \sum_{k \geq 2} |D_k \cap [1, X]|
+       \;=\; \underbrace{\sum_{2 \leq k \leq K} |D_k \cap [1, X]|}_{(\mathrm{I})}
+         + \underbrace{\sum_{k > K} |D_k \cap [1, X]|}_{(\mathrm{II})},
+\end{equation}
+where $K$ will be chosen as $K = \lfloor X^{(c-1)/c} \rfloor$.
+
+\medskip
+\noindent \textbf{Bound on (I).} Trivially $|D_k| \leq k - 1$, so
+\[
+   (\mathrm{I}) \;\leq\; \sum_{k \leq K} (k-1)
+              \;\leq\; K^2 / 2 \;\ll\; X^{2 - 2/c}.
+\]
+
+\medskip
+\noindent \textbf{Bound on (II).} For $k > K$ we have
+$x_k \gg k^{c/(c-1)} \gg K^{c/(c-1)} \asymp X$, so $x_k \gg X$ and in
+particular $x_k > 2X$ for all sufficiently large $X$ (absorb a constant
+into the choice of $K$). The set
+\[
+   \{x_i : x_i \in [x_k - X, x_k)\}
+\]
+is in bijection with $D_k \cap [1, X]$. Any two consecutive elements
+$x_{j-1} < x_j$ in $[x_k - X, x_k)$ satisfy
+\[
+   x_j - x_{j-1} \;\geq\; (x_j/C)^{1/c}
+                 \;\geq\; ((x_k - X)/C)^{1/c}
+                 \;\gg\; x_k^{1/c}
+\]
+by Lemma~\ref{lem:gap} and $x_k - X \geq x_k/2$. Therefore
+\[
+   |D_k \cap [1, X]| \;\ll\; \frac{X}{x_k^{1/c}}
+                       \;\ll\; X \cdot k^{-1/(c-1)},
+\]
+again using $x_k \gg k^{c/(c-1)}$. Summing,
+\[
+   (\mathrm{II}) \;\ll\; X \sum_{k > K} k^{-1/(c-1)}.
+\]
+Since $c < 2$, we have $1/(c-1) > 1$, so the sum converges; tail
+estimation gives
+\[
+   \sum_{k > K} k^{-1/(c-1)} \;\ll\; K^{1 - 1/(c-1)}
+                              \;=\; K^{(c-2)/(c-1)}.
+\]
+Substituting $K = X^{(c-1)/c}$,
+\[
+   (\mathrm{II}) \;\ll\; X \cdot X^{(c-1)/c \cdot (c-2)/(c-1)}
+                  \;=\; X^{1 + (c-2)/c}
+                  \;=\; X^{2 - 2/c}.
+\]
+
+\medskip
+\noindent \textbf{Combining.} From \eqref{eq:split},
+$X \ll X^{2 - 2/c}$, i.e.\
+$X^{2/c - 1} \ll 1$. Since $c < 2$, the exponent $2/c - 1 > 0$, so the
+left-hand side tends to infinity as $X \to \infty$ --- a contradiction.
+\end{proof}
+
+\subsection{Logarithmic refinement}
+
+The inequality $X \ll X^{2-2/c}$ is sharp at $c = 2$, and the contradiction
+fails there. By tracking the constants more carefully under a hypothesis
+$a_n \leq C\, n^2 / f(n)$ (instead of $a_n \leq C\, n^c$), the same scheme
+yields the following.
+
+\begin{theorem}[Logarithmic refinement, after Bloom]\label{thm:n2overf}
+Let $f \colon \mathbb{N} \to \mathbb{R}_{>0}$ be nondecreasing, slowly
+varying (i.e.\ $f(\lambda n)/f(n) \to 1$ as $n \to \infty$ for every fixed
+$\lambda > 0$), unbounded, and satisfy
+\[
+   \sum_{n \geq 2} \frac{1}{n\, f(n)} \;<\; \infty.
+\]
+Then for any perfect difference set,
+\[
+   a_n \;\gg\; \frac{n^2}{f(n)} \qquad \text{for infinitely many } n.
+\]
+In particular, $a_n \gg n^2 / (\log n)^{1 + \varepsilon}$ infinitely often
+for every $\varepsilon > 0$, and $a_n \gg (n / \log n)^2$ infinitely often.
+\end{theorem}
+
+\begin{proof}
+Suppose, for contradiction, that there exist $C > 0$ and $n_0 \in \mathbb{N}$
+with
+\begin{equation}\label{eq:hyp}
+   a_n \;\leq\; C\, n^2 / f(n)  \qquad \text{for all } n \geq n_0.
+\end{equation}
+
+\medskip
+\noindent \textbf{Step 1 (gap bound).}
+By PDS uniqueness, $a_{d_k} = x_k$ where $d_k = x_k - x_{k-1}$.
+For $d_k \geq n_0$, applying \eqref{eq:hyp} gives
+$x_k \leq C\, d_k^2 / f(d_k)$, equivalently
+\begin{equation}\label{eq:gap2}
+   d_k \;\geq\; \bigl( x_k\, f(d_k) / C \bigr)^{1/2}.
+\end{equation}
+
+\medskip
+\noindent \textbf{Step 2 (size of $x_k$).}
+We claim there exist $c_1 > 0$ and $k_0 \in \mathbb{N}$ such that
+\begin{equation}\label{eq:xkbound}
+   x_k \;\geq\; c_1\, k^2\, f(k) \qquad (k \geq k_0).
+\end{equation}
+
+Indeed, by \eqref{eq:gap2} and $d_k \leq x_k$, slow variation of $f$ gives,
+for $k$ sufficiently large,
+$f(d_k) \geq (1/2) f(\sqrt{x_k})$, hence
+$d_k \geq c_2 \sqrt{x_k\, f(\sqrt{x_k})}$ with
+$c_2 = (2C)^{-1/2}$. Telescoping,
+\[
+   x_k \;\geq\; \sum_{i=k_0+1}^k d_i
+        \;\geq\; c_2 \sum_{i=k_0+1}^k \sqrt{x_i\, f(\sqrt{x_i})}.
+\]
+This recurrence is monotone in $x_i$; comparing with the differential
+equation $dy/dk = c_2 \sqrt{y\, f(\sqrt{y})}$ (separable as
+$dy/\sqrt{y} = c_2 \sqrt{f(\sqrt y)}\, dk$), integrating, and using slow
+variation $f(\sqrt y) \asymp f(y^{1/4}) \asymp \cdots$ to absorb the
+self-dependence into a constant, we obtain
+$\sqrt{x_k} \geq (c_2/2)\, k\, \sqrt{f(k)}\, (1 - o(1))$, hence
+\eqref{eq:xkbound} with $c_1 = c_2^2/8$.
+
+\medskip
+\noindent \textbf{Step 3 (anchor window).}
+Fix $X$ large. Let $K = K(X)$ be the largest integer with $x_K \leq 2X$.
+By \eqref{eq:xkbound}, $K^2 f(K) \leq 2X / c_1$, so
+\begin{equation}\label{eq:Kbound}
+   K \;\leq\; \sqrt{2X / (c_1\, f(K))}
+     \;\leq\; \sqrt{2X / (c_1\, f(\sqrt{X/f(\sqrt{X})}))}
+     \;\sim\; \sqrt{2X / (c_1\, f(\sqrt X))},
+\end{equation}
+where the last step uses $f$ slowly varying (since $K = \Theta(\sqrt{X/f(\sqrt X)})$
+gives $f(K) \asymp f(\sqrt X)$). Crucially, since $f(\sqrt X) \to \infty$,
+\begin{equation}\label{eq:Klittleo}
+   K^2 \;=\; o(X) \qquad (X \to \infty).
+\end{equation}
+
+For $k > K$ we have $x_k > 2X$. The window $W_k := [x_k - X, x_k)$ contains
+some subset of $A$. For any two consecutive $x_{j-1} < x_j$ in $W_k$,
+\eqref{eq:gap2} gives $d_j \geq \sqrt{x_j f(d_j)/C}$. Now $x_j \geq x_k - X
+\geq x_k/2$, so $\sqrt{x_j} \geq \sqrt{x_k}/\sqrt{2}$; slow variation of
+$f$ on $[d_j, x_j]$ gives $f(d_j) \geq (1/2) f(\sqrt{x_k})$ for $k$ large.
+Therefore
+\[
+   d_j \;\geq\; (1/\sqrt{4C})\, \sqrt{x_k\, f(\sqrt{x_k})}.
+\]
+By \eqref{eq:xkbound} and slow variation, $\sqrt{x_k f(\sqrt{x_k})}
+\geq c_3\, k\, f(k)$ for $k$ large, with $c_3 > 0$ depending only on $c_1$.
+Hence
+\begin{equation}\label{eq:wcount}
+   |D_k \cap [1, X]| \;=\; |A \cap W_k|
+   \;\leq\; \frac{X}{c_3\, k\, f(k)} + 1.
+\end{equation}
+
+\medskip
+\noindent \textbf{Step 4 (partition sum).}
+By Lemma~\ref{lem:partition},
+\[
+   X \;=\; \sum_k |D_k \cap [1, X]|.
+\]
+Split at $K$:
+\[
+   X \;=\; \underbrace{\sum_{2 \leq k \leq K} |D_k \cap [1, X]|}_{\mathrm{(I)}}
+       \;+\; \underbrace{\sum_{k > K} |D_k \cap [1, X]|}_{\mathrm{(II)}}.
+\]
+For (I), trivially $|D_k| \leq k - 1$, so
+$(\mathrm{I}) \leq K(K-1)/2 \leq K^2/2 = o(X)$ by \eqref{eq:Klittleo}.
+
+For (II), apply \eqref{eq:wcount}:
+\[
+   (\mathrm{II}) \;\leq\; \frac{X}{c_3} \sum_{k > K} \frac{1}{k\, f(k)}
+                   \;+\; M_K,
+\]
+where $M_K = |\{k > K : |A \cap W_k| \geq 1\}|$ counts which large-$k$
+windows are non-empty. Each non-empty $W_k$ contributes a distinct
+$x \in A$ (since $W_k$ ranges over disjoint anchor positions $x_k$),
+and any two consecutive $x_k, x_{k+1}$ in this counting differ by
+$d_{k+1} \geq c_4 \sqrt{x_k f(\sqrt{x_k})} \geq c_4 \sqrt X$ (using
+$x_k > 2X$ and slow variation). So $M_K \leq c_5 \sqrt{X}$ (the number
+of $A$-anchors that could possibly have a window intersecting $[1, X]$
+is bounded by Sidon density of $A$). In particular $M_K = O(\sqrt X) = o(X)$.
+
+Let $\varepsilon_K := \sum_{k > K} 1/(k f(k))$. By the convergence
+hypothesis, $\varepsilon_K \to 0$ as $K \to \infty$, and in particular
+$\varepsilon_K \to 0$ as $X \to \infty$. Thus
+\[
+   (\mathrm{II}) \;\leq\; \frac{X \varepsilon_K}{c_3} + o(X).
+\]
+
+\medskip
+\noindent \textbf{Step 5 (contradiction).}
+Combining,
+\[
+   X \;\leq\; \frac{K^2}{2} \;+\; \frac{X \varepsilon_K}{c_3} \;+\; o(X)
+     \;=\; \frac{X \varepsilon_K}{c_3} \;+\; o(X).
+\]
+For $X$ large, $\varepsilon_K < c_3/2$ and the $o(X)$ term is less than
+$X/4$, so
+\[
+   X \;\leq\; \frac{X}{2} + \frac{X}{4} \;=\; \frac{3X}{4},
+\]
+which is false. This contradicts \eqref{eq:hyp}.
+
+Hence \eqref{eq:hyp} fails for every $C$: for each $C > 0$, there are
+infinitely many $n$ with $a_n > C\, n^2/f(n)$, i.e.\ $a_n \gg n^2/f(n)$
+infinitely often.
+\end{proof}
+
+\begin{remark}
+The case $f(n) = (\log n)^{1+\varepsilon}$ ($\varepsilon > 0$) gives
+$a_n \gg n^2/(\log n)^{1+\varepsilon}$ infinitely often; taking
+$\varepsilon \to 0^+$ recovers $a_n \gg n^{2-o(1)}$ from
+Theorem~\ref{thm:n2io}. The convergence boundary
+$\sum 1/(n f(n)) < \infty$ is sharp \emph{for this argument}: at
+$f(n) = \log n$ (where the sum diverges, $\sum 1/(n \log n) = \infty$),
+the tail $\varepsilon_K$ in Step~4 no longer goes to zero with $K$ and
+the contradiction collapses. Pushing past this boundary would require
+either a sharper density estimate on the anchor window in Step~3 or a
+non-partition counting identity.
+\end{remark}
+
+\begin{remark}[\emph{Typographical note on the live problem page}]
+\label{rem:typo}
+At time of writing (April 30, 2026), the problem page
+\texttt{erdosproblems.com/1194} states the conclusion of
+Theorem~\ref{thm:n2overf} as ``for any function $f$ such that
+$\sum 1/(n f(n))$ \emph{diverges}.'' This appears to be a copy-edit
+error: \emph{convergence} of $\sum 1/(nf(n))$ is the natural sufficient
+condition for the proof, and is what Bloom states (with example
+$f(n) = (\log n)^2$) in the comment thread after natso26's correction
+(post 5782). With the divergence condition, $f(n) = 1$ would qualify and
+imply $a_n \gg n^2$ infinitely often, which the proof does \emph{not}
+establish.
+\end{remark}
+
+\section{What is \emph{not} given by these arguments}\label{sec:caveats}
+
+Theorems~\ref{thm:nlogn} and~\ref{thm:n2io} are \emph{infinitely often}
+statements: they exhibit a sparse subsequence $n_j \to \infty$ on which
+$a_{n_j}$ is large. They place no constraint on $a_n$ for ``most'' $n$.
+
+Empirically (see \texttt{verify\_and\_analyze.py}), the running minimum
+$\inf_{n \leq N} a_n / n^2$ tends to zero in the greedy PDS:
+$\min_{n \leq 1898} a_n/n^2 \approx 5.6 \times 10^{-4}$. So a
+``for-all-large-$n$'' version of $a_n \gg n^2$ is empirically false even
+for the greedy PDS, and the original Erd\H{o}s question is best
+reformulated as a statement on the running maximum
+\[
+   M(N) \;:=\; \max_{n \leq N} a_n.
+\]
+Theorems~\ref{thm:nlogn} and~\ref{thm:n2io} translate into
+$M(N) \gg N \log N$ and $M(N) \gg N^{2-o(1)}$ respectively. Lev's
+greedy upper bound is $M(N) = O(N^3)$, refined empirically to
+$M(N) \approx 0.0293\, N^3$ for $N \in [1500, 1898]$.
+
+The unresolved question is therefore: \emph{is there a constant
+$\alpha \in (2, 3]$ such that $M(N) \asymp N^\alpha$? In particular,
+can the upper bound be brought down from $N^3$, or the lower bound
+brought up to match?} The Cilleruelo--Nathanson method
+\cite{CiNa08} for transferring results from dense Sidon sets to PDS
+is a candidate route on the upper side.
+
+\begin{thebibliography}{99}
+\bibitem{HaRo66} H.~Halberstam and K.~F.~Roth, \emph{Sequences},
+  Oxford University Press, 1966.
+\bibitem{Le04} V.~F.~Lev, \emph{Reconstructing integer sets from their
+  representation functions}, Electron.\ J.\ Combin.\ 11 (2004), R78.
+\bibitem{CiNa08} J.~Cilleruelo and M.~B.~Nathanson, \emph{Perfect
+  difference sets constructed from Sidon sets},
+  Combinatorica 28 (2008), 401--414.
+\end{thebibliography}
+
+\end{document}

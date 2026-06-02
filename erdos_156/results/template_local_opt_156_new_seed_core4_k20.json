@@ -1,0 +1,647 @@
+{
+  "args": {
+    "B": [
+      0,
+      15,
+      35,
+      38,
+      39,
+      44,
+      46,
+      95,
+      114,
+      136,
+      157,
+      202,
+      238,
+      288,
+      346,
+      373,
+      413,
+      507,
+      519,
+      647
+    ],
+    "x_min": 1,
+    "x_max": 1800,
+    "skip_exhaustive": false,
+    "steps": 50000,
+    "restarts": 8,
+    "start_temp": 0.01,
+    "end_temp": 5e-05,
+    "seed": 1701,
+    "output": "erdos_156/results/template_local_opt_156_new_seed_core4_k20.json"
+  },
+  "start": {
+    "B": [
+      0,
+      15,
+      35,
+      38,
+      39,
+      44,
+      46,
+      95,
+      114,
+      136,
+      157,
+      202,
+      238,
+      288,
+      346,
+      373,
+      413,
+      507,
+      519,
+      647
+    ],
+    "k": 20,
+    "max_B": 647,
+    "interval": [
+      -274,
+      659
+    ],
+    "interval_length": 934,
+    "covered_N": [
+      648,
+      934
+    ],
+    "interval_length_over_k3": 0.11675,
+    "covered_end_over_k3": 0.11675,
+    "W_size": 1434
+  },
+  "exhaustive_one_swap": {
+    "checked_replacements": 34181,
+    "feasible_replacements": 16874,
+    "start": {
+      "B": [
+        0,
+        15,
+        35,
+        38,
+        39,
+        44,
+        46,
+        95,
+        114,
+        136,
+        157,
+        202,
+        238,
+        288,
+        346,
+        373,
+        413,
+        507,
+        519,
+        647
+      ],
+      "k": 20,
+      "max_B": 647,
+      "interval": [
+        -274,
+        659
+      ],
+      "interval_length": 934,
+      "covered_N": [
+        648,
+        934
+      ],
+      "interval_length_over_k3": 0.11675,
+      "covered_end_over_k3": 0.11675,
+      "W_size": 1434
+    },
+    "best": {
+      "B": [
+        0,
+        15,
+        35,
+        38,
+        39,
+        44,
+        46,
+        95,
+        114,
+        136,
+        157,
+        202,
+        238,
+        288,
+        346,
+        373,
+        413,
+        507,
+        594,
+        647
+      ],
+      "k": 20,
+      "max_B": 647,
+      "interval": [
+        -225,
+        742
+      ],
+      "interval_length": 968,
+      "covered_N": [
+        648,
+        968
+      ],
+      "interval_length_over_k3": 0.121,
+      "covered_end_over_k3": 0.121,
+      "W_size": 1470
+    },
+    "best_move": {
+      "index": 18,
+      "old": 519,
+      "new": 594
+    },
+    "improved": true
+  },
+  "anneal": {
+    "start": {
+      "B": [
+        0,
+        15,
+        35,
+        38,
+        39,
+        44,
+        46,
+        95,
+        114,
+        136,
+        157,
+        202,
+        238,
+        288,
+        346,
+        373,
+        413,
+        507,
+        594,
+        647
+      ],
+      "k": 20,
+      "max_B": 647,
+      "interval": [
+        -225,
+        742
+      ],
+      "interval_length": 968,
+      "covered_N": [
+        648,
+        968
+      ],
+      "interval_length_over_k3": 0.121,
+      "covered_end_over_k3": 0.121,
+      "W_size": 1470
+    },
+    "best": {
+      "B": [
+        0,
+        15,
+        35,
+        38,
+        39,
+        44,
+        46,
+        95,
+        114,
+        136,
+        157,
+        202,
+        238,
+        288,
+        346,
+        373,
+        413,
+        507,
+        594,
+        647
+      ],
+      "k": 20,
+      "max_B": 647,
+      "interval": [
+        -225,
+        742
+      ],
+      "interval_length": 968,
+      "covered_N": [
+        648,
+        968
+      ],
+      "interval_length_over_k3": 0.121,
+      "covered_end_over_k3": 0.121,
+      "W_size": 1470
+    },
+    "runs": [
+      {
+        "best": {
+          "B": [
+            0,
+            15,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            114,
+            136,
+            157,
+            202,
+            238,
+            288,
+            346,
+            373,
+            413,
+            507,
+            594,
+            647
+          ],
+          "k": 20,
+          "max_B": 647,
+          "interval": [
+            -225,
+            742
+          ],
+          "interval_length": 968,
+          "covered_N": [
+            648,
+            968
+          ],
+          "interval_length_over_k3": 0.121,
+          "covered_end_over_k3": 0.121,
+          "W_size": 1470
+        },
+        "best_step": 0,
+        "accepted": 33,
+        "feasible_moves": 24159,
+        "history": [],
+        "restart": 0,
+        "seed": 868009551149898915
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            15,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            114,
+            136,
+            157,
+            202,
+            238,
+            288,
+            346,
+            373,
+            413,
+            507,
+            594,
+            647
+          ],
+          "k": 20,
+          "max_B": 647,
+          "interval": [
+            -225,
+            742
+          ],
+          "interval_length": 968,
+          "covered_N": [
+            648,
+            968
+          ],
+          "interval_length_over_k3": 0.121,
+          "covered_end_over_k3": 0.121,
+          "W_size": 1470
+        },
+        "best_step": 0,
+        "accepted": 39,
+        "feasible_moves": 24061,
+        "history": [],
+        "restart": 1,
+        "seed": 1099476492647818937
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            15,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            114,
+            136,
+            157,
+            202,
+            238,
+            288,
+            346,
+            373,
+            413,
+            507,
+            594,
+            647
+          ],
+          "k": 20,
+          "max_B": 647,
+          "interval": [
+            -225,
+            742
+          ],
+          "interval_length": 968,
+          "covered_N": [
+            648,
+            968
+          ],
+          "interval_length_over_k3": 0.121,
+          "covered_end_over_k3": 0.121,
+          "W_size": 1470
+        },
+        "best_step": 0,
+        "accepted": 34,
+        "feasible_moves": 23979,
+        "history": [],
+        "restart": 2,
+        "seed": 243432083093162964
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            15,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            114,
+            136,
+            157,
+            202,
+            238,
+            288,
+            346,
+            373,
+            413,
+            507,
+            594,
+            647
+          ],
+          "k": 20,
+          "max_B": 647,
+          "interval": [
+            -225,
+            742
+          ],
+          "interval_length": 968,
+          "covered_N": [
+            648,
+            968
+          ],
+          "interval_length_over_k3": 0.121,
+          "covered_end_over_k3": 0.121,
+          "W_size": 1470
+        },
+        "best_step": 0,
+        "accepted": 38,
+        "feasible_moves": 20911,
+        "history": [],
+        "restart": 3,
+        "seed": 369677955168935135
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            15,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            114,
+            136,
+            157,
+            202,
+            238,
+            288,
+            346,
+            373,
+            413,
+            507,
+            594,
+            647
+          ],
+          "k": 20,
+          "max_B": 647,
+          "interval": [
+            -225,
+            742
+          ],
+          "interval_length": 968,
+          "covered_N": [
+            648,
+            968
+          ],
+          "interval_length_over_k3": 0.121,
+          "covered_end_over_k3": 0.121,
+          "W_size": 1470
+        },
+        "best_step": 0,
+        "accepted": 26,
+        "feasible_moves": 23539,
+        "history": [],
+        "restart": 4,
+        "seed": 563765254427709250
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            15,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            114,
+            136,
+            157,
+            202,
+            238,
+            288,
+            346,
+            373,
+            413,
+            507,
+            594,
+            647
+          ],
+          "k": 20,
+          "max_B": 647,
+          "interval": [
+            -225,
+            742
+          ],
+          "interval_length": 968,
+          "covered_N": [
+            648,
+            968
+          ],
+          "interval_length_over_k3": 0.121,
+          "covered_end_over_k3": 0.121,
+          "W_size": 1470
+        },
+        "best_step": 0,
+        "accepted": 23,
+        "feasible_moves": 23887,
+        "history": [],
+        "restart": 5,
+        "seed": 634370199471548320
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            15,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            114,
+            136,
+            157,
+            202,
+            238,
+            288,
+            346,
+            373,
+            413,
+            507,
+            594,
+            647
+          ],
+          "k": 20,
+          "max_B": 647,
+          "interval": [
+            -225,
+            742
+          ],
+          "interval_length": 968,
+          "covered_N": [
+            648,
+            968
+          ],
+          "interval_length_over_k3": 0.121,
+          "covered_end_over_k3": 0.121,
+          "W_size": 1470
+        },
+        "best_step": 0,
+        "accepted": 27,
+        "feasible_moves": 22578,
+        "history": [],
+        "restart": 6,
+        "seed": 412205708304155483
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            15,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            114,
+            136,
+            157,
+            202,
+            238,
+            288,
+            346,
+            373,
+            413,
+            507,
+            594,
+            647
+          ],
+          "k": 20,
+          "max_B": 647,
+          "interval": [
+            -225,
+            742
+          ],
+          "interval_length": 968,
+          "covered_N": [
+            648,
+            968
+          ],
+          "interval_length_over_k3": 0.121,
+          "covered_end_over_k3": 0.121,
+          "W_size": 1470
+        },
+        "best_step": 0,
+        "accepted": 31,
+        "feasible_moves": 24114,
+        "history": [],
+        "restart": 7,
+        "seed": 547993215890980634
+      }
+    ],
+    "improved": false
+  },
+  "best": {
+    "B": [
+      0,
+      15,
+      35,
+      38,
+      39,
+      44,
+      46,
+      95,
+      114,
+      136,
+      157,
+      202,
+      238,
+      288,
+      346,
+      373,
+      413,
+      507,
+      594,
+      647
+    ],
+    "k": 20,
+    "max_B": 647,
+    "interval": [
+      -225,
+      742
+    ],
+    "interval_length": 968,
+    "covered_N": [
+      648,
+      968
+    ],
+    "interval_length_over_k3": 0.121,
+    "covered_end_over_k3": 0.121,
+    "W_size": 1470
+  },
+  "improved": true
+}

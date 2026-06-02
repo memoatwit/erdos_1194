@@ -1,0 +1,52 @@
+r_3(212) hard-pocket structural mining report
+============================================================
+
+Population: recap300_survivors
+------------------------------------------------------------
+  paths       : ['results/N212_K44_broad24_recap300_sample100.jsonl']
+  total rows  : 100
+  UNK rows    : 45
+  INF rows    : 55
+  FEAS rows   : 0
+
+  Top single-pin enrichment (|log-odds| OUT vs IN):
+    value  54  UNK out=  84.44%  INF out=  63.64%  log-odds=+1.087
+    value  48  UNK out=  80.00%  INF out=  58.18%  log-odds=+1.022
+    value  68  UNK out=  88.89%  INF out=  76.36%  log-odds=+0.850
+    value  67  UNK out=  84.44%  INF out=  70.91%  log-odds=+0.763
+    value  91  UNK out=  82.22%  INF out=  69.09%  log-odds=+0.696
+    value  52  UNK out=  82.22%  INF out=  69.09%  log-odds=+0.696
+    value  76  UNK out=  75.56%  INF out=  85.45%  log-odds=-0.622
+    value  57  UNK out=  75.56%  INF out=  65.45%  log-odds=+0.472
+    value  70  UNK out=  88.89%  INF out=  83.64%  log-odds=+0.408
+    value 142  UNK out=  82.22%  INF out=  76.36%  log-odds=+0.337
+
+  Top pair co-occurrence enrichment (UNK vs INF):
+    [75=IN,68=IN]  UNK=  4.44%  INF=  0.00%  log-odds=+1.853
+    [76=IN,57=IN]  UNK=  4.44%  INF=  0.00%  log-odds=+1.853
+    [91=IN,63=IN]  UNK=  8.89%  INF=  1.82%  log-odds=+1.371
+    [91=OUT,48=OUT]  UNK= 66.67%  INF= 36.36%  log-odds=+1.226
+    [91=OUT,76=IN]  UNK= 22.22%  INF=  7.27%  log-odds=+1.219
+    [54=OUT,52=OUT]  UNK= 68.89%  INF= 40.00%  log-odds=+1.174
+    [57=OUT,48=OUT]  UNK= 62.22%  INF= 34.55%  log-odds=+1.115
+    [142=OUT,54=OUT]  UNK= 68.89%  INF= 41.82%  log-odds=+1.100
+
+  Top triple co-occurrence enrichment (UNK vs INF):
+    [91=IN,76=OUT,63=IN]  UNK=  8.89%  INF=  0.00%  log-odds=+2.488
+    [75=IN,63=OUT,52=IN]  UNK=  6.67%  INF=  0.00%  log-odds=+2.213
+    [75=IN,57=OUT,52=IN]  UNK=  6.67%  INF=  0.00%  log-odds=+2.213
+    [91=OUT,76=IN,63=IN]  UNK=  6.67%  INF=  0.00%  log-odds=+2.213
+    [75=IN,57=OUT,55=IN]  UNK=  4.44%  INF=  0.00%  log-odds=+1.853
+    [142=IN,67=IN,48=OUT]  UNK=  4.44%  INF=  0.00%  log-odds=+1.853
+    [76=IN,75=IN,70=OUT]  UNK=  4.44%  INF=  0.00%  log-odds=+1.853
+    [76=IN,75=IN,48=OUT]  UNK=  4.44%  INF=  0.00%  log-odds=+1.853
+
+  Hot window [67, 91] cardinality:
+    UNK fixed_in mean : 1.00
+    UNK fixed_in dist : {1: 23, 0: 11, 2: 11}
+    UNK fixed_out mean: 5.00
+    INF fixed_in mean : 1.35
+    INF fixed_out mean: 4.65
+
+  UNK Hamming clusters (size ≥ 2):
+    cluster 0: size=45, members=[14331, 15357, 23039, 24318, 24557, 30199, 31611, 32251]…

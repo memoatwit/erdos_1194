@@ -1,0 +1,12 @@
+{
+  "name": "Erdos classic 5-congruence covering system",
+  "source": "Standard example: 0 mod 2, 0 mod 3, 1 mod 4, 5 mod 6, 7 mod 12",
+  "period": 12,
+  "congruences": [
+    {"residue": 0, "modulus": 2},
+    {"residue": 0, "modulus": 3},
+    {"residue": 1, "modulus": 4},
+    {"residue": 5, "modulus": 6},
+    {"residue": 7, "modulus": 12}
+  ]
+}

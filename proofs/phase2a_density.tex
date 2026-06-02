@@ -1,0 +1,346 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem*{remark}{Remark}
+
+\title{Phase 2A: sharper Sidon density for perfect difference sets \\
+  \large An exploration}
+\author{}
+\date{May 11, 2026}
+
+\begin{document}
+\maketitle
+
+\section{The question}
+
+For an infinite perfect difference set (PDS) $A \subset \mathbb{N}$, the
+classical Lindstr\"om bound gives
+\begin{equation}\label{eq:lind}
+   k(x) := |A \cap [1, x]| \;\leq\; \sqrt{x} + \sqrt[4]{x} + 1.
+\end{equation}
+Singer-type constructions of Sidon sets achieve $k(x) = (1 + o(1)) \sqrt x$
+at sparse $x$. Cilleruelo--Nathanson \cite{CiNa08} construct a \emph{PDS}
+satisfying
+\begin{equation}\label{eq:CN}
+   \limsup_{x \to \infty} \frac{k(x)}{\sqrt{x}} \;\geq\; \frac{1}{\sqrt 2}.
+\end{equation}
+So the ``Sidon ceiling'' for PDS is at most 1 and at least $1/\sqrt 2$.
+
+\textbf{Phase 2A target.} Prove $\limsup k(x)/\sqrt x \leq 1 - \delta$ for
+some explicit $\delta > 0$ and all infinite PDS $A$ --- ideally with
+$1 - \delta = 1/\sqrt 2$, matching the CiNa08 lower bound.
+
+\section{What is automatic}
+
+\subsection{$\liminf k(x)/\sqrt x = 0$}
+
+The infinitely-often lower bound on $a_n$ from Phase 2C gives a strong
+constraint on $\liminf k(x)/\sqrt x$.
+
+\begin{proposition}\label{prop:liminf}
+For any infinite PDS $A$ and every $c < 2$,
+\[
+   \liminf_{x \to \infty} \frac{k(x)}{x^{1/(2c)}} \;\leq\; \sqrt 2.
+\]
+In particular $\liminf k(x)/\sqrt x = 0$, and more sharply
+$\liminf k(x) \cdot x^{-(1/4 + \varepsilon)} = 0$ for every
+$\varepsilon > 0$.
+\end{proposition}
+
+\begin{proof}
+By Theorem 2 of the companion note (the GPT-5.4 Pro partition argument),
+for every $c < 2$ there are infinitely many $n$ with $a_n \geq n^c$.
+At such $n$, by the PDS counting identity (Lemma 1 of the companion note),
+$N(a_n) = \binom{k(a_n)}{2}$. Since $n \leq N(a_n)$ trivially,
+$\binom{k(a_n)}{2} \geq n$, so $k(a_n) \geq \sqrt{2n}$. But we also need
+the \emph{upper} side: at the same $a_n$, $n = N(a_n) - O(1)$, so
+$k(a_n) \leq (1 + \sqrt{1 + 8n})/2 \leq \sqrt{2n} + 1$.
+
+Combining with $a_n \geq n^c$, i.e.\ $n \leq a_n^{1/c}$, gives
+$k(a_n) \leq \sqrt{2 a_n^{1/c}} + 1 = \sqrt 2\, a_n^{1/(2c)} + 1$.
+So $k(a_n)/a_n^{1/(2c)} \leq \sqrt 2 + o(1)$.
+\end{proof}
+
+In words: at infinitely many $x = a_n$, the PDS density is bounded by
+$\sqrt 2 \cdot x^{1/(2c)}$ for any $c < 2$ --- substantially below the
+Sidon ceiling $\sqrt x$. As $c \to 2$, the bound at those $x$ approaches
+$x^{1/4}$.
+
+\subsection{What $\liminf = 0$ does \emph{not} give}
+
+Proposition~\ref{prop:liminf} controls the density at sparse $x$
+(the ``hard'' positions where $a_n$ peaks), but says nothing about
+$\limsup k(x)/\sqrt x$. A PDS could in principle have $k(x)$ touching
+$\sqrt x$ at frequent intermediate $x$ values while dropping low at the
+i.o.\ sparse positions. The Phase 2A target is the missing piece.
+
+\section{Attempt 1: Cauchy--Schwarz via the PDS partition identity}
+
+\subsection{Setup}
+
+Let $A_M = A \cap [1, M]$ and $k = |A_M|$. Let $D_M := A_M - A_M$
+(positive part), so $|D_M| = \binom{k}{2}$. Let $T_M$ be the largest $T$
+with $[1, T] \subset D_M$ (the ``covered prefix'').
+
+The PDS counting identity gives $N(M) = \binom{k}{2}$ where
+$N(M) = \#\{n : a_n \leq M\}$. The covered prefix is
+$T_M = \#\{n \leq N(M) : a_n \leq M, b_n \leq M\}$ = $\#\{n: $ both endpoints in $A_M\}$ = $N(M)$. \emph{Wait}: that's only correct if $a_n \leq M \Rightarrow b_n \leq M$, which is automatic since $b_n < a_n \leq M$.
+
+So actually $T_M = N(M) = \binom{k}{2}$: every $n \leq N(M)$ has its
+representation in $A_M$. So $T_M = \binom{k}{2}$.
+
+Hmm: but the differences of $A_M$ include $\binom{k}{2}$ values all $\leq
+M - 1$. The covered prefix $[1, T_M]$ has $T_M$ distinct values, and they
+form a contiguous interval. The remaining $\binom{k}{2} - T_M$ differences
+are scattered in $(T_M, M-1]$.
+
+So $T_M \leq \binom{k}{2} \leq M - 1$, with $T_M = \binom{k}{2}$
+in the ``perfectly covered'' case where every difference in
+$[1, \binom{k}{2}]$ is realised.
+
+\subsection{The constraint}
+
+For a PDS, every $n \in \mathbb{N}$ is realised exactly once. So at the
+truncation $A_M$, the realised differences are exactly
+$\{n : a_n \leq M\} = [1, N(M)]$. Hence $T_M = N(M) = \binom{k}{2}$
+\emph{always}.
+
+This is a stronger statement than ``$T_M \leq \binom{k}{2}$'' --- it
+says equality. So all $\binom{k}{2}$ differences of $A_M$ lie in
+$[1, \binom{k}{2}]$, i.e.\ none in $(\binom{k}{2}, M-1]$.
+
+Now: the differences of $A_M$ are at most $M - 1$. They're all in
+$[1, \binom{k}{2}]$. So we have $\binom{k}{2}$ distinct integers in
+$[1, \binom{k}{2}]$ --- which forces them to be \emph{exactly}
+$\{1, 2, \ldots, \binom{k}{2}\}$.
+
+\begin{lemma}\label{lem:perfect}
+Let $A$ be an infinite PDS, $M$ any positive integer, $k = k(M)$. Then
+$A_M - A_M = \{-\binom{k}{2}, \ldots, -1, 0, 1, \ldots, \binom{k}{2}\}$
+\emph{exactly}.
+\end{lemma}
+
+\begin{proof}
+Every $n \in \mathbb{Z}_{>0}$ has unique representation in $A$. The
+representation lies in $A_M$ iff $a_n \leq M$. The set of such $n$ is
+$\{n : a_n \leq M\}$, which equals $\{1, 2, \ldots, N(M)\}$ since $a_n$
+is monotone increasing in $n$ in the sense that
+$\{n: a_n \leq M\}$ is a downward-closed set of indices.
+
+Wait --- is $a_n$ monotone? NOT necessarily. The greedy data shows
+$a_n$ is bimodal and far from monotone. So
+$\{n : a_n \leq M\}$ need not be an initial segment.
+\end{proof}
+
+\textbf{Correction.} The argument in Lemma~\ref{lem:perfect} fails:
+$a_n$ is not monotone, so $\{n : a_n \leq M\}$ is not an initial
+segment $[1, N(M)]$. The set $T_M$ I claimed equals $N(M) = \binom{k}{2}$
+is actually the largest \emph{contiguous prefix} of covered $n$, which is
+not the same as $|\{n: a_n \leq M\}|$.
+
+The correct relations:
+\begin{itemize}
+\item $|\{n : a_n \leq M\}| = N(M) = \binom{k(M)}{2}$ \quad (PDS counting).
+\item $T_M$ = largest $T$ with $[1, T] \subset A_M - A_M$. Generally
+      $T_M \leq N(M)$ with equality only if $\{n : a_n \leq M\}$ is the
+      initial segment $[1, N(M)]$ --- which fails in general.
+\end{itemize}
+
+So my "perfect cover" observation is wrong. The correct statement is:
+
+\begin{lemma}\label{lem:Tlow}
+$T_M \leq N(M) = \binom{k(M)}{2}$.
+\end{lemma}
+
+This is just the trivial inequality, without yielding the structural
+conclusion I wanted.
+
+\subsection{What went wrong}
+
+The hope was that PDS forces $A_M$ to be ``maximally packed'' --- every
+short difference within $[1, M-1]$ realised. This fails because PDS only
+requires that every $n$ \emph{eventually} be realised, not by elements
+in $A_M$. So $T_M$ can be considerably less than $\binom{k}{2}$.
+
+In fact, for greedy at $N = 1898$, $k = 2131$, $\binom{k}{2} \approx 2.27
+\times 10^6$, but $T_M = 1898$ (the greedy covers $[1, N]$ at scale $M
+= a_N$, but the $1898 - N(M)$ ``extra'' differences are scattered in
+$(N, M-1]$).
+
+So the partition argument from Phase 2C is the right tool ---
+attempting to use $T_M = \binom{k}{2}$ directly fails for non-greedy
+PDS.
+
+\section{Attempt 2: Fej\'er weighted Plancherel}
+
+\subsection{The identity}
+
+For Sidon $A_M$, the Fej\'er-kernel inner product
+\[
+   I_T \;:=\; \int_0^1 K_T(\xi)\, |\widehat{1_{A_M}}(\xi)|^2\, d\xi
+\]
+satisfies, expanding the autocorrelation,
+\[
+   I_T \;=\; r(0) + 2 \sum_{n=1}^{T-1} r(n)\,(1 - n/T)
+        \;=\; k + 2 \sum_{n=1}^{T-1} r(n)(1 - n/T),
+\]
+where $r(n) = (1_{A_M} \star 1_{A_M}^-)(n) \in \{0, 1\}$ for $n \neq 0$
+(Sidon) and equals 1 for $n \in [1, T_M]$ (PDS coverage).
+
+For $T \leq T_M$: $r(n) = 1$ for all $n \in [1, T-1]$, so
+\[
+   I_T \;=\; k + 2 \sum_{n=1}^{T-1}(1 - n/T) \;=\; k + (T - 1).
+\]
+
+\subsection{Upper bound on $I_T$}
+
+We want a $k$-dependent upper bound on $I_T$ to pin down $k$.
+
+\textbf{Trivial bound.} $K_T$ has $L^1$ norm 1 (it integrates to 1), and
+$|\widehat{1_{A_M}}|^2 \leq k^2$ pointwise. So $I_T \leq k^2 \cdot 1 = k^2$.
+Together with $I_T = k + T - 1$: $T - 1 \leq k^2 - k$, i.e.,
+$T \leq k^2 - k + 1 \approx \binom{k}{2}\cdot 2$. Same as Sidon, no
+improvement.
+
+\textbf{Tighter bound using $|\widehat{1}|^2$'s peak structure.} The
+function $|\widehat{1_{A_M}}|^2$ peaks at $\xi = 0$ with value $k^2$,
+and has $L^2$ norm $\sqrt{2k^2 - k} \approx k\sqrt 2$ (from
+$\int |\widehat 1|^4 = 2k^2 - k$). It's also nonnegative.
+
+If $|\widehat{1_{A_M}}|^2$ were close to $k^2 \cdot \mathbb{1}_{\xi \approx 0}$
+of width $1/k$, then $I_T \approx K_T(0) \cdot k^2 \cdot (1/k)
+= T \cdot k$, giving $T - 1 \approx Tk - k$, i.e.\ $T \approx 1 + Tk - k$,
+no useful bound.
+
+If instead $|\widehat 1|^2$ has heavy tail behavior, the bound is
+different. We do not see a clean way to exploit PDS beyond Sidon at this
+level.
+
+\section{Attempt 3: higher moments of the autocorrelation}
+
+\subsection{$L^p$ approach}
+
+For $p \geq 4$:
+\[
+   \int |\widehat 1_{A_M}|^{2p} d\xi \;=\; \sum_n |(1_{A_M}^{\star p})\star(1_{A_M}^{-\star p})(n)|.
+\]
+For Sidon, this counts solutions to $a_1 - b_1 + a_2 - b_2 + \cdots = n$
+with $a_i, b_i \in A_M$. The total ($n = 0$ case) gives
+\[
+   \int |\widehat 1|^{2p} \;\geq\; |A_M|^p \cdot p!\, / \text{symmetry}.
+\]
+Standard energy-style estimates apply.
+
+For PDS, are these higher moments different from Sidon? \emph{In
+general no}, because the PDS structure constrains \emph{which}
+differences appear but not the total count or the higher-order solution
+count. Higher moments don't distinguish.
+
+This is a discouraging result: at every moment level we've tried, PDS
+is no different from Sidon.
+
+\section{Sub-targets}
+
+The full Phase 2A target seems out of reach with elementary
+identities. Tractable sub-targets:
+
+\subsection{Sub-target A: limsup density at perfect scales}
+
+\begin{conjecture}\label{conj:scales}
+For any infinite PDS $A$, the set of $x$ with $k(x) > (1-\delta)\sqrt x$
+has density zero in $\mathbb{N}$, for some $\delta > 0$.
+\end{conjecture}
+
+This is weaker than ``$\limsup \leq 1 - \delta$'' but would still
+strengthen the picture: PDS can be dense, but only at isolated scales.
+
+\subsection{Sub-target B: gap between $\limsup$ and Sidon ceiling}
+
+CiNa08's $\geq 1/\sqrt 2$ is the best lower bound on $\limsup
+k(x)/\sqrt x$ for PDS. Lindstr\"om's $\leq 1$ is the best upper bound
+for Sidon (hence PDS). Closing this 0.293 gap is the natural problem.
+
+Realistic attack: show that PDS at density $\geq (1/\sqrt 2 + \delta)\sqrt x$
+infinitely often, combined with the i.o.\ lower bound $a_n \gg n^{2-o(1)}$,
+gives a contradiction. The intuition is that
+$\liminf k(x)/\sqrt x = 0$ very fast (Proposition~\ref{prop:liminf})
+should constrain how often $k$ can be near the Sidon ceiling.
+
+A first computation: if $k(x_j) \geq (1 - \delta)\sqrt{x_j}$ at $x_j$,
+then $N(x_j) \geq (1 - \delta)^2 x_j / 2$. Combined with the i.o.\ lower
+bound $a_n \geq c n^c$ at $n_j = N(x_j)$:
+\[
+   x_j \geq a_{n_j} \geq c\, n_j^c \geq c\, ((1-\delta)^2 x_j/2)^c.
+\]
+For $c < 2$: $x_j \geq c\, (1-\delta)^{2c}\, 2^{-c}\, x_j^c$, so
+$x_j^{c-1} \leq 2^c / (c (1-\delta)^{2c})$, which fails for $x_j$ large
+since $c > 1$. So the assumption ``$k(x_j) \geq (1 - \delta)\sqrt{x_j}$
+infinitely often, combined with the i.o.\ lower bound at the SAME $x_j$''
+is impossible.
+
+But this is exactly Proposition~\ref{prop:liminf} rephrased: the i.o.
+lower bound automatically excludes density near $\sqrt x$ at the SAME
+$x$ values where the lower bound triggers.
+
+To get a uniform Phase 2A bound, we'd need to show that the i.o.\ lower
+bound triggers densely enough to dilute $\limsup k(x)/\sqrt x$. But the
+i.o.\ statement gives no upper bound on the gap between trigger points.
+
+\subsection{Sub-target C: density of $a_n$ peaks}
+
+Sharpen the Phase 2C i.o.\ statement to: for every $c < 2$, the density
+of $\{n : a_n \geq c\, n^c\}$ in $\mathbb{N}$ is at least $\rho_c > 0$.
+
+This would give: at \emph{positive density} of $n$, $a_n$ is large.
+Combined with density estimates, this could constrain
+$\limsup k(x)/\sqrt x$.
+
+The Phase 2C argument as written gives the i.o. statement but
+\emph{not} a positive-density statement. Strengthening it is its
+own open subproblem.
+
+\section{Conclusions}
+
+Phase 2A as initially framed --- ``$\limsup k(x)/\sqrt x \leq 1 - \delta$''
+--- is genuinely hard with our current tools. We documented three
+attempts that all fail:
+
+\begin{itemize}
+\item Cauchy--Schwarz via the partition identity reduces back to Sidon.
+\item Fej\'er-kernel weighted Plancherel doesn't exploit PDS beyond Sidon.
+\item Higher $L^p$ moments of $|\widehat{1_A}|$ are determined by Sidon
+      alone.
+\end{itemize}
+
+The structural reason is consistent: the PDS-vs-Sidon distinction shows
+up in \emph{which differences appear at small scales}, not in
+aggregate counting quantities. The Phase 2C partition argument is the
+unique tool we have for converting ``which differences appear'' into a
+quantitative bound, and it caps out at the $c = 2$ ceiling.
+
+Three reasonable sub-targets remain:
+
+\begin{enumerate}
+\item Conjecture~\ref{conj:scales}: density-zero exceptional set.
+\item Sub-target B: close the $0.293$ gap between $1/\sqrt 2$ and $1$.
+\item Sub-target C: positive-density version of Phase 2C.
+\end{enumerate}
+
+We do not know how to attack any of (1)--(3) with elementary tools.
+Phase 2A is best regarded as identifying these sub-targets and
+\emph{not} as a deliverable theorem.
+
+\begin{thebibliography}{9}
+\bibitem{CiNa08} J.~Cilleruelo and M.~B.~Nathanson, \emph{Perfect
+  difference sets constructed from Sidon sets}, Combinatorica 28 (2008),
+  401--414.
+\end{thebibliography}
+
+\end{document}

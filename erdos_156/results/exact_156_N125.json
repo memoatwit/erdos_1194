@@ -1,0 +1,101 @@
+{
+  "N": 125,
+  "status": "solved",
+  "m": 8,
+  "A": [
+    5,
+    42,
+    45,
+    49,
+    64,
+    76,
+    77,
+    87
+  ],
+  "lower_bound_start": 6,
+  "greedy_upper": 8,
+  "greedy_A": [
+    5,
+    42,
+    45,
+    49,
+    64,
+    76,
+    77,
+    87
+  ],
+  "profile": {
+    "counts": {
+      "in_A": 8,
+      "existing_difference": 116,
+      "symmetric_collision": 1,
+      "addable": 0
+    },
+    "examples": {
+      "existing_difference": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "symmetric_collision": [
+        25
+      ],
+      "addable": []
+    }
+  },
+  "log": [
+    {
+      "k": 6,
+      "status": "infeasible",
+      "method": "v3-coverage",
+      "nodes": 71340641,
+      "leaves": 0,
+      "sidon_prunes": 521802010,
+      "coverage_prunes": 1537362436,
+      "time_s": 608.14
+    },
+    {
+      "k": 7,
+      "status": "infeasible",
+      "method": "v4-first-split-resumable",
+      "first_lo": 1,
+      "first_hi": 63,
+      "chunks": 63,
+      "canonical_by_reflection": true,
+      "nodes": 2810668688,
+      "leaves": 0,
+      "sidon_prunes": 17488376934,
+      "coverage_prunes": 26609319900,
+      "time_s": 16522.15591,
+      "detail_file": "exact_156_N125_k7_split.json"
+    },
+    {
+      "k": 8,
+      "status": "feasible",
+      "method": "seeded_one_swap_beam_repair",
+      "script": "repair_125_k8.py",
+      "seconds_requested": 15.0,
+      "time_s": 0.08625102043151855,
+      "states_seen": 1,
+      "A": [
+        5,
+        42,
+        45,
+        49,
+        64,
+        76,
+        77,
+        87
+      ],
+      "verified_by": "python3 erdos_156/solve_156.py verify 125 5 42 45 49 64 76 77 87"
+    }
+  ],
+  "total_time_s": 17130.382161020432
+}

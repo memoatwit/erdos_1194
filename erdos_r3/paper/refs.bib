@@ -1,0 +1,204 @@
+% refs.bib — bibliography seed for paper.tex.
+%
+% TODO: verify every URL, page range, and arXiv identifier before submission.
+% Several entries are best-effort placeholders; the publication years and
+% identifiers should be cross-checked against the actual sources.
+
+% ----- r_3(N): Salem-Spencer numbers and OEIS A003002 -----
+
+@article{salem-spencer-1942,
+  author  = {Salem, R. and Spencer, D. C.},
+  title   = {On Sets of Integers Which Contain No Three Terms in
+             Arithmetical Progression},
+  journal = {Proceedings of the National Academy of Sciences},
+  year    = {1942},
+  volume  = {28},
+  number  = {12},
+  pages   = {561--563},
+  doi     = {10.1073/pnas.28.12.561}
+}
+
+@article{behrend-1946,
+  author  = {Behrend, F. A.},
+  title   = {On Sets of Integers Which Contain No Three Terms in
+             Arithmetical Progression},
+  journal = {Proceedings of the National Academy of Sciences},
+  year    = {1946},
+  volume  = {32},
+  number  = {12},
+  pages   = {331--332},
+  doi     = {10.1073/pnas.32.12.331}
+}
+
+@article{roth-1953,
+  author  = {Roth, K. F.},
+  title   = {On certain sets of integers},
+  journal = {Journal of the London Mathematical Society},
+  year    = {1953},
+  volume  = {28},
+  pages   = {104--109}
+}
+
+@article{bloom-sisask-2023,
+  author  = {Bloom, Thomas F. and Sisask, Olof},
+  title   = {Breaking the logarithmic barrier in {R}oth's theorem on
+             arithmetic progressions},
+  journal = {arXiv preprint},
+  year    = {2020},
+  eprint  = {2007.03528},
+  archivePrefix = {arXiv},
+  note    = {arXiv:2007.03528}
+}
+
+@article{kelley-meka-2023,
+  author  = {Kelley, Zander and Meka, Raghu},
+  title   = {Strong Bounds for 3-Progressions},
+  journal = {arXiv preprint},
+  year    = {2023},
+  eprint  = {2302.05537},
+  archivePrefix = {arXiv},
+  note    = {arXiv:2302.05537}
+}
+
+@misc{oeis-a003002,
+  author       = {{OEIS Foundation Inc.}},
+  title        = {The On-Line Encyclopedia of Integer Sequences, sequence
+                  {A003002}: Salem--Spencer numbers},
+  year         = {2024},
+  url          = {https://oeis.org/A003002},
+  note         = {b-file extended by L. Cariboni; accessed 2026}
+}
+
+% ----- Solvers -----
+
+@misc{or-tools,
+  author       = {Perron, Laurent and Furnon, Vincent},
+  title        = {{OR-Tools}, version 9.x},
+  year         = {2024},
+  publisher    = {Google},
+  url          = {https://developers.google.com/optimization/}
+}
+
+@article{huangfu-hall-2018-highs,
+  author  = {Huangfu, Q. and Hall, J. A. J.},
+  title   = {Parallelizing the dual revised simplex method},
+  journal = {Mathematical Programming Computation},
+  year    = {2018},
+  volume  = {10},
+  number  = {1},
+  pages   = {119--142},
+  doi     = {10.1007/s12532-017-0130-5},
+  note    = {HiGHS solver; \url{https://highs.dev}}
+}
+
+@inproceedings{biere-cadical,
+  author    = {Biere, Armin and Fazekas, Katalin and Fleury, Mathias and
+               Heisinger, Maximilian},
+  title     = {{CaDiCaL, Kissat, Paracooba, Plingeling and Treengeling}
+               entering the {SAT} Competition 2020},
+  booktitle = {Proceedings of SAT Competition 2020: Solver and Benchmark
+               Descriptions},
+  series    = {Department of Computer Science Report Series B},
+  publisher = {University of Helsinki},
+  year      = {2020},
+  pages     = {51--53}
+}
+
+@inproceedings{pysat-2018,
+  author    = {Ignatiev, Alexey and Morgado, Antonio and Marques-Silva, Joao},
+  title     = {{PySAT}: A {P}ython Toolkit for Prototyping with {SAT}
+               Oracles},
+  booktitle = {SAT 2018},
+  pages     = {428--437},
+  year      = {2018},
+  doi       = {10.1007/978-3-319-94144-8\_26}
+}
+
+% ----- Proof certificates -----
+
+@inproceedings{heule-hunt-biere-drat-2014,
+  author    = {Heule, Marijn J. H. and Hunt, Jr., Warren A. and Biere, Armin},
+  title     = {Trimming while Checking Clausal Proofs},
+  booktitle = {FMCAD 2013},
+  year      = {2013},
+  pages     = {181--188},
+  publisher = {IEEE}
+}
+
+@article{cruz-filipe-lrat-2017,
+  author  = {Cruz-Filipe, Lu{\'\i}s and Heule, Marijn J. H. and Hunt, Jr.,
+             Warren A. and Kaufmann, Matt and Schneider-Kamp, Peter},
+  title   = {Efficient Certified {RAT} Verification},
+  journal = {CADE-26},
+  year    = {2017},
+  pages   = {220--236},
+  doi     = {10.1007/978-3-319-63046-5\_14}
+}
+
+% ----- Formal proof search / AlphaProof Nexus -----
+
+@article{tsoukalas-alphaproof-nexus-2026,
+  author  = {Tsoukalas, George and Kovsharov, Anton and Shirobokov, Sergey
+             and Surina, Anja and Firsching, Moritz and B{\'e}rczi, Gergely
+             and Ruiz, Francisco J. R. and Suggala, Arun and Wagner, Adam
+             Zsolt and Wieser, Eric and Yu, Lei and Huang, Aja and
+             Horv{\'a}th, Mikl{\'o}s Z. and Ferrauiolo, Andrew and
+             Michalewski, Henryk and Grosu, Codrut and Hubert, Thomas and
+             Balog, Matej and Kohli, Pushmeet and Chaudhuri, Swarat},
+  title   = {Advancing Mathematics Research with {AI}-Driven Formal Proof
+             Search},
+  journal = {arXiv preprint},
+  year    = {2026},
+  eprint  = {2605.22763},
+  archivePrefix = {arXiv},
+  note    = {arXiv:2605.22763}
+}
+
+@misc{formal-conjectures,
+  author       = {{Google DeepMind}},
+  title        = {formal-conjectures: A Lean library of open mathematical
+                  conjectures},
+  year         = {2026},
+  url          = {https://github.com/google-deepmind/formal-conjectures},
+  note         = {Accessed 2026-05-25}
+}
+
+% ----- Lean / Mathlib -----
+
+@inproceedings{mathlib4,
+  author    = {{The Mathlib Community}},
+  title     = {The {L}ean Mathematical Library},
+  booktitle = {CPP 2020},
+  year      = {2020},
+  pages     = {367--381},
+  doi       = {10.1145/3372885.3373824}
+}
+
+@inproceedings{lean4-2021,
+  author    = {de Moura, Leonardo and Ullrich, Sebastian},
+  title     = {The {L}ean 4 Theorem Prover and Programming Language},
+  booktitle = {CADE-28},
+  year      = {2021},
+  pages     = {625--635},
+  doi       = {10.1007/978-3-030-79876-5\_37}
+}
+
+% ----- Cariboni / OEIS contributor (verification cross-check) -----
+
+@misc{cariboni-b003002,
+  author       = {Cariboni, Lorenzo},
+  title        = {b-file for {OEIS A003002} up to $n = 211$},
+  year         = {2024},
+  howpublished = {OEIS A003002 b-file},
+  url          = {https://oeis.org/A003002/b003002.txt}
+}
+
+% ----- Campaign artifacts -----
+
+@misc{ergezer-r3-212-artifacts-2026,
+  author       = {Ergezer, Mehmet},
+  title        = {Artifacts for the $r_3(212)$ witness-split computational campaign},
+  year         = {2026},
+  howpublished = {Zenodo dataset},
+  note         = {\url{https://doi.org/10.5281/zenodo.20463334}}
+}

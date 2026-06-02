@@ -1,0 +1,12 @@
+Verification of checkpoint at n = 1898
+|A| = 2131, max(A) = 202257090
+
+OK  : |A| = 2131 distinct elements, max(A) = 202257090
+OK  : every n in [1, 1898] is in rep
+OK  : all rep[n] = (a,b) satisfy a-b=n, a,b in A
+OK  : every n in [1, 1898] has EXACTLY one pair (a,b) in A
+OK  : all C(|A|,2) = 2269515 pairwise differences are distinct (Sidon)
+INFO: Strategy-2 calls = 1053
+INFO: |A| = 2131, covered = 1898, max(A) = 202257090
+
+OVERALL: PASS

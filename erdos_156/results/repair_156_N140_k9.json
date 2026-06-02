@@ -1,0 +1,56 @@
+{
+  "N": 140,
+  "k": 9,
+  "status": "feasible",
+  "method": "seeded_one_swap_beam_repair",
+  "script": "erdos_156/repair_125_k8.py",
+  "command": "python3 erdos_156/repair_125_k8.py 140 9 600 1409",
+  "seconds_requested": 600.0,
+  "time_s": 0.4485461711883545,
+  "seed": 1409,
+  "states_seen": 5,
+  "best_blocked": 140,
+  "best_A": [
+    38,
+    39,
+    44,
+    66,
+    74,
+    83,
+    87,
+    107,
+    138
+  ],
+  "verified": {
+    "command": "python3 erdos_156/solve_156.py verify 140 38 39 44 66 74 83 87 107 138",
+    "is_sidon": true,
+    "is_maximal_sidon": true,
+    "profile": {
+      "counts": {
+        "in_A": 9,
+        "existing_difference": 130,
+        "symmetric_collision": 1,
+        "addable": 0
+      },
+      "examples": {
+        "existing_difference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "symmetric_collision": [
+          41
+        ],
+        "addable": []
+      }
+    }
+  },
+  "conclusion": "This proves m(140) <= 9. A separate k=8 repair search found 139/140 near-misses but no size-8 witness yet."
+}

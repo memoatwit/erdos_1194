@@ -1,0 +1,94 @@
+{
+  "N": 125,
+  "k": 8,
+  "status": "feasible",
+  "method": "seeded_one_swap_beam_repair",
+  "script": "erdos_156/repair_125_k8.py",
+  "command": "python3 erdos_156/repair_125_k8.py 125 8 15 156",
+  "seconds_requested": 15.0,
+  "time_s": 0.08625102043151855,
+  "seed": 156,
+  "states_seen": 1,
+  "best_blocked": 125,
+  "best_A": [
+    5,
+    42,
+    45,
+    49,
+    64,
+    76,
+    77,
+    87
+  ],
+  "verified": {
+    "command": "python3 erdos_156/solve_156.py verify 125 5 42 45 49 64 76 77 87",
+    "is_sidon": true,
+    "is_maximal_sidon": true,
+    "profile": {
+      "counts": {
+        "in_A": 8,
+        "existing_difference": 116,
+        "symmetric_collision": 1,
+        "addable": 0
+      },
+      "examples": {
+        "existing_difference": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "symmetric_collision": [
+          25
+        ],
+        "addable": []
+      }
+    }
+  },
+  "alternate_verified_witness": {
+    "A": [
+      38,
+      48,
+      49,
+      61,
+      76,
+      80,
+      83,
+      120
+    ],
+    "profile": {
+      "counts": {
+        "in_A": 8,
+        "existing_difference": 115,
+        "symmetric_collision": 2,
+        "addable": 0
+      },
+      "examples": {
+        "existing_difference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "symmetric_collision": [
+          43,
+          100
+        ],
+        "addable": []
+      }
+    }
+  },
+  "conclusion": "This improves the N=125 bracket to 7 <= m(125) <= 8. It does not prove m(125)=8 because k=7 has not been ruled out."
+}

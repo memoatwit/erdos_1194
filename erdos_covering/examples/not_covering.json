@@ -1,0 +1,8 @@
+{
+  "name": "Deliberately incomplete covering system",
+  "period": 6,
+  "congruences": [
+    {"residue": 0, "modulus": 2},
+    {"residue": 0, "modulus": 3}
+  ]
+}

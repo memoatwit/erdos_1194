@@ -1,0 +1,84 @@
+{
+  "N": 95,
+  "status": "solved",
+  "m": 7,
+  "A": [
+    3,
+    37,
+    39,
+    43,
+    51,
+    54,
+    78
+  ],
+  "lower_bound_start": 5,
+  "greedy_upper": 7,
+  "greedy_A": [
+    3,
+    37,
+    39,
+    43,
+    51,
+    54,
+    78
+  ],
+  "profile": {
+    "counts": {
+      "in_A": 7,
+      "existing_difference": 87,
+      "symmetric_collision": 1,
+      "addable": 0
+    },
+    "examples": {
+      "existing_difference": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "symmetric_collision": [
+        21
+      ],
+      "addable": []
+    }
+  },
+  "log": [
+    {
+      "k": 5,
+      "status": "infeasible",
+      "method": "v3-lex",
+      "nodes": 117233,
+      "leaves": 0,
+      "sidon_prunes": 172792,
+      "coverage_prunes": 2656552,
+      "time_s": 0.690755
+    },
+    {
+      "k": 6,
+      "status": "infeasible",
+      "method": "v3-coverage",
+      "nodes": 43264489,
+      "leaves": 0,
+      "sidon_prunes": 191487448,
+      "coverage_prunes": 429856680,
+      "time_s": 160.86
+    },
+    {
+      "k": 7,
+      "status": "feasible",
+      "method": "v3-coverage",
+      "nodes": 73903130,
+      "leaves": 1,
+      "sidon_prunes": 447620895,
+      "coverage_prunes": 530308920,
+      "time_s": 240.385
+    }
+  ],
+  "total_time_s": 401.935755
+}

@@ -1,0 +1,309 @@
+{
+  "N": 40,
+  "M_opt": 86,
+  "A_opt": [
+    1,
+    10,
+    11,
+    18,
+    31,
+    43,
+    46,
+    57,
+    62,
+    80,
+    84,
+    86
+  ],
+  "log": [
+    {
+      "M": 46,
+      "status": "infeasible",
+      "time_s": 0.021151065826416016,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 47,
+      "status": "infeasible",
+      "time_s": 0.026830196380615234,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 48,
+      "status": "infeasible",
+      "time_s": 0.06482863426208496,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 49,
+      "status": "infeasible",
+      "time_s": 0.2006690502166748,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 50,
+      "status": "infeasible",
+      "time_s": 0.22986531257629395,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 51,
+      "status": "infeasible",
+      "time_s": 0.2207643985748291,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 52,
+      "status": "infeasible",
+      "time_s": 0.2422163486480713,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 53,
+      "status": "infeasible",
+      "time_s": 0.2763707637786865,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 54,
+      "status": "infeasible",
+      "time_s": 0.3018045425415039,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 55,
+      "status": "infeasible",
+      "time_s": 0.2817714214324951,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 56,
+      "status": "infeasible",
+      "time_s": 0.49782657623291016,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 57,
+      "status": "infeasible",
+      "time_s": 0.4512941837310791,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 58,
+      "status": "infeasible",
+      "time_s": 0.6178545951843262,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 59,
+      "status": "infeasible",
+      "time_s": 0.5555939674377441,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 60,
+      "status": "infeasible",
+      "time_s": 0.7523961067199707,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 61,
+      "status": "infeasible",
+      "time_s": 0.8406338691711426,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 62,
+      "status": "infeasible",
+      "time_s": 1.043159008026123,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 63,
+      "status": "infeasible",
+      "time_s": 1.0343496799468994,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 64,
+      "status": "infeasible",
+      "time_s": 1.6798858642578125,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 65,
+      "status": "infeasible",
+      "time_s": 1.2720506191253662,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 66,
+      "status": "infeasible",
+      "time_s": 1.9724171161651611,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 67,
+      "status": "infeasible",
+      "time_s": 1.5556640625,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 68,
+      "status": "infeasible",
+      "time_s": 3.577946424484253,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 69,
+      "status": "infeasible",
+      "time_s": 3.3635106086730957,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 70,
+      "status": "infeasible",
+      "time_s": 4.320739984512329,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 71,
+      "status": "infeasible",
+      "time_s": 4.028820037841797,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 72,
+      "status": "infeasible",
+      "time_s": 4.82694149017334,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 73,
+      "status": "infeasible",
+      "time_s": 4.746352434158325,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 74,
+      "status": "infeasible",
+      "time_s": 5.825725793838501,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 75,
+      "status": "infeasible",
+      "time_s": 6.799961805343628,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 76,
+      "status": "infeasible",
+      "time_s": 9.14481520652771,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 77,
+      "status": "infeasible",
+      "time_s": 7.921168088912964,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 78,
+      "status": "infeasible",
+      "time_s": 10.06652045249939,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 79,
+      "status": "infeasible",
+      "time_s": 9.422644853591919,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 80,
+      "status": "infeasible",
+      "time_s": 11.517852783203125,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 81,
+      "status": "infeasible",
+      "time_s": 11.120481967926025,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 82,
+      "status": "infeasible",
+      "time_s": 16.769020318984985,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 83,
+      "status": "infeasible",
+      "time_s": 12.94660997390747,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 84,
+      "status": "infeasible",
+      "time_s": 18.827788829803467,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 85,
+      "status": "infeasible",
+      "time_s": 18.619627952575684,
+      "solver_status": "INFEASIBLE",
+      "A_len": null
+    },
+    {
+      "M": 86,
+      "status": "feasible",
+      "time_s": 2.599120616912842,
+      "solver_status": "OPTIMAL",
+      "A_len": 12
+    }
+  ],
+  "total_time_s": 21.222655773162842,
+  "status": "solved"
+}

@@ -1,0 +1,75 @@
+{
+  "N": 135,
+  "k": 8,
+  "status": "feasible",
+  "method": "seeded_one_swap_beam_repair",
+  "script": "erdos_156/repair_125_k8.py",
+  "command": "python3 erdos_156/repair_125_k8.py 135 8 1800 1358",
+  "seconds_requested": 1800.0,
+  "time_s": 318.3387842178345,
+  "seed": 1358,
+  "states_seen": 8076,
+  "best_blocked": 135,
+  "best_A": [
+    8,
+    48,
+    68,
+    69,
+    71,
+    75,
+    104,
+    120
+  ],
+  "verified": {
+    "command": "python3 erdos_156/solve_156.py verify 135 8 48 68 69 71 75 104 120",
+    "is_sidon": true,
+    "is_maximal_sidon": true,
+    "profile": {
+      "counts": {
+        "in_A": 8,
+        "existing_difference": 122,
+        "symmetric_collision": 5,
+        "addable": 0
+      },
+      "examples": {
+        "existing_difference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          9,
+          10,
+          11
+        ],
+        "symmetric_collision": [
+          38,
+          56,
+          58,
+          86,
+          112
+        ],
+        "addable": []
+      }
+    }
+  },
+  "best_near_miss_before_success": {
+    "blocked": 134,
+    "A": [
+      46,
+      47,
+      52,
+      65,
+      80,
+      88,
+      91,
+      123
+    ],
+    "addable": [
+      25
+    ]
+  },
+  "conclusion": "This proves m(135) <= 8. No lower-bound certification was attempted."
+}

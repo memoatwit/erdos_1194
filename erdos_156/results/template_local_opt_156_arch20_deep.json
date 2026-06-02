@@ -1,0 +1,1011 @@
+{
+  "args": {
+    "B": [
+      0,
+      20,
+      35,
+      38,
+      39,
+      44,
+      46,
+      95,
+      132,
+      142,
+      175,
+      267,
+      289,
+      301,
+      341,
+      410,
+      489,
+      594,
+      617,
+      681
+    ],
+    "x_min": 1,
+    "x_max": 2500,
+    "skip_exhaustive": false,
+    "steps": 120000,
+    "restarts": 16,
+    "start_temp": 0.01,
+    "end_temp": 5e-05,
+    "seed": 1560,
+    "output": "erdos_156/results/template_local_opt_156_arch20_deep.json"
+  },
+  "start": {
+    "B": [
+      0,
+      20,
+      35,
+      38,
+      39,
+      44,
+      46,
+      95,
+      132,
+      142,
+      175,
+      267,
+      289,
+      301,
+      341,
+      410,
+      489,
+      594,
+      617,
+      681
+    ],
+    "k": 20,
+    "max_B": 681,
+    "interval": [
+      -273,
+      693
+    ],
+    "interval_length": 967,
+    "covered_N": [
+      682,
+      967
+    ],
+    "interval_length_over_k3": 0.120875,
+    "covered_end_over_k3": 0.120875,
+    "W_size": 1569
+  },
+  "exhaustive_one_swap": {
+    "checked_replacements": 47481,
+    "feasible_replacements": 28533,
+    "start": {
+      "B": [
+        0,
+        20,
+        35,
+        38,
+        39,
+        44,
+        46,
+        95,
+        132,
+        142,
+        175,
+        267,
+        289,
+        301,
+        341,
+        410,
+        489,
+        594,
+        617,
+        681
+      ],
+      "k": 20,
+      "max_B": 681,
+      "interval": [
+        -273,
+        693
+      ],
+      "interval_length": 967,
+      "covered_N": [
+        682,
+        967
+      ],
+      "interval_length_over_k3": 0.120875,
+      "covered_end_over_k3": 0.120875,
+      "W_size": 1569
+    },
+    "best": {
+      "B": [
+        0,
+        20,
+        35,
+        38,
+        39,
+        44,
+        46,
+        95,
+        132,
+        142,
+        175,
+        267,
+        289,
+        301,
+        341,
+        410,
+        489,
+        594,
+        617,
+        681
+      ],
+      "k": 20,
+      "max_B": 681,
+      "interval": [
+        -273,
+        693
+      ],
+      "interval_length": 967,
+      "covered_N": [
+        682,
+        967
+      ],
+      "interval_length_over_k3": 0.120875,
+      "covered_end_over_k3": 0.120875,
+      "W_size": 1569
+    },
+    "best_move": null,
+    "improved": false
+  },
+  "anneal": {
+    "start": {
+      "B": [
+        0,
+        20,
+        35,
+        38,
+        39,
+        44,
+        46,
+        95,
+        132,
+        142,
+        175,
+        267,
+        289,
+        301,
+        341,
+        410,
+        489,
+        594,
+        617,
+        681
+      ],
+      "k": 20,
+      "max_B": 681,
+      "interval": [
+        -273,
+        693
+      ],
+      "interval_length": 967,
+      "covered_N": [
+        682,
+        967
+      ],
+      "interval_length_over_k3": 0.120875,
+      "covered_end_over_k3": 0.120875,
+      "W_size": 1569
+    },
+    "best": {
+      "B": [
+        0,
+        20,
+        35,
+        38,
+        39,
+        44,
+        46,
+        95,
+        132,
+        142,
+        175,
+        267,
+        289,
+        301,
+        341,
+        410,
+        489,
+        594,
+        617,
+        681
+      ],
+      "k": 20,
+      "max_B": 681,
+      "interval": [
+        -273,
+        693
+      ],
+      "interval_length": 967,
+      "covered_N": [
+        682,
+        967
+      ],
+      "interval_length_over_k3": 0.120875,
+      "covered_end_over_k3": 0.120875,
+      "W_size": 1569
+    },
+    "runs": [
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 55,
+        "feasible_moves": 69023,
+        "history": [],
+        "restart": 0,
+        "seed": 985144482801769741
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 46,
+        "feasible_moves": 71811,
+        "history": [],
+        "restart": 1,
+        "seed": 444005428746789122
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 54,
+        "feasible_moves": 72098,
+        "history": [],
+        "restart": 2,
+        "seed": 809849558109916997
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 39,
+        "feasible_moves": 72289,
+        "history": [],
+        "restart": 3,
+        "seed": 424137699551081904
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 53,
+        "feasible_moves": 72205,
+        "history": [],
+        "restart": 4,
+        "seed": 83570487836496612
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 53,
+        "feasible_moves": 72230,
+        "history": [],
+        "restart": 5,
+        "seed": 37982603903155825
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 61,
+        "feasible_moves": 72087,
+        "history": [],
+        "restart": 6,
+        "seed": 315477457906945071
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 42,
+        "feasible_moves": 71824,
+        "history": [],
+        "restart": 7,
+        "seed": 575040535500322183
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 63,
+        "feasible_moves": 67997,
+        "history": [],
+        "restart": 8,
+        "seed": 259981028412886435
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 39,
+        "feasible_moves": 71967,
+        "history": [],
+        "restart": 9,
+        "seed": 147563174865984207
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 58,
+        "feasible_moves": 71978,
+        "history": [],
+        "restart": 10,
+        "seed": 956545815342955279
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 52,
+        "feasible_moves": 74533,
+        "history": [],
+        "restart": 11,
+        "seed": 242377143285682810
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 38,
+        "feasible_moves": 71870,
+        "history": [],
+        "restart": 12,
+        "seed": 842891464735129056
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 53,
+        "feasible_moves": 69792,
+        "history": [],
+        "restart": 13,
+        "seed": 645275723873674685
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 51,
+        "feasible_moves": 73275,
+        "history": [],
+        "restart": 14,
+        "seed": 537680134667051374
+      },
+      {
+        "best": {
+          "B": [
+            0,
+            20,
+            35,
+            38,
+            39,
+            44,
+            46,
+            95,
+            132,
+            142,
+            175,
+            267,
+            289,
+            301,
+            341,
+            410,
+            489,
+            594,
+            617,
+            681
+          ],
+          "k": 20,
+          "max_B": 681,
+          "interval": [
+            -273,
+            693
+          ],
+          "interval_length": 967,
+          "covered_N": [
+            682,
+            967
+          ],
+          "interval_length_over_k3": 0.120875,
+          "covered_end_over_k3": 0.120875,
+          "W_size": 1569
+        },
+        "best_step": 0,
+        "accepted": 66,
+        "feasible_moves": 65168,
+        "history": [],
+        "restart": 15,
+        "seed": 671139362831320740
+      }
+    ],
+    "improved": false
+  },
+  "best": {
+    "B": [
+      0,
+      20,
+      35,
+      38,
+      39,
+      44,
+      46,
+      95,
+      132,
+      142,
+      175,
+      267,
+      289,
+      301,
+      341,
+      410,
+      489,
+      594,
+      617,
+      681
+    ],
+    "k": 20,
+    "max_B": 681,
+    "interval": [
+      -273,
+      693
+    ],
+    "interval_length": 967,
+    "covered_N": [
+      682,
+      967
+    ],
+    "interval_length_over_k3": 0.120875,
+    "covered_end_over_k3": 0.120875,
+    "W_size": 1569
+  },
+  "improved": false
+}

@@ -1,0 +1,104 @@
+{
+  "N": 65,
+  "status": "solved",
+  "m": 6,
+  "A": [
+    9,
+    25,
+    26,
+    32,
+    40,
+    45
+  ],
+  "lower_bound_start": 5,
+  "greedy_upper": 7,
+  "greedy_A": [
+    2,
+    18,
+    19,
+    30,
+    37,
+    40,
+    45
+  ],
+  "profile": {
+    "counts": {
+      "in_A": 6,
+      "existing_difference": 58,
+      "symmetric_collision": 1,
+      "addable": 0
+    },
+    "examples": {
+      "existing_difference": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "symmetric_collision": [
+        36
+      ],
+      "addable": []
+    }
+  },
+  "log": [
+    {
+      "k": 5,
+      "status": "infeasible",
+      "method": "dfs",
+      "nodes": 6008833,
+      "leaves": 5411340,
+      "sidon_prunes": 1654833,
+      "time_s": 12.594881772994995
+    },
+    {
+      "k": 6,
+      "status": "feasible",
+      "method": "hunt",
+      "trials": 4217,
+      "best_blocked": 65,
+      "best_A": [
+        9,
+        25,
+        26,
+        32,
+        40,
+        45
+      ],
+      "best_profile": {
+        "counts": {
+          "in_A": 6,
+          "existing_difference": 58,
+          "symmetric_collision": 1,
+          "addable": 0
+        },
+        "examples": {
+          "existing_difference": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11
+          ],
+          "symmetric_collision": [
+            36
+          ],
+          "addable": []
+        }
+      },
+      "time_s": 30.357075929641724
+    }
+  ],
+  "total_time_s": 42.96144676208496
+}

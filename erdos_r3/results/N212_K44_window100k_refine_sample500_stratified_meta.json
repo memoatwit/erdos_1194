@@ -1,0 +1,165 @@
+{
+  "added": {
+    "hard_buckets": 270,
+    "hard_pins_out": 100,
+    "long_runs": 125,
+    "uniform_fill": 5
+  },
+  "first_30": [
+    98277,
+    98278,
+    98279,
+    98280,
+    98281,
+    98282,
+    98283,
+    98284,
+    98285,
+    98286,
+    98287,
+    98288,
+    98289,
+    98290,
+    98291,
+    98292,
+    98293,
+    98294,
+    98295,
+    98296,
+    98297,
+    98298,
+    98299,
+    98300,
+    98301,
+    98302,
+    98303,
+    110577,
+    110578,
+    110579
+  ],
+  "output": "results/N212_K44_window100k_refine_sample500_stratified.json",
+  "sample_size": 500,
+  "sampling_rule": [
+    "up to 125 chunks from longest contiguous UNKNOWN runs",
+    "up to 45 random chunks from each of top 6 UNKNOWN-rate 5k buckets",
+    "up to 100 random chunks with one of {68,75,70,76,91} forced out",
+    "uniform random fill from remaining UNKNOWNs"
+  ],
+  "seed": 11940522,
+  "selected_by_bucket": {
+    "0": 5,
+    "1": 3,
+    "10": 75,
+    "11": 3,
+    "12": 4,
+    "13": 2,
+    "14": 19,
+    "15": 24,
+    "16": 68,
+    "17": 77,
+    "18": 66,
+    "19": 17,
+    "2": 6,
+    "3": 5,
+    "4": 10,
+    "5": 7,
+    "6": 4,
+    "7": 48,
+    "8": 7,
+    "9": 50
+  },
+  "source": "results/N212_K44_broad24_window_11575_111574.jsonl",
+  "top_buckets": [
+    {
+      "bucket": 10,
+      "range": [
+        61575,
+        66575
+      ],
+      "unknown_rate": 0.136,
+      "unknowns": 680
+    },
+    {
+      "bucket": 18,
+      "range": [
+        101575,
+        106575
+      ],
+      "unknown_rate": 0.09,
+      "unknowns": 450
+    },
+    {
+      "bucket": 9,
+      "range": [
+        56575,
+        61575
+      ],
+      "unknown_rate": 0.0892,
+      "unknowns": 446
+    },
+    {
+      "bucket": 17,
+      "range": [
+        96575,
+        101575
+      ],
+      "unknown_rate": 0.0866,
+      "unknowns": 433
+    },
+    {
+      "bucket": 16,
+      "range": [
+        91575,
+        96575
+      ],
+      "unknown_rate": 0.0838,
+      "unknowns": 419
+    },
+    {
+      "bucket": 7,
+      "range": [
+        46575,
+        51575
+      ],
+      "unknown_rate": 0.0832,
+      "unknowns": 416
+    },
+    {
+      "bucket": 15,
+      "range": [
+        86575,
+        91575
+      ],
+      "unknown_rate": 0.0682,
+      "unknowns": 341
+    },
+    {
+      "bucket": 0,
+      "range": [
+        11575,
+        16575
+      ],
+      "unknown_rate": 0.0624,
+      "unknowns": 312
+    },
+    {
+      "bucket": 5,
+      "range": [
+        36575,
+        41575
+      ],
+      "unknown_rate": 0.0602,
+      "unknowns": 301
+    },
+    {
+      "bucket": 8,
+      "range": [
+        51575,
+        56575
+      ],
+      "unknown_rate": 0.0594,
+      "unknowns": 297
+    }
+  ],
+  "unknown_total": 6071
+}

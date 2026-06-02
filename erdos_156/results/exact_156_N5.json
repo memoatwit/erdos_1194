@@ -1,0 +1,52 @@
+{
+  "N": 5,
+  "status": "solved",
+  "m": 3,
+  "A": [
+    1,
+    2,
+    4
+  ],
+  "lower_bound_start": 2,
+  "greedy_upper": 3,
+  "greedy_A": [
+    1,
+    2,
+    4
+  ],
+  "profile": {
+    "counts": {
+      "in_A": 3,
+      "existing_difference": 2,
+      "symmetric_collision": 0,
+      "addable": 0
+    },
+    "examples": {
+      "existing_difference": [
+        3,
+        5
+      ],
+      "symmetric_collision": [],
+      "addable": []
+    }
+  },
+  "log": [
+    {
+      "k": 2,
+      "status": "infeasible",
+      "nodes": 15,
+      "leaves": 10,
+      "sidon_prunes": 0,
+      "time_s": 2.9325485229492188e-05
+    },
+    {
+      "k": 3,
+      "status": "feasible",
+      "nodes": 4,
+      "leaves": 1,
+      "sidon_prunes": 1,
+      "time_s": 4.76837158203125e-06
+    }
+  ],
+  "total_time_s": 0.0007040500640869141
+}

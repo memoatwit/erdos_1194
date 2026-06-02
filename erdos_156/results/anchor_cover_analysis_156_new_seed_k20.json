@@ -1,0 +1,2338 @@
+{
+  "B": [
+    0,
+    15,
+    35,
+    38,
+    39,
+    44,
+    46,
+    95,
+    114,
+    136,
+    157,
+    202,
+    238,
+    288,
+    346,
+    373,
+    413,
+    507,
+    594,
+    647
+  ],
+  "core": [
+    0,
+    15,
+    35,
+    38,
+    39,
+    44,
+    46
+  ],
+  "anchors": [
+    95,
+    114,
+    136,
+    157,
+    202,
+    238,
+    288,
+    346,
+    373,
+    413,
+    507,
+    594,
+    647
+  ],
+  "k": 20,
+  "metric": {
+    "interval": [
+      -225,
+      742
+    ],
+    "interval_length": 968,
+    "covered_N": [
+      648,
+      968
+    ],
+    "interval_length_over_k3": 0.121,
+    "covered_end_over_k3": 0.121,
+    "B": [
+      0,
+      15,
+      35,
+      38,
+      39,
+      44,
+      46,
+      95,
+      114,
+      136,
+      157,
+      202,
+      238,
+      288,
+      346,
+      373,
+      413,
+      507,
+      594,
+      647
+    ],
+    "k": 20,
+    "max_B": 647,
+    "W_size": 1470,
+    "admissible_interval_count": 1
+  },
+  "analyzed_interval": [
+    -225,
+    742
+  ],
+  "all_diffs_count": 190,
+  "all_diffs_prefix_from_1": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "core_diffs": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    15,
+    20,
+    23,
+    24,
+    29,
+    31,
+    35,
+    38,
+    39,
+    44,
+    46
+  ],
+  "anchor_or_mixed_diffs_count": 169,
+  "clusters_gap_le_25": [
+    [
+      0,
+      15,
+      35,
+      38,
+      39,
+      44,
+      46
+    ],
+    [
+      95,
+      114,
+      136,
+      157
+    ],
+    [
+      202
+    ],
+    [
+      238
+    ],
+    [
+      288
+    ],
+    [
+      346
+    ],
+    [
+      373
+    ],
+    [
+      413
+    ],
+    [
+      507
+    ],
+    [
+      594
+    ],
+    [
+      647
+    ]
+  ],
+  "uncovered_in_interval": [],
+  "source_event_counts": [
+    [
+      "core_anchor",
+      2789
+    ],
+    [
+      "anchor_anchor",
+      2664
+    ],
+    [
+      "core_core",
+      840
+    ],
+    [
+      "midpoint",
+      91
+    ],
+    [
+      "in_B",
+      20
+    ]
+  ],
+  "point_coverage_counts_by_category": [
+    [
+      "core_anchor",
+      905
+    ],
+    [
+      "anchor_anchor",
+      860
+    ],
+    [
+      "core_core",
+      502
+    ],
+    [
+      "midpoint",
+      91
+    ],
+    [
+      "in_B",
+      20
+    ]
+  ],
+  "anchor_hits_top": [
+    [
+      238,
+      337
+    ],
+    [
+      346,
+      337
+    ],
+    [
+      288,
+      336
+    ],
+    [
+      157,
+      336
+    ],
+    [
+      202,
+      335
+    ],
+    [
+      136,
+      332
+    ],
+    [
+      373,
+      332
+    ],
+    [
+      114,
+      330
+    ],
+    [
+      413,
+      327
+    ],
+    [
+      95,
+      326
+    ],
+    [
+      44,
+      311
+    ],
+    [
+      46,
+      311
+    ],
+    [
+      35,
+      310
+    ],
+    [
+      38,
+      310
+    ],
+    [
+      39,
+      310
+    ],
+    [
+      15,
+      301
+    ],
+    [
+      507,
+      299
+    ],
+    [
+      0,
+      297
+    ],
+    [
+      594,
+      270
+    ],
+    [
+      647,
+      246
+    ]
+  ],
+  "diff_hits_top": [
+    [
+      95,
+      40
+    ],
+    [
+      94,
+      40
+    ],
+    [
+      92,
+      40
+    ],
+    [
+      90,
+      40
+    ],
+    [
+      88,
+      40
+    ],
+    [
+      87,
+      40
+    ],
+    [
+      86,
+      40
+    ],
+    [
+      85,
+      40
+    ],
+    [
+      81,
+      40
+    ],
+    [
+      80,
+      40
+    ],
+    [
+      79,
+      40
+    ],
+    [
+      76,
+      40
+    ],
+    [
+      75,
+      40
+    ],
+    [
+      70,
+      40
+    ],
+    [
+      68,
+      40
+    ],
+    [
+      67,
+      40
+    ],
+    [
+      66,
+      40
+    ],
+    [
+      62,
+      40
+    ],
+    [
+      60,
+      40
+    ],
+    [
+      58,
+      40
+    ],
+    [
+      57,
+      40
+    ],
+    [
+      56,
+      40
+    ],
+    [
+      53,
+      40
+    ],
+    [
+      51,
+      40
+    ],
+    [
+      50,
+      40
+    ],
+    [
+      49,
+      40
+    ],
+    [
+      46,
+      40
+    ],
+    [
+      45,
+      40
+    ],
+    [
+      44,
+      40
+    ],
+    [
+      43,
+      40
+    ],
+    [
+      41,
+      40
+    ],
+    [
+      40,
+      40
+    ],
+    [
+      39,
+      40
+    ],
+    [
+      38,
+      40
+    ],
+    [
+      36,
+      40
+    ],
+    [
+      35,
+      40
+    ],
+    [
+      31,
+      40
+    ],
+    [
+      29,
+      40
+    ],
+    [
+      27,
+      40
+    ],
+    [
+      24,
+      40
+    ]
+  ],
+  "low_multiplicity_sample": [
+    {
+      "x": -225,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 238,
+          "diff": 463,
+          "sign": "-",
+          "pair": [
+            44,
+            507
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 44,
+          "diff": 269,
+          "sign": "-",
+          "pair": [
+            238,
+            507
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": -224,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 114,
+          "diff": 338,
+          "sign": "-",
+          "pair": [
+            35,
+            373
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 35,
+          "diff": 259,
+          "sign": "-",
+          "pair": [
+            114,
+            373
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": -222,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 136,
+          "diff": 358,
+          "sign": "-",
+          "pair": [
+            15,
+            373
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 15,
+          "diff": 237,
+          "sign": "-",
+          "pair": [
+            136,
+            373
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": -208,
+      "diff_source_count": 1,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 15,
+          "diff": 223,
+          "sign": "-",
+          "pair": [
+            15,
+            238
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": -201,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 157,
+          "diff": 358,
+          "sign": "-",
+          "pair": [
+            15,
+            373
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 15,
+          "diff": 216,
+          "sign": "-",
+          "pair": [
+            157,
+            373
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": -197,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 114,
+          "diff": 311,
+          "sign": "-",
+          "pair": [
+            35,
+            346
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 35,
+          "diff": 232,
+          "sign": "-",
+          "pair": [
+            114,
+            346
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": -189,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 157,
+          "diff": 346,
+          "sign": "-",
+          "pair": [
+            0,
+            346
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 0,
+          "diff": 189,
+          "sign": "-",
+          "pair": [
+            157,
+            346
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": -180,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 288,
+          "diff": 468,
+          "sign": "-",
+          "pair": [
+            39,
+            507
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 39,
+          "diff": 219,
+          "sign": "-",
+          "pair": [
+            288,
+            507
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": -176,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 202,
+          "diff": 378,
+          "sign": "-",
+          "pair": [
+            35,
+            413
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 35,
+          "diff": 211,
+          "sign": "-",
+          "pair": [
+            202,
+            413
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": -169,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 202,
+          "diff": 371,
+          "sign": "-",
+          "pair": [
+            136,
+            507
+          ],
+          "diff_type": "anchor_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 136,
+          "diff": 305,
+          "sign": "-",
+          "pair": [
+            202,
+            507
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": -168,
+      "diff_source_count": 1,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 35,
+          "diff": 203,
+          "sign": "-",
+          "pair": [
+            35,
+            238
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": -162,
+      "diff_source_count": 1,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 38,
+          "diff": 200,
+          "sign": "-",
+          "pair": [
+            38,
+            238
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": -151,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 157,
+          "diff": 308,
+          "sign": "-",
+          "pair": [
+            38,
+            346
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 38,
+          "diff": 189,
+          "sign": "-",
+          "pair": [
+            157,
+            346
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": -147,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 95,
+          "diff": 242,
+          "sign": "-",
+          "pair": [
+            46,
+            288
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 46,
+          "diff": 193,
+          "sign": "-",
+          "pair": [
+            95,
+            288
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": -138,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 373,
+          "diff": 511,
+          "sign": "-",
+          "pair": [
+            136,
+            647
+          ],
+          "diff_type": "anchor_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 136,
+          "diff": 274,
+          "sign": "-",
+          "pair": [
+            373,
+            647
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": -130,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 114,
+          "diff": 244,
+          "sign": "-",
+          "pair": [
+            44,
+            288
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 44,
+          "diff": 174,
+          "sign": "-",
+          "pair": [
+            114,
+            288
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": -111,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 46,
+          "diff": 157,
+          "sign": "-",
+          "pair": [
+            0,
+            157
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 0,
+          "diff": 111,
+          "sign": "-",
+          "pair": [
+            46,
+            157
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": -82,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 39,
+          "diff": 121,
+          "sign": "-",
+          "pair": [
+            15,
+            136
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 15,
+          "diff": 97,
+          "sign": "-",
+          "pair": [
+            39,
+            136
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": -65,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 15,
+          "diff": 80,
+          "sign": "-",
+          "pair": [
+            15,
+            95
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 46,
+          "diff": 111,
+          "sign": "-",
+          "pair": [
+            46,
+            157
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": -34,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 46,
+          "diff": 80,
+          "sign": "-",
+          "pair": [
+            15,
+            95
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 15,
+          "diff": 49,
+          "sign": "-",
+          "pair": [
+            46,
+            95
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": -33,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 46,
+          "diff": 79,
+          "sign": "-",
+          "pair": [
+            35,
+            114
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 35,
+          "diff": 68,
+          "sign": "-",
+          "pair": [
+            46,
+            114
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": 361,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 346,
+          "diff": 15,
+          "sign": "+",
+          "pair": [
+            0,
+            15
+          ],
+          "diff_type": "core_core"
+        },
+        {
+          "kind": "diff",
+          "anchor": 15,
+          "diff": 346,
+          "sign": "+",
+          "pair": [
+            0,
+            346
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": 379,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 373,
+          "diff": 6,
+          "sign": "+",
+          "pair": [
+            38,
+            44
+          ],
+          "diff_type": "core_core"
+        },
+        {
+          "kind": "diff",
+          "anchor": 44,
+          "diff": 335,
+          "sign": "+",
+          "pair": [
+            38,
+            373
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": 429,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 373,
+          "diff": 56,
+          "sign": "+",
+          "pair": [
+            39,
+            95
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 95,
+          "diff": 334,
+          "sign": "+",
+          "pair": [
+            39,
+            373
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": 446,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 288,
+          "diff": 158,
+          "sign": "+",
+          "pair": [
+            44,
+            202
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 202,
+          "diff": 244,
+          "sign": "+",
+          "pair": [
+            44,
+            288
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": 474,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 373,
+          "diff": 101,
+          "sign": "+",
+          "pair": [
+            35,
+            136
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 136,
+          "diff": 338,
+          "sign": "+",
+          "pair": [
+            35,
+            373
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": 477,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 346,
+          "diff": 131,
+          "sign": "+",
+          "pair": [
+            157,
+            288
+          ],
+          "diff_type": "anchor_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 288,
+          "diff": 189,
+          "sign": "+",
+          "pair": [
+            157,
+            346
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": 478,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 507,
+          "diff": 29,
+          "sign": "-",
+          "pair": [
+            15,
+            44
+          ],
+          "diff_type": "core_core"
+        },
+        {
+          "kind": "diff",
+          "anchor": 15,
+          "diff": 463,
+          "sign": "+",
+          "pair": [
+            44,
+            507
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": 479,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 413,
+          "diff": 66,
+          "sign": "+",
+          "pair": [
+            136,
+            202
+          ],
+          "diff_type": "anchor_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 202,
+          "diff": 277,
+          "sign": "+",
+          "pair": [
+            136,
+            413
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": 485,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 507,
+          "diff": 22,
+          "sign": "-",
+          "pair": [
+            114,
+            136
+          ],
+          "diff_type": "anchor_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 114,
+          "diff": 371,
+          "sign": "+",
+          "pair": [
+            136,
+            507
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": 517,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 373,
+          "diff": 144,
+          "sign": "+",
+          "pair": [
+            202,
+            346
+          ],
+          "diff_type": "anchor_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 346,
+          "diff": 171,
+          "sign": "+",
+          "pair": [
+            202,
+            373
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": 519,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 594,
+          "diff": 75,
+          "sign": "-",
+          "pair": [
+            39,
+            114
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 39,
+          "diff": 480,
+          "sign": "+",
+          "pair": [
+            114,
+            594
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": 521,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 413,
+          "diff": 108,
+          "sign": "+",
+          "pair": [
+            238,
+            346
+          ],
+          "diff_type": "anchor_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 346,
+          "diff": 175,
+          "sign": "+",
+          "pair": [
+            238,
+            413
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": 523,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 647,
+          "diff": 124,
+          "sign": "-",
+          "pair": [
+            114,
+            238
+          ],
+          "diff_type": "anchor_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 114,
+          "diff": 409,
+          "sign": "+",
+          "pair": [
+            238,
+            647
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": 541,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 288,
+          "diff": 253,
+          "sign": "+",
+          "pair": [
+            35,
+            288
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 594,
+          "diff": 53,
+          "sign": "-",
+          "pair": [
+            594,
+            647
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": 542,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 507,
+          "diff": 35,
+          "sign": "+",
+          "pair": [
+            0,
+            35
+          ],
+          "diff_type": "core_core"
+        },
+        {
+          "kind": "diff",
+          "anchor": 35,
+          "diff": 507,
+          "sign": "+",
+          "pair": [
+            0,
+            507
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": 554,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 594,
+          "diff": 40,
+          "sign": "-",
+          "pair": [
+            373,
+            413
+          ],
+          "diff_type": "anchor_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 373,
+          "diff": 181,
+          "sign": "+",
+          "pair": [
+            413,
+            594
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": 564,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 507,
+          "diff": 57,
+          "sign": "+",
+          "pair": [
+            38,
+            95
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 95,
+          "diff": 469,
+          "sign": "+",
+          "pair": [
+            38,
+            507
+          ],
+          "diff_type": "core_anchor"
+        }
+      ]
+    },
+    {
+      "x": 568,
+      "diff_source_count": 2,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 647,
+          "diff": 79,
+          "sign": "-",
+          "pair": [
+            35,
+            114
+          ],
+          "diff_type": "core_anchor"
+        },
+        {
+          "kind": "diff",
+          "anchor": 35,
+          "diff": 533,
+          "sign": "+",
+          "pair": [
+            114,
+            647
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    },
+    {
+      "x": 578,
+      "diff_source_count": 1,
+      "sources": [
+        {
+          "kind": "diff",
+          "anchor": 346,
+          "diff": 232,
+          "sign": "+",
+          "pair": [
+            114,
+            346
+          ],
+          "diff_type": "anchor_anchor"
+        }
+      ]
+    }
+  ],
+  "low_multiplicity_count": 91,
+  "core_diff_only_intervals": [
+    [
+      30,
+      30
+    ]
+  ],
+  "edge_sources": {
+    "-230": [
+      {
+        "kind": "diff",
+        "anchor": 238,
+        "diff": 468,
+        "sign": "-",
+        "pair": [
+          39,
+          507
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 373,
+        "diff": 603,
+        "sign": "-",
+        "pair": [
+          44,
+          647
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 39,
+        "diff": 269,
+        "sign": "-",
+        "pair": [
+          238,
+          507
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 44,
+        "diff": 274,
+        "sign": "-",
+        "pair": [
+          373,
+          647
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "-229": [
+      {
+        "kind": "diff",
+        "anchor": 44,
+        "diff": 273,
+        "sign": "-",
+        "pair": [
+          15,
+          288
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 15,
+        "diff": 244,
+        "sign": "-",
+        "pair": [
+          44,
+          288
+        ],
+        "diff_type": "core_anchor"
+      }
+    ],
+    "-228": [
+      {
+        "kind": "diff",
+        "anchor": 373,
+        "diff": 601,
+        "sign": "-",
+        "pair": [
+          46,
+          647
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 46,
+        "diff": 274,
+        "sign": "-",
+        "pair": [
+          373,
+          647
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "-227": [
+      {
+        "kind": "diff",
+        "anchor": 46,
+        "diff": 273,
+        "sign": "-",
+        "pair": [
+          15,
+          288
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 15,
+        "diff": 242,
+        "sign": "-",
+        "pair": [
+          46,
+          288
+        ],
+        "diff_type": "core_anchor"
+      }
+    ],
+    "-226": [],
+    "-225": [
+      {
+        "kind": "diff",
+        "anchor": 238,
+        "diff": 463,
+        "sign": "-",
+        "pair": [
+          44,
+          507
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 44,
+        "diff": 269,
+        "sign": "-",
+        "pair": [
+          238,
+          507
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "-224": [
+      {
+        "kind": "diff",
+        "anchor": 114,
+        "diff": 338,
+        "sign": "-",
+        "pair": [
+          35,
+          373
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 35,
+        "diff": 259,
+        "sign": "-",
+        "pair": [
+          114,
+          373
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "-223": [
+      {
+        "kind": "diff",
+        "anchor": 15,
+        "diff": 238,
+        "sign": "-",
+        "pair": [
+          0,
+          238
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 0,
+        "diff": 223,
+        "sign": "-",
+        "pair": [
+          15,
+          238
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 238,
+        "diff": 461,
+        "sign": "-",
+        "pair": [
+          46,
+          507
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 95,
+        "diff": 318,
+        "sign": "-",
+        "pair": [
+          95,
+          413
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 288,
+        "diff": 511,
+        "sign": "-",
+        "pair": [
+          136,
+          647
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 46,
+        "diff": 269,
+        "sign": "-",
+        "pair": [
+          238,
+          507
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 136,
+        "diff": 359,
+        "sign": "-",
+        "pair": [
+          288,
+          647
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "-222": [
+      {
+        "kind": "diff",
+        "anchor": 136,
+        "diff": 358,
+        "sign": "-",
+        "pair": [
+          15,
+          373
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 15,
+        "diff": 237,
+        "sign": "-",
+        "pair": [
+          136,
+          373
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "-221": [
+      {
+        "kind": "diff",
+        "anchor": 373,
+        "diff": 594,
+        "sign": "-",
+        "pair": [
+          0,
+          594
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 157,
+        "diff": 378,
+        "sign": "-",
+        "pair": [
+          35,
+          413
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 114,
+        "diff": 335,
+        "sign": "-",
+        "pair": [
+          38,
+          373
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 38,
+        "diff": 259,
+        "sign": "-",
+        "pair": [
+          114,
+          373
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 35,
+        "diff": 256,
+        "sign": "-",
+        "pair": [
+          157,
+          413
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 0,
+        "diff": 221,
+        "sign": "-",
+        "pair": [
+          373,
+          594
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "-220": [
+      {
+        "kind": "diff",
+        "anchor": 114,
+        "diff": 334,
+        "sign": "-",
+        "pair": [
+          39,
+          373
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 39,
+        "diff": 259,
+        "sign": "-",
+        "pair": [
+          114,
+          373
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 238,
+        "diff": 458,
+        "sign": "-",
+        "pair": [
+          136,
+          594
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 136,
+        "diff": 356,
+        "sign": "-",
+        "pair": [
+          238,
+          594
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "737": [
+      {
+        "kind": "diff",
+        "anchor": 647,
+        "diff": 90,
+        "sign": "+",
+        "pair": [
+          46,
+          136
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 136,
+        "diff": 601,
+        "sign": "+",
+        "pair": [
+          46,
+          647
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 594,
+        "diff": 143,
+        "sign": "+",
+        "pair": [
+          95,
+          238
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 238,
+        "diff": 499,
+        "sign": "+",
+        "pair": [
+          95,
+          594
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "738": [
+      {
+        "kind": "diff",
+        "anchor": 594,
+        "diff": 144,
+        "sign": "+",
+        "pair": [
+          202,
+          346
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 346,
+        "diff": 392,
+        "sign": "+",
+        "pair": [
+          202,
+          594
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "739": [
+      {
+        "kind": "diff",
+        "anchor": 647,
+        "diff": 92,
+        "sign": "+",
+        "pair": [
+          44,
+          136
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 136,
+        "diff": 603,
+        "sign": "+",
+        "pair": [
+          44,
+          647
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 507,
+        "diff": 232,
+        "sign": "+",
+        "pair": [
+          114,
+          346
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 346,
+        "diff": 393,
+        "sign": "+",
+        "pair": [
+          114,
+          507
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "740": [
+      {
+        "kind": "diff",
+        "anchor": 413,
+        "diff": 327,
+        "sign": "+",
+        "pair": [
+          46,
+          373
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 373,
+        "diff": 367,
+        "sign": "+",
+        "pair": [
+          46,
+          413
+        ],
+        "diff_type": "core_anchor"
+      }
+    ],
+    "741": [
+      {
+        "kind": "diff",
+        "anchor": 647,
+        "diff": 94,
+        "sign": "+",
+        "pair": [
+          413,
+          507
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 507,
+        "diff": 234,
+        "sign": "+",
+        "pair": [
+          413,
+          647
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "742": [
+      {
+        "kind": "diff",
+        "anchor": 647,
+        "diff": 95,
+        "sign": "+",
+        "pair": [
+          0,
+          95
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 95,
+        "diff": 647,
+        "sign": "+",
+        "pair": [
+          0,
+          647
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 413,
+        "diff": 329,
+        "sign": "+",
+        "pair": [
+          44,
+          373
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 373,
+        "diff": 369,
+        "sign": "+",
+        "pair": [
+          44,
+          413
+        ],
+        "diff_type": "core_anchor"
+      }
+    ],
+    "743": [],
+    "744": [
+      {
+        "kind": "diff",
+        "anchor": 413,
+        "diff": 331,
+        "sign": "+",
+        "pair": [
+          15,
+          346
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 346,
+        "diff": 398,
+        "sign": "+",
+        "pair": [
+          15,
+          413
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 647,
+        "diff": 97,
+        "sign": "+",
+        "pair": [
+          39,
+          136
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 136,
+        "diff": 608,
+        "sign": "+",
+        "pair": [
+          39,
+          647
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 507,
+        "diff": 237,
+        "sign": "+",
+        "pair": [
+          136,
+          373
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 373,
+        "diff": 371,
+        "sign": "+",
+        "pair": [
+          136,
+          507
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "745": [
+      {
+        "kind": "diff",
+        "anchor": 507,
+        "diff": 238,
+        "sign": "+",
+        "pair": [
+          0,
+          238
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 238,
+        "diff": 507,
+        "sign": "+",
+        "pair": [
+          0,
+          507
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 647,
+        "diff": 98,
+        "sign": "+",
+        "pair": [
+          38,
+          136
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 136,
+        "diff": 609,
+        "sign": "+",
+        "pair": [
+          38,
+          647
+        ],
+        "diff_type": "core_anchor"
+      }
+    ],
+    "746": [
+      {
+        "kind": "diff",
+        "anchor": 373,
+        "diff": 373,
+        "sign": "+",
+        "pair": [
+          0,
+          373
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 647,
+        "diff": 99,
+        "sign": "+",
+        "pair": [
+          15,
+          114
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 114,
+        "diff": 632,
+        "sign": "+",
+        "pair": [
+          15,
+          647
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 594,
+        "diff": 152,
+        "sign": "+",
+        "pair": [
+          136,
+          288
+        ],
+        "diff_type": "anchor_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 288,
+        "diff": 458,
+        "sign": "+",
+        "pair": [
+          136,
+          594
+        ],
+        "diff_type": "anchor_anchor"
+      }
+    ],
+    "747": [
+      {
+        "kind": "diff",
+        "anchor": 413,
+        "diff": 334,
+        "sign": "+",
+        "pair": [
+          39,
+          373
+        ],
+        "diff_type": "core_anchor"
+      },
+      {
+        "kind": "diff",
+        "anchor": 373,
+        "diff": 374,
+        "sign": "+",
+        "pair": [
+          39,
+          413
+        ],
+        "diff_type": "core_anchor"
+      }
+    ]
+  }
+}

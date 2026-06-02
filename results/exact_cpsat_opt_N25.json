@@ -1,0 +1,19 @@
+{
+  "status": "solved",
+  "M_opt": 46,
+  "A_opt": [
+    1,
+    3,
+    11,
+    25,
+    26,
+    30,
+    37,
+    43,
+    46
+  ],
+  "time_s": 10.819403171539307,
+  "best_bound": 46.0,
+  "solver_status": "OPTIMAL",
+  "N": 25
+}

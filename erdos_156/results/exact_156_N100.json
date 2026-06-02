@@ -1,0 +1,219 @@
+{
+  "N": 100,
+  "status": "solved",
+  "m": 7,
+  "A": [
+    8,
+    42,
+    44,
+    48,
+    56,
+    59,
+    83
+  ],
+  "lower_bound_start": 5,
+  "greedy_upper": 7,
+  "greedy_A": [
+    8,
+    42,
+    44,
+    48,
+    56,
+    59,
+    83
+  ],
+  "profile": {
+    "counts": {
+      "in_A": 7,
+      "existing_difference": 92,
+      "symmetric_collision": 1,
+      "addable": 0
+    },
+    "examples": {
+      "existing_difference": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "symmetric_collision": [
+        26
+      ],
+      "addable": []
+    }
+  },
+  "log": [
+    {
+      "k": 5,
+      "status": "infeasible",
+      "method": "v3-lex",
+      "nodes": 75494,
+      "leaves": 0,
+      "sidon_prunes": 166546,
+      "coverage_prunes": 2437894,
+      "time_s": 0.642321
+    },
+    {
+      "k": 6,
+      "status": "infeasible",
+      "method": "v3-coverage",
+      "nodes": 56911242,
+      "leaves": 0,
+      "sidon_prunes": 253619963,
+      "coverage_prunes": 612244940,
+      "time_s": 229.097
+    },
+    {
+      "k": 7,
+      "status": "timeout",
+      "method": "v3-coverage",
+      "nodes": 171704320,
+      "leaves": 0,
+      "sidon_prunes": 1048892273,
+      "coverage_prunes": 1331685319,
+      "time_s": 600.347
+    },
+    {
+      "k": 7,
+      "status": "infeasible",
+      "method": "v4-first=1",
+      "nodes": 41778866,
+      "leaves": 0,
+      "sidon_prunes": 255420897,
+      "coverage_prunes": 332558276,
+      "time_s": 149.753
+    },
+    {
+      "k": 7,
+      "status": "infeasible",
+      "method": "v4-first=2",
+      "nodes": 39485099,
+      "leaves": 0,
+      "sidon_prunes": 241153447,
+      "coverage_prunes": 307340628,
+      "time_s": 138.777
+    },
+    {
+      "k": 7,
+      "status": "infeasible",
+      "method": "v4-first=3",
+      "nodes": 37210554,
+      "leaves": 0,
+      "sidon_prunes": 226357498,
+      "coverage_prunes": 284926024,
+      "time_s": 130.223
+    },
+    {
+      "k": 7,
+      "status": "infeasible",
+      "method": "v4-first=4",
+      "nodes": 35111697,
+      "leaves": 0,
+      "sidon_prunes": 213318122,
+      "coverage_prunes": 262853704,
+      "time_s": 120.74
+    },
+    {
+      "k": 7,
+      "status": "infeasible",
+      "method": "v4-first=5",
+      "nodes": 33042868,
+      "leaves": 0,
+      "sidon_prunes": 200074879,
+      "coverage_prunes": 243054080,
+      "time_s": 112.091
+    },
+    {
+      "k": 7,
+      "status": "infeasible",
+      "method": "v4-first=6",
+      "nodes": 31145341,
+      "leaves": 0,
+      "sidon_prunes": 188239287,
+      "coverage_prunes": 223744332,
+      "time_s": 103.625
+    },
+    {
+      "k": 7,
+      "status": "infeasible",
+      "method": "v4-first=7",
+      "nodes": 29260392,
+      "leaves": 0,
+      "sidon_prunes": 176138058,
+      "coverage_prunes": 206585170,
+      "time_s": 95.374
+    },
+    {
+      "k": 7,
+      "status": "feasible",
+      "method": "v4-first=8",
+      "nodes": 17274089,
+      "leaves": 1,
+      "sidon_prunes": 107288738,
+      "coverage_prunes": 130816382,
+      "time_s": 59.6794,
+      "A": [
+        8,
+        42,
+        44,
+        48,
+        56,
+        59,
+        83
+      ]
+    },
+    {
+      "k": 7,
+      "status": "feasible",
+      "method": "v4-first=9",
+      "nodes": 16287539,
+      "leaves": 1,
+      "sidon_prunes": 100700725,
+      "coverage_prunes": 121108150,
+      "time_s": 55.4254,
+      "A": [
+        9,
+        43,
+        45,
+        49,
+        57,
+        60,
+        84
+      ]
+    },
+    {
+      "k": 7,
+      "status": "infeasible",
+      "method": "v4-first=10",
+      "nodes": 24275187,
+      "leaves": 0,
+      "sidon_prunes": 145094217,
+      "coverage_prunes": 159984564,
+      "time_s": 75.0811
+    },
+    {
+      "k": 8,
+      "status": "feasible",
+      "method": "hunt",
+      "trials": 33,
+      "A": [
+        4,
+        26,
+        37,
+        38,
+        43,
+        57,
+        64,
+        73
+      ],
+      "time_s": 0.7221670150756836
+    }
+  ],
+  "total_time_s": 1140.0017209999999
+}

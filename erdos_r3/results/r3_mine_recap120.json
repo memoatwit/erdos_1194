@@ -1,0 +1,1201 @@
+{
+  "populations": [
+    {
+      "label": "recap120_survivors",
+      "paths": [
+        "results/N212_K44_broad24_recap120_sample100.jsonl"
+      ],
+      "n_rows": 100,
+      "n_unk": 69,
+      "n_inf": 31,
+      "n_feas": 0,
+      "hot_window": [
+        67,
+        91
+      ],
+      "single_pin": [
+        {
+          "value": 54,
+          "unk_in": 12,
+          "unk_out": 57,
+          "inf_in": 15,
+          "inf_out": 16,
+          "unk_out_rate": 0.8260869565217391,
+          "inf_out_rate": 0.5161290322580645,
+          "log_odds_out_minus_in": 1.4635359465137154
+        },
+        {
+          "value": 70,
+          "unk_in": 6,
+          "unk_out": 63,
+          "inf_in": 8,
+          "inf_out": 23,
+          "unk_out_rate": 0.9130434782608695,
+          "inf_out_rate": 0.7419354838709677,
+          "log_odds_out_minus_in": 1.2623034713432122
+        },
+        {
+          "value": 68,
+          "unk_in": 9,
+          "unk_out": 60,
+          "inf_in": 9,
+          "inf_out": 22,
+          "unk_out_rate": 0.8695652173913043,
+          "inf_out_rate": 0.7096774193548387,
+          "log_odds_out_minus_in": 0.9891280558264214
+        },
+        {
+          "value": 48,
+          "unk_in": 18,
+          "unk_out": 51,
+          "inf_in": 14,
+          "inf_out": 17,
+          "unk_out_rate": 0.7391304347826086,
+          "inf_out_rate": 0.5483870967741935,
+          "log_odds_out_minus_in": 0.8357588440824718
+        },
+        {
+          "value": 31,
+          "unk_in": 0,
+          "unk_out": 69,
+          "inf_in": 0,
+          "inf_out": 31,
+          "unk_out_rate": 1.0,
+          "inf_out_rate": 1.0,
+          "log_odds_out_minus_in": 0.7913392067391591
+        },
+        {
+          "value": 52,
+          "unk_in": 20,
+          "unk_out": 49,
+          "inf_in": 5,
+          "inf_out": 26,
+          "unk_out_rate": 0.7101449275362319,
+          "inf_out_rate": 0.8387096774193549,
+          "log_odds_out_minus_in": -0.6908488573234692
+        },
+        {
+          "value": 142,
+          "unk_in": 12,
+          "unk_out": 57,
+          "inf_in": 9,
+          "inf_out": 22,
+          "unk_out_rate": 0.8260869565217391,
+          "inf_out_rate": 0.7096774193548387,
+          "log_odds_out_minus_in": 0.66383279289117
+        },
+        {
+          "value": 57,
+          "unk_in": 18,
+          "unk_out": 51,
+          "inf_in": 12,
+          "inf_out": 19,
+          "unk_out_rate": 0.7391304347826086,
+          "inf_out_rate": 0.6129032258064516,
+          "log_odds_out_minus_in": 0.5791252543239656
+        },
+        {
+          "value": 76,
+          "unk_in": 15,
+          "unk_out": 54,
+          "inf_in": 4,
+          "inf_out": 27,
+          "unk_out_rate": 0.782608695652174,
+          "inf_out_rate": 0.8709677419354839,
+          "log_odds_out_minus_in": -0.552747930152254
+        },
+        {
+          "value": 67,
+          "unk_in": 18,
+          "unk_out": 51,
+          "inf_in": 5,
+          "inf_out": 26,
+          "unk_out_rate": 0.7391304347826086,
+          "inf_out_rate": 0.8387096774193549,
+          "log_odds_out_minus_in": -0.5485855651683399
+        },
+        {
+          "value": 91,
+          "unk_in": 15,
+          "unk_out": 54,
+          "inf_in": 10,
+          "inf_out": 21,
+          "unk_out_rate": 0.782608695652174,
+          "inf_out_rate": 0.6774193548387096,
+          "log_odds_out_minus_in": 0.5406829997738581
+        },
+        {
+          "value": 63,
+          "unk_in": 26,
+          "unk_out": 43,
+          "inf_in": 8,
+          "inf_out": 23,
+          "unk_out_rate": 0.6231884057971014,
+          "inf_out_rate": 0.7419354838709677,
+          "log_odds_out_minus_in": -0.5213180525513806
+        },
+        {
+          "value": 55,
+          "unk_in": 14,
+          "unk_out": 55,
+          "inf_in": 9,
+          "inf_out": 22,
+          "unk_out_rate": 0.7971014492753623,
+          "inf_out_rate": 0.7096774193548387,
+          "log_odds_out_minus_in": 0.48001086072198085
+        },
+        {
+          "value": 75,
+          "unk_in": 13,
+          "unk_out": 56,
+          "inf_in": 7,
+          "inf_out": 24,
+          "unk_out_rate": 0.8115942028985508,
+          "inf_out_rate": 0.7741935483870968,
+          "log_odds_out_minus_in": 0.24778085569959496
+        },
+        {
+          "value": 145,
+          "unk_in": 0,
+          "unk_out": 0,
+          "inf_in": 0,
+          "inf_out": 0,
+          "unk_out_rate": 0.0,
+          "inf_out_rate": 0.0,
+          "log_odds_out_minus_in": 0.0
+        },
+        {
+          "value": 150,
+          "unk_in": 0,
+          "unk_out": 0,
+          "inf_in": 0,
+          "inf_out": 0,
+          "unk_out_rate": 0.0,
+          "inf_out_rate": 0.0,
+          "log_odds_out_minus_in": 0.0
+        },
+        {
+          "value": 152,
+          "unk_in": 0,
+          "unk_out": 0,
+          "inf_in": 0,
+          "inf_out": 0,
+          "unk_out_rate": 0.0,
+          "inf_out_rate": 0.0,
+          "log_odds_out_minus_in": 0.0
+        },
+        {
+          "value": 156,
+          "unk_in": 0,
+          "unk_out": 0,
+          "inf_in": 0,
+          "inf_out": 0,
+          "unk_out_rate": 0.0,
+          "inf_out_rate": 0.0,
+          "log_odds_out_minus_in": 0.0
+        },
+        {
+          "value": 161,
+          "unk_in": 0,
+          "unk_out": 0,
+          "inf_in": 0,
+          "inf_out": 0,
+          "unk_out_rate": 0.0,
+          "inf_out_rate": 0.0,
+          "log_odds_out_minus_in": 0.0
+        },
+        {
+          "value": 164,
+          "unk_in": 0,
+          "unk_out": 0,
+          "inf_in": 0,
+          "inf_out": 0,
+          "unk_out_rate": 0.0,
+          "inf_out_rate": 0.0,
+          "log_odds_out_minus_in": 0.0
+        },
+        {
+          "value": 165,
+          "unk_in": 0,
+          "unk_out": 0,
+          "inf_in": 0,
+          "inf_out": 0,
+          "unk_out_rate": 0.0,
+          "inf_out_rate": 0.0,
+          "log_odds_out_minus_in": 0.0
+        },
+        {
+          "value": 168,
+          "unk_in": 0,
+          "unk_out": 0,
+          "inf_in": 0,
+          "inf_out": 0,
+          "unk_out_rate": 0.0,
+          "inf_out_rate": 0.0,
+          "log_odds_out_minus_in": 0.0
+        },
+        {
+          "value": 181,
+          "unk_in": 0,
+          "unk_out": 0,
+          "inf_in": 0,
+          "inf_out": 0,
+          "unk_out_rate": 0.0,
+          "inf_out_rate": 0.0,
+          "log_odds_out_minus_in": 0.0
+        },
+        {
+          "value": 182,
+          "unk_in": 0,
+          "unk_out": 0,
+          "inf_in": 0,
+          "inf_out": 0,
+          "unk_out_rate": 0.0,
+          "inf_out_rate": 0.0,
+          "log_odds_out_minus_in": 0.0
+        }
+      ],
+      "pairs": [
+        {
+          "pattern": [
+            {
+              "value": 75,
+              "state": "IN"
+            },
+            {
+              "value": 63,
+              "state": "IN"
+            }
+          ],
+          "unk_with": 6,
+          "unk_without": 63,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.08695652173913043,
+          "inf_rate": 0.0,
+          "log_odds": 1.8638969973944781
+        },
+        {
+          "pattern": [
+            {
+              "value": 70,
+              "state": "OUT"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 51,
+          "unk_without": 18,
+          "inf_with": 10,
+          "inf_without": 21,
+          "unk_rate": 0.7391304347826086,
+          "inf_rate": 0.3225806451612903,
+          "log_odds": 1.7404887535555507
+        },
+        {
+          "pattern": [
+            {
+              "value": 142,
+              "state": "OUT"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 46,
+          "unk_without": 23,
+          "inf_with": 8,
+          "inf_without": 23,
+          "unk_rate": 0.6666666666666666,
+          "inf_rate": 0.25806451612903225,
+          "log_odds": 1.6993861490970399
+        },
+        {
+          "pattern": [
+            {
+              "value": 91,
+              "state": "IN"
+            },
+            {
+              "value": 63,
+              "state": "IN"
+            }
+          ],
+          "unk_with": 5,
+          "unk_without": 64,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.07246376811594203,
+          "inf_rate": 0.0,
+          "log_odds": 1.6812175948282313
+        },
+        {
+          "pattern": [
+            {
+              "value": 67,
+              "state": "IN"
+            },
+            {
+              "value": 52,
+              "state": "IN"
+            }
+          ],
+          "unk_with": 5,
+          "unk_without": 64,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.07246376811594203,
+          "inf_rate": 0.0,
+          "log_odds": 1.6812175948282313
+        },
+        {
+          "pattern": [
+            {
+              "value": 57,
+              "state": "IN"
+            },
+            {
+              "value": 52,
+              "state": "IN"
+            }
+          ],
+          "unk_with": 5,
+          "unk_without": 64,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.07246376811594203,
+          "inf_rate": 0.0,
+          "log_odds": 1.6812175948282313
+        },
+        {
+          "pattern": [
+            {
+              "value": 67,
+              "state": "IN"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 14,
+          "unk_without": 55,
+          "inf_with": 1,
+          "inf_without": 30,
+          "unk_rate": 0.2028985507246377,
+          "inf_rate": 0.03225806451612903,
+          "log_odds": 1.6700272041793414
+        },
+        {
+          "pattern": [
+            {
+              "value": 55,
+              "state": "OUT"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 45,
+          "unk_without": 24,
+          "inf_with": 9,
+          "inf_without": 22,
+          "unk_rate": 0.6521739130434783,
+          "inf_rate": 0.2903225806451613,
+          "log_odds": 1.4812627190101026
+        },
+        {
+          "pattern": [
+            {
+              "value": 76,
+              "state": "IN"
+            },
+            {
+              "value": 52,
+              "state": "IN"
+            }
+          ],
+          "unk_with": 4,
+          "unk_without": 65,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.057971014492753624,
+          "inf_rate": 0.0,
+          "log_odds": 1.4651619805266007
+        },
+        {
+          "pattern": [
+            {
+              "value": 75,
+              "state": "IN"
+            },
+            {
+              "value": 52,
+              "state": "IN"
+            }
+          ],
+          "unk_with": 4,
+          "unk_without": 65,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.057971014492753624,
+          "inf_rate": 0.0,
+          "log_odds": 1.4651619805266007
+        },
+        {
+          "pattern": [
+            {
+              "value": 76,
+              "state": "IN"
+            },
+            {
+              "value": 63,
+              "state": "IN"
+            }
+          ],
+          "unk_with": 4,
+          "unk_without": 65,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.057971014492753624,
+          "inf_rate": 0.0,
+          "log_odds": 1.4651619805266007
+        },
+        {
+          "pattern": [
+            {
+              "value": 54,
+              "state": "OUT"
+            },
+            {
+              "value": 31,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 57,
+          "unk_without": 12,
+          "inf_with": 16,
+          "inf_without": 15,
+          "unk_rate": 0.8260869565217391,
+          "inf_rate": 0.5161290322580645,
+          "log_odds": 1.4635359465137154
+        },
+        {
+          "pattern": [
+            {
+              "value": 75,
+              "state": "OUT"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 46,
+          "unk_without": 23,
+          "inf_with": 10,
+          "inf_without": 21,
+          "unk_rate": 0.6666666666666666,
+          "inf_rate": 0.3225806451612903,
+          "log_odds": 1.399129569413337
+        },
+        {
+          "pattern": [
+            {
+              "value": 70,
+              "state": "OUT"
+            },
+            {
+              "value": 48,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 47,
+          "unk_without": 22,
+          "inf_with": 11,
+          "inf_without": 20,
+          "unk_rate": 0.6811594202898551,
+          "inf_rate": 0.3548387096774194,
+          "log_odds": 1.3252922526053792
+        },
+        {
+          "pattern": [
+            {
+              "value": 70,
+              "state": "OUT"
+            },
+            {
+              "value": 68,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 54,
+          "unk_without": 15,
+          "inf_with": 15,
+          "inf_without": 16,
+          "unk_rate": 0.782608695652174,
+          "inf_rate": 0.4838709677419355,
+          "log_odds": 1.3198810347253314
+        },
+        {
+          "pattern": [
+            {
+              "value": 70,
+              "state": "OUT"
+            },
+            {
+              "value": 31,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 63,
+          "unk_without": 6,
+          "inf_with": 23,
+          "inf_without": 8,
+          "unk_rate": 0.9130434782608695,
+          "inf_rate": 0.7419354838709677,
+          "log_odds": 1.2623034713432122
+        },
+        {
+          "pattern": [
+            {
+              "value": 91,
+              "state": "OUT"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 46,
+          "unk_without": 23,
+          "inf_with": 11,
+          "inf_without": 20,
+          "unk_rate": 0.6666666666666666,
+          "inf_rate": 0.3548387096774194,
+          "log_odds": 1.2605297422183555
+        },
+        {
+          "pattern": [
+            {
+              "value": 54,
+              "state": "OUT"
+            },
+            {
+              "value": 48,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 41,
+          "unk_without": 28,
+          "inf_with": 9,
+          "inf_without": 22,
+          "unk_rate": 0.5942028985507246,
+          "inf_rate": 0.2903225806451613,
+          "log_odds": 1.2380128505659271
+        },
+        {
+          "pattern": [
+            {
+              "value": 142,
+              "state": "OUT"
+            },
+            {
+              "value": 63,
+              "state": "IN"
+            }
+          ],
+          "unk_with": 20,
+          "unk_without": 49,
+          "inf_with": 3,
+          "inf_without": 28,
+          "unk_rate": 0.2898550724637681,
+          "inf_rate": 0.0967741935483871,
+          "log_odds": 1.2155933353489548
+        },
+        {
+          "pattern": [
+            {
+              "value": 76,
+              "state": "IN"
+            },
+            {
+              "value": 70,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 15,
+          "unk_without": 54,
+          "inf_with": 2,
+          "inf_without": 29,
+          "unk_rate": 0.21739130434782608,
+          "inf_rate": 0.06451612903225806,
+          "log_odds": 1.2107388537276218
+        },
+        {
+          "pattern": [
+            {
+              "value": 76,
+              "state": "IN"
+            },
+            {
+              "value": 67,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 15,
+          "unk_without": 54,
+          "inf_with": 2,
+          "inf_without": 29,
+          "unk_rate": 0.21739130434782608,
+          "inf_rate": 0.06451612903225806,
+          "log_odds": 1.2107388537276218
+        },
+        {
+          "pattern": [
+            {
+              "value": 142,
+              "state": "IN"
+            },
+            {
+              "value": 67,
+              "state": "IN"
+            }
+          ],
+          "unk_with": 3,
+          "unk_without": 66,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.043478260869565216,
+          "inf_rate": 0.0,
+          "log_odds": 1.1986957472250923
+        },
+        {
+          "pattern": [
+            {
+              "value": 76,
+              "state": "IN"
+            },
+            {
+              "value": 142,
+              "state": "IN"
+            }
+          ],
+          "unk_with": 3,
+          "unk_without": 66,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.043478260869565216,
+          "inf_rate": 0.0,
+          "log_odds": 1.1986957472250923
+        },
+        {
+          "pattern": [
+            {
+              "value": 70,
+              "state": "OUT"
+            },
+            {
+              "value": 57,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 47,
+          "unk_without": 22,
+          "inf_with": 12,
+          "inf_without": 19,
+          "unk_rate": 0.6811594202898551,
+          "inf_rate": 0.3870967741935484,
+          "log_odds": 1.1919002230916667
+        },
+        {
+          "pattern": [
+            {
+              "value": 55,
+              "state": "OUT"
+            },
+            {
+              "value": 48,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 40,
+          "unk_without": 29,
+          "inf_with": 9,
+          "inf_without": 22,
+          "unk_rate": 0.5797101449275363,
+          "inf_rate": 0.2903225806451613,
+          "log_odds": 1.1791352213705986
+        }
+      ],
+      "triples": [
+        {
+          "pattern": [
+            {
+              "value": 76,
+              "state": "OUT"
+            },
+            {
+              "value": 67,
+              "state": "IN"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 14,
+          "unk_without": 55,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.2028985507246377,
+          "inf_rate": 0.0,
+          "log_odds": 2.800900355065673
+        },
+        {
+          "pattern": [
+            {
+              "value": 76,
+              "state": "IN"
+            },
+            {
+              "value": 70,
+              "state": "OUT"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 13,
+          "unk_without": 56,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.18840579710144928,
+          "inf_rate": 0.0,
+          "log_odds": 2.7115837736835213
+        },
+        {
+          "pattern": [
+            {
+              "value": 70,
+              "state": "OUT"
+            },
+            {
+              "value": 67,
+              "state": "IN"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 13,
+          "unk_without": 56,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.18840579710144928,
+          "inf_rate": 0.0,
+          "log_odds": 2.7115837736835213
+        },
+        {
+          "pattern": [
+            {
+              "value": 91,
+              "state": "OUT"
+            },
+            {
+              "value": 76,
+              "state": "IN"
+            },
+            {
+              "value": 70,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 12,
+          "unk_without": 57,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.17391304347826086,
+          "inf_rate": 0.0,
+          "log_odds": 2.6170784228964834
+        },
+        {
+          "pattern": [
+            {
+              "value": 67,
+              "state": "IN"
+            },
+            {
+              "value": 55,
+              "state": "OUT"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 11,
+          "unk_without": 58,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.15942028985507245,
+          "inf_rate": 0.0,
+          "log_odds": 2.5164550075229264
+        },
+        {
+          "pattern": [
+            {
+              "value": 91,
+              "state": "OUT"
+            },
+            {
+              "value": 63,
+              "state": "OUT"
+            },
+            {
+              "value": 52,
+              "state": "IN"
+            }
+          ],
+          "unk_with": 10,
+          "unk_without": 59,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.14492753623188406,
+          "inf_rate": 0.0,
+          "log_odds": 2.4085336710034264
+        },
+        {
+          "pattern": [
+            {
+              "value": 75,
+              "state": "IN"
+            },
+            {
+              "value": 57,
+              "state": "OUT"
+            },
+            {
+              "value": 48,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 10,
+          "unk_without": 59,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.14492753623188406,
+          "inf_rate": 0.0,
+          "log_odds": 2.4085336710034264
+        },
+        {
+          "pattern": [
+            {
+              "value": 75,
+              "state": "IN"
+            },
+            {
+              "value": 55,
+              "state": "OUT"
+            },
+            {
+              "value": 48,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 10,
+          "unk_without": 59,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.14492753623188406,
+          "inf_rate": 0.0,
+          "log_odds": 2.4085336710034264
+        },
+        {
+          "pattern": [
+            {
+              "value": 55,
+              "state": "OUT"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            },
+            {
+              "value": 48,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 31,
+          "unk_without": 38,
+          "inf_with": 2,
+          "inf_without": 29,
+          "unk_rate": 0.4492753623188406,
+          "inf_rate": 0.06451612903225806,
+          "log_odds": 2.267428836009468
+        },
+        {
+          "pattern": [
+            {
+              "value": 142,
+              "state": "OUT"
+            },
+            {
+              "value": 70,
+              "state": "OUT"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 41,
+          "unk_without": 28,
+          "inf_with": 4,
+          "inf_without": 27,
+          "unk_rate": 0.5942028985507246,
+          "inf_rate": 0.12903225806451613,
+          "log_odds": 2.185897947858299
+        },
+        {
+          "pattern": [
+            {
+              "value": 68,
+              "state": "IN"
+            },
+            {
+              "value": 57,
+              "state": "OUT"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 8,
+          "unk_without": 61,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.11594202898550725,
+          "inf_rate": 0.0,
+          "log_odds": 2.1641637150753312
+        },
+        {
+          "pattern": [
+            {
+              "value": 67,
+              "state": "IN"
+            },
+            {
+              "value": 63,
+              "state": "IN"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 8,
+          "unk_without": 61,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.11594202898550725,
+          "inf_rate": 0.0,
+          "log_odds": 2.1641637150753312
+        },
+        {
+          "pattern": [
+            {
+              "value": 67,
+              "state": "IN"
+            },
+            {
+              "value": 63,
+              "state": "IN"
+            },
+            {
+              "value": 48,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 8,
+          "unk_without": 61,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.11594202898550725,
+          "inf_rate": 0.0,
+          "log_odds": 2.1641637150753312
+        },
+        {
+          "pattern": [
+            {
+              "value": 142,
+              "state": "OUT"
+            },
+            {
+              "value": 55,
+              "state": "OUT"
+            },
+            {
+              "value": 54,
+              "state": "OUT"
+            }
+          ],
+          "unk_with": 35,
+          "unk_without": 34,
+          "inf_with": 3,
+          "inf_without": 28,
+          "unk_rate": 0.5072463768115942,
+          "inf_rate": 0.0967741935483871,
+          "log_odds": 2.1257144912232926
+        },
+        {
+          "pattern": [
+            {
+              "value": 91,
+              "state": "OUT"
+            },
+            {
+              "value": 67,
+              "state": "IN"
+            },
+            {
+              "value": 57,
+              "state": "IN"
+            }
+          ],
+          "unk_with": 7,
+          "unk_without": 62,
+          "inf_with": 0,
+          "inf_without": 31,
+          "unk_rate": 0.10144927536231885,
+          "inf_rate": 0.0,
+          "log_odds": 2.0228711901914416
+        }
+      ],
+      "hot_window_unk": {
+        "window": [
+          67,
+          91
+        ],
+        "in_count_distribution": {
+          "1": 38,
+          "2": 19,
+          "0": 12
+        },
+        "out_count_distribution": {
+          "5": 38,
+          "4": 19,
+          "6": 12
+        },
+        "in_mean": 1.1014492753623188,
+        "out_mean": 4.898550724637682
+      },
+      "hot_window_inf": {
+        "window": [
+          67,
+          91
+        ],
+        "in_count_distribution": {
+          "1": 14,
+          "2": 10,
+          "0": 4,
+          "3": 3
+        },
+        "out_count_distribution": {
+          "5": 14,
+          "4": 10,
+          "6": 4,
+          "3": 3
+        },
+        "in_mean": 1.3870967741935485,
+        "out_mean": 4.612903225806452
+      },
+      "clusters": [
+        {
+          "size": 68,
+          "member_chunk_ids": [
+            13821,
+            14331,
+            15349,
+            15357,
+            20207,
+            23039,
+            24318,
+            24557,
+            28127,
+            29691,
+            30199,
+            30559,
+            31611,
+            32251,
+            32415,
+            32637,
+            32735,
+            34811,
+            36543,
+            36859,
+            38591,
+            38845,
+            40766,
+            40822,
+            40943,
+            40959,
+            46463,
+            46655,
+            47998,
+            48191,
+            48895,
+            49011,
+            57175,
+            58303,
+            59262,
+            61055,
+            63095,
+            63231,
+            63294,
+            63447,
+            63480,
+            64319,
+            64943,
+            65087,
+            65373,
+            67327,
+            73339,
+            73527,
+            77311,
+            77799,
+            77817,
+            80765,
+            81279,
+            81785,
+            87031,
+            89021,
+            89279,
+            89838,
+            89911,
+            90074,
+            92607,
+            93949,
+            94014,
+            97782,
+            98035,
+            105853,
+            110586,
+            110587
+          ]
+        }
+      ]
+    }
+  ],
+  "hot_window": [
+    67,
+    91
+  ]
+}

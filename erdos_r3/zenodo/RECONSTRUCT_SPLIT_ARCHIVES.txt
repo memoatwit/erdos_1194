@@ -1,0 +1,19 @@
+The Zenodo record stores two large archives as split files to stay within
+upload limits. After downloading all files into one directory, reconstruct them
+with:
+
+  cat r3-212-campaign-v1-drat-part2.tar.part-* > r3-212-campaign-v1-drat-part2.tar
+  cat r3-212-campaign-v1-lrat-32735.tar.part-* > r3-212-campaign-v1-lrat-32735.tar
+
+The reconstructed tar files correspond to the entries named
+`r3-212-campaign-v1-drat-part2.tar` and
+`r3-212-campaign-v1-lrat-32735.tar` in the local upload staging directory.
+
+The other uploaded archives are unsplit:
+
+  r3-212-campaign-v1-core.tar
+  r3-212-campaign-v1-drat-part1.tar
+  r3-212-campaign-v1-lrat-63231.tar
+
+Use MANIFEST.sha256 from the core archive to verify extracted contents after
+reconstructing and unpacking the split archives.
