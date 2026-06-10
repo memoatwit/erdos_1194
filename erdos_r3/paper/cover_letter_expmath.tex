@@ -1,29 +1,248 @@
-\documentclass[11pt]{letter}
-\usepackage[margin=1in]{geometry}
-\usepackage[T1]{fontenc}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
 \usepackage{lmodern}
-\usepackage{hyperref}
-\signature{Mehmet Ergezer}
-\address{Mehmet Ergezer\\Wentworth Institute of Technology\\Boston, MA, USA\\\href{mailto:ergezerm@wit.edu}{ergezerm@wit.edu}}
-\date{\today}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
 
 \begin{document}
 
-\begin{letter}{Editors\\\emph{Experimental Mathematics}}
+\section{Cover letter --- Experimental
+Mathematics}\label{cover-letter-experimental-mathematics}
 
-\opening{Dear Editors,}
+Mehmet Ergezer\\
+Wentworth Institute of Technology\\
+550 Huntington Avenue\\
+Boston, MA 02115, USA\\
+ergezerm@wit.edu\\
+ORCID: 0000-0001-6627-3667
 
-I am pleased to submit the manuscript ``Witness-split + window-cardinality refinement for $r_3(N)$: architecture, empirical results, and a structural hard pocket'' for consideration in \emph{Experimental Mathematics}.
+June 10, 2026
 
-The manuscript reports a reproducible computational campaign around the frontier case $r_3(212)$, combining witness-based splitting, OEIS A003002 window-cardinality pruning, recursive refinement, CP-SAT, HiGHS MIP, CDCL/SAT, independently verified DRAT certificates, and a Lean formal-proof-search encoding for the remaining two hard benchmark instances. The paper does not claim to prove $r_3(212)=43$; instead it provides a reproducible architecture, a tiered benchmark release, and a precise empirical characterization of the residual hard pocket. The associated dataset is available at \href{https://doi.org/10.5281/zenodo.20463334}{10.5281/zenodo.20463334}, and the preprint is available as \href{https://arxiv.org/abs/2606.04016}{arXiv:2606.04016}.
+The Editors\\
+Experimental Mathematics
 
-The work is not under consideration at another journal. The author takes full responsibility for the manuscript, code, computations, and all claims made in the submission.
+Dear Editors,
 
-\textbf{Disclosure of generative-AI use.} In accordance with the Taylor \& Francis AI Policy, I disclose that in the preparation of this work I used Anthropic Claude (Claude Sonnet 4.5 and Claude Opus 4.6, accessed via the Claude Code agent interface) and OpenAI Codex (GPT-5, accessed via the Codex agent interface) for drafting and revision assistance on the manuscript, repository scaffolding, and computational orchestration. I reviewed and verified every claim and every line of code before submission, and I take full responsibility for the content. These tools did not generate mathematical claims, did not direct the campaign's experimental design, and do not appear as authors.
+I am pleased to submit the manuscript \emph{``Witness-split +
+window-cardinality\\
+refinement for r\_3(N): architecture, empirical results, and a
+structural hard\\
+pocket''} for consideration in Experimental Mathematics. The preprint is
+posted\\
+at arXiv:2606.04016 (https://arxiv.org/abs/2606.04016). All campaign
+artifacts,\\
+including verified DRAT/LRAT proofs and the Lean encoding of the
+residual\\
+problem, are deposited at Zenodo (DOI 10.5281/zenodo.20463334).
 
-Thank you for considering this submission.
+The paper describes a reproducible computational framework for
+upper-bound\\
+search on r\_3(N), the maximum size of a
+3-term-arithmetic-progression-free\\
+subset of {[}1, N{]}. Applied to the OEIS A003002 frontier case N = 212,
+K = 44,\\
+the campaign found no feasible 44-element 3-AP-free subset of {[}1,
+212{]} across\\
+millions of CP-SAT subproblems, providing strong empirical support for
+the\\
+conjectural value r\_3(212) = 43 without producing a formal proof. The
+technical\\
+contribution is methodological:
 
-\closing{Sincerely,}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  A witness-split + window-cardinality CP-SAT architecture that is\\
+  parametric in (N, K) and reusable for r\_3(N') at adjacent N.
+\item
+  A characterization of the structural hard pocket of the residual
+  that\\
+  resists CP-SAT propagation, recursive refinement, redundant Tseitin\\
+  clauses, wall-cap extension, and HiGHS LP-relaxation MIP. A
+  subsequent\\
+  CDCL/SAT attack closes 18 of the 20 LP-paradigm-resistant chunks,
+  all\\
+  with independently verified DRAT proofs (verified by drat-trim).
+\item
+  A genuinely paradigm-resistant residual T1c, of size 2, that
+  survives\\
+  CP-SAT, HiGHS, pure CDCL at a 12-hour wall, and CDCL with windowed\\
+  cardinality at a 4-hour wall. T1c is released both as JSONL solver\\
+  instances and as a Lean 4 formal-proof-search encoding compatible
+  with\\
+  AlphaProof Nexus-style EVOLVE-BLOCK conventions.
+\end{enumerate}
 
-\end{letter}
+I believe Experimental Mathematics is the natural venue for this work.
+The\\
+campaign is squarely within the journal's stated scope: an experimental
+and\\
+reproducibility-focused investigation of a frontier integer-sequence
+value,\\
+with a release-grade dataset of verified machine-checkable certificates,
+an\\
+honestly negative methodological result (no value of r\_3(212) is
+proved), and\\
+a precise open problem framed for follow-on attack. The paper would
+benefit\\
+from review by specialists in additive combinatorics, constraint
+solving, and\\
+formal verification.
+
+The work is not under consideration at another journal. The preprint\\
+arXiv:2606.04016 was posted to establish a citable timestamp; this is
+standard\\
+practice for the field and consistent with Experimental Mathematics'
+position\\
+on preprints.
+
+\section{Disclosure of generative-AI
+use}\label{disclosure-of-generative-ai-use}
+
+In accordance with the Taylor \& Francis AI Policy:
+
+Generative AI tools (Anthropic Claude Sonnet 4.5 / Claude Opus 4.6,
+accessed\\
+via the Claude Code agent interface during 2026; and OpenAI Codex,
+GPT-5,\\
+accessed via the Codex agent interface during 2026) were used during
+the\\
+preparation of this manuscript. The use was as follows:
+
+\begin{itemize}
+\item
+  Drafting and revision assistance for the manuscript sections. The\\
+  author provided the campaign data, the technical results, the
+  empirical\\
+  interpretation, and the headline framing decisions. The AI tool was
+  used\\
+  to draft initial section text from author-provided notes, propose\\
+  structural improvements (subsection ordering, transition phrasing,\\
+  benchmark-tier organization), and run consistency sweeps for numbers\\
+  and cross-references across drafts. Every claim in the final
+  manuscript\\
+  was reviewed, verified, and either accepted, edited, or rejected by
+  the\\
+  author.
+\item
+  Drafting assistance for repository scaffolding (build scripts,\\
+  bibliography seed, LaTeX driver, ancillary-file packaging),
+  including\\
+  the preparation of journal-submission support files. All code was\\
+  reviewed and the build outputs were verified by the author before\\
+  submission.
+\item
+  Computational orchestration assistance during the campaign (Unity\\
+  SLURM scripts, results aggregation, proof-verification wrappers).\\
+  The mathematical content of the campaign and all solver-paradigm,\\
+  encoding, and bound design decisions were made by the author.
+\end{itemize}
+
+The AI tools did not generate mathematical claims, did not select or run
+the\\
+underlying computational experiments without author direction, and did
+not\\
+serve as authors. All mathematical conclusions, the campaign design,
+the\\
+formal-conjecture framing, and the manuscript's central scientific
+argument\\
+are the author's own.
+
+The author confirms that the manuscript complies in full with the Taylor
+\&\\
+Francis AI Policy.
+
+\section{Suggested reviewers}\label{suggested-reviewers}
+
+The following specialists are well-positioned to review the manuscript:
+
+\begin{itemize}
+\item
+  Thomas F. Bloom, University of Manchester\\
+  (expert on density-increment methods for r\_3 and Erdős upper-bound\\
+  problems; maintains erdosproblems.com).
+\item
+  Marijn J. H. Heule, Carnegie Mellon University\\
+  (expert on DRAT/LRAT proof certificates and drat-trim; would be\\
+  well-placed to assess the verification chain).
+\item
+  Lorenzo Cariboni\\
+  (maintains the OEIS A003002 b-file at the current frontier; the
+  natural\\
+  expert on the prior numerical record).
+\item
+  Olof Sisask, Stockholm University\\
+  (additive combinatorics; co-author of the Bloom-Sisask
+  density-increment\\
+  framework cited in the manuscript).
+\end{itemize}
+
+\section{Data and reproducibility}\label{data-and-reproducibility}
+
+All data, code, verified proofs, and the Lean formalization required
+to\\
+reproduce the campaign and verify every certificate-track claim are
+available\\
+under open license at:
+
+\begin{itemize}
+\tightlist
+\item
+  Preprint: arXiv:2606.04016
+\item
+  Dataset: 10.5281/zenodo.20463334 (CC-BY)
+\end{itemize}
+
+I look forward to the editor's response and the reviewers' comments.
+
+Sincerely,
+
+Mehmet Ergezer\\
+Wentworth Institute of Technology
+
 \end{document}
