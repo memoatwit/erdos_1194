@@ -1,0 +1,29 @@
+\documentclass[11pt]{letter}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\signature{Mehmet Ergezer}
+\address{Mehmet Ergezer\\Wentworth Institute of Technology\\Boston, MA, USA\\\href{mailto:ergezerm@wit.edu}{ergezerm@wit.edu}}
+\date{\today}
+
+\begin{document}
+
+\begin{letter}{Editors\\\emph{Experimental Mathematics}}
+
+\opening{Dear Editors,}
+
+I am pleased to submit the manuscript ``Witness-split + window-cardinality refinement for $r_3(N)$: architecture, empirical results, and a structural hard pocket'' for consideration in \emph{Experimental Mathematics}.
+
+The manuscript reports a reproducible computational campaign around the frontier case $r_3(212)$, combining witness-based splitting, OEIS A003002 window-cardinality pruning, recursive refinement, CP-SAT, HiGHS MIP, CDCL/SAT, independently verified DRAT certificates, and a Lean formal-proof-search encoding for the remaining two hard benchmark instances. The paper does not claim to prove $r_3(212)=43$; instead it provides a reproducible architecture, a tiered benchmark release, and a precise empirical characterization of the residual hard pocket. The associated dataset is available at \href{https://doi.org/10.5281/zenodo.20463334}{10.5281/zenodo.20463334}, and the preprint is available as \href{https://arxiv.org/abs/2606.04016}{arXiv:2606.04016}.
+
+The work is not under consideration at another journal. The author takes full responsibility for the manuscript, code, computations, and all claims made in the submission.
+
+\textbf{Disclosure of generative-AI use.} In accordance with the Taylor \& Francis AI Policy, I disclose that in the preparation of this work I used Anthropic Claude (Claude Sonnet 4.5 and Claude Opus 4.6, accessed via the Claude Code agent interface) and OpenAI Codex (GPT-5, accessed via the Codex agent interface) for drafting and revision assistance on the manuscript, repository scaffolding, and computational orchestration. I reviewed and verified every claim and every line of code before submission, and I take full responsibility for the content. These tools did not generate mathematical claims, did not direct the campaign's experimental design, and do not appear as authors.
+
+Thank you for considering this submission.
+
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}
