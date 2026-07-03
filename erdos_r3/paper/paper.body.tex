@@ -438,6 +438,40 @@ numbers: millions of CP-SAT subproblems solved, 0 \texttt{FEASIBLE}
 rows, and a 6.07\% \texttt{UNKNOWN} residual in the largest retained broad batch that
 motivates the structural analysis in §4.
 
+\subsection{Monolithic baseline}\label{monolithic-baseline}
+
+%% TODO-RESULTS: fill the six status/progress cells from
+%% results/baselines/{cpsat,highs,cdcl}_monolithic_{on,off}win.json
+%% (Unity job 61423761). Delete this comment when filled.
+
+Before any splitting, we hand the full unsplit decision instance ---
+$212$ Boolean variables, $11{,}130$ 3-AP inequalities, $\sum_i x_i = 44$,
+endpoint forcing, with and without the $22{,}154$ window-cardinality
+inequalities --- to each solver paradigm with a $24$-hour wall cap.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llrlr@{}}
+\toprule\noalign{}
+Paradigm & Windows & Wall & Status & Progress at cap \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+CP-SAT (8 workers) & on & 24 h & TODO & TODO conflicts \\
+CP-SAT (8 workers) & off & 24 h & TODO & TODO conflicts \\
+HiGHS MIP (8 threads) & on & 24 h & TODO & TODO nodes, dual TODO \\
+HiGHS MIP (8 threads) & off & 24 h & TODO & TODO nodes, dual TODO \\
+CDCL (1 core) & on & 24 h & TODO & TODO conflicts \\
+CDCL (1 core) & off & 24 h & TODO & TODO conflicts \\
+\end{longtable}
+}
+
+%% TODO-RESULTS: replace the following sentence with the measured outcome.
+No paradigm resolves the monolithic instance within the cap, which is the
+empirical justification for the witness-split architecture of §2.2: the
+campaign's progress comes from the split and the window bounds, not from
+raw solver time on the whole problem.
+
 \subsection{Chunk-count breakdown}\label{chunk-count-breakdown}
 
 The campaign proceeded in three layers of increasing scope, plus a
