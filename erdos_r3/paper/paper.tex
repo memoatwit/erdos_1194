@@ -16,7 +16,7 @@
 % --- Math and symbols ---
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
-\usepackage{stmaryrd}      % for \llbracket \rrbracket
+% \usepackage{stmaryrd}  % unused (no \llbracket in body)      % for \llbracket \rrbracket
 % Keep the arXiv driver pdflatex-friendly. The pandoc body pass should convert
 % unicode math symbols to LaTeX macros before final build.
 % \usepackage{unicode-math}
@@ -37,6 +37,7 @@
 
 % --- Typography and layout ---
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{microtype}
 \usepackage[margin=1in]{geometry}
 \usepackage{parskip}
@@ -53,8 +54,8 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta,fit}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
+% \usepackage{algorithm}    % unused
+% \usepackage{algpseudocode} % unused
 
 % --- Cross-references ---
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
@@ -101,8 +102,9 @@
 \newcommand{\Tthree}{\ensuremath{\mathsf{T3}}}
 
 % --- Frontmatter ---
-\title[$\rthree{212}$ campaign]{Witness-split + window-cardinality refinement for
-  $\rthree{N}$: architecture, empirical results, and a structural hard pocket}
+\title[A Salem--Spencer solver benchmark]{Salem--Spencer sets as a
+  cross-paradigm solver benchmark: a witness-split CP-SAT campaign on
+  $\rthree{212}$ and a paradigm-resistant residual}
 
 \author{Mehmet Ergezer}
 \thanks{ORCID: \href{https://orcid.org/0000-0001-6627-3667}{0000-0001-6627-3667}.}
@@ -118,42 +120,49 @@
 }
 
 \keywords{
+  constraint programming,
+  benchmark instances,
   Salem--Spencer numbers,
   arithmetic progressions,
   OEIS A003002,
   CP-SAT,
-  HiGHS,
+  MIP,
   CDCL,
   DRAT proofs,
   formal verification,
   Lean
 }
 
-\date{\today}
+\date{July 3, 2026}
 
 \begin{document}
 
 \begin{abstract}
-We describe a reproducible computational framework for upper-bound searches
-on $\rthree{N}$, the maximum size of a 3-term-arithmetic-progression-free
-subset of $[1, N]$. The framework combines a verified lower-bound witness,
-endpoint forcing, depth-$d$ witness-variable splitting, OEIS A003002
-window-cardinality pruning, and recursive refinement of timed-out
-subproblems. Applied to the frontier case $N = 212$, $K = 44$, it found no
-feasible $44$-set across millions of CP-SAT subproblems, supporting but not
-proving the conjectural value $\rthree{212} = 43$.  A $300$-second recap
-leaves $45$ resistant chunks; one-hour HiGHS MIP closes none of them; the
-full eight-hour HiGHS audit closes $25 / 45$ and leaves $20 / 45$ with dual
-bounds still pinned at $0.0$.  A CDCL/SAT re-attack on those
-LP-paradigm-resistant chunks closes $18$ via conflict-driven clause
-learning; all eighteen carry independently verified DRAT proofs.  The
-remaining two chunks (\Tonec) resist every tested paradigm under generous
-wall caps.  We release the witness, solver scripts, result logs, tiered
-benchmark instances, the verified DRAT/LRAT proofs, and a Lean
+Deciding whether a $44$-element subset of $[1, 212]$ can avoid all
+three-term arithmetic progressions is the current frontier instance of the
+Salem--Spencer sequence $\rthree{N}$ (OEIS A003002) --- a family of finite
+combinatorial feasibility problems that, unlike recent celebrated
+SAT-solved problems in Ramsey-type combinatorics, resists every
+off-the-shelf solver paradigm we tested. We present the problem family as
+a constraint-solving benchmark. Our campaign architecture combines a
+verified lower-bound witness, endpoint forcing, depth-$d$ witness-variable
+splitting, window-cardinality inequalities derived from known $\rthree{L}$
+values, and recursive refinement of timed-out subproblems. Applied to
+$N = 212$, $K = 44$, it found no feasible $44$-set across millions of
+CP-SAT subproblems, supporting but not proving the conjectured
+$\rthree{212} = 43$. The window-cardinality family is the single most
+effective pruning layer, reducing the unresolved rate by $28$ percentage
+points. Cross-paradigm analysis of the resistant residual shows a sharp
+stratification: an eight-hour HiGHS MIP audit closes $25$ of $45$
+survivors while leaving $20$ with dual bounds pinned at $0.0$; pure CDCL
+closes $18$ of those $20$, each with an independently verified DRAT proof;
+and the final two subproblems (\Tonec) resist CP-SAT propagation, LP-based
+MIP, and CDCL under generous wall caps. We release tiered benchmark
+instances spanning this difficulty ladder, the verified DRAT/LRAT
+certificates, a deterministic instance generator, and a Lean
 formal-proof-search encoding of \Tonec, and frame the unit-gap problem
-$\rthree{212} \in \{43, 44\}$ as a target for stronger
-additive-combinatorial bounds, custom branch-and-bound, or formal
-proof-search systems.
+$\rthree{212} \in \{43, 44\}$ as a challenge for stronger inference,
+custom branch-and-bound, or formal proof search.
 \end{abstract}
 
 \maketitle
