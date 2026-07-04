@@ -421,6 +421,7 @@ def attack_one_chunk(
     keep_cnf: bool,
     extra_solver_args: list[str],
     pysat_with_proof: bool,
+    discard_external_proof: bool,
 ) -> dict[str, Any]:
     chunk_id = chunk["chunk_id"]
     fixed_in = chunk.get("fixed_in", [])
@@ -440,12 +441,17 @@ def attack_one_chunk(
 
     cnf_path = out_dir / f"chunk_{chunk_id:08d}.cnf"
     proof_path = out_dir / f"chunk_{chunk_id:08d}.drat"
+    solver_proof_path = (
+        Path("/dev/null")
+        if discard_external_proof and not solver_binary.startswith("pysat:")
+        else proof_path
+    )
     cnf.to_file(str(cnf_path))
 
     solver_result = run_solver(
         cnf=cnf,
         cnf_path=cnf_path,
-        proof_path=proof_path,
+        proof_path=solver_proof_path,
         solver_binary=solver_binary,
         time_limit_s=time_limit_s,
         extra_args=extra_solver_args,
@@ -484,6 +490,7 @@ def attack_one_chunk(
         "solver_binary": solver_binary,
         "time_limit_s": time_limit_s,
         "pysat_with_proof": pysat_with_proof,
+        "discard_external_proof": discard_external_proof,
         **stats,
         "fixed_in_count": len(fixed_in),
         "fixed_out_count": len(fixed_out),
@@ -543,6 +550,15 @@ def main() -> int:
             "Request proof logging for PySAT backends. With --solver-binary "
             "pysat:auto this prefers Glucose over CaDiCaL because the Unity "
             "python-sat wheel emits non-empty proofs for Glucose."
+        ),
+    )
+    ap.add_argument(
+        "--discard-external-proof",
+        action="store_true",
+        help=(
+            "For external solvers such as Kissat, pass /dev/null as the proof "
+            "output path. Use for survey runs where UNSAT proofs would be too "
+            "large and are not intended to be archived."
         ),
     )
     ap.add_argument(
@@ -647,6 +663,7 @@ def main() -> int:
                 keep_cnf=args.keep_cnf,
                 extra_solver_args=list(args.solver_arg),
                 pysat_with_proof=args.pysat_with_proof,
+                discard_external_proof=args.discard_external_proof,
             )
             elapsed = time.time() - t0
             fh.write(json.dumps(record) + "\n")
