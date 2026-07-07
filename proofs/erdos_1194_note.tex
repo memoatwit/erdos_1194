@@ -14,8 +14,10 @@
 \title{Perfect difference sets: i.o.\ lower bounds, exact small-$N$ optima,\\
   and an extension obstruction \\
   \large Notes on Erd\H{o}s Problem \#1194}
-\author{}
-\date{May 11, 2026}
+\author{Mehmet Ergezer\\
+  \small Wentworth Institute of Technology, Boston, MA\\
+  \small \texttt{ergezerm@wit.edu} \quad ORCID: 0000-0001-6627-3667}
+\date{June 10, 2026}
 
 \begin{document}
 \maketitle
@@ -24,7 +26,7 @@
 A set $A \subset \mathbb{N}$ is a perfect difference set (PDS) if every
 $n \geq 1$ admits a unique representation $n = a_n - b_n$ with
 $a_n, b_n \in A$. Erd\H{o}s asked how fast $a_n/n$ must increase
-\cite{Er80}. We give three contributions. First, we record full proofs of
+\cite{Er80}. We give four contributions. First, we record full proofs of
 the infinitely-often lower bounds $a_n \gg n \log n$ (classical),
 $a_n \gg n^{2-o(1)}$ (GPT-5.4 Pro / Bloom, April 2026), and the
 logarithmic refinement $a_n \gg n^2/f(n)$ for any nondecreasing slowly
@@ -36,8 +38,15 @@ the optimum $A_{N_0}^*$ for the finite problem is a poor starting
 seed for an infinite PDS, with forced extensions growing like $N^{4+}$,
 worse than Lev's greedy. We formulate a corresponding ``for all large
 $n$'' conjecture and discuss why the partition-identity argument is
-sharp at the $n^{2-o(1)}$ ceiling. Code and data accompanying this note
-live in \texttt{erdos\_1194/}.
+sharp at the $n^{2-o(1)}$ ceiling. Finally, we report two systematic
+negative results: every block-structured seeding strategy we tested
+(split Mian--Chowla, arithmetic progressions of Sidon chunks) leaves the
+empirical $\Theta(N^3)$ greedy ceiling intact, and three structural
+attempts to improve the Sidon density bound specifically for PDS
+(Cauchy--Schwarz on the partition identity, Fej\'er-weighted Plancherel,
+higher $L^p$ moments) each collapse to the generic Sidon bound. Code and
+data accompanying this note live at
+\url{https://github.com/memoatwit/erdos_1194}.
 \end{abstract}
 
 \tableofcontents
@@ -435,6 +444,56 @@ Three observations from Table~\ref{tab:seeded}:
       construction that is fundamentally non-greedy.
 \end{enumerate}
 
+\subsection{Block-structured seeds: a systematic no-go}\label{sec:blocks}
+
+To test whether the cubic ceiling is an artifact of \emph{single-block}
+seeding, we built two block-structured families
+(\texttt{block\_construction.py}) and completed each with the same
+greedy continuation:
+
+\begin{description}
+\item[split\_MC$(k_1, k_2)$] Partition $\mathrm{MC}_{1 \ldots k_1+k_2}$
+  (Mian--Chowla) into two disjoint chunks and translate the second by a
+  gap exceeding $\max(\text{within-block differences}) + \max(B_1)$, so
+  cross-block differences avoid within-block differences. Because
+  Mian--Chowla is globally Sidon, the two chunks share no within-block
+  differences, and the union is Sidon.
+\item[AP\_MC$(k, m)$] Split $\mathrm{MC}_{1 \ldots km}$ into $m$ chunks
+  of size $k$ placed along an arithmetic progression of offsets chosen
+  to avoid all cross-chunk collisions.
+\end{description}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{l r r r r}
+\toprule
+strategy & $|A_{\text{seed}}|$ & seed max & $\max A$ at $N{=}500$ & ratio $/N^3$ \\
+\midrule
+scratch greedy        & 0  & ---    & 3{,}080{,}237 & 0.02464 \\
+MC(60) (baseline)     & 60 & 7{,}547  & 286{,}281 & 0.00229 \\
+split\_MC(30,30)      & 60 & 15{,}012 & \textbf{280{,}501} & \textbf{0.00224} \\
+split\_MC(40,40)      & 80 & 31{,}232 & 331{,}746 & 0.00265 \\
+split\_MC(60,30)      & 90 & 43{,}655 & 386{,}310 & 0.00309 \\
+AP\_MC($k{=}20, m{=}3$) & 60 & 31{,}887 & 383{,}640 & 0.00307 \\
+AP\_MC($k{=}30, m{=}2$) & 60 & 21{,}247 & 302{,}887 & 0.00242 \\
+\bottomrule
+\end{tabular}
+\caption{Block-structured seeds at $N = 500$. The best variant
+(split\_MC(30,30), ratio $0.00224$) is statistically indistinguishable
+from the unsplit MC(60) baseline ($0.00229$). No construction breaks
+the cubic ceiling; the constant floors near $0.002\,N^3$.}
+\label{tab:blocks}
+\end{table}
+
+The reason is now empirically clear: once the seed is fixed, the greedy
+\emph{continuation} is forced into Strategy-2 placements whose per-call
+cost is $\Theta(N^2)$, independent of seed structure. This drives the
+cubic. Beating $o(n^3)$ therefore requires redesigning the
+continuation, not the seed --- e.g.\ probabilistic placement with
+structured rejection sampling, or algebraic constructions
+(projective-plane difference sets over $\mathbb{F}_{q}$ lifted to
+$\mathbb{Z}$).
+
 \section{Open problems and the $c = 2$ barrier}\label{sec:open}
 
 \subsection{What is sharp}
@@ -448,9 +507,54 @@ Two boundaries appear sharp in our analysis:
       Sidon-density factor.
 
 \item Greedy-style construction is sharp at $\Theta(N^3)$ across all
-      seeds tested (Table~\ref{tab:seeded}). Seeding gives constant-factor
+      seeds tested (Tables~\ref{tab:seeded} and~\ref{tab:blocks}),
+      including block-structured seeds. Seeding gives constant-factor
       improvements; the exponent is robust.
 \end{itemize}
+
+\subsection{Density attempts that fail}\label{sec:density-fails}
+
+A natural route past the partition argument is a sharper Sidon density
+bound specific to PDS: Lindstr\"om gives $k(M) \leq \sqrt M + O(M^{1/4})$
+for any Sidon set, while Cilleruelo--Nathanson \cite{CiNa08} construct a
+PDS with $\limsup k(x)/\sqrt x \geq 1/\sqrt 2$. Showing
+$\limsup k(x)/\sqrt x \leq 1 - \delta$ for every PDS would be a first
+PDS-specific density theorem. We document three structural attempts
+(full write-up in \texttt{proofs/phase2a\_density.tex}), all of which
+fail for an instructive common reason:
+
+\begin{enumerate}
+\item \emph{Cauchy--Schwarz via the partition identity.} One hopes the
+      perfectly-packed coverage $N(x) = \binom{k(x)}{2}$ forces
+      structure; but $a_n$ is non-monotone, so the \emph{covered prefix}
+      $T_M := \max\{T : [1,T] \subset A_M - A_M\}$ can be far smaller
+      than $\binom{k(M)}{2}$ (greedy at scale $2 \times 10^8$ has
+      $T_M = 1898$ against $\binom{2131}{2} \approx 2.27 \times 10^6$).
+\item \emph{Fej\'er-weighted Plancherel.} For PDS,
+      $\int_0^1 K_T(\xi)\,|\widehat{1_{A_M}}(\xi)|^2\,d\xi = k + T - 1$
+      for $T \leq T_M$ --- an exact identity, verified numerically. But
+      the only available upper bound on the integral is the pointwise
+      $|\widehat{1}|^2 \leq k^2$, which returns the trivial Sidon
+      constraint $T \leq k^2$.
+\item \emph{Higher $L^p$ moments.} For $p \geq 4$,
+      $\int |\widehat{1_{A_M}}|^{2p}$ counts difference-pattern solutions
+      that for Sidon sets are determined by $|A|$ alone; the PDS property
+      adds no constraint at the moment level.
+\end{enumerate}
+
+The structural reason all three fail: the PDS-vs-Sidon distinction lives
+in \emph{which} small differences appear (every $n \leq T_M$ exactly
+once), not in any aggregate counting quantity. Moment and Cauchy--Schwarz
+arguments see only aggregates. The partition identity of
+Lemma~\ref{lem:partition} is the unique elementary tool that uses
+``which differences appear,'' and it caps at $c = 2$
+(Remark~\ref{rem:sharp}).
+
+Three sub-targets remain open and may be more tractable: (i) the
+exceptional set $\{x : k(x) > (1-\delta)\sqrt x\}$ has density~0 in
+$\mathbb{N}$; (ii) close the gap between $1/\sqrt 2$ (CiNa08) and $1$
+(Lindstr\"om) for $\limsup k(x)/\sqrt x$ over PDS; (iii) strengthen the
+i.o.\ form of Theorem~\ref{thm:n2io} to a positive density of $n$.
 
 \subsection{The three open questions}
 
@@ -461,10 +565,13 @@ Two boundaries appear sharp in our analysis:
       identity.
 
 \item \textbf{Cilleruelo--Nathanson Problem~1.} Does there exist a PDS
-      with $a_n = o(n^3)$? Our Phase~3' experiments confirm the
-      ($\Theta(N^3)$)-ceiling under any greedy-style continuation;
-      non-greedy constructions (block-structured, probabilistic,
-      Cilleruelo--Nathanson-style) remain to be tested.
+      with $a_n = o(n^3)$? Sections~\ref{sec:ub} and~\ref{sec:blocks}
+      establish empirically that the $\Theta(N^3)$ ceiling holds under
+      \emph{any} greedy continuation regardless of seed --- single dense
+      blocks, split blocks, and AP-of-blocks all floor at
+      $\approx 0.002\,N^3$. A sub-cubic PDS, if it exists, must place
+      elements non-greedily, anticipating future coverage; probabilistic
+      and algebraic (projective-plane) constructions remain untested.
 
 \item \textbf{For-all-$n$ lower bound.} Is Conjecture~\ref{conj:ext}
       true? Even an explicit $c > 1$ would be the first ``for all
@@ -475,18 +582,21 @@ Two boundaries appear sharp in our analysis:
 
 Honest assessment of where to look:
 \begin{itemize}
-\item For (1), the Fourier-side Plancherel statement
-      $\int |\widehat{1_A}|^4 = 2|A|^2 - |A|$ holds for any Sidon set
-      and doesn't distinguish PDS. Higher moments ($L^6, L^8$) might.
-      Bourgain--Demeter decoupling for the parabola has been used to
-      bound Sidon sets; an analog for PDS would be new.
+\item For (1), Section~\ref{sec:density-fails} rules out Cauchy--Schwarz,
+      Fej\'er-weighted Plancherel, and $L^p$-moment arguments: each
+      collapses to the generic Sidon bound. What remains is genuinely
+      non-elementary --- restriction/decoupling estimates specific to PDS
+      (Bourgain--Demeter-style decoupling has been used for Sidon sets;
+      a PDS analog would be new), or a non-partition identity that sees
+      \emph{which} differences appear.
 
-\item For (2), the natural attack is block-structured constructions:
-      concatenate Mian--Chowla, Singer, or Erd\H{o}s--Tur\'an blocks
-      with carefully chosen offsets. Cross-block differences could be
-      arranged to cover the medium-range $n$, leaving small-range and
-      large-range $n$ to within-block differences. We have not yet
-      tested this; it is the natural Phase~6.
+\item For (2), block-structured constructions are now tested and ruled
+      out (Section~\ref{sec:blocks}): concatenating Mian--Chowla chunks
+      with collision-free offsets does not move the exponent. The
+      remaining candidates are constructions that abandon greedy
+      continuation altogether --- probabilistic placement with structured
+      rejection sampling, or lifts of finite projective-plane (Singer)
+      difference sets.
 
 \item For (3), one would convert the empirical
       Conjecture~\ref{conj:ext} into a theorem by showing: any infinite
@@ -495,22 +605,31 @@ Honest assessment of where to look:
       data is suggestive but we do not see a path to proof.
 \end{itemize}
 
-\section*{Acknowledgements and code}
+\section*{Acknowledgements, attribution, and code}
 
-This note records work done in the directory \texttt{erdos\_1194/}
-of the accompanying repository. Specifically:
+This note records work done in the repository
+\url{https://github.com/memoatwit/erdos_1194}. Specifically:
 \begin{description}
 \item[\texttt{explore.py}, \texttt{build\_checkpoint.py}] Lev's greedy.
 \item[\texttt{exact\_search.py}, \texttt{exact\_search\_cpsat.py}] Phase~4 finite-optimum search.
 \item[\texttt{extension\_cost.py}] Phase~4' extension cost.
 \item[\texttt{seeded\_greedy.py}] Phase~3' dense-Sidon-seeded greedy.
+\item[\texttt{block\_construction.py}] Phase~6 block-structured seeds.
 \item[\texttt{fourier\_probes.py}] Phase~2B Fourier observables.
 \item[\texttt{verify\_and\_analyze.py}] Phase~0 / 1 verification + stratification.
 \end{description}
 
 The arguments of Theorems~\ref{thm:n2io} and~\ref{thm:n2overf} are due
 to GPT-5.4 Pro and T.~F.~Bloom (April 2026 comment thread on
-erdosproblems.com/1194). The remainder is original to this work.
+erdosproblems.com/1194); we record full proofs with permission of the
+public thread. The remainder is original to this work.
+
+\emph{Generative-AI disclosure.} Large language models (Anthropic
+Claude, accessed via the Claude Code agent interface, and OpenAI
+models, 2026) were used for drafting assistance, code scaffolding, and
+consistency checking under the author's direction. All mathematical
+claims, experiment designs, and conclusions were reviewed and verified
+by the author.
 
 \begin{thebibliography}{99}
 \bibitem{Er80} P.~Erd\H{o}s, \emph{Some applications of Ramsey's
@@ -527,8 +646,8 @@ erdosproblems.com/1194). The remainder is original to this work.
   difference sets constructed from Sidon sets}, Combinatorica 28 (2008),
   401--414. \texttt{arXiv:math/0609244}.
 
-\bibitem{this} This note's accompanying code and data,
-  \texttt{github.com/.../erdos\_1194/}.
+\bibitem{this} M.~Ergezer, accompanying code and data for this note,
+  \url{https://github.com/memoatwit/erdos_1194}.
 \end{thebibliography}
 
 \end{document}
