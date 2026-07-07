@@ -103,8 +103,8 @@
 
 % --- Frontmatter ---
 \title[A Salem--Spencer solver benchmark]{Salem--Spencer sets as a
-  cross-paradigm solver benchmark: a witness-split CP-SAT campaign on
-  $\rthree{212}$ and a paradigm-resistant residual}
+  cross-paradigm solver benchmark: a witness-split campaign on
+  $\rthree{212}$ and the collapse of an LP-resistant hard pocket}
 
 \author{Mehmet Ergezer}
 \thanks{ORCID: \href{https://orcid.org/0000-0001-6627-3667}{0000-0001-6627-3667}.}
@@ -140,29 +140,29 @@
 \begin{abstract}
 Deciding whether a $44$-element subset of $[1, 212]$ can avoid all
 three-term arithmetic progressions is the current frontier instance of the
-Salem--Spencer sequence $\rthree{N}$ (OEIS A003002) --- a family of finite
-combinatorial feasibility problems that, unlike recent celebrated
-SAT-solved problems in Ramsey-type combinatorics, resists every
-off-the-shelf solver paradigm we tested. We present the problem family as
-a constraint-solving benchmark. Our campaign architecture combines a
-verified lower-bound witness, endpoint forcing, depth-$d$ witness-variable
-splitting, window-cardinality inequalities derived from known $\rthree{L}$
-values, and recursive refinement of timed-out subproblems. Applied to
-$N = 212$, $K = 44$, it found no feasible $44$-set across millions of
-CP-SAT subproblems, supporting but not proving the conjectured
-$\rthree{212} = 43$. The window-cardinality family is the single most
-effective pruning layer, reducing the unresolved rate by $28$ percentage
-points. Cross-paradigm analysis of the resistant residual shows a sharp
-stratification: an eight-hour HiGHS MIP audit closes $25$ of $45$
-survivors while leaving $20$ with dual bounds pinned at $0.0$; pure CDCL
-closes $18$ of those $20$, each with an independently verified DRAT proof;
-and the final two subproblems (\Tonec) resist CP-SAT propagation, LP-based
-MIP, and CDCL under generous wall caps. We release tiered benchmark
-instances spanning this difficulty ladder, the verified DRAT/LRAT
-certificates, a deterministic instance generator, and a Lean
-formal-proof-search encoding of \Tonec, and frame the unit-gap problem
-$\rthree{212} \in \{43, 44\}$ as a challenge for stronger inference,
-custom branch-and-bound, or formal proof search.
+Salem--Spencer sequence $\rthree{N}$ (OEIS A003002). We present this
+family of finite combinatorial feasibility problems as a
+constraint-solving benchmark that separates solver technologies at three
+measured heights. No paradigm touches the monolithic instance: CP-SAT,
+HiGHS MIP, and CDCL all return unresolved after $24$ hours, with the MIP
+dual bound pinned at $0.0$. Under a witness-informed cube-and-conquer
+split with window-cardinality implied constraints --- the single most
+effective pruning layer, worth $28$ percentage points of unresolved rate
+--- millions of subproblems close with zero feasible $44$-sets, supporting
+but not proving the conjectured $\rthree{212} = 43$. Cross-paradigm
+analysis of the resistant residual then stratifies cleanly: an eight-hour
+HiGHS audit closes $25$ of $45$ survivors while leaving $20$ LP-flat; CDCL
+(CaDiCaL) closes $18$ of those $20$, each with an independently verified
+DRAT proof; and the final two subproblems (\Tonec), which defeat CaDiCaL
+at $12$ hours, fall to kissat~4.0.4 well within that budget, with DRAT
+certificates independently verified end-to-end against sha256-pinned
+formula files --- refuting our own conjecture that the pocket was
+paradigm-resistant. A kissat survey then closes $99$ of $100$ sampled
+broad-residual subproblems within two hours, pricing the full certified
+sweep --- and with it the unit-gap problem $\rthree{212} \in \{43, 44\}$
+--- as a bounded computation rather than an open search question. We
+release the tiered instances, verified certificates, deterministic
+generator, and a Lean encoding of \Tonec.
 \end{abstract}
 
 \maketitle

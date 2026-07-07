@@ -27,12 +27,12 @@
 \node[smallbox, below left=10mm and 17mm of t1] (t1a) {T1a: 25\\HiGHS 8h INF};
 \node[smallbox, below right=10mm and 17mm of t1] (t1b) {T1b: 20\\HiGHS 8h UNK\\dual 0.0};
 \node[smallbox, below left=10mm and 7mm of t1b] (cdcl) {18\\CDCL UNSAT\\DRAT verified};
-\node[smallbox, below right=10mm and 7mm of t1b] (t1c) {T1c: 2\\40959, 48895\\all tested arms UNK};
+\node[smallbox, below right=10mm and 7mm of t1b] (t1c) {T1c: 2\\40959, 48895\\CaDiCaL UNK;\\kissat UNSAT (\S4.4)};
 
 \draw[edge] (broad) -- node[right, font=\scriptsize] {uniform sample} (recap);
 \draw[edge] (recap) -- node[right, font=\scriptsize] {45 remain UNK} (t1);
 \draw[edge] (t1) -- node[left, font=\scriptsize] {closed} (t1a);
 \draw[edge] (t1) -- node[right, font=\scriptsize] {LP-flat} (t1b);
 \draw[edge] (t1b) -- node[left, font=\scriptsize] {CDCL closes} (cdcl);
-\draw[edge] (t1b) -- node[right, font=\scriptsize] {survives} (t1c);
+\draw[edge] (t1b) -- node[right, font=\scriptsize] {survives CaDiCaL} (t1c);
 \end{tikzpicture}

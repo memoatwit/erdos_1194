@@ -20,27 +20,37 @@ Constraints as a **benchmark paper**.
 The paper presents the Salem–Spencer family (OEIS A003002) as a natural,
 scalable constraint-solving benchmark, and reports a reproducible campaign
 on its frontier instance: does a 44-element subset of [1, 212] exist with
-no three-term arithmetic progression? The family sits in the same problem
-class as celebrated SAT successes in Ramsey-type combinatorics (Boolean
-Pythagorean triples, Schur number five, Keller's conjecture), yet behaves
-very differently in practice, which is what makes it valuable as a
-benchmark. The main contributions:
+no three-term arithmetic progression? The family separates solver
+technologies at three measured heights, which is what makes it valuable
+as a benchmark. The main contributions:
 
-1. A tiered benchmark release spanning a measured difficulty ladder, from
-   MIP-closable instances through CDCL-closable instances (all with
-   independently verified DRAT proofs) down to a two-instance residual
-   that resists CP-SAT propagation, LP-relaxation-based MIP (HiGHS), and
-   pure CDCL under generous wall caps.
-2. A cross-paradigm empirical characterization of that residual,
-   including controlled A/B experiments for every solver lever tested.
-3. A problem-specific pruning family (window-cardinality inequalities
-   derived from known r_3(L) values) that outperforms every generic
-   lever tested, reducing the unresolved rate by 28 percentage points —
-   a concrete data point on the value of domain constraints over solver
-   tuning.
+1. A layered separation result. No paradigm touches the monolithic
+   instance in 24 hours (CP-SAT, HiGHS MIP, and CDCL all fail, with the
+   MIP dual bound pinned at 0.0). Under a witness-informed
+   cube-and-conquer split, LP-paradigm methods fail uniformly on an
+   LP-flat pocket; CDCL (CaDiCaL) closes most of it with verified DRAT
+   proofs; and the two hardest audited subproblems, which defeat CaDiCaL
+   at 12 hours, fall to kissat 4.0.4 well within that budget, with DRAT
+   certificates independently verified end-to-end. The benchmark thus
+   separates solvers *within* the CDCL paradigm — rarer and arguably
+   more useful than separating paradigms.
+2. An honestly reported refuted conjecture: the pocket we believed (and
+   documented) to be paradigm-resistant collapsed under a
+   competition-grade solver, relocating the hardness boundary from
+   paradigm to implementation. A kissat survey then closes 99/100 of a
+   fresh broad-residual sample (median 122 s), repricing the full
+   certified sweep — and with it the unit-gap problem
+   r_3(212) ∈ {43, 44} — as a bounded computation.
+3. A problem-specific pruning family (window-cardinality implied
+   constraints derived from known r_3(L) values) that outperforms every
+   generic lever tested, reducing the unresolved rate by 28 percentage
+   points — a concrete data point on the value of domain constraints
+   over solver tuning.
+4. A tiered instance release (JSONL plus DIMACS CNF and MiniZinc
+   exports) with controlled A/B experiments behind every design claim.
 
 All instances, solver scripts, result logs, verified DRAT/LRAT
-certificates, and a Lean 4 encoding of the resistant residual are openly
+certificates, and a Lean 4 encoding of the hardest tier are openly
 released (arXiv:2606.04016; Zenodo DOI 10.5281/zenodo.20463334, CC-BY).
 The campaign is reproducible end-to-end from the released scripts.
 
