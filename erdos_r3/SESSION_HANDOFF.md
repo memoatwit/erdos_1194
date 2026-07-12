@@ -877,3 +877,27 @@ the full T2 pass had 24 completed rows, all `UNSAT`, with no `SAT` rows.
 Do not update manuscript result tables until each job has complete aggregate
 counts and the paired CNF hashes have been checked. Any `SAT`/`FEASIBLE` result
 still overrides every other action and requires immediate witness verification.
+
+### Completed: optimization-form HiGHS job 61729298
+
+All 40 T1b arms completed (20 chunks with windows off, 20 with windows on),
+each after a continuous LP solve followed by a two-hour binary MIP maximizing
+`sum(x)`. No feasible size-44 witness appeared and no arm certified an upper
+bound below 44.
+
+- Windows off:
+  - LP optima: `73.0` to `84.5` (median `76.5`).
+  - MIP incumbents: `39` to `40`.
+  - MIP upper bounds: `46` to `57` (median `49.5`).
+  - All 20 reached the two-hour cap; total `32,089,555` MIP nodes.
+- Windows on:
+  - LP optima: numerically `44.0` on all 20 chunks.
+  - MIP incumbents: `39` to `40`.
+  - MIP upper bounds: numerically `44.0` on all 20 chunks, never below the
+    target by the experiment's certification tolerance.
+  - All 20 reached the two-hour cap; total `6,014,774` MIP nodes.
+
+Interpretation: the valid window inequalities dramatically tighten the
+relaxation and reduce node counts, but leave a one-unit integer proof gap at
+the target. This replaces the invalid interpretation of the earlier
+zero-objective `mip_dual_bound=0.0` outputs.
