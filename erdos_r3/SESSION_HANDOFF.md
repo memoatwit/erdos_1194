@@ -851,3 +851,29 @@ Update, 2026-05-29 final verifier results:
 Any FEASIBLE row means the candidate upper bound is false or the encoding is
 wrong. Immediately verify the witness with `r3_verify.py` before doing anything
 else.
+
+## Update: 2026-07-12 venue-strengthening campaign
+
+The corrected paper review identified that the previous HiGHS
+`mip_dual_bound=0.0` values were non-diagnostic because those models used a
+zero objective with `sum(x)=44`. Four replacement/follow-up experiments are
+now running from the work-backed project directory:
+
+```text
+61729241  r3_t2_kissat_full  full 6,071-row T2 kissat pass
+61729294  r3_cdcl_ctrl       CaDiCaL 3.0.0 vs kissat 4.0.4 on all 20 T1b CNFs
+61729298  r3_highs_opt       maximize sum(x), LP + MIP, windows off/on on T1b
+61729302  r3_known_reg       exact-value regressions at N=100,150,200
+```
+
+Unity's normal QOS permits at most 2,000 submitted jobs, so job `61729241`
+uses 1,518 array tasks with four sequential chunks per task. The controlled
+CDCL preflight produced matching CNF SHA-256 hashes for both solver arms. The
+optimization-form HiGHS preflight on chunk `14331` produced LP optimum `74.5`
+and, after five seconds, MIP incumbent `36` with upper bound `64`, confirming
+that the new formulation reports meaningful bounds. At the first live check,
+the full T2 pass had 24 completed rows, all `UNSAT`, with no `SAT` rows.
+
+Do not update manuscript result tables until each job has complete aggregate
+counts and the paired CNF hashes have been checked. Any `SAT`/`FEASIBLE` result
+still overrides every other action and requires immediate witness verification.

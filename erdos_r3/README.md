@@ -1,5 +1,30 @@
 # Erdős r_3(N) — exact max-size 3-AP-free subset of {1..N}
 
+## Paper and artifacts
+
+- Preprint: [arXiv:2606.04016](https://arxiv.org/abs/2606.04016)
+- Dataset: [Zenodo 10.5281/zenodo.20463334](https://doi.org/10.5281/zenodo.20463334)
+- Maintained manuscript: [`paper/paper.tex`](paper/paper.tex) and
+  [`paper/paper.body.tex`](paper/paper.body.tex)
+- Venue and follow-up plan: [`paper/VENUE_AND_EXPERIMENT_PLAN.md`](paper/VENUE_AND_EXPERIMENT_PLAN.md)
+
+Current certified benchmark result: all 18 CaDiCaL-resolved
+`T1b \ T1c` chunks and both kissat-resolved T1c chunks have independently
+verified DRAT proofs. The full `r_3(212)` upper bound remains open because
+the complete T3 cube space has not been certified.
+
+```bibtex
+@misc{ergezer-r3-212-2026,
+  author        = {Ergezer, Mehmet},
+  title         = {Salem--Spencer sets as a cross-solver benchmark:
+                   a witness-informed decomposition for $r_3(212)$},
+  year          = {2026},
+  eprint        = {2606.04016},
+  archivePrefix = {arXiv},
+  primaryClass  = {math.CO}
+}
+```
+
 ## Problem
 
 For each positive integer N, let
@@ -15,7 +40,7 @@ The sequence `(r_3(N))_{N >= 1}` is OEIS [A003002].  Known exact values:
 - Frontier: n = 211 with r_3(211) = 43.
 - Related threshold sequence A065825 currently gives a(43) = 209; the next
   unknown threshold is a(44).
-- No more recent computational extensions reported in 2024-2025.
+- No extension beyond n = 211 is listed in the OEIS b-file as of 2026-07-12.
 
 The asymptotic side of r_3(N) is governed by the Bloom-Sisask, Kelley-Meka,
 and subsequent advances; these don't compute exact small values.

@@ -13,9 +13,10 @@ README.md      this file
 anc/           arXiv ancillary files (populated by `make arxiv`)
 ```
 
-`paper.body.tex` is generated from `../WRITEUP_SECTION_{1..6}.md` via
-pandoc and then hand-edited per the conversion notes in
-`../ARXIV_SUBMISSION.md` §2.
+`paper.body.tex` is the maintained manuscript source. The Markdown section
+files are retained as drafting history and no longer reproduce all later
+LaTeX edits. `make body` writes `paper.body.generated.tex` for comparison and
+does not overwrite the maintained body.
 
 ## Build
 
@@ -25,12 +26,13 @@ Quick check that the toolchain is available:
 which pandoc latexmk bibtex tar
 ```
 
-Full build (regenerates the body, compiles the PDF):
+Full build:
 
 ```bash
-make body         # markdown -> LaTeX body
-# (hand-edit paper.body.tex per ARXIV_SUBMISSION.md §2)
-make              # compile PDF
+make              # compile the maintained LaTeX source
+
+# Optional drafting comparison only:
+make body         # markdown -> paper.body.generated.tex
 ```
 
 To produce the arXiv submission tarball:

@@ -1,4 +1,24 @@
-# Monolithic-baseline experiment (for the Constraints revision)
+# Solver-baseline and venue-strengthening experiments
+
+## Active July 2026 runs
+
+Four bounded Unity experiments support the MPC-versus-Constraints venue
+decision. See `paper/VENUE_AND_EXPERIMENT_PLAN.md` for the scientific go/no-go
+rule and current job IDs.
+
+- `submit_t2_kissat_full.sbatch`: all 6,071 T2 chunks, no proof logging.
+- `submit_cdcl_controlled_t1b.sbatch`: native CaDiCaL 3.0.0 versus kissat
+  4.0.4 on deterministic no-window CNFs; compare `cnf_sha256` before timing.
+- `submit_highs_optimize_t1b.sbatch`: continuous LP plus binary MIP maximizing
+  `sum(x_i)`, with and without window inequalities.
+- `submit_known_value_regression.sbatch`: witness and checked upper-bound proof
+  at `r_3(100)=27`, `r_3(150)=35`, and `r_3(200)=41`.
+
+The earlier HiGHS feasibility jobs used a zero objective and therefore their
+reported objective/dual values of `0.0` are not measures of LP strength. Only
+the optimization-form experiment above should be used for LP/MIP-bound claims.
+
+## Monolithic-baseline experiment
 
 **Question a referee will ask:** what happens if you skip the witness-split
 entirely and hand the full unsplit `r_3(212) <= 43` decision instance to each
@@ -30,14 +50,14 @@ Table stub for §3 (fill `status` and `bound/progress` from the JSONs):
 |---|---|---|---|---|
 | CP-SAT (8 workers) | on  | 24 h | ? | conflicts, branches |
 | CP-SAT (8 workers) | off | 24 h | ? | conflicts, branches |
-| HiGHS MIP (8 threads) | on  | 24 h | ? | nodes, dual bound |
-| HiGHS MIP (8 threads) | off | 24 h | ? | nodes, dual bound |
+| HiGHS feasibility MIP (8 threads) | on  | 24 h | ? | nodes |
+| HiGHS feasibility MIP (8 threads) | off | 24 h | ? | nodes |
 | CDCL (1 core) | on  | 24 h | ? | conflicts |
 | CDCL (1 core) | off | 24 h | ? | conflicts |
 
-Suggested paper text hook: "None of the three paradigms makes measurable
-progress on the monolithic instance within 24 hours (Table X), which is the
-empirical justification for the witness-split architecture of §2.2."
+Suggested paper text hook: "None of the six tested configurations resolves
+the monolithic instance within 24 hours (Table X), which is the empirical
+justification for the witness-split architecture of §2.2."
 
 ## Instance exports (standard formats)
 

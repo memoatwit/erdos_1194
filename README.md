@@ -1,5 +1,10 @@
 # Erdős Problem #1194
 
+> This repository also contains the independent
+> [`r_3(212)` computational benchmark project](erdos_r3/README.md), associated
+> with [arXiv:2606.04016](https://arxiv.org/abs/2606.04016) and
+> [Zenodo 10.5281/zenodo.20463334](https://doi.org/10.5281/zenodo.20463334).
+
 **Source:** [erdosproblems.com/1194](https://www.erdosproblems.com/1194) — [Er80, p.100]  
 **Tags:** additive combinatorics | additive basis | Sidon sets  
 **Status:** OPEN

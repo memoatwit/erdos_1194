@@ -42,6 +42,7 @@ Author: erdos_r3 campaign.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import subprocess
@@ -422,6 +423,8 @@ def attack_one_chunk(
     extra_solver_args: list[str],
     pysat_with_proof: bool,
     discard_external_proof: bool,
+    solver_label: str | None,
+    solver_version: str | None,
 ) -> dict[str, Any]:
     chunk_id = chunk["chunk_id"]
     fixed_in = chunk.get("fixed_in", [])
@@ -447,6 +450,7 @@ def attack_one_chunk(
         else proof_path
     )
     cnf.to_file(str(cnf_path))
+    cnf_sha256 = hashlib.sha256(cnf_path.read_bytes()).hexdigest()
 
     solver_result = run_solver(
         cnf=cnf,
@@ -488,6 +492,9 @@ def attack_one_chunk(
         "stdout_tail": solver_result["stdout_tail"],
         "stderr_tail": solver_result["stderr_tail"],
         "solver_binary": solver_binary,
+        "solver_label": solver_label or solver_binary,
+        "solver_version": solver_version,
+        "cnf_sha256": cnf_sha256,
         "time_limit_s": time_limit_s,
         "pysat_with_proof": pysat_with_proof,
         "discard_external_proof": discard_external_proof,
@@ -536,6 +543,16 @@ def main() -> int:
         type=str,
         default="kissat",
         help="CDCL solver binary on PATH or absolute path.",
+    )
+    ap.add_argument(
+        "--solver-label",
+        default=None,
+        help="Stable human-readable solver/configuration label recorded in output.",
+    )
+    ap.add_argument(
+        "--solver-version",
+        default=None,
+        help="Exact solver version string recorded in output.",
     )
     ap.add_argument(
         "--solver-arg",
@@ -664,6 +681,8 @@ def main() -> int:
                 extra_solver_args=list(args.solver_arg),
                 pysat_with_proof=args.pysat_with_proof,
                 discard_external_proof=args.discard_external_proof,
+                solver_label=args.solver_label,
+                solver_version=args.solver_version,
             )
             elapsed = time.time() - t0
             fh.write(json.dumps(record) + "\n")

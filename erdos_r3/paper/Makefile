@@ -2,7 +2,7 @@
 #
 # Usage:
 #   make            — build the PDF
-#   make body       — regenerate paper.body.tex from the markdown sections
+#   make body       — regenerate a comparison draft from the markdown sections
 #   make arxiv      — produce arxiv-submission.tar.gz ready for upload
 #   make clean      — drop build artifacts (keeps paper.body.tex)
 #   make distclean  — drop everything regeneratable
@@ -12,6 +12,7 @@
 PAPER       := paper
 BODY_MD     := sections-concatenated.md
 BODY_TEX    := paper.body.tex
+GENERATED_BODY := paper.body.generated.tex
 ANCDIR      := anc
 ARXIV_TAR   := arxiv-submission.tar.gz
 
@@ -32,16 +33,16 @@ all: $(PAPER).pdf
 $(BODY_MD): $(SECTION_MDS)
 	awk 'FNR==1 && NR!=1 { print "" } { print }' $^ > $@
 
-$(BODY_TEX): $(BODY_MD)
+$(GENERATED_BODY): $(BODY_MD)
 	pandoc $< -o $@ \
 	  --from=markdown+pipe_tables+raw_tex \
 	  --to=latex \
 	  --top-level-division=section \
 	  --wrap=preserve
-	@echo "WARNING: hand-edit $(BODY_TEX) — see ARXIV_SUBMISSION.md §2 for the"
-	@echo "         specific markdown→LaTeX fixups (math typography, cross-refs, etc.)."
+	@echo "==> wrote $(GENERATED_BODY) for comparison only"
+	@echo "    $(BODY_TEX) is the maintained manuscript source and is not overwritten."
 
-body: $(BODY_TEX)
+body: $(GENERATED_BODY)
 
 $(PAPER).pdf: $(PAPER).tex $(BODY_TEX) refs.bib
 	latexmk -pdf -interaction=nonstopmode $(PAPER).tex
@@ -77,5 +78,5 @@ clean:
 	rm -f $(PAPER).fls $(PAPER).fdb_latexmk $(PAPER).toc
 
 distclean: clean
-	rm -f $(BODY_MD) $(BODY_TEX) $(PAPER).pdf $(ARXIV_TAR)
+	rm -f $(BODY_MD) $(GENERATED_BODY) $(PAPER).pdf $(ARXIV_TAR)
 	rm -rf $(ANCDIR)
