@@ -969,3 +969,32 @@ materially strengthen the computational paper. The missing piece for an MPC
 submission is still at least one known-value regression with a checked
 upper-bound certificate, together with the planned Zenodo refresh. Without
 that repair, `Constraints` remains the recommended submission venue.
+
+## Update: 2026-07-13 MPC submission gate
+
+Two time-boxed follow-ups were submitted after the completed venue campaign:
+
+```text
+61757222  r3_exact_cal  12-cell known-exact calibration
+61757223  r3_t2_cad12  native CaDiCaL 12h on the 112-row T2 residual
+```
+
+Job `61757222` tests `N = 100, 90, 80, 70, 60, 50` under two compact
+encodings: pure 3-AP/cardinality and sparse windows at lengths 31 and `N-1`.
+Each upper-bound target receives a one-hour Kissat cap without proof logging.
+Only the largest successful cases should be rerun with lower witnesses,
+archived CNFs, DRAT/LRAT output, `drat-trim -L`, and `cake_lpr`.
+
+Job `61757223` uses current native CaDiCaL 3.0.0 on the 112 `UNKNOWN` rows
+from the completed T2 survey, with a 12-hour cap and no proof logging. The
+extracted residual is
+`results/baselines/t2_full/residual_unknown112.jsonl` with SHA-256
+`7157661e21e192878f73aa02a0ddfc9e51cd43f491bc3946029276605767cff3`.
+A preflight regeneration of chunk `16383` matched the earlier Kissat formula
+hash exactly:
+`16a44b4072941d6909e3e0423d1bb87011918c19e8b17a4d909f834b03a1b1eb`.
+
+Both jobs are survey/calibration runs. Their `UNSAT` rows are solver-reported,
+not certificate-backed. Do not submit proof-producing follow-ups until the
+complete aggregates are reviewed. Any `SAT` row still requires immediate
+verification with `r3_verify.py` and overrides the campaign plan.

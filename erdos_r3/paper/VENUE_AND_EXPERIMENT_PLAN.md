@@ -142,6 +142,21 @@ corrected paper to Constraints. The benchmark,
 decomposition architecture, verified hard-tier certificates, and negative
 results are already squarely within its scope.
 
+### Active MPC gate (submitted 2026-07-13)
+
+- Job `61757222` calibrates upper-bound attacks at the known exact values for
+  `N = 100, 90, 80, 70, 60, 50`, comparing pure 3-AP/cardinality CNFs with a
+  sparse-window encoding. The largest successful cases will be selected for
+  proof-producing reruns and independently checked LRAT/LPR certificates.
+- Job `61757223` runs native CaDiCaL 3.0.0 for 12 hours on each of the 112
+  residual T2 rows. The first regenerated formula was byte-identical to the
+  corresponding Kissat survey formula.
+
+Use these results as a short submission gate. An MPC attempt should require a
+small suite of end-to-end exact regressions, a materially reduced T2 residual,
+and a synchronized Zenodo release. Otherwise proceed to Constraints rather
+than extending the campaign indefinitely.
+
 ## Release blockers before either submission
 
 - Publish a new Zenodo version containing the two certified T1c formula/proof
