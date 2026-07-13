@@ -924,3 +924,48 @@ useful hard tier and separates performance, but not solvability, between the
 two current native CDCL solvers under the tested 12-hour cap. Manuscript text
 that calls T1c “Kissat-only” or treats it as a CaDiCaL/Kissat solvability
 separation must be replaced with this controlled result.
+
+### Completed: full T2 Kissat job 61729241
+
+The full 6,071-row T2 survey completed with no `SAT` row:
+
+- `5,959 UNSAT` (`98.16%` solver-reported closure).
+- `112 UNKNOWN` (`1.84%`) at the two-hour per-chunk cap.
+- Median solver time: `180.537 s`.
+- p90 solver time: `1,294.351 s`.
+- Maximum solver time: `7,200.034 s`.
+- Aggregate solver time: `3,576,567.153 s` (`993.49` single-core hours).
+
+These are survey outcomes without proof logging. Treat the 5,959 closures as
+solver-reported `UNSAT`, not as certificate-backed proof steps. The 112-row
+residual is the measured T2 tail for any later long-wall or proof-producing
+experiment. Do not extrapolate the T2 rate to the full T3 partition without
+qualification.
+
+### Completed: known-value regression job 61729302
+
+The attempted exact-value regression did not produce an end-to-end checked
+upper-bound certificate:
+
+- `N=100`, known value 27: the size-27 lower witness was found and independently
+  verified (`OPTIMAL`, `368.56 s`), but the size-28 Kissat attack remained
+  `UNKNOWN` after 12 hours.
+- `N=150`, known value 35: the one-hour lower-witness search remained `UNKNOWN`,
+  and the size-36 Kissat attack remained `UNKNOWN` after 12 hours.
+- `N=200`, known value 41: the one-hour lower-witness search remained `UNKNOWN`,
+  and the size-42 Kissat attack remained `UNKNOWN` after 12 hours.
+- No upper-bound proof was verified for any of the three points.
+
+The run validates the witness/encoder plumbing at `N=100` but does not satisfy
+the planned MPC gate of recovering a known exact value end to end. Partial DRAT
+files from timed-out Kissat runs are not certificates and must not be presented
+as such.
+
+### Venue decision after the four experiments
+
+All four jobs are complete and no `SAT`/`FEASIBLE` result appeared. The full T2
+census, controlled native CDCL comparison, and optimization-form HiGHS study
+materially strengthen the computational paper. The missing piece for an MPC
+submission is still at least one known-value regression with a checked
+upper-bound certificate, together with the planned Zenodo refresh. Without
+that repair, `Constraints` remains the recommended submission venue.

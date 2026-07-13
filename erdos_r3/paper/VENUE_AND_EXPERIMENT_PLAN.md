@@ -1,6 +1,6 @@
 # Venue and experiment plan
 
-Date: 2026-07-12
+Date: 2026-07-13
 
 ## Recommendation
 
@@ -59,6 +59,19 @@ on 19/20 pairs (median paired CaDiCaL/kissat time ratio `1.38`), but the
 controlled result removes the earlier apparent solvability separation. The
 paper should report a performance separation and attribute the old failure to
 the earlier PySAT/bundled-solver configuration, not to CaDiCaL as a solver.
+
+Job `61729241` is complete. Across all 6,071 T2 chunks, kissat reports
+`5,959 UNSAT` and `112 UNKNOWN` at the two-hour cap, with no `SAT` result.
+The measured closure rate is `98.16%`; median and p90 solver times are
+`180.537 s` and `1,294.351 s`, and aggregate solver time is `993.49`
+single-core hours. This is a complete survey without proof logging, so the
+paper must call the closures solver-reported rather than certified.
+
+Job `61729302` is complete but did not recover a known exact value end to end.
+At `N=100` the size-27 lower witness was found and independently verified, but
+the size-28 upper attack remained `UNKNOWN` after 12 hours. At `N=150` and
+`N=200`, both the one-hour lower-witness searches and the 12-hour upper attacks
+remained `UNKNOWN`. No upper-bound certificate was verified.
 
 ### 1. Full T2 Kissat pass
 
@@ -121,7 +134,11 @@ Target MPC if all of the following are available:
 4. A Zenodo version containing the certified T1c CNF/DRAT/provenance bundle.
 5. At least one end-to-end known-value regression with a checked certificate.
 
-Otherwise submit the corrected paper to Constraints. The benchmark,
+Items 1--3 are now satisfied by jobs `61729241`, `61729294`, and `61729298`.
+Item 5 is not satisfied by job `61729302`; only the `N=100` lower witness was
+verified, while every upper attack timed out. Therefore, unless a smaller or
+better-seeded known exact case is closed with a checked certificate, submit the
+corrected paper to Constraints. The benchmark,
 decomposition architecture, verified hard-tier certificates, and negative
 results are already squarely within its scope.
 
