@@ -53,6 +53,13 @@ windows on, every LP optimum and MIP upper bound is numerically `44.0`:
 the valid inequalities close the relaxation to the decision threshold but do
 not certify `<44`. Full node and timing aggregates are in `SESSION_HANDOFF.md`.
 
+Job `61729294` is also complete. Native CaDiCaL 3.0.0 and kissat 4.0.4
+both close all 20 T1b chunks on paired, byte-identical CNFs. Kissat is faster
+on 19/20 pairs (median paired CaDiCaL/kissat time ratio `1.38`), but the
+controlled result removes the earlier apparent solvability separation. The
+paper should report a performance separation and attribute the old failure to
+the earlier PySAT/bundled-solver configuration, not to CaDiCaL as a solver.
+
 ### 1. Full T2 Kissat pass
 
 Run kissat on all 6,071 T2 chunks without proof logging, using the exact

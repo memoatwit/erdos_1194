@@ -901,3 +901,26 @@ Interpretation: the valid window inequalities dramatically tighten the
 relaxation and reduce node counts, but leave a one-unit integer proof gap at
 the target. This replaces the invalid interpretation of the earlier
 zero-objective `mip_dual_bound=0.0` outputs.
+
+### Completed: controlled CDCL job 61729294
+
+The native-solver comparison completed all 40 tasks on deterministic,
+no-window CNFs for the 20 T1b chunks:
+
+- Native CaDiCaL 3.0.0: `20/20 UNSAT`, median `734.0 s`, p90 `9,700.0 s`,
+  maximum `28,635.8 s`, total `79,421.8 s`.
+- Kissat 4.0.4: `20/20 UNSAT`, median `429.0 s`, p90 `3,467.8 s`, maximum
+  `13,425.5 s`, total `42,782.3 s`.
+- All `20/20` paired `cnf_sha256` values match.
+- Kissat was faster on 19 of 20 pairs; the median paired ratio
+  `CaDiCaL_seconds / kissat_seconds` was `1.38`.
+- T1c chunk `40959`: CaDiCaL `28,635.8 s`, kissat `13,425.5 s`.
+- T1c chunk `48895`: CaDiCaL `18,077.7 s`, kissat `9,963.9 s`.
+- No `SAT` row appeared.
+
+Interpretation: the earlier failure of the PySAT-bundled CaDiCaL configuration
+at 12 hours does not generalize to current native CaDiCaL 3.0.0. T1c remains a
+useful hard tier and separates performance, but not solvability, between the
+two current native CDCL solvers under the tested 12-hour cap. Manuscript text
+that calls T1c “Kissat-only” or treats it as a CaDiCaL/Kissat solvability
+separation must be replaced with this controlled result.
