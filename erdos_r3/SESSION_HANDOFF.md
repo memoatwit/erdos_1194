@@ -998,3 +998,61 @@ Both jobs are survey/calibration runs. Their `UNSAT` rows are solver-reported,
 not certificate-backed. Do not submit proof-producing follow-ups until the
 complete aggregates are reviewed. Any `SAT` row still requires immediate
 verification with `r3_verify.py` and overrides the campaign plan.
+
+### Completed: known-exact calibration job 61757222
+
+All 12 calibration cells returned solver-reported `UNSAT`; no `SAT` row
+appeared. Results by `N` and encoding arm:
+
+| N | target K | pure seconds | pure vars / clauses | sparse seconds | sparse vars / clauses |
+|---:|---:|---:|---:|---:|---:|
+| 100 | 28 | 2,057.550 | 1,444 / 13,696 | 1,623.786 | 21,200 / 53,792 |
+| 90 | 25 | 968.317 | 1,274 / 11,176 | 1,256.470 | 18,074 / 45,278 |
+| 80 | 23 | 304.361 | 1,104 / 8,906 | 356.784 | 15,012 / 37,142 |
+| 70 | 21 | 47.061 | 934 / 6,886 | 48.897 | 12,014 / 29,384 |
+| 60 | 20 | 2.571 | 772 / 5,124 | 4.915 | 9,132 / 22,096 |
+| 50 | 17 | 1.048 | 622 / 3,624 | 1.423 | 6,238 / 15,030 |
+
+The largest three proof-producing candidates are `N=100`, `N=90`, and
+`N=80`. Both encodings close each case, but the pure formulation is much
+smaller and is the default candidate for certificate generation. Before any
+submission, each selected case still needs a verified lower witness and an
+upper proof checked against its archived CNF with `drat-trim -L` and
+`cake_lpr`.
+
+At the same checkpoint, job `61757223` had emitted one row: chunk `16383`
+closed `UNSAT` in `2,754.215 s`, with its CNF SHA-256 matching the earlier
+Kissat survey formula. The remaining CaDiCaL tasks were still running or
+throttle-pending.
+
+### Completed: T2 residual CaDiCaL job 61757223
+
+All 112 residual rows completed under native CaDiCaL 3.0.0 at a 12-hour cap:
+
+- `86 UNSAT` (`76.79%` of the Kissat residual).
+- `26 UNKNOWN` at the cap.
+- `0 SAT`.
+- `112/112` CNF SHA-256 values matched the corresponding two-hour Kissat
+  survey formulas.
+- Median solver time: `23,238.075 s` (`6.46 h`).
+- p90 solver time: `43,200.039 s` (the 12-hour cap).
+- Maximum solver time: `43,200.047 s`.
+- Aggregate solver time: `2,818,577.749 s` (`782.94` single-core hours).
+
+Across the two-solver T2 portfolio, the measured census is now
+`6,045 UNSAT / 26 UNKNOWN / 0 SAT` over all 6,071 rows, for a solver-reported
+closure rate of `99.57%`. These remain survey results without proof logging;
+they are not certificate-backed proof steps and do not cover the full T3
+partition.
+
+The final 26-row residual chunk IDs are:
+
+```text
+32767 49151 57343 61439 64511 65023 65279 65407 65534 65535
+77823 79871 81919 86015 90111 94207 96255 97279 97791 98301
+98302 98303 102399 106495 108543 110591
+```
+
+This materially satisfies the T2-reduction part of the MPC gate. The next
+submission-gate action is the proof-producing exact regression suite at
+`N=100,90,80`; no follow-up was submitted automatically.

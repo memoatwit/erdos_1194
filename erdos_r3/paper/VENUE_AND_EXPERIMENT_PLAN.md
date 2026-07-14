@@ -157,6 +157,18 @@ small suite of end-to-end exact regressions, a materially reduced T2 residual,
 and a synchronized Zenodo release. Otherwise proceed to Constraints rather
 than extending the campaign indefinitely.
 
+Both MPC-gate survey jobs are complete. The exact calibration closed all 12
+cells; `N=100,90,80` are the largest proof-producing candidates. Native
+CaDiCaL closed 86 of the 112 two-hour Kissat residuals, leaving 26 UNKNOWN and
+no SAT, with all paired CNF hashes matching. The combined T2 portfolio result
+is `6,045 UNSAT / 26 UNKNOWN / 0 SAT` (`99.57%` solver-reported closure).
+
+The remaining MPC compute gate is therefore narrow: produce verified lower
+witnesses and independently checked upper certificates for the selected exact
+cases. The 26-row T2 tail may remain as a released challenge tier unless a
+cheap additional portfolio arm is justified; closing it is not required to
+start the exact-certificate work.
+
 ## Release blockers before either submission
 
 - Publish a new Zenodo version containing the two certified T1c formula/proof
