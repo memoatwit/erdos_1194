@@ -1146,3 +1146,18 @@ within two hours. These 79 closures are solver-attested because the survey did
 not retain proof objects. Compact artifacts are
 `results/global_degree_survivor_{cpsat100,kissat100}.jsonl` and
 `results/global_degree_survivor_solver_summary.json`.
+
+### Submitted: final cover audit and certificate-transfer sample
+
+- Job `61883592`: independent C-versus-Python audit of the complete global
+  AP-degree cover. It completed `VERIFIED`: both implementations agree on the
+  24 split variables, 132 minimal masks, 96,847 survivors, and the canonical
+  ordered survivor-list SHA-256
+  `44da22d51937282e209dbeec7c2369516ec499fd8d39fbf63b798c268f1d6464`.
+- Job `61883609`: six proof-producing kissat cells selected at solve-time
+  quantiles `0, .2, .4, .6, .8, 1` among the 79 closed survivor rows. Selected
+  chunk IDs are `15764552, 15729936, 2128016, 8520965, 9471264, 2168896`;
+  prior solve times span `87.34--6492.29 s`.
+- Every certificate cell requires survey-identical CNF SHA-256, DRAT
+  verification and conversion to LRAT, and `cake_lpr` acceptance. Heavy files
+  are split between the existing scratch3 and scratch4 project workspaces.

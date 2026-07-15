@@ -115,7 +115,9 @@ Sixth, a post-campaign implementation audit corrected the record of the
 deployed split policy and enabled a matched five-policy ablation. Exact prefix
 enumeration reduces the complete depth-24 cover from 12,582,912 surviving
 cubes under the deployed witness-numeric prefix to 96,847 under global
-AP-degree. On 500 matched raw assignments, global degree improves the 60-s
+AP-degree. A standalone C enumerator independently reproduces the split
+variables, 132 minimal masks, and the complete ordered survivor list. On 500
+matched raw assignments, global degree improves the 60-s
 closed rate by 13.4 percentage points, while all three sampled assignments
 that survive its prefix pruning remain \texttt{UNKNOWN}. A fixed-seed follow-up
 on 100 uniformly sampled global-degree survivors confirms that all 100 reach
@@ -154,7 +156,9 @@ study, not a new exact value of A003002. We provide:
   counts, interpreted as conditioned independent-set counts in the 3-AP
   hypergraph. It documents the deployed loader behavior and identifies a
   global-degree cover with 96,847 cubes, 130 times fewer than the historical
-  witness-anchored cover. A fixed-seed 100-survivor follow-up measures the
+  witness-anchored cover. An independent exhaustive C audit agrees
+  byte-for-byte with the production generator on the canonical survivor list.
+  A fixed-seed 100-survivor follow-up measures the
   conquer phase directly: 100/100 remain \texttt{UNKNOWN} under the historical
   CP-SAT configuration, whereas kissat closes 79/100 within two hours.
 \item
@@ -847,6 +851,13 @@ under endpoint forcing and counted those not eliminated by AP-prefix pruning.
 The deployed count exactly reproduces the campaign's historical
 12,582,912-chunk figure, providing an independent check of the enumeration.
 
+We separately audited the global-degree cover with a standalone C program
+that does not import or call the production generator. It independently
+recomputes AP degrees, the selected 24 variables, the 132 minimal forbidden
+masks, and every surviving raw assignment. The two implementations agree
+byte-for-byte on the canonical ordered list of 96,847 survivors; the list and
+implementation SHA-256 values are recorded in the released audit JSON.
+
 We then sampled 500 raw 24-bit assignments uniformly with seed 20260715 and
 applied the same bit vector to every policy. The five arms ran sequentially
 within each SLURM task on AMD EPYC 7763 nodes; arm order rotated by task index,
@@ -1419,7 +1430,8 @@ survivor sample and exact-count metadata are released as
 conquer outputs and compact analysis are
 \path{results/global_degree_survivor_cpsat100.jsonl},
 \path{results/global_degree_survivor_kissat100.jsonl}, and
-\path{results/global_degree_survivor_solver_summary.json}.\par}
+\path{results/global_degree_survivor_solver_summary.json}. The independent
+cover audit is \path{results/global_degree_cover_independent_audit.json}.\par}
 
 Tier T1c is the benchmark's compact native-CDCL calibration point. The two
 chunks defeat the initial PySAT/CaDiCaL path, but native CaDiCaL 3.0.0 and

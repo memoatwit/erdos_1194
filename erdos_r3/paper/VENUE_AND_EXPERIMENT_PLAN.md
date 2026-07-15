@@ -233,6 +233,25 @@ constraints and 22,154 active window inequalities without importing solver
 code. It records SHA-256 digests for the A003002 b-file, both constraint
 families, and the complete high-level model.
 
+### Final cover and certificate checks (submitted 2026-07-15)
+
+Job `61883592` independently audits the complete global AP-degree cover. A
+standalone C implementation recomputes AP degrees, the depth-24 variable set,
+minimal forbidden prefix masks, and all surviving raw IDs. Its canonical
+survivor list is compared byte-for-byte with the production Python generator;
+the result is `VERIFIED`: both implementations produce the same 24 variables,
+132 masks, 96,847 survivors, and ordered-list SHA-256
+`44da22d51937282e209dbeec7c2369516ec499fd8d39fbf63b798c268f1d6464`.
+
+Job `61883609` transfers the certificate chain to the new cover on six
+deterministically selected kissat-closed survivors. The selected ranks are
+the nearest ranks to solve-time quantiles 0, .2, .4, .6, .8, and 1 among the
+79 UNSAT survey rows. Prior solve times span 87.34--6,492.29 s. Each cell
+requires byte-identical CNF SHA-256 relative to the survey, then emits DRAT,
+converts to LRAT, and checks the result with `cake_lpr`. This is the final
+bounded experiment before submission; it is not a precursor to a full cover
+sweep.
+
 ## Release blockers before either submission
 
 - Make the GitHub repository reviewer-accessible before submission. It is

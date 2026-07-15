@@ -69,6 +69,7 @@ files are drafting history and do not overwrite it.
 | Split-policy cover-size/hardness tradeoff | `results/split_policy_ablation_summary.json` | `baselines/r3_split_policy_ablation.py` and its SLURM driver |
 | Alternative global-degree cover has 96,847 cubes | `results/global_degree_survivor_sample100_summary.json` | survivor generator and solver-arm outputs |
 | Global-degree survivor sample: CP-SAT 0/100, kissat 79/100 | `results/global_degree_survivor_solver_summary.json` | `results/global_degree_survivor_cpsat100.jsonl`, `results/global_degree_survivor_kissat100.jsonl`, and the two SLURM drivers |
+| Independent full-cover identity check | `results/global_degree_cover_independent_audit.json` | production Python generator, standalone C enumerator, and canonical survivor-list hashes |
 
 ## Certificate Chain
 
@@ -101,6 +102,12 @@ sbatch baselines/submit_cdcl_paired_amd7763.sbatch
 # Targeted conquer-phase sample from global-degree survivors.
 sbatch baselines/submit_global_degree_survivor_cpsat.sbatch
 sbatch baselines/submit_global_degree_survivor_kissat.sbatch
+
+# Independent C-versus-Python audit of the complete 96,847-cube cover.
+sbatch baselines/submit_global_degree_cover_audit.sbatch
+
+# Six solve-time-stratified, proof-producing global-degree survivors.
+sbatch baselines/submit_global_degree_cert_sample6.sbatch
 ```
 
 All array outputs are resumable. A `SAT` or `FEASIBLE` result is urgent and
@@ -109,6 +116,10 @@ The released fixed-seed sample uses seed `20260716`. Its compact summary
 records `100 UNKNOWN` for CP-SAT and `79 UNSAT / 21 UNKNOWN` for kissat, with
 a kissat Wilson 95% closure interval of `70.0%--85.8%`. The survey did not
 emit proof objects, so those 79 rows are solver-attested rather than certified.
+The certificate sample is selected deterministically at solve-time quantiles
+`0, .2, .4, .6, .8, 1` from those 79 rows. Each task requires its regenerated
+CNF hash to equal the survey hash before DRAT-to-LRAT conversion and
+`cake_lpr` checking.
 
 ## Scope
 

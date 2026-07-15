@@ -35,6 +35,9 @@ Current result snapshot:
   cover with 96,847 survivors. Those survivors are harder at the 60-second
   CP-SAT cap, so the result is a cover-size/hardness tradeoff rather than a
   claimed 130-fold runtime speedup.
+- An independently implemented exhaustive C audit agrees byte-for-byte with
+  the production Python generator on the canonical 96,847-ID survivor list,
+  as well as the 24 split variables and 132 minimal forbidden masks.
 - A fixed-seed follow-up on 100 uniformly sampled global-degree survivors
   returns 100/100 `UNKNOWN` under the historical 60-second, eight-worker
   CP-SAT configuration. Native kissat 4.0.4 closes 79/100 `UNSAT` within two

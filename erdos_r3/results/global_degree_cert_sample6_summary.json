@@ -1,0 +1,60 @@
+{
+  "closed_population_count": 79,
+  "output_sha256": "93cfab6893e379483b47c8807748d43f1d5e2ddadbe066d0ca04a924deeebd28",
+  "population_count": 100,
+  "results_sha256": "5223bf6eca0b4c584018f47786a21f7b16f82e41f71b70eeb3198a1de9385086",
+  "sample_sha256": "6391d11c1a885c5a769b48cad55bfb9ba8c0c7438536b9f04c12fec339cbeb1d",
+  "selected": [
+    {
+      "chunk_id": 15764552,
+      "prior_cnf_sha256": "16a7a06021323cc038e693a7c82262d28668edc29336bb7d1b7e279a652e70e2",
+      "prior_solver_seconds": 87.34498500823975,
+      "quantile": 0.0,
+      "rank": 0
+    },
+    {
+      "chunk_id": 15729936,
+      "prior_cnf_sha256": "5b9da7a9d5d6f2998b5a8fb8f614aebef4d3174977563ae036e2f44c6fd832a0",
+      "prior_solver_seconds": 534.4424910545349,
+      "quantile": 0.2,
+      "rank": 16
+    },
+    {
+      "chunk_id": 2128016,
+      "prior_cnf_sha256": "fbd6bacf5b7451f7ca860e993be0545ef3119e89035fdd1fb3192256bcaf7c07",
+      "prior_solver_seconds": 948.1715767383575,
+      "quantile": 0.4,
+      "rank": 31
+    },
+    {
+      "chunk_id": 8520965,
+      "prior_cnf_sha256": "960f8d7d34f4a4b0affcdad598afccd087ed0819006f671402ea21d44c9ab7f1",
+      "prior_solver_seconds": 1785.4063534736633,
+      "quantile": 0.6,
+      "rank": 47
+    },
+    {
+      "chunk_id": 9471264,
+      "prior_cnf_sha256": "d0a56299112d54a758026ce732500cb10fe5075c3a09145048c602280a28e5d3",
+      "prior_solver_seconds": 2602.866504907608,
+      "quantile": 0.8,
+      "rank": 62
+    },
+    {
+      "chunk_id": 2168896,
+      "prior_cnf_sha256": "1a395dab19b1960bd7307e0568a8c6e449198c8a3fa4d8488b680643cad95219",
+      "prior_solver_seconds": 6492.2912085056305,
+      "quantile": 1.0,
+      "rank": 78
+    }
+  ],
+  "selection_method": "nearest ranks at fixed solve-time quantiles",
+  "selection_quantiles": [
+    0.0,
+    0.2,
+    0.4,
+    0.6,
+    0.8,
+    1.0
+  ]
+}

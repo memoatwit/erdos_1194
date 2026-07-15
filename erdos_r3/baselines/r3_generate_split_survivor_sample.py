@@ -84,6 +84,11 @@ def main() -> int:
     parser.add_argument("--sample-seed", type=int, default=20260716)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--summary", type=Path, required=True)
+    parser.add_argument(
+        "--survivors-output",
+        type=Path,
+        help="Optional newline-delimited list of every surviving raw assignment ID",
+    )
     args = parser.parse_args()
 
     endpoints = {1, args.N}
@@ -94,6 +99,13 @@ def main() -> int:
     split_hash = hashlib.sha256(
         json.dumps(variables, separators=(",", ":")).encode("ascii")
     ).hexdigest()
+    # Canonicalize the optional full-cover artifact independently of the DFS
+    # traversal order. The sampling population retains its historical order.
+    survivor_text = "".join(f"{raw_id}\n" for raw_id in sorted(survivors))
+
+    if args.survivors_output:
+        args.survivors_output.parent.mkdir(parents=True, exist_ok=True)
+        args.survivors_output.write_text(survivor_text, encoding="ascii")
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", encoding="utf-8") as fh:
@@ -125,6 +137,9 @@ def main() -> int:
         "forbidden_mask_count": len(masks),
         "survivor_count": len(survivors),
         "survival_rate": len(survivors) / (1 << args.split_count),
+        "survivor_raw_ids_sha256": hashlib.sha256(
+            survivor_text.encode("ascii")
+        ).hexdigest(),
         "sample_size": args.sample_size,
         "sample_seed": args.sample_seed,
         "sample_raw_ids_sha256": hashlib.sha256(

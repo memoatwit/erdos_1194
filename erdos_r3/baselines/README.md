@@ -81,7 +81,24 @@ These exports should be added to the Zenodo deposit (new version) and
 mentioned in §5.5 so the benchmark is usable without the repo's Python
 tooling. A CSPLib submission of the family is a natural follow-up.
 
-## Follow-up (optional, referee-pleasing)
+## Final cover and certificate checks
+
+Two bounded checks connect the audited split policy to the certificate
+pipeline:
+
+- `submit_global_degree_cover_audit.sbatch` compiles an independent C
+  enumerator and compares its complete ordered survivor list byte-for-byte
+  against the production Python generator.
+- `submit_global_degree_cert_sample6.sbatch` reruns six deterministic
+  solve-time quantiles from the 79 kissat-closed global-degree survivors with
+  proof logging, formula-hash equality, DRAT-to-LRAT conversion, and formally
+  verified `cake_lpr` checking. Heavy artifacts remain in project scratch.
+
+The six-row selection and its provenance are
+`results/global_degree_cert_sample6.jsonl` and
+`results/global_degree_cert_sample6_summary.json`.
+
+## Further follow-up (optional)
 
 Cube-and-conquer head-to-head: compare witness-informed cubes against
 `march_cu` lookahead cubes on a sampled chunk range. Not scripted yet;
