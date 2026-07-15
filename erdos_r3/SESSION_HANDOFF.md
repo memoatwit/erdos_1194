@@ -1082,3 +1082,28 @@ Compact provenance is written to
 `a4323b203cc9ecd584ba7da9e3fff08135a09d5f`; the Unity binary SHA-256 is
 `b25551c853c7b7fe6a9059bcddd81a46fb4ed952b842e1080697f8122ee0c8ca`.
 Its bundled example passed `s VERIFIED UNSAT` before submission.
+
+### Partial result and N=100 rerun
+
+Job `61848180` completed two of the three exact certificates end-to-end:
+
+- `N=80`: verified size-22 witness; target 23 `UNSAT`; calibration CNF hash
+  matched; DRAT verified and converted to LRAT; `cake_lpr` returned
+  `VERIFIED`. Kissat took `228.408 s`, drat-trim `318 s`, and cake_lpr
+  `59 s`. The DRAT and LRAT sizes are about 275 MB and 1.02 GB.
+- `N=90`: verified size-24 witness; target 25 `UNSAT`; calibration CNF hash
+  matched; DRAT verified and converted to LRAT; `cake_lpr` returned
+  `VERIFIED`. Kissat took `837.473 s`, drat-trim `1,146 s`, and cake_lpr
+  `143 s`. The DRAT and LRAT sizes are about 735 MB and 2.49 GB.
+
+The `N=100` cell stopped before upper solving because its fresh one-worker
+size-27 witness search returned `UNKNOWN` at the two-hour cap. This was not a
+certificate failure. The prior known-regression run already contains a
+size-27 witness marked verified at
+`results/baselines/known_regression/N100/lower_witness.json`. The array script
+now prefers such a previously audited witness and independently rechecks it
+with `r3_verify.py`.
+
+Only `N=100` was resubmitted as job `61850319`. It reused and reverified the
+audited witness, generated the pure target-28 CNF in scratch4, and entered the
+proof-producing Kissat phase. No SAT result has appeared.

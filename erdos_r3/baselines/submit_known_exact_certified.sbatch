@@ -68,6 +68,27 @@ echo "[setup] kissat=$($KISSAT --version | head -1)"
 LOWER_SOLVER="$SCRATCH/lower_solver.json"
 LOWER_CANDIDATE="$SCRATCH/lower_candidate.json"
 LOWER_VERIFY="$SCRATCH/lower_verify.json"
+LOWER_SOURCE_FILE="$SCRATCH/lower_source.txt"
+KNOWN_REGRESSION_LOWER="$R3_DIR/results/baselines/known_regression/N${N}/lower_witness.json"
+
+# Prefer a previously audited witness when available. In particular, the
+# earlier N=100 regression found and independently verified a size-27 witness
+# with eight CP-SAT workers, while a fresh single-worker search can time out.
+if [ -s "$KNOWN_REGRESSION_LOWER" ] && python - "$KNOWN_REGRESSION_LOWER" "$KNOWN" <<'PY'
+import json, sys
+row = json.load(open(sys.argv[1]))
+ok = (
+    row.get("solver_status_name") in {"OPTIMAL", "FEASIBLE"}
+    and row.get("witness_verified") is True
+    and len(row.get("witness", [])) == int(sys.argv[2])
+)
+raise SystemExit(0 if ok else 1)
+PY
+then
+  cp "$KNOWN_REGRESSION_LOWER" "$LOWER_SOLVER"
+  printf '%s\n' "$KNOWN_REGRESSION_LOWER" > "$LOWER_SOURCE_FILE"
+fi
+
 if [ ! -s "$LOWER_SOLVER" ]; then
   python r3_cpsat.py "$N" \
     --decision-size "$KNOWN" \
@@ -78,6 +99,7 @@ if [ ! -s "$LOWER_SOLVER" ]; then
     --witness \
     --output "$LOWER_SOLVER" \
     > "$SCRATCH/lower_solver.log" 2>&1
+  printf '%s\n' fresh-pure-cpsat > "$LOWER_SOURCE_FILE"
 fi
 
 python - "$LOWER_SOLVER" "$LOWER_CANDIDATE" "$N" "$KNOWN" <<'PY'
@@ -225,6 +247,7 @@ payload = {
     "known_r3": $KNOWN,
     "target_refuted": $TARGET,
     "lower_solver_status": lower_solver.get("solver_status_name"),
+    "lower_witness_source": pathlib.Path(scratch, "lower_source.txt").read_text().strip(),
     "lower_witness": lower_candidate.get("A"),
     "lower_witness_verified": bool(lower_verify.get("ok") and lower_verify.get("size") == $KNOWN),
     "upper_status": upper.get("status"),
