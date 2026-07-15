@@ -1,0 +1,51 @@
+{
+  "cpsat": {
+    "closed": 0,
+    "closed_rate": 0.0,
+    "closed_rate_wilson_95ci": [
+      3.469446951953614e-18,
+      0.03699349820698568
+    ],
+    "complete": true,
+    "expected": 100,
+    "missing_chunk_ids": [],
+    "observed": 100,
+    "solver_seconds": {
+      "max": 60.2569,
+      "mean": 60.065006,
+      "median": 60.0383,
+      "p90_nearest_rank": 60.1401,
+      "sum": 6006.5006
+    },
+    "statuses": {
+      "UNKNOWN": 100
+    }
+  },
+  "kissat": {
+    "closed": 79,
+    "closed_rate": 0.79,
+    "closed_rate_wilson_95ci": [
+      0.7002003116591013,
+      0.858343459380847
+    ],
+    "complete": true,
+    "expected": 100,
+    "missing_chunk_ids": [],
+    "observed": 100,
+    "solver_seconds": {
+      "max": 7200.3180429935455,
+      "mean": 2909.6996462988855,
+      "median": 1819.7459350824356,
+      "p90_nearest_rank": 7200.017446517944,
+      "sum": 290969.96462988853
+    },
+    "statuses": {
+      "UNKNOWN": 21,
+      "UNSAT": 79
+    }
+  },
+  "sample_count": 100,
+  "sample_seed": 20260716,
+  "split_variables_sha256": "fb90d59046293a490f1c4c8a7f2f09ce5f1d0e94d3f1b076ec50db01daf4e349",
+  "urgent_feasible_rows": []
+}

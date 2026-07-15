@@ -35,6 +35,12 @@ Current result snapshot:
   cover with 96,847 survivors. Those survivors are harder at the 60-second
   CP-SAT cap, so the result is a cover-size/hardness tradeoff rather than a
   claimed 130-fold runtime speedup.
+- A fixed-seed follow-up on 100 uniformly sampled global-degree survivors
+  returns 100/100 `UNKNOWN` under the historical 60-second, eight-worker
+  CP-SAT configuration. Native kissat 4.0.4 closes 79/100 `UNSAT` within two
+  hours (Wilson 95% interval 70.0--85.8%); 21 remain `UNKNOWN` and no `SAT`
+  row appears. These survey closures are solver-attested because proof logging
+  was disabled.
 
 The full `r_3(212)` upper bound remains open because the complete T3 cube
 space has not been certified.

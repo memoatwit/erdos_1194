@@ -117,9 +117,12 @@ enumeration reduces the complete depth-24 cover from 12,582,912 surviving
 cubes under the deployed witness-numeric prefix to 96,847 under global
 AP-degree. On 500 matched raw assignments, global degree improves the 60-s
 closed rate by 13.4 percentage points, while all three sampled assignments
-that survive its prefix pruning remain \texttt{UNKNOWN}. The experiment therefore
-exposes a genuine cover-size versus residual-hardness tradeoff rather than a
-simple speedup (§\ref{split-policy-ablation}).
+that survive its prefix pruning remain \texttt{UNKNOWN}. A fixed-seed follow-up
+on 100 uniformly sampled global-degree survivors confirms that all 100 reach
+the 60-s CP-SAT cap, while kissat closes 79 within two hours (Wilson 95\% CI
+70.0--85.8\%). The experiment therefore exposes a genuine cover-size versus
+conquer-cost tradeoff rather than a simple speedup
+(§\ref{split-policy-ablation}).
 
 This paper's contribution is the benchmark and the cross-solver empirical
 study, not a new exact value of A003002. We provide:
@@ -151,8 +154,9 @@ study, not a new exact value of A003002. We provide:
   counts, interpreted as conditioned independent-set counts in the 3-AP
   hypergraph. It documents the deployed loader behavior and identifies a
   global-degree cover with 96,847 cubes, 130 times fewer than the historical
-  witness-anchored cover, while measuring the increased hardness of the
-  surviving cubes.
+  witness-anchored cover. A fixed-seed 100-survivor follow-up measures the
+  conquer phase directly: 100/100 remain \texttt{UNKNOWN} under the historical
+  CP-SAT configuration, whereas kissat closes 79/100 within two hours.
 \item
   Three independently checked exact-value regressions at $N=80,90,100$,
   including verified lower witnesses, archived pure CNFs, DRAT-to-LRAT
@@ -882,6 +886,36 @@ stronger conquer phase. This distinction motivates evaluating cube count and
 survivor hardness jointly rather than treating prefix-pruning rate alone as
 the decomposition objective.
 
+We measured that conquer phase on a separate fixed-seed sample of 100 cubes
+drawn uniformly from the 96,847 global-degree survivors (seed 20260716). The
+historical window-bounded CP-SAT configuration, using eight workers and a
+60-s cap, returned \texttt{UNKNOWN} on all 100. Native kissat~4.0.4,
+single-threaded on the pure 3-AP/cardinality encoding with a two-hour cap,
+closed 79 \texttt{UNSAT} and left 21 \texttt{UNKNOWN}; no \texttt{SAT} row
+appeared. The kissat closure estimate is 79.0\% with Wilson 95\% interval
+70.0--85.8\%. Median solver time was 1,819.75 s for kissat and 60.04 s for
+CP-SAT; retained solver time totaled 290,969.96 s and 6,006.50 s,
+respectively.
+
+{\small\setlength{\tabcolsep}{4pt}
+\begin{center}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Conquer arm & Status counts & Closed rate (95\% Wilson CI) & Median s & Total s \\
+\midrule
+CP-SAT, 60 s & 100 UNKNOWN & 0.0\% (0.0--3.7\%) & 60.04 & 6,006.50 \\
+kissat, 2 h & 79 UNSAT; 21 UNKNOWN & 79.0\% (70.0--85.8\%) & 1,819.75 & 290,969.96 \\
+\bottomrule
+\end{tabular}
+\end{center}
+}
+
+This is not a processor-normalized speed comparison: the arms use different
+formulations, worker counts, and wall caps. It is a conquerability comparison
+for the same deterministic sample. The 79 kissat closures are solver-attested
+because this survey intentionally disabled proof logging; they do not by
+themselves certify any part of the complete 96,847-cube cover.
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{figures/split_policy_ablation.pdf}
@@ -980,15 +1014,16 @@ $N=212$ sweep.
 
 The dominant retained costs are the 100k broad expansion, the
 sample-500 refinement, the full-T1 long-wall HiGHS audit, and the final
-T2 solver portfolio. The total retained-log estimate is roughly 11,230
+T2 solver portfolio. The total retained-log estimate is roughly 11,324
 worker-hours; Appendix~\ref{app:compute}
 itemizes the accounting per campaign layer. A full depth-24 sweep of
 the 12,582,912 AP-pruned chunks of the deployed witness-prefix lattice was
 outside this campaign's budget under the CP-SAT-first parameters used here.
 The split-policy audit reduces a complete alternative cover to 96,847 cubes,
-but shows that its survivors are harder at the original 60-s cap; §5.3
-therefore treats proof logging and survivor conquest, not raw cube count
-alone, as the remaining bottleneck.
+and the 100-survivor follow-up shows that kissat closes 79\% within two hours
+even though the historical CP-SAT arm closes none at 60 s. Section~5.3
+therefore treats proof-producing survivor conquest, not raw cube count alone,
+as the remaining bottleneck.
 
 \section{The structural hard pocket}\label{the-structural-hard-pocket}
 
@@ -1300,8 +1335,10 @@ What blocks the upper bound is complete coverage and certification of the
 remaining search space. The deployed witness-prefix cover contains
 12,582,912 chunks, of which this campaign processed the 100,000-chunk
 expansion plus samples. The split-policy audit supplies an alternative,
-equally complete global-degree cover with 96,847 survivors, but its sampled
-survivors are individually harder at the 60-s CP-SAT cap. The full T2 survey leaves 26/6,071
+equally complete global-degree cover with 96,847 survivors. In a fixed-seed
+sample its survivors are uniformly hard at the 60-s CP-SAT cap, but kissat
+closes 79/100 within two hours, with Wilson 95\% interval 70.0--85.8\%.
+The full T2 survey leaves 26/6,071
 chunks unresolved after the two-solver portfolio, and its 1,776.43
 single-core hours measure the heavy tail directly. A certified sweep would be
 of the same general character as the Pythagorean-triples and Schur-five
@@ -1368,7 +1405,7 @@ T1a & T1a JSONL & 25 chunks & closed by HiGHS at 8h & reference / regression tes
 $\mathrm{T1b}\setminus\mathrm{T1c}$ & T1b-minus-T1c JSONL & 18 chunks & HiGHS-resistant; closed by CDCL; all 18/18 emitted DRAT proofs verified by \texttt{drat-trim} & certified CDCL benchmark \\
 T1c & T1c JSONL & 2 chunks & resisted the initial PySAT/CaDiCaL path; both native CaDiCaL and kissat close them; kissat DRAT-certified & native-CDCL performance calibration \\
 T2 & T2 JSONL & 6,071 chunks & survived 60-s CP-SAT; 6,045 closed by the native CDCL portfolio, 26 unresolved & certified closure of the expansion residual \\
-T3 & deterministic generators & 12,582,912 witness-prefix or 96,847 global-degree cubes & complete covers; global-degree survivors are harder at 60-s CP-SAT & full upper-bound proof \\
+T3 & deterministic generators & 12,582,912 witness-prefix or 96,847 global-degree cubes & complete covers; on 100 global-degree survivors CP-SAT closes 0 and kissat closes 79 without proofs & full upper-bound proof \\
 \end{longtable}
 }
 
@@ -1378,7 +1415,11 @@ T3 & deterministic generators & 12,582,912 witness-prefix or 96,847 global-degre
 \path{results/N212_K44_window100k_unknowns.jsonl}. The global-degree
 survivor sample and exact-count metadata are released as
 \path{results/global_degree_survivor_sample100.jsonl} and
-\path{results/global_degree_survivor_sample100_summary.json}.\par}
+\path{results/global_degree_survivor_sample100_summary.json}. The paired
+conquer outputs and compact analysis are
+\path{results/global_degree_survivor_cpsat100.jsonl},
+\path{results/global_degree_survivor_kissat100.jsonl}, and
+\path{results/global_degree_survivor_solver_summary.json}.\par}
 
 Tier T1c is the benchmark's compact native-CDCL calibration point. The two
 chunks defeat the initial PySAT/CaDiCaL path, but native CaDiCaL 3.0.0 and
@@ -1402,8 +1443,10 @@ depth-24 AP-pruned cover suffices. The historical witness-prefix generator
 emits 12,582,912 survivors; the audited global-degree generator emits 96,847.
 Both covers are deterministic and sound because every omitted raw assignment
 already contains a pinned 3-AP. The smaller cover is not automatically easier:
-the matched ablation's three sampled global-degree survivors all time out at
-60 s, so conquer cost must be measured separately from cube count.
+all 100 global-degree survivors in the fixed-seed follow-up time out under
+60-s CP-SAT, while kissat closes 79 within two hours. Extrapolation from this
+sample is informative for planning but cannot replace exhaustive,
+proof-producing closure of the complete cover.
 
 \subsection{Minimum-viable proof requirements}\label{minimum-viable-proof-requirements}
 
@@ -1636,7 +1679,8 @@ limitations of the present implementation:
   100,000 of the 12,582,912 AP-pruned chunks in the historical witness-prefix
   cover, plus refinements and a complete no-proof solver survey of all
   6,071 T2 residuals. The audited global-degree policy yields a complete
-  96,847-cube cover, but only a targeted survivor sample has been run so far.
+  96,847-cube cover, but only a fixed-seed sample of 100 survivors has been
+  run so far: CP-SAT closes 0 and kissat closes 79 without proof logging.
   A full certified sweep under a CDCL-first strategy is the natural successor
   project rather than a rerun of the historical cover.
 \item
@@ -1746,7 +1790,8 @@ Full T2 kissat survey & $\sim993.5$ & 6,071 single-core tasks; 3,576,567 retaine
 T2 CaDiCaL residual pass & $\sim782.9$ & 112 single-core tasks; 2,818,578 retained solver-seconds \\
 Exact-value calibration and certification & $\sim8$ & $N=80,90,100$ solves, DRAT-to-LRAT conversion, and \texttt{cake\_lpr} checks \\
 Matched split-policy ablation & $\sim55.6$ & 500 raw assignments, five sequential policies, eight-worker CP-SAT; 25,042 retained solver-seconds \\
-Total retained logs & $\sim11{,}230$ & excludes interactive debugging, failed encode attempts, and logs not retained locally \\
+Global-degree survivor conquer sample & $\sim94.2$ & 100 paired cubes; eight-worker CP-SAT contributes 13.3 worker-hours and single-core kissat 80.8 hours \\
+Total retained logs & $\sim11{,}324$ & excludes interactive debugging, failed encode attempts, and logs not retained locally \\
 \end{longtable}
 }
 

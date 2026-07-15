@@ -219,6 +219,15 @@ historical 60-s, eight-worker CP-SAT configuration; the second applies native
 kissat 4.0.4 for up to two hours. Together they measure survivor hardness
 without dilution by the 99.42% deterministic prefix-pruning rate.
 
+Both survivor arms are complete. CP-SAT returns `100 UNKNOWN` with median
+60.04 s and 6,006.50 retained solver-seconds. Kissat returns `79 UNSAT / 21
+UNKNOWN / 0 SAT`, with median 1,819.75 s and 290,969.96 retained
+solver-seconds. The measured kissat closure rate is 79.0% (Wilson 95% CI
+70.0--85.8%). This makes the architectural result submission-ready: global
+AP-degree provides a 96,847-cube complete cover, but its conquer phase needs
+CDCL-scale budgets and proof logging. The 79 closures are solver-attested,
+not certificate-backed, because the survey intentionally discarded proofs.
+
 The independent model audit in `r3_model_audit.py` reproduces the 11,130 AP
 constraints and 22,154 active window inequalities without importing solver
 code. It records SHA-256 digests for the A003002 b-file, both constraint

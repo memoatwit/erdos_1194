@@ -150,8 +150,11 @@ window-cardinality inequalities reduce the controlled broad-pass unresolved
 rate by about $28$ percentage points. A post-campaign implementation audit
 and matched five-policy ablation identify a global AP-degree prefix with
 $96{,}847$ surviving cubes, compared with $12{,}582{,}912$ for the deployed
-witness prefix, while showing that the rarer survivors require a stronger
-conquer phase. On byte-identical hard-pocket formulas, native
+witness prefix. On a fixed-seed sample of $100$ global-degree survivors,
+all remain unresolved under the historical $60$-second CP-SAT configuration,
+whereas kissat closes $79$ within two hours (Wilson $95\%$ interval
+$70.0$--$85.8\%$), quantifying the cover-size versus conquer-cost tradeoff.
+On byte-identical hard-pocket formulas, native
 CaDiCaL~3.0.0 and kissat~4.0.4 both close all $20$ tested chunks; the two
 historically hardest kissat refutations are independently DRAT-verified. A
 full two-stage CDCL survey closes $6{,}045/6{,}071$ broad residuals

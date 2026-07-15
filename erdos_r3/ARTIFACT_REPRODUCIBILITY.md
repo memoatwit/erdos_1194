@@ -68,6 +68,7 @@ files are drafting history and do not overwrite it.
 | Exact values at N=80,90,100 recovered end to end | `results/baselines/known_exact_certified/N*/` | CNF, DRAT, LRAT, and `cake_lpr` checker logs on Zenodo |
 | Split-policy cover-size/hardness tradeoff | `results/split_policy_ablation_summary.json` | `baselines/r3_split_policy_ablation.py` and its SLURM driver |
 | Alternative global-degree cover has 96,847 cubes | `results/global_degree_survivor_sample100_summary.json` | survivor generator and solver-arm outputs |
+| Global-degree survivor sample: CP-SAT 0/100, kissat 79/100 | `results/global_degree_survivor_solver_summary.json` | `results/global_degree_survivor_cpsat100.jsonl`, `results/global_degree_survivor_kissat100.jsonl`, and the two SLURM drivers |
 
 ## Certificate Chain
 
@@ -104,6 +105,10 @@ sbatch baselines/submit_global_degree_survivor_kissat.sbatch
 
 All array outputs are resumable. A `SAT` or `FEASIBLE` result is urgent and
 must be checked with `r3_verify.py` before any aggregate claim is updated.
+The released fixed-seed sample uses seed `20260716`. Its compact summary
+records `100 UNKNOWN` for CP-SAT and `79 UNSAT / 21 UNKNOWN` for kissat, with
+a kissat Wilson 95% closure interval of `70.0%--85.8%`. The survey did not
+emit proof objects, so those 79 rows are solver-attested rather than certified.
 
 ## Scope
 

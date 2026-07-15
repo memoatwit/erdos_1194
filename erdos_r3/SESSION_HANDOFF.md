@@ -1125,3 +1125,24 @@ The MPC exact-regression gate is therefore complete: the repository now has
 independently verified lower witnesses and formally checked upper
 certificates for `r_3(80)=22`, `r_3(90)=24`, and `r_3(100)=27`. All three
 pure CNF hashes matched their calibration formulas. No SAT result appeared.
+
+### Completed: global-degree survivor conquer sample
+
+Jobs `61862519` and `61862520` evaluated the same fixed-seed sample of 100
+cubes drawn uniformly from the 96,847-cube global AP-degree cover (seed
+`20260716`):
+
+- Historical window-bounded CP-SAT, eight workers, 60-s cap: `100 UNKNOWN`,
+  median `60.0383 s`, retained total `6,006.5006 s`.
+- Native kissat 4.0.4, one worker, pure 3-AP/cardinality CNF, two-hour cap:
+  `79 UNSAT / 21 UNKNOWN / 0 SAT`, median `1,819.7459 s`, retained total
+  `290,969.9646 s`.
+- Kissat closure estimate: `79.0%`, Wilson 95% interval `70.02%--85.83%`.
+
+The sample confirms a cover-size/conquer-cost tradeoff. Global AP-degree
+shrinks the complete cover from 12,582,912 to 96,847 cubes, but none of its
+sampled survivors closes under the historical CP-SAT cap. Kissat closes most
+within two hours. These 79 closures are solver-attested because the survey did
+not retain proof objects. Compact artifacts are
+`results/global_degree_survivor_{cpsat100,kissat100}.jsonl` and
+`results/global_degree_survivor_solver_summary.json`.
