@@ -226,6 +226,13 @@ families, and the complete high-level model.
 
 ## Release blockers before either submission
 
+- Make the GitHub repository reviewer-accessible before submission. It is
+  currently private even though the manuscript says the source is available
+  at its URL. The cleanest release sequence is: add an explicit open-source
+  license, tag the exact journal-submission commit, make the repository
+  public, and archive that tag in the synchronized Zenodo version. If the
+  repository must remain private, replace the manuscript claim with a
+  reviewer-access procedure and provide the editor with working credentials.
 - Publish a new Zenodo version containing the certified T1c formula/proof
   pairs, full T2 and residual-arm outputs, controlled CDCL/MIP results, the
   $N=80,90,100$ exact-certificate suite, provenance JSON files, and hashes.

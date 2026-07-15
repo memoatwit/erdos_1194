@@ -66,6 +66,13 @@ arxiv: $(PAPER).pdf
 	@cp -f ../results/global_degree_survivor_sample100.jsonl $(ANCDIR)/ 2>/dev/null || true
 	@cp -f ../results/global_degree_survivor_sample100_summary.json $(ANCDIR)/ 2>/dev/null || true
 	@cp -f ../r3_model_audit.py $(ANCDIR)/ 2>/dev/null || true
+	@cp -f ../ARTIFACT_REPRODUCIBILITY.md $(ANCDIR)/ 2>/dev/null || true
+	@cp -f ../environment.yml $(ANCDIR)/ 2>/dev/null || true
+	@cp -f ../requirements-campaign.txt $(ANCDIR)/ 2>/dev/null || true
+	@mkdir -p $(ANCDIR)/known_exact_certified
+	@cp -Rf ../results/baselines/known_exact_certified/N80 $(ANCDIR)/known_exact_certified/ 2>/dev/null || true
+	@cp -Rf ../results/baselines/known_exact_certified/N90 $(ANCDIR)/known_exact_certified/ 2>/dev/null || true
+	@cp -Rf ../results/baselines/known_exact_certified/N100 $(ANCDIR)/known_exact_certified/ 2>/dev/null || true
 	@mkdir -p $(ANCDIR)/lean
 	@cp -f ../lean/R3Base.lean $(ANCDIR)/lean/
 	@cp -f ../lean/R3_212_Witness.lean $(ANCDIR)/lean/

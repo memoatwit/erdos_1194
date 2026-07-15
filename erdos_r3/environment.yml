@@ -1,0 +1,10 @@
+name: r3-212-campaign
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12.12
+  - pip
+  - pip:
+      - ortools==9.15.6755
+      - highspy==1.14.0
+      - python-sat==1.9.dev4

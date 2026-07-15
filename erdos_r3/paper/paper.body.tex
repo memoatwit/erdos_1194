@@ -148,7 +148,8 @@ study, not a new exact value of A003002. We provide:
   generic solver lever we tested.
 \item
   A hardware-matched, five-policy split ablation with exact prefix-survivor
-  counts. It documents the deployed loader behavior and identifies a
+  counts, interpreted as conditioned independent-set counts in the 3-AP
+  hypergraph. It documents the deployed loader behavior and identifies a
   global-degree cover with 96,847 cubes, 130 times fewer than the historical
   witness-anchored cover, while measuring the increased hardness of the
   surviving cubes.
@@ -365,6 +366,20 @@ need not be sent to CP-SAT. We perform this check during chunk
 emission and skip such chunks. The surviving chunk count for
 $N = 212$, $K = 44$ at depth 24 is 12,582,912, roughly 75\% of
 the raw $2^{24}$ count.
+
+This count gives a precise split-policy objective. Let $S$ be a proposed
+depth-$d$ split set and let $F$ be the forced-IN set (here
+$F=\{1,212\}$). The number of cubes that survive prefix pruning is
+\[
+  C(S;F)=\bigl|\{B\subseteq S: F\cup B\text{ is 3-AP-free}\}\bigr|.
+\]
+Equivalently, $C(S;F)$ counts independent sets of the 3-AP hypergraph after
+conditioning on $F$. For $d=24$ it can be counted exactly by a small
+memoized recurrence over the induced forbidden masks. High AP-incidence
+degree is a heuristic for reducing $C(S;F)$, but $C(S;F)$ alone is not the
+end-to-end objective: a policy can emit few cubes whose conditioned residuals
+are unusually difficult. The matched ablation in §3.7 therefore reports both
+the exact cover size and sampled conquer cost.
 
 The choice $d = 24$ is empirical: larger $d$ produces more chunks but
 each is easier; smaller $d$ produces fewer chunks but each is harder.

@@ -20,8 +20,9 @@ practical computation, comparative testing, reusable software, and
 verification:
 
 1. Six monolithic 24-hour baselines fail. A matched five-policy ablation then
-   exposes a split-policy tradeoff: global AP-degree reduces the exact
-   depth-24 cover from 12,582,912 to 96,847 cubes, but the surviving cubes are
+   exposes a split-policy tradeoff. The emitted-cover objective is an exact
+   conditioned independent-set count in the 3-AP hypergraph: global AP-degree
+   reduces it from 12,582,912 to 96,847 cubes, but the surviving cubes are
    individually harder at the original CP-SAT wall cap.
 2. A full two-stage CDCL survey closes 6,045 of 6,071 broad residuals
    (99.57%) with no feasible result, while 26 released instances remain as a
@@ -34,7 +35,7 @@ verification:
    DRAT-to-LRAT conversion, and the formally verified cake_lpr checker.
 
 The paper is accompanied by source code and benchmark generators at
-https://github.com/memoatwit/erdos_1194 and versioned artifacts at
+https://github.com/memoatwit/erdos_1194/tree/main/erdos_r3 and versioned artifacts at
 https://doi.org/10.5281/zenodo.20463334. A synchronized journal-submission
 version of the archive will include the new formulas, solver outputs, proof
 objects, hashes, model audit, and machine-readable provenance reported here.

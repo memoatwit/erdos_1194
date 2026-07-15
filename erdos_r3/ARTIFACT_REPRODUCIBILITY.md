@@ -9,6 +9,19 @@ generators, summaries, and manuscript sources live in this repository.
 
 Run from `erdos_r3/` with Python 3.10 or newer.
 
+The retained Unity runs used Python 3.12.12, OR-Tools 9.15.6755, HiGHS
+1.14.0, and PySAT 1.9.dev4. Recreate that Python stack with:
+
+```bash
+conda env create -f environment.yml
+conda activate r3-212-campaign
+```
+
+Native CaDiCaL, kissat, `drat-trim`, and `cake_lpr` are intentionally built
+outside the Python environment. Versioned build entry points are under
+`baselines/build_*.sh`; the artifact provenance records the binary SHA-256
+used for each certified run.
+
 ### Verify the lower-bound witness
 
 ```bash
@@ -52,7 +65,7 @@ files are drafting history and do not overwrite it.
 | Historical T1a/T1b/T1c ladder | `results/N212_K44_t1a25.jsonl`, `N212_K44_t1b_minus_t1c.jsonl`, `N212_K44_t1c2.jsonl` | T1 CNF/DRAT/provenance bundle on Zenodo |
 | All 20 audited T1b chunks close under native CDCL | same T1b/T1c JSONLs | native CaDiCaL/kissat same-formula outputs and hashes on Zenodo |
 | T2 portfolio closes 6,045/6,071 | `results/baselines/t2_full/residual_unknown112_summary.json` | complete kissat and residual-CaDiCaL JSONLs on Zenodo |
-| Exact values at N=80,90,100 recovered end to end | exact-certificate provenance summaries on Zenodo | CNF, DRAT, LRAT, and `cake_lpr` checker logs on Zenodo |
+| Exact values at N=80,90,100 recovered end to end | `results/baselines/known_exact_certified/N*/` | CNF, DRAT, LRAT, and `cake_lpr` checker logs on Zenodo |
 | Split-policy cover-size/hardness tradeoff | `results/split_policy_ablation_summary.json` | `baselines/r3_split_policy_ablation.py` and its SLURM driver |
 | Alternative global-degree cover has 96,847 cubes | `results/global_degree_survivor_sample100_summary.json` | survivor generator and solver-arm outputs |
 

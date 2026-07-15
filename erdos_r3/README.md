@@ -8,6 +8,7 @@
   [`paper/paper.body.tex`](paper/paper.body.tex)
 - Venue and follow-up plan: [`paper/VENUE_AND_EXPERIMENT_PLAN.md`](paper/VENUE_AND_EXPERIMENT_PLAN.md)
 - Claim-to-artifact verification guide: [`ARTIFACT_REPRODUCIBILITY.md`](ARTIFACT_REPRODUCIBILITY.md)
+- Reproducible Python environment: [`environment.yml`](environment.yml)
 
 Current result snapshot:
 
