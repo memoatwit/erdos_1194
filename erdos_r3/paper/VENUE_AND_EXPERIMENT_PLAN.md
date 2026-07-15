@@ -134,13 +134,12 @@ Target MPC if all of the following are available:
 4. A Zenodo version containing the certified T1c CNF/DRAT/provenance bundle.
 5. At least one end-to-end known-value regression with a checked certificate.
 
-Items 1--3 are now satisfied by jobs `61729241`, `61729294`, and `61729298`.
-Item 5 is not satisfied by job `61729302`; only the `N=100` lower witness was
-verified, while every upper attack timed out. Therefore, unless a smaller or
-better-seeded known exact case is closed with a checked certificate, submit the
-corrected paper to Constraints. The benchmark,
-decomposition architecture, verified hard-tier certificates, and negative
-results are already squarely within its scope.
+Items 1--3 are satisfied by jobs `61729241`, `61729294`, and `61729298`.
+Items 4--5 require the synchronized Zenodo update described below; the compute
+for item 5 is complete. Jobs `61848180` and `61850319` recovered and certified
+the exact values at `N=80,90,100` with verified lower witnesses and formally
+checked LRAT upper certificates. The experimental gate therefore supports an
+MPC submission after manuscript and artifact integration.
 
 ### Active MPC gate (submitted 2026-07-13)
 
@@ -169,12 +168,14 @@ cases. The 26-row T2 tail may remain as a released challenge tier unless a
 cheap additional portfolio arm is justified; closing it is not required to
 start the exact-certificate work.
 
-The exact-certificate gate is now active as Unity job `61848180`, with all
-three cases running concurrently. The pure formulas are hash-checked against
-the calibration outputs, and the certificate chain is Kissat DRAT ->
-`drat-trim -L` -> formally verified `cake_lpr`. Large proof artifacts are
-split across the user's scratch3 and scratch4 workspaces; `/work` receives
-only compact provenance and verification summaries.
+The exact-certificate gate completed in Unity jobs `61848180` and `61850319`.
+All three pure formulas matched their calibration SHA-256 values, their lower
+witnesses were independently verified, and their Kissat DRAT proofs were
+converted with `drat-trim -L` and accepted by the formally verified
+`cake_lpr` checker. The certified values are `r_3(80)=22`, `r_3(90)=24`, and
+`r_3(100)=27`. Large proof artifacts remain split across the user's scratch3
+and scratch4 workspaces; `/work` contains compact provenance and verification
+summaries.
 
 ## Release blockers before either submission
 

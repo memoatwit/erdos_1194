@@ -1106,4 +1106,22 @@ with `r3_verify.py`.
 
 Only `N=100` was resubmitted as job `61850319`. It reused and reverified the
 audited witness, generated the pure target-28 CNF in scratch4, and entered the
-proof-producing Kissat phase. No SAT result has appeared.
+proof-producing Kissat phase.
+
+### Completed: certified exact-value suite
+
+Job `61850319` completed `N=100` end-to-end:
+
+- The reused size-27 witness passed independent verification.
+- Kissat returned `UNSAT` for target 28 in `3,275.385 s` on the pure
+  3-AP/cardinality CNF (`1,444` variables, `13,696` clauses).
+- The CNF SHA-256 matched the calibration hash exactly:
+  `39d2caaa9511593252c4a1d7c71c73e498bb5a6eea1dac34e9c55cc22b100b8b`.
+- `drat-trim -L` verified the 1.487 GB DRAT proof and emitted a 4.643 GB LRAT
+  proof in `5,658 s`.
+- The formally verified `cake_lpr` checker returned `VERIFIED` in `431 s`.
+
+The MPC exact-regression gate is therefore complete: the repository now has
+independently verified lower witnesses and formally checked upper
+certificates for `r_3(80)=22`, `r_3(90)=24`, and `r_3(100)=27`. All three
+pure CNF hashes matched their calibration formulas. No SAT result appeared.
