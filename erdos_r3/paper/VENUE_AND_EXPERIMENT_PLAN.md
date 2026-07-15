@@ -169,6 +169,13 @@ cases. The 26-row T2 tail may remain as a released challenge tier unless a
 cheap additional portfolio arm is justified; closing it is not required to
 start the exact-certificate work.
 
+The exact-certificate gate is now active as Unity job `61848180`, with all
+three cases running concurrently. The pure formulas are hash-checked against
+the calibration outputs, and the certificate chain is Kissat DRAT ->
+`drat-trim -L` -> formally verified `cake_lpr`. Large proof artifacts are
+split across the user's scratch3 and scratch4 workspaces; `/work` receives
+only compact provenance and verification summaries.
+
 ## Release blockers before either submission
 
 - Publish a new Zenodo version containing the two certified T1c formula/proof

@@ -1055,4 +1055,30 @@ The final 26-row residual chunk IDs are:
 
 This materially satisfies the T2-reduction part of the MPC gate. The next
 submission-gate action is the proof-producing exact regression suite at
-`N=100,90,80`; no follow-up was submitted automatically.
+`N=100,90,80`.
+
+### Submitted: certified exact-value suite job 61848180
+
+The three selected pure encodings were submitted as concurrent array cells:
+
+```text
+61848180  r3_exact_cert  N=100,90,80 lower witnesses + DRAT/LRAT/cake_lpr
+```
+
+Each cell uses one CPU, 64 GB RAM, and a 72-hour wall cap. Large artifacts are
+kept outside `/work`:
+
+- `N=100`: `/scratch4/workspace/ergezerm_wit_edu-soft_speech/r3_exact_certified/N100`
+- `N=90`: `/scratch3/workspace/ergezerm_wit_edu-superfund/r3_exact_certified/N90`
+- `N=80`: `/scratch4/workspace/ergezerm_wit_edu-soft_speech/r3_exact_certified/N80`
+
+The task requires the regenerated pure CNF SHA-256 to equal the corresponding
+calibration hash before accepting a certificate. It then runs proof-producing
+Kissat 4.0.4, `drat-trim -L`, and the formally verified `cake_lpr` checker.
+Compact provenance is written to
+`results/baselines/known_exact_certified/N*/provenance.json` under `/work`.
+
+`cake_lpr` was built from pinned commit
+`a4323b203cc9ecd584ba7da9e3fff08135a09d5f`; the Unity binary SHA-256 is
+`b25551c853c7b7fe6a9059bcddd81a46fb4ed952b842e1080697f8122ee0c8ca`.
+Its bundled example passed `s VERIFIED UNSAT` before submission.
