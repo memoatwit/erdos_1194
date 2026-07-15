@@ -1,0 +1,219 @@
+{
+  "baseline_policy": "deployed_witness_numeric",
+  "bootstrap_samples": 10000,
+  "bootstrap_seed": 20260715,
+  "complete_paired_sample_count": 500,
+  "files": 500,
+  "incomplete_sample_indices": [],
+  "input_glob": "results/baselines/split_policy_ablation/split_policy_idx*.jsonl",
+  "observed_sample_count": 500,
+  "paired_effects": {
+    "global_degree": {
+      "closed_rate_difference": 0.134,
+      "closed_rate_difference_bootstrap_95ci": [
+        0.104,
+        0.164
+      ],
+      "mean_seconds_difference": -10.5520084,
+      "mean_seconds_difference_bootstrap_95ci": [
+        -12.365531135,
+        -8.794686805000001
+      ],
+      "versus": "deployed_witness_numeric"
+    },
+    "global_random": {
+      "closed_rate_difference": 0.038,
+      "closed_rate_difference_bootstrap_95ci": [
+        0.006,
+        0.07
+      ],
+      "mean_seconds_difference": -3.510081,
+      "mean_seconds_difference_bootstrap_95ci": [
+        -5.48598188,
+        -1.5451463200000004
+      ],
+      "versus": "deployed_witness_numeric"
+    },
+    "witness_degree": {
+      "closed_rate_difference": -0.014,
+      "closed_rate_difference_bootstrap_95ci": [
+        -0.046,
+        0.02
+      ],
+      "mean_seconds_difference": 1.400109,
+      "mean_seconds_difference_bootstrap_95ci": [
+        -0.63209047,
+        3.4701572899999986
+      ],
+      "versus": "deployed_witness_numeric"
+    },
+    "witness_random": {
+      "closed_rate_difference": -0.102,
+      "closed_rate_difference_bootstrap_95ci": [
+        -0.134,
+        -0.07
+      ],
+      "mean_seconds_difference": 8.1844876,
+      "mean_seconds_difference_bootstrap_95ci": [
+        6.304860525,
+        10.164135009999999
+      ],
+      "versus": "deployed_witness_numeric"
+    }
+  },
+  "policy_summaries": {
+    "deployed_witness_numeric": {
+      "closed_rate": 0.86,
+      "exact_prefix_enumeration": {
+        "forbidden_masks": 1,
+        "prefix_pruned": 4194304,
+        "prefix_pruned_rate": 0.25,
+        "raw_assignments": 16777216,
+        "survival_rate": 0.75,
+        "survivors": 12582912
+      },
+      "mean_seconds_per_raw_assignment": 10.9124556,
+      "median_seconds_if_solver_called": 2.4274,
+      "median_seconds_per_raw_assignment": 0.7528,
+      "n": 500,
+      "order_position_counts": {
+        "0": 100,
+        "1": 100,
+        "2": 100,
+        "3": 100,
+        "4": 100
+      },
+      "p90_seconds_per_raw_assignment": 60.02224,
+      "prefix_pruned_rate": 0.266,
+      "statuses": {
+        "INFEASIBLE": 297,
+        "PRUNED_PREFIX_AP": 133,
+        "UNKNOWN": 70
+      },
+      "total_seconds": 5456.2278,
+      "unknown_rate": 0.14
+    },
+    "global_degree": {
+      "closed_rate": 0.994,
+      "exact_prefix_enumeration": {
+        "forbidden_masks": 132,
+        "prefix_pruned": 16680369,
+        "prefix_pruned_rate": 0.9942274689674377,
+        "raw_assignments": 16777216,
+        "survival_rate": 0.005772531032562256,
+        "survivors": 96847
+      },
+      "mean_seconds_per_raw_assignment": 0.3604472,
+      "median_seconds_if_solver_called": 60.0932,
+      "median_seconds_per_raw_assignment": 0.0,
+      "n": 500,
+      "order_position_counts": {
+        "0": 100,
+        "1": 100,
+        "2": 100,
+        "3": 100,
+        "4": 100
+      },
+      "p90_seconds_per_raw_assignment": 0.0,
+      "prefix_pruned_rate": 0.994,
+      "statuses": {
+        "PRUNED_PREFIX_AP": 497,
+        "UNKNOWN": 3
+      },
+      "total_seconds": 180.2236,
+      "unknown_rate": 0.006
+    },
+    "global_random": {
+      "closed_rate": 0.898,
+      "exact_prefix_enumeration": {
+        "forbidden_masks": 15,
+        "prefix_pruned": 13009568,
+        "prefix_pruned_rate": 0.7754306793212891,
+        "raw_assignments": 16777216,
+        "survival_rate": 0.22456932067871094,
+        "survivors": 3767648
+      },
+      "mean_seconds_per_raw_assignment": 7.4023746,
+      "median_seconds_if_solver_called": 33.0684,
+      "median_seconds_per_raw_assignment": 0.0,
+      "n": 500,
+      "order_position_counts": {
+        "0": 100,
+        "1": 100,
+        "2": 100,
+        "3": 100,
+        "4": 100
+      },
+      "p90_seconds_per_raw_assignment": 60.012570000000004,
+      "prefix_pruned_rate": 0.766,
+      "statuses": {
+        "INFEASIBLE": 66,
+        "PRUNED_PREFIX_AP": 383,
+        "UNKNOWN": 51
+      },
+      "total_seconds": 3701.1873,
+      "unknown_rate": 0.102
+    },
+    "witness_degree": {
+      "closed_rate": 0.846,
+      "exact_prefix_enumeration": {
+        "forbidden_masks": 3,
+        "prefix_pruned": 8912896,
+        "prefix_pruned_rate": 0.53125,
+        "raw_assignments": 16777216,
+        "survival_rate": 0.46875,
+        "survivors": 7864320
+      },
+      "mean_seconds_per_raw_assignment": 12.3125646,
+      "median_seconds_if_solver_called": 14.6996,
+      "median_seconds_per_raw_assignment": 0.0,
+      "n": 500,
+      "order_position_counts": {
+        "0": 100,
+        "1": 100,
+        "2": 100,
+        "3": 100,
+        "4": 100
+      },
+      "p90_seconds_per_raw_assignment": 60.02302,
+      "prefix_pruned_rate": 0.55,
+      "statuses": {
+        "INFEASIBLE": 148,
+        "PRUNED_PREFIX_AP": 275,
+        "UNKNOWN": 77
+      },
+      "total_seconds": 6156.2823,
+      "unknown_rate": 0.154
+    },
+    "witness_random": {
+      "closed_rate": 0.758,
+      "exact_prefix_enumeration": {
+        "forbidden_masks": 0,
+        "prefix_pruned": 0,
+        "prefix_pruned_rate": 0.0,
+        "raw_assignments": 16777216,
+        "survival_rate": 1.0,
+        "survivors": 16777216
+      },
+      "mean_seconds_per_raw_assignment": 19.0969432,
+      "median_seconds_if_solver_called": 2.4588,
+      "median_seconds_per_raw_assignment": 2.4588,
+      "n": 500,
+      "order_position_counts": {
+        "0": 100,
+        "1": 100,
+        "2": 100,
+        "3": 100,
+        "4": 100
+      },
+      "p90_seconds_per_raw_assignment": 60.03826,
+      "prefix_pruned_rate": 0.0,
+      "statuses": {
+        "INFEASIBLE": 379,
+        "UNKNOWN": 121
+      },
+      "total_seconds": 9548.4716,
+      "unknown_rate": 0.242
+    }
+  }
+}

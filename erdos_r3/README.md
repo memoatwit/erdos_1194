@@ -7,17 +7,43 @@
 - Maintained manuscript: [`paper/paper.tex`](paper/paper.tex) and
   [`paper/paper.body.tex`](paper/paper.body.tex)
 - Venue and follow-up plan: [`paper/VENUE_AND_EXPERIMENT_PLAN.md`](paper/VENUE_AND_EXPERIMENT_PLAN.md)
+- Claim-to-artifact verification guide: [`ARTIFACT_REPRODUCIBILITY.md`](ARTIFACT_REPRODUCIBILITY.md)
 
-Current certified benchmark result: all 18 CaDiCaL-resolved
-`T1b \ T1c` chunks and both kissat-resolved T1c chunks have independently
-verified DRAT proofs. The full `r_3(212)` upper bound remains open because
-the complete T3 cube space has not been certified.
+Current result snapshot:
+
+- All 18 chunks closed by the initial PySAT/CaDiCaL configuration and both
+  historical T1c chunks have independently verified DRAT proofs.
+- On byte-identical T1b formulas, native CaDiCaL 3.0.0 and kissat 4.0.4 both
+  close 20/20. The original T1c solvability gap was an invocation/configuration
+  effect, not a persistent solver separation.
+- A full no-proof T2 portfolio closes 6,045/6,071 chunks (99.57%): kissat
+  closes 5,959, then native CaDiCaL closes 86 of the 112 residuals. No SAT row
+  appears; 26 chunks remain unresolved.
+- Exact regressions at `N=80,90,100` combine independently verified lower
+  witnesses with Kissat DRAT proofs, DRAT-to-LRAT conversion, and formally
+  verified `cake_lpr` checking.
+- A standard-library model audit independently reproduces 11,130 AP
+  constraints and 22,154 active window inequalities and records SHA-256
+  digests for the source b-file and generated high-level model.
+- The deployed depth-24 split is witness-anchored numeric order. A later code
+  audit found that the generic set loader normalized the stored degree order;
+  the exact deployed 24-value prefix is documented in the manuscript and
+  released outputs.
+- A matched five-policy ablation over 500 raw assignments reproduces the
+  historical 12,582,912-cube cover and finds a complete global AP-degree
+  cover with 96,847 survivors. Those survivors are harder at the 60-second
+  CP-SAT cap, so the result is a cover-size/hardness tradeoff rather than a
+  claimed 130-fold runtime speedup.
+
+The full `r_3(212)` upper bound remains open because the complete T3 cube
+space has not been certified.
 
 ```bibtex
 @misc{ergezer-r3-212-2026,
   author        = {Ergezer, Mehmet},
   title         = {Salem--Spencer sets as a cross-solver benchmark:
-                   a witness-informed decomposition for $r_3(212)$},
+                   decomposition, certification, and split-policy effects
+                   at $r_3(212)$},
   year          = {2026},
   eprint        = {2606.04016},
   archivePrefix = {arXiv},
@@ -85,10 +111,12 @@ Both halves verified by `r3_verify.py` and ideally by a second method
 
 ## Cross-checks
 
-- For N <= 100: r_3(N) must match OEIS A003002.  Both witness and infeasibility
-  at size+1 confirmed.
+- Certified exact regressions at `N=80,90,100` match OEIS A003002. Both the
+  lower witness and the size-plus-one upper-bound certificate are checked.
 - Reflection invariance: r_3(N) = r_3 of the reflected set i -> N+1-i.
 - A new value is published with an OEIS-ready triple (n, size, witness).
+- `python r3_model_audit.py` regenerates and hashes the high-level
+  `N=212`, `K=44` constraint families without importing solver code.
 
 ## References
 

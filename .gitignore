@@ -36,3 +36,4 @@ venv/
 # Scratch/temp
 *.tmp
 *.bak
+erdos_r3/paper/tmp/

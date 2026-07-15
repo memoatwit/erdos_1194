@@ -15,6 +15,9 @@ BODY_TEX    := paper.body.tex
 GENERATED_BODY := paper.body.generated.tex
 ANCDIR      := anc
 ARXIV_TAR   := arxiv-submission.tar.gz
+FIGURES     := figures/t1_funnel.tex \
+  figures/t2_portfolio_cactus.pdf \
+  figures/split_policy_ablation.pdf
 
 # Source section files in the parent directory.
 SECTION_MDS := \
@@ -44,7 +47,7 @@ $(GENERATED_BODY): $(BODY_MD)
 
 body: $(GENERATED_BODY)
 
-$(PAPER).pdf: $(PAPER).tex $(BODY_TEX) refs.bib
+$(PAPER).pdf: $(PAPER).tex $(BODY_TEX) refs.bib $(FIGURES)
 	latexmk -pdf -interaction=nonstopmode $(PAPER).tex
 
 # Pack the arXiv tarball: sources + ancillary files.
@@ -58,6 +61,11 @@ arxiv: $(PAPER).pdf
 	@cp -f ../results/N212_K44_t1c2.jsonl $(ANCDIR)/ 2>/dev/null || true
 	@cp -f ../results/N212_K44_window100k_unknowns.jsonl $(ANCDIR)/ 2>/dev/null || true
 	@cp -f ../results/b003002.txt $(ANCDIR)/ 2>/dev/null || true
+	@cp -f ../results/N212_K44_model_audit.json $(ANCDIR)/ 2>/dev/null || true
+	@cp -f ../results/split_policy_ablation_summary.json $(ANCDIR)/ 2>/dev/null || true
+	@cp -f ../results/global_degree_survivor_sample100.jsonl $(ANCDIR)/ 2>/dev/null || true
+	@cp -f ../results/global_degree_survivor_sample100_summary.json $(ANCDIR)/ 2>/dev/null || true
+	@cp -f ../r3_model_audit.py $(ANCDIR)/ 2>/dev/null || true
 	@mkdir -p $(ANCDIR)/lean
 	@cp -f ../lean/R3Base.lean $(ANCDIR)/lean/
 	@cp -f ../lean/R3_212_Witness.lean $(ANCDIR)/lean/

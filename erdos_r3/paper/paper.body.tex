@@ -42,16 +42,19 @@ CDCL search with machine-checkable proofs. The Salem--Spencer family sits in
 the same problem class --- Boolean variables, one short linear constraint per
 arithmetic progression, a cardinality target --- and, as this paper
 documents, it separates tested solver configurations unusually sharply.
-None of six monolithic CP-SAT, HiGHS, or CaDiCaL configurations resolves
-the frontier instance in 24 hours. Under a witness-informed split, CP-SAT
-and HiGHS leave a common residual pocket, while CDCL closes it --- but
-implementation-dependently: the two hardest audited subproblems defeat the
-tested CaDiCaL configuration at a 12-hour wall yet fall to kissat well
-within that budget, with independently verified DRAT certificates.
-That layered separation is precisely what makes the family interesting as
-a benchmark: it is natural, scalable in $N$, has verifiable ground truth
-at solved sizes, and grades solvers along a measured difficulty ladder
-rather than a single pass/fail line.
+None of six monolithic CP-SAT, HiGHS, or CDCL configurations resolves the
+frontier instance in 24 hours. Under a witness-informed split, CP-SAT and
+HiGHS leave a common residual pocket, while CDCL closes it. An initial
+PySAT-bundled CaDiCaL configuration left two audited chunks unresolved;
+kissat subsequently refuted both with independently verified DRAT proofs.
+A same-formula rerun on byte-identical CNFs then showed that current native
+CaDiCaL~3.0.0 and kissat~4.0.4 both close all 20 hard chunks. The observed
+deployment times differ, but the first array used heterogeneous processors;
+§4.4 reports that limitation separately from the solvability result. That layered behavior is
+precisely what makes the family interesting as a benchmark: it is natural,
+scalable in $N$, has verifiable ground truth at solved sizes, and grades
+solver configurations along a measured difficulty ladder rather than a
+single pass/fail line.
 
 We attacked this feasibility problem computationally using a reproducible
 CP-SAT architecture. The model uses Boolean variables $x_i$, one linear
@@ -59,11 +62,11 @@ constraint for each 3-term arithmetic progression, the decision equality
 $\sum_i x_i = 44$, endpoint forcing, reflection symmetry breaking, and
 window-cardinality inequalities derived from the known values of $r_3(L)$ for
 $L \leq 211$. To make the search tractable, we split the problem by assigning
-high-degree variables from a verified 43-witness, generating a deterministic
+a fixed prefix drawn from a verified 43-witness, generating a deterministic
 depth-24 chunk space, and then refine residual \texttt{UNKNOWN} chunks recursively.
 
 The campaign did not produce a formal proof of $r_3(212) = 43$. It did produce
-four concrete outcomes.
+six concrete outcomes.
 
 First, we observed zero feasible 44-sets across millions of CP-SAT
 subproblems, including broad chunks, recursive refinements, wall-cap
@@ -86,19 +89,37 @@ A full eight-hour audit later closed 25/45, but left 20/45
 \texttt{UNKNOWN}. A subsequent pure CDCL/SAT attack (CaDiCaL via PySAT)
 closed 18/20 of that CP-SAT/HiGHS-resistant subset,
 while two chunks --- T1c --- remained \texttt{UNKNOWN} even under a 12-hour
-pure-CDCL cap and a 4-hour windowed-CDCL diagnostic.
+pure-CDCL cap and a 4-hour windowed-CDCL diagnostic in that initial
+configuration.
 
-Fourth, the pocket collapses under a current competition-grade CDCL
-solver. Kissat 4.0.4 refutes both T1c chunks on the pure
-3-AP/cardinality encoding, well within the budget under which CaDiCaL
-failed, and both refutations are certified end-to-end: \texttt{drat-trim}
-independently verified the DRAT proofs against sha256-pinned formula
-files (§4.4). A kissat survey over a fresh uniform 100-chunk sample
-of the broad residual closes 99/100 within a 2-hour cap. In the tested
-configurations, the obstruction that survived CP-SAT tuning, HiGHS, and
-CaDiCaL is therefore not intrinsic to the problem family: it is sensitive
-to solver implementation and configuration. The pipeline isolates and
-archives the instances on which those configurations diverge.
+Fourth, the apparent pocket collapses under current native CDCL solvers.
+Kissat~4.0.4 refutes both T1c chunks on the pure 3-AP/cardinality encoding,
+and both refutations are certified end-to-end against sha256-pinned formula
+files (§4.4). In a same-formula 20-chunk comparison on byte-identical CNFs,
+native CaDiCaL~3.0.0 and kissat both close every chunk; kissat is faster on
+19/20 heterogeneous-node deployment runs, a timing observation that does not
+isolate solver speed. A full kissat pass over all 6,071 broad residuals closes 5,959
+within a 2-hour cap, and a 12-hour native-CaDiCaL pass closes 86 of the 112
+survivors. The resulting two-solver portfolio leaves 26 unresolved chunks
+and no feasible row, for 99.57\% measured coverage
+(§\ref{full-t2-solver-portfolio}).
+
+Fifth, we validate the complete encoding and certificate chain at solved
+sizes. Pure 3-AP/cardinality instances recover
+$r_3(80)=22$, $r_3(90)=24$, and $r_3(100)=27$: each lower witness passes an
+independent combinatorial check, and each upper refutation is converted to
+LRAT and accepted by the formally verified \texttt{cake\_lpr} checker
+(§\ref{certified-exact-value-regressions}).
+
+Sixth, a post-campaign implementation audit corrected the record of the
+deployed split policy and enabled a matched five-policy ablation. Exact prefix
+enumeration reduces the complete depth-24 cover from 12,582,912 surviving
+cubes under the deployed witness-numeric prefix to 96,847 under global
+AP-degree. On 500 matched raw assignments, global degree improves the 60-s
+closed rate by 13.4 percentage points, while all three sampled assignments
+that survive its prefix pruning remain \texttt{UNKNOWN}. The experiment therefore
+exposes a genuine cover-size versus residual-hardness tradeoff rather than a
+simple speedup (§\ref{split-policy-ablation}).
 
 This paper's contribution is the benchmark and the cross-solver empirical
 study, not a new exact value of A003002. We provide:
@@ -108,16 +129,17 @@ study, not a new exact value of A003002. We provide:
 \tightlist
 \item
   A tiered benchmark release spanning a measured difficulty ladder: the
-  25 HiGHS-closable T1a chunks, the 18 CaDiCaL-closable
-  T1b-minus-T1c chunks, the 2 T1c chunks that separate CaDiCaL from
-  kissat, the 6,071 broad \texttt{UNKNOWN} chunks from the 100k
+  25 HiGHS-closable T1a chunks, the 18 chunks closed by the initial
+  CDCL configuration, the 2 historically hardest T1c chunks, the 6,071
+  broad \texttt{UNKNOWN} chunks from the 100k
   expansion batch, and a deterministic generator for the full
   depth-24 sweep.
 \item
   A characterization of the structural hard pocket across CP-SAT, HiGHS,
-  and two CDCL configurations. The pocket that initially appeared robust
-  across formulations is closed outright by kissat 4.0.4, showing that the
-  measured boundary is implementation- and configuration-sensitive.
+  and multiple CDCL configurations. The pocket that initially appeared
+  robust across formulations is closed by both native CaDiCaL~3.0.0 and
+  kissat~4.0.4; the initial timing data are reported as a heterogeneous-node
+  deployment comparison rather than a processor-normalized speedup.
 \item
   A reproducible witness-split plus window-cardinality architecture for
   exact $r_3(N)$ upper-bound search, parametric in $(N, K)$
@@ -125,9 +147,20 @@ study, not a new exact value of A003002. We provide:
   window-cardinality inequalities are, empirically, worth more than any
   generic solver lever we tested.
 \item
+  A hardware-matched, five-policy split ablation with exact prefix-survivor
+  counts. It documents the deployed loader behavior and identifies a
+  global-degree cover with 96,847 cubes, 130 times fewer than the historical
+  witness-anchored cover, while measuring the increased hardness of the
+  surviving cubes.
+\item
+  Three independently checked exact-value regressions at $N=80,90,100$,
+  including verified lower witnesses, archived pure CNFs, DRAT-to-LRAT
+  conversion, and formal certificate checking with \texttt{cake\_lpr}.
+\item
   A detailed empirical account of the $N = 212$, $K = 44$ campaign, including
-  broad-pass counts, refinement behavior, solver-time tradeoffs, and the
-  controlled A/B experiments behind each design decision.
+  broad-pass counts, refinement behavior, solver-time tradeoffs, controlled
+  A/B experiments, and an implementation audit that identifies an intended
+  split-reordering run as a no-op.
 \end{enumerate}
 
 For reference, the benchmark tier notation used throughout the paper is:
@@ -144,10 +177,10 @@ Symbol & Meaning \\
 T1 & the 45 chunks that survived the 300-s recap of a random 100-chunk sample from the 6,071 broad UNKNOWNs \\
 T1a & the 25 T1 chunks closed by the full 8-h HiGHS audit \\
 T1b & the 20 T1 chunks left UNKNOWN by the full 8-h HiGHS audit \\
-$\mathrm{T1b}\setminus\mathrm{T1c}$ & the 18 T1b chunks closed by CDCL and independently verified by DRAT checking \\
-T1c & the final two chunks $\{40959, 48895\}$: resist CP-SAT, HiGHS, and CaDiCaL; refuted by kissat 4.0.4 with verified DRAT proofs \\
+$\mathrm{T1b}\setminus\mathrm{T1c}$ & the 18 T1b chunks closed by the initial CDCL configuration and independently verified by DRAT checking \\
+T1c & chunks $\{40959,48895\}$: resisted the initial CP-SAT, HiGHS, and PySAT-bundled CaDiCaL configurations; both native CaDiCaL 3.0.0 and kissat 4.0.4 refute them \\
 T2 & the 6,071 UNKNOWN chunks from the 100k broad expansion batch \\
-T3 & the full 12,582,912-chunk AP-pruned depth-24 sweep \\
+T3 & a complete AP-pruned depth-24 cover: 12,582,912 cubes under the deployed witness prefix, or 96,847 under global AP-degree \\
 \end{longtable}
 }
 
@@ -159,10 +192,10 @@ belongs to the cube-and-conquer family
 fixing a prefix of variable assignments (cubes), then solve each cube with
 a complete solver. The differences are the cube-selection policy and the
 refinement loop. Classical cube-and-conquer selects split variables by
-lookahead heuristics; we select them by AP-incidence degree \emph{within a
-verified extremal witness}, exploiting the problem-specific intuition that
-a hypothetical 44-set must interact heavily with the densest
-regions of the known 43-set. Timed-out cubes are then re-split
+lookahead heuristics; we restrict the split variables to a verified extremal
+witness and use a fixed, explicitly released witness prefix. This exploits
+the problem-specific intuition that a hypothetical 44-set must interact
+heavily with a known 43-set. Timed-out cubes are then re-split
 recursively (§2.4), which parallels iterative cube deepening.
 
 \textbf{Implied constraints and streamliners.} The window-cardinality
@@ -274,6 +307,16 @@ were absent, it would already lie in $[1, 211]$. Either case contradicts
 $r_3(211) = 43$. We add $x_1=x_{212}=1$ as ground assumptions in
 every chunk.
 
+As a check independent of the solver-model builders, the release includes a
+standard-library-only audit that regenerates the 3-AP triples and window
+inequalities directly from their mathematical definitions.  It checks the
+monotonic unit-increment structure of the A003002 b-file and records SHA-256
+digests of the b-file, the ordered high-level constraint families, and their
+combined model description.  The audit reproduces 11,130 triples and 22,154
+window inequalities.  This check does not certify a solver's internal CNF or
+linearization, but it separates errors in the stated combinatorial model from
+errors in any particular solver adapter.
+
 Branching: variable selection by AP-incidence degree (the number of
 3-AP triples a variable appears in), value selection \texttt{min}, and
 \texttt{fixed\_search} to disable CP-SAT's portfolio search. The first two
@@ -291,21 +334,29 @@ not by lookahead but from the verified 43-element
 lower-bound witness $A_{43} \subset [1,212]$ (§2.1, §3.2). The
 splitting proceeds in three steps.
 
-\textbf{Degree ranking.} For each $v \in A_{43}$, compute the AP-incidence
-degree
+\textbf{Witness anchoring and deployed prefix.} We restrict the split
+variables to the verified witness $A_{43}$. The deployed broad run used the
+first $d=24$ values after canonical numeric normalization of that witness:
 \[
-  \deg(v)=\bigl|\{(a,b,c):v\in\{a,b,c\},\ b-a=c-b\}\bigr|.
+\{3,4,9,11,12,16,22,24,25,27,31,48,
+  52,54,55,57,63,67,68,70,75,76,91,142\}.
 \]
-Sort $A_{43}$ by $\deg(v)$ in decreasing order. Pick the top
-$d = 24$ witness values; we refer to this prefix as the \textbf{broad split
-prefix}.
+We refer to these variables, in the displayed order, as the \textbf{broad
+split prefix}. An implementation audit found that the generic JSON set loader
+had normalized the stored AP-incidence ordering before truncation. This does
+not affect coverage or soundness, but it does mean that the deployed cube
+policy was witness-anchored numeric order rather than the originally intended
+within-witness degree order. We therefore release the exact prefix and treat
+split-variable selection as an empirical policy choice, distinct from the
+AP-degree branching strategy used \emph{inside} each CP-SAT solve.
 
 \textbf{Combinatorial enumeration.} For each of the
-$2^{24}=16{,}777{,}216$
-IN/OUT assignments of the broad split prefix, instantiate a
+$2^{24}=16{,}777{,}216$ raw IN/OUT assignments of the broad split prefix,
+instantiate a
 \textbf{chunk}: the decision-form model with $x_v$ fixed to the chosen
-value for every $v$ in the prefix. A chunk is identified by its
-24-bit chunk ID.
+value for every $v$ in the prefix. The 24-bit vector is the raw assignment;
+after prefix pruning, surviving chunks receive dense integer identifiers in
+the deterministic selected-first enumeration order.
 
 \textbf{AP-prefix pruning.} Many chunks are immediately infeasible at the
 3-AP level alone: if the broad split prefix forces three pinned-IN
@@ -354,8 +405,8 @@ configuration for every solver call beyond the calibration batch.
 \subsection{Recursive refinement}\label{recursive-refinement}
 
 A chunk that returns \texttt{UNKNOWN} at the broad layer is refined by
-extending the broad split prefix with the next $m$ witness values
-(by AP-incidence degree) and re-emitting the resulting \texttt{2\^{}m}
+extending the broad split prefix with the next $m$ unfixed values in the
+same canonical witness order and re-emitting the resulting \texttt{2\^{}m}
 subchunks (less AP-prefix pruning) to the solver under a longer
 wall cap. The depths and per-step parameters used in the campaign
 are:
@@ -460,6 +511,20 @@ numbers: millions of CP-SAT subproblems solved, 0 \texttt{FEASIBLE}
 rows, and a 6.07\% \texttt{UNKNOWN} residual in the largest retained broad batch that
 motivates the structural analysis in §4.
 
+The evaluation is organized around five research questions.  \textbf{RQ1:}
+Do general-purpose solvers resolve the monolithic decision instance under a
+generous wall cap?  \textbf{RQ2:} Which sound formulation and decomposition
+choices materially reduce the unresolved rate?  \textbf{RQ3:} How do CP-SAT,
+MIP, and native CDCL configurations stratify on byte-identical residual
+instances?  \textbf{RQ4:} Does the complete encoding and certificate chain
+recover independently known exact values?  \textbf{RQ5:} How much of the
+frontier residual can a measured solver portfolio close, and what remains for
+a full certificate?  Sections 3.1--3.9 answer these questions with monolithic
+controls, paired A/B tests, exact prefix counts, same-formula comparisons,
+formally checked regressions, and a complete T2 survey.  Section 4 analyzes
+the resulting difficulty ladder rather than introducing additional search
+degrees of freedom after observing the outcomes.
+
 \subsection{Monolithic baseline}\label{monolithic-baseline}
 
 Before any splitting, we hand the full unsplit decision instance ---
@@ -536,7 +601,8 @@ chunk-ID range.
 
 \textbf{Recursive refinement of \texttt{UNKNOWN} chunks.} Every chunk timing out at
 the broad layer can be refined by extending the witness-pin prefix with the
-next-degree split variables and re-solving the resulting subchunks. The number
+next unfixed values in the canonical witness order and re-solving the
+resulting subchunks. The number
 of emitted rows is not a raw \texttt{2\^{}d} fan-out: AP-prefix pruning eliminates many
 descendants before a solver call is made. The retained refinement diagnostics
 are shown below. The depth labels follow the L1/L2/L3/L4 refinement ladder of
@@ -633,7 +699,8 @@ However, the \texttt{UNK} rate is non-monotone in the chunk-ID range: the small
 controlled A/B on $[575, 675)$ closes to 0\%, the 10k bounded batch
 sits at 1.65\%, and the 100k expansion batch sits at 6.07\%. This
 indicates that the chunk-ID space is structurally non-uniform --- later
-chunk IDs (which encode different witness-pin assignments) are harder
+dense chunk IDs (which encode different witness-pin assignments under the
+selected-first enumeration) are harder
 in a way that window-bounds do not fully compensate for. The bucket
 analysis in §4.1 quantifies this non-uniformity.
 
@@ -662,6 +729,12 @@ HiGHS 1.14.0, and PySAT 1.9.dev4. The no-proof \texttt{pysat:auto}
 path selected the \texttt{cadical195} backend; the later native solver was
 kissat 4.0.4. Exact command lines and environment captures accompany the
 released logs.
+
+Unity's shared CPU partition is heterogeneous. Large array jobs were not
+pinned to one processor model, so their wall times characterize the deployed
+configurations rather than processor-normalized solver performance. Status
+comparisons, formula hashes, and certificates are unaffected by this caveat;
+timing comparisons are labeled accordingly.
 
 The SLURM emitter, shard collector, tail emitter, and proof-state manager
 implement the workload pipeline. Output is
@@ -694,7 +767,7 @@ the full depth-24 sweep remains open as well.
 
 \subsection{Search-tuning levers and their effect sizes}\label{search-tuning-levers-and-their-effect-sizes}
 
-We tested five CP-SAT-side search-tuning levers. The
+We evaluated several CP-SAT-side search-tuning levers. The
 full lever inventory, including the HiGHS substitution and the
 pair-AND Tseitin experiment, is consolidated in §4.5; here we report
 only the three CP-SAT-side levers that operate at the broad layer.
@@ -711,18 +784,18 @@ Lever & Mechanism & Bucket & Baseline UNK & Treatment UNK \\
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Split-vars reorder & Permute the depth-24 prefix so hot pins (values \texttt{\{68,\ 75,\ 70,\ 76,\ 91\}}) lead & $[61575, 66575)$ & 13.60\% & 12.96\% \\
+Reorder attempt (implementation no-op) & Intended to move hot witness pins earlier; both JSON lists were normalized to the same numeric prefix & $[61575, 66575)$ & 13.60\% & 12.96\% \\
 Wall-cap extension 60 s to 300 s & Same model, same prefix, longer per-chunk budget & random 100 from expansion \texttt{UNKNOWN} & 100.00\% & 45.00\% \\
 Recursive deepening & Refine \texttt{UNK} to depth 64 at 600-s cap & 6 L3 residuals & 100.00\% & 0.00\% \\
 \end{longtable}
 }
 
-The reorder lever was tested for completeness but is expected to be a
-null result on principle: the depth-24 broad split iterates over the
-\texttt{2\^{}24} IN/OUT prefix assignments, and within-prefix variable ordering
-does not change the set of surviving chunks under AP-prefix pruning
---- only the order in which they are emitted to SLURM. The within-noise
-result confirms this.
+Post-campaign inspection showed that the intended reorder did not occur: the
+generic JSON set loader sorted both candidate lists before truncation, so both
+runs used the same 24 variables in the same numeric order. The 0.64-point
+difference is therefore a repeatability observation under solver and cluster
+variation, not evidence about split-variable ordering. We retain the row to
+document the implementation audit and do not count it as a successful A/B.
 
 The wall-cap extension lever moves the residual substantially on the
 first doubling but exhibits a saturating closure curve under further
@@ -734,8 +807,9 @@ expansion residual.
 
 The recursive-deepening lever, applied locally to small residual sets,
 reliably closes individual deep \texttt{UNK} chunks (6/6 at the L4 level
-in §3.1). But the levers it implies --- picking the next-degree split
-variables and re-solving up to \texttt{2\^{}8} descendant assignments at a longer wall ---
+in §3.1). But the levers it implies --- picking the next unfixed witness
+variables in the deployed canonical order and re-solving up to
+\texttt{2\^{}8} descendant assignments at a longer wall ---
 do not
 generalize cheaply to the full 6,071-chunk expansion residual. A
 naïve depth-32 rerun on every expansion \texttt{UNK} would emit roughly
@@ -743,17 +817,163 @@ naïve depth-32 rerun on every expansion \texttt{UNK} would emit roughly
 time than the original broad pass, with no guarantee of closing the
 hard core analyzed in §4.
 
+\subsection{Matched split-policy ablation}\label{split-policy-ablation}
+
+The implementation audit of §2.2 made split-variable selection an explicit
+experimental factor. We compared five depth-24 policies: the deployed
+witness-numeric prefix, the intended within-witness AP-degree prefix, a
+fixed-seed random witness prefix, global AP-degree, and fixed-seed random
+global variables. For each policy we first enumerated all raw assignments
+under endpoint forcing and counted those not eliminated by AP-prefix pruning.
+The deployed count exactly reproduces the campaign's historical
+12,582,912-chunk figure, providing an independent check of the enumeration.
+
+We then sampled 500 raw 24-bit assignments uniformly with seed 20260715 and
+applied the same bit vector to every policy. The five arms ran sequentially
+within each SLURM task on AMD EPYC 7763 nodes; arm order rotated by task index,
+so every policy occupied each order position 100 times. Unpruned cubes used
+the campaign CP-SAT configuration (window bounds, degree/min fixed search,
+eight workers, 60-s cap). No \texttt{FEASIBLE} row appeared.
+
+{\small\setlength{\tabcolsep}{4pt}\def\LTcaptype{none}
+\begin{longtable}[]{@{}lrrrrr@{}}
+\toprule\noalign{}
+Policy & Exact survivors & Sample pruned & Sample INF & Sample UNK & Mean s/raw \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Deployed witness numeric & 12,582,912 & 133 & 297 & 70 & 10.91 \\
+Witness degree & 7,864,320 & 275 & 148 & 77 & 12.31 \\
+Witness random & 16,777,216 & 0 & 379 & 121 & 19.10 \\
+Global degree & 96,847 & 497 & 0 & 3 & 0.36 \\
+Global random & 3,767,648 & 383 & 66 & 51 & 7.40 \\
+\end{longtable}
+}
+
+Relative to the deployed policy, global degree increases the matched closed
+rate by 13.4 percentage points (bootstrap 95\% CI 10.4--16.4) and reduces mean
+solver seconds per raw assignment by 10.55 s (95\% CI 8.79--12.37 s). The
+intended witness-degree policy has no resolved advantage: its closed-rate
+difference is $-1.4$ points (95\% CI $-4.6$--2.0). Global random improves the
+closed rate by 3.8 points (95\% CI 0.6--7.0), while witness random is 10.2
+points worse (95\% CI 7.0--13.4 points worse).
+
+The global-degree result is not a 130-fold solver speedup. Its 132 forbidden
+prefix masks prune 99.42\% of the raw cube space, but all three unpruned cubes
+encountered in the matched sample reach the 60-s cap. The experiment instead
+identifies a much smaller complete cover whose residual cubes require a
+stronger conquer phase. This distinction motivates evaluating cube count and
+survivor hardness jointly rather than treating prefix-pruning rate alone as
+the decomposition objective.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/split_policy_ablation.pdf}
+\caption{Split-policy ablation. Panel (a) gives the exact number of depth-24
+cubes that survive AP-prefix pruning. Panel (b) gives outcomes on the same 500
+uniformly sampled raw assignments for every policy. Prefix pruning is a sound
+closure; red segments are unresolved after the 60-s CP-SAT cap. Global degree
+sharply reduces the complete cover, while its rare survivors require a
+separate conquer-cost measurement. W and G abbreviate witness-restricted and
+global policies, respectively.}
+\label{fig:split-policy-ablation}
+\end{figure}
+
+\subsection{Full T2 solver portfolio}\label{full-t2-solver-portfolio}
+
+The 100-chunk kissat pilot of §4.4 motivated a complete solver survey of
+all 6,071 T2 chunks. We first ran kissat 4.0.4, single-threaded, on the
+pure 3-AP/cardinality encoding with a 2-hour wall cap and no proof logging.
+Kissat closed 5,959 chunks \texttt{UNSAT} and left 112 \texttt{UNKNOWN}.
+We then ran native CaDiCaL 3.0.0 on precisely those 112 residual formulas
+with a 12-hour cap. All 112 CNF SHA-256 digests matched the corresponding
+kissat formulas; CaDiCaL closed 86 and left 26 \texttt{UNKNOWN}. No
+\texttt{SAT} row appeared.
+
+{\small
+\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrrrrr@{}}
+\toprule\noalign{}
+Arm & Inputs & Cap & UNSAT & UNKNOWN & Median (s) & 90th pct. (s) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+kissat 4.0.4 & 6,071 & 2 h & 5,959 & 112 & 180.537 & 1,294.351 \\
+CaDiCaL 3.0.0 on kissat residual & 112 & 12 h & 86 & 26 & 23,238.075 & 43,200.039 \\
+Combined portfolio & 6,071 & --- & 6,045 & 26 & --- & --- \\
+\end{longtable}
+}
+
+The combined portfolio therefore closes 99.57\% of T2. The kissat pass
+consumed 3,576,567 solver-seconds (993.49 single-core hours), and the
+CaDiCaL residual pass consumed 2,818,578 seconds (782.94 hours). The sharp
+increase in residual-arm time shows why the pilot's 99\% close rate did not
+justify a simple independent-and-identically-distributed extrapolation.
+Because both passes intentionally disabled proof logging, these are
+solver-attested closures rather than certificates; the 26-chunk residual
+and proof-producing reproduction of the 6,045 closures remain open targets.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/t2_portfolio_cactus.pdf}
+\caption{Cactus plots for the two-stage full-T2 portfolio. Curves contain
+only \texttt{UNSAT} rows; horizontal dashed lines mark each arm's wall cap,
+and vertical dashed lines mark the number closed. Panel (b) is conditioned
+on the 112 kissat residuals and is therefore not a common-sample solver
+comparison.}
+\label{fig:t2-portfolio-cactus}
+\end{figure}
+
+\subsection{Certified exact-value regressions}\label{certified-exact-value-regressions}
+
+To validate the encoding and certificate pipeline on cases with known
+ground truth, we ran end-to-end exact-value regressions at $N=80,90,100$.
+For each $N$, an independently checked witness establishes the tabulated
+lower bound $r_3(N)$, while a pure 3-AP/cardinality CNF asks whether a set of
+size $r_3(N)+1$ exists. Kissat emitted a DRAT refutation; \texttt{drat-trim}
+translated it to LRAT; and the formally verified \texttt{cake\_lpr} checker
+validated the LRAT proof \cite{tan-heule-myreen-cakelpr-2021}. The upper-bound
+certificates do not use the OEIS-derived window inequalities.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrrrrrrr@{}}
+\toprule\noalign{}
+$N$ & $r_3(N)$ & Target & Vars & Clauses & Kissat (s) & DRAT--LRAT (s) & cake (s) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+80 & 22 & 23 & 1,104 & 8,906 & 228.408 & 318 & 59 \\
+90 & 24 & 25 & 1,274 & 11,176 & 837.473 & 1,146 & 143 \\
+100 & 27 & 28 & 1,444 & 13,696 & 3,275.385 & 5,658 & 431 \\
+\end{longtable}
+}
+
+The DRAT files are 0.28, 0.74, and 1.49 GB; their LRAT translations are
+1.02, 2.49, and 4.64 GB. Formula hashes match the calibration runs, lower
+witnesses pass the independent verifier, and all three \texttt{cake\_lpr}
+checks report \texttt{VERIFIED UNSAT}. The checker is pinned to commit
+\texttt{a4323b203cc9ecd584ba7da9e3fff08135a09d5f}, with its binary digest
+recorded in the release manifest. These cases establish that the campaign's
+exporter, solver, transformation, and formally verified checking chain can
+recover exact values end to end; they do not certify the still-incomplete
+$N=212$ sweep.
+
 \subsection{Compute budget}\label{compute-budget}
 
 The dominant retained costs are the 100k broad expansion, the
-sample-500 refinement, and the full-T1 long-wall HiGHS audit; the CDCL and
-certificate diagnostics are comparatively cheap. The total retained-log
-estimate is roughly 8,710 worker-hours; Appendix~\ref{app:compute}
+sample-500 refinement, the full-T1 long-wall HiGHS audit, and the final
+T2 solver portfolio. The total retained-log estimate is roughly 11,230
+worker-hours; Appendix~\ref{app:compute}
 itemizes the accounting per campaign layer. A full depth-24 sweep of
-the 12,582,912 AP-pruned chunks of the witness-split lattice was outside
-this campaign's budget under the CP-SAT-first parameters used here; §5.3
-reprices the sweep in light of the kissat results of §4.4, which shift
-the bottleneck from search to proof logging and verification at scale.
+the 12,582,912 AP-pruned chunks of the deployed witness-prefix lattice was
+outside this campaign's budget under the CP-SAT-first parameters used here.
+The split-policy audit reduces a complete alternative cover to 96,847 cubes,
+but shows that its survivors are harder at the original 60-s cap; §5.3
+therefore treats proof logging and survivor conquest, not raw cube count
+alone, as the remaining bottleneck.
 
 \section{The structural hard pocket}\label{the-structural-hard-pocket}
 
@@ -882,6 +1102,32 @@ this 20-chunk HiGHS-resistant subset \textbf{T1b}. The audit consumed
 901,073 solver-seconds and 25,196,448
 MIP nodes.
 
+We separately measured relaxation and branch-and-bound progress on all 20
+T1b chunks with the optimization model $\max\sum_i x_i$, both without and
+with the complete window-cardinality family. These runs make the bounds
+meaningful: an upper bound below 44 would certify the target infeasible.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrrrr@{}}
+\toprule\noalign{}
+Windows & Root LP range & Incumbent range & Final UB range & Median final gap & Total nodes \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+off & 73.0--84.5 & 39--40 & 46--57 & 26.92\% & 32,089,555 \\
+on & 44.0--44.0 & 39--40 & 44--44 & 12.82\% & 6,014,774 \\
+\end{longtable}
+}
+
+All 40 MIP cells reached their 7,200-s cap. The windows collapse the root LP
+bound to the target value 44 on every
+chunk and reduce the explored node count by approximately 81\%. They do not
+push any final MIP upper bound below 44, so no chunk is certified by this
+experiment. This resolves the ambiguity of the earlier zero-objective runs:
+the window inequalities are highly effective LP cuts, but on T1b they close
+the relaxation gap only to the decision threshold, not through it.
+
 To test whether T1b is invariant under solver architecture more broadly, we
 re-attacked it with a CDCL/SAT solver (CaDiCaL via PySAT
 \cite{biere-cadical,pysat-2018}, single-threaded,
@@ -901,12 +1147,12 @@ were the slowest: 63231 verified in 49,758.11 seconds and 32735 verified
 in 80,960.68 seconds under the final 24-hour verifier pass
 \cite{heule-hunt-biere-drat-2014,cruz-filipe-lrat-2017}.
 
-The picture after the CaDiCaL pass is configuration-specific but sharp:
-the tested CP-SAT and HiGHS formulations leave all of T1b unresolved, while
-the tested CaDiCaL configuration closes 18/20 of those chunks, all with
-independently verified proofs. The residual was T1c, of size 2.
+The picture after the initial PySAT/CaDiCaL pass was configuration-specific
+but sharp: the tested CP-SAT and HiGHS formulations left all of T1b
+unresolved, while that CDCL configuration closed 18/20 with independently
+verified proofs. The historical residual was T1c, of size 2.
 
-\subsection{Kissat closes T1c: a solver-configuration separation}
+\subsection{Certified T1c closure and native CDCL same-formula comparison}
 \label{kissat-closes-t1c}
 
 The CaDiCaL result left open whether T1c marks the edge of the tested CDCL
@@ -921,35 +1167,45 @@ initial kissat run on the same encoding had already refuted both, in
 14,204.9 s and 17,621.7 s, emitting proofs of 17.4 and 14.3 GB; the
 certified rerun re-solved and re-verified against the same pinned
 formula file per chunk to establish clean certificate provenance.)
-Every solve sits well inside the 12-hour budget under which the CaDiCaL
-attempts failed. One caveat on attributing this gap: the CaDiCaL
-attacks ran through PySAT's bundled build with default configuration,
-so part of the separation may reflect build vintage or configuration
-defaults rather than core search differences; the released instances
-make it straightforward to re-measure against any solver build. (A
-windowed kissat variant exceeded the 16 GB encode-time memory budget on
-both chunks and produced no solver result.)
+The earlier CaDiCaL attempts ran through PySAT's bundled backend and default
+configuration. To distinguish solver identity from that invocation path, we
+then ran native CaDiCaL 3.0.0 and kissat 4.0.4 on all 20 T1b chunks, using
+byte-identical CNFs. Both solvers closed all 20 \texttt{UNSAT}.
 
-To measure whether the kissat/CaDiCaL gap is specific to T1c or generic
-across the broad residual, we ran a kissat survey on a fresh uniform
-random 100-chunk sample of the 6,071 T2 \texttt{UNKNOWN}s (seed 42; 2-hour cap,
-no proof logging): 99/100 closed \texttt{UNSAT}, with median solve time
-121.7 s and maximum 2,408.8 s; the single survivor (chunk 98301) hit
-the cap. The whole survey consumed 34,819.8 solver-seconds --- less
-than ten CPU-hours for 99 closures of subproblems that all survived the
-campaign's 60-second CP-SAT broad pass with window bounds. The binomial
-Wilson 95\% interval for the within-cap closure probability is approximately
-94.6\%--99.8\%; this interval describes the sampled T2 population and does
-not establish behavior on T3. Together with the
-T1c closures, this collapses the hard pocket as a solver-independent
-phenomenon. What remains true, and is now cleanly isolated: (i) the tested
-CP-SAT and HiGHS configurations leave the same T1b set unresolved; (ii)
-within CDCL, implementation and configuration matter at the hard end ---
-the two chunks that defeat the tested CaDiCaL setup at 12 h fall to kissat
-in the initial run within 5 h and in the certificate-pinned rerun within
-6.5 h; and (iii) the tiers T1a/T1b/T1c retain their value as a graded,
-ground-truth-verifiable ladder that separates solver technologies at
-three distinct heights.
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrrrr@{}}
+\toprule\noalign{}
+Solver & Closed & Median (s) & 90th pct. (s) & Maximum (s) & Total (s) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+CaDiCaL 3.0.0 & 20/20 & 734.0 & 9,700.0 & 28,635.8 & 79,421.8 \\
+kissat 4.0.4 & 20/20 & 429.0 & 3,467.8 & 13,425.5 & 42,782.3 \\
+\end{longtable}
+}
+
+All 20 paired formula hashes match. Kissat records lower wall time on 19/20
+chunks, with a median paired CaDiCaL-to-kissat time ratio of 1.38. These
+array tasks ran opportunistically on heterogeneous Unity CPU nodes, so the
+ratio describes the deployed configurations rather than a
+processor-normalized speedup. On the two
+historical T1c chunks, native CaDiCaL takes 28,635.8 and 18,077.7 seconds,
+while kissat takes 13,425.5 and 9,963.9 seconds. Thus the original
+solvability separation does not survive the same-formula rerun; the first
+array establishes only a deployment-time difference between the tested native
+builds, not a processor-normalized performance separation.
+(A windowed kissat variant exceeded the 16 GB encode-time memory budget on
+both T1c chunks and produced no solver result.)
+
+The 100-chunk pilot that motivated this comparison closed 99/100 T2 chunks
+with kissat. Section~\ref{full-t2-solver-portfolio} replaces that estimate
+with the full survey: kissat closes 5,959/6,071 within two hours, and native
+CaDiCaL closes 86 of the 112 residuals within twelve hours. Together with
+the T1c certificates, these results collapse the hard pocket as a
+solver-independent phenomenon while preserving it as a useful graded
+benchmark. They also show why solver conclusions must identify the exact
+binary, invocation path, formula digest, and resource cap.
 
 \subsection{Levers tested and their outcomes}\label{levers-tested-and-their-outcomes}
 
@@ -971,13 +1227,15 @@ Lever & Mechanism & Result \\
 \bottomrule\noalign{}
 \endlastfoot
 Window-cardinality (OEIS A003002) & Add $\sum x \leq r_3(L)$ for each window & UNKNOWN rate on full 10k batch: 30.33\% to 1.65\%. Strong but plateaus. \\
-Split-vars reorder (hot pins first) & Permute the depth-24 split prefix & 13.60\% to 12.96\% on the worst bucket. Within the observed noise. \\
+Split-vars reorder attempt & Intended hot-pin permutation; loader normalization made it a no-op & 13.60\% to 12.96\% on the worst bucket is repeatability variation, not a reorder effect. \\
 Wall-cap extension & 60 s to 300 s on the broad pass & Diminishing closure gains, see §4.2. \\
 Targeted pair-AND Tseitin propagators & Explicit \texttt{pair{[}a,c{]}\ =\ x{[}a{]}∧x{[}c{]}} BoolVars on midpoints in $[67, 91]$ & Control 67.84s, treatment 71.75s on a sampled residual. No effect. \\
 Recursive deepening & Refinement at depths 40, 48, 56 & All 500 stratified-sample base chunks close, but with a non-trivial tail; the final six level-3 residuals needed up to 599.74s at the 600s cap. \\
-HiGHS MIP with LP/cut machinery & Replace CP-SAT entirely & 0/45 closed at 1 hour; 25/45 closed in the full 8-hour audit, while 20/45 remained unresolved. \\
-Pure CDCL/SAT & Encode T1b as CNF with 3-AP clauses + cardinality + pins, no windows & 18/20 HiGHS-resistant chunks closed \texttt{UNSAT} in 4 hours; 2/20 remained \texttt{UNKNOWN}; no \texttt{SAT} rows. \\
-Kissat re-attack (§4.4) & Same mathematical CNF encoding, kissat 4.0.4 & Both T1c chunks refuted and independently verified; 99/100 of a fresh T2 sample closed within 2 h. \\
+HiGHS feasibility MIP & Replace CP-SAT entirely & 0/45 closed at 1 hour; 25/45 closed in the full 8-hour audit, while 20/45 remained unresolved. \\
+HiGHS optimization MIP & Maximize $\sum_i x_i$ on T1b, windows off/on & Windows reduce nodes by 81\% and tighten all root LP and final upper bounds to 44, but none below 44. \\
+Initial PySAT/CaDiCaL CDCL & Encode T1b as CNF with 3-AP clauses + cardinality + pins, no windows & 18/20 HiGHS-resistant chunks closed \texttt{UNSAT} in 4 hours; 2/20 remained \texttt{UNKNOWN}; no \texttt{SAT} rows. \\
+Native CDCL same-formula study (§4.4) & Native CaDiCaL 3.0.0 and kissat 4.0.4 on byte-identical CNFs & Both close 20/20; kissat records lower wall time on 19/20 heterogeneous-node runs. \\
+Full T2 portfolio (§\ref{full-t2-solver-portfolio}) & Kissat on 6,071 chunks, then CaDiCaL on 112 residuals & 6,045/6,071 closed \texttt{UNSAT} (99.57\%); 26 remain \texttt{UNKNOWN}; no proofs logged. \\
 \end{longtable}
 }
 
@@ -986,8 +1244,9 @@ mathematically redundant with the existing 3-AP triple inequalities --- they
 encode the same forbidden configurations, just with an explicit Tseitin
 variable per pair. The hope was that this would give CP-SAT more
 ``propagation hooks'' in the structural pocket. The negative result is
-consistent with the broader picture: the pocket's hardness is not an
-encoding issue, it is a search-space issue.
+consistent with the broader picture: a local redundant encoding change is
+insufficient, while the solver and invocation path materially change the
+observed boundary.
 
 \subsection{A refuted working hypothesis about the pocket}\label{a-refuted-hypothesis-about-the-pocket}
 
@@ -998,21 +1257,24 @@ it was not a theorem about proof complexity or the LP relaxation. Kissat
 4.0.4 refuted the hypothesis by finding multi-gigabyte DRAT proofs for both
 chunks, which \texttt{drat-trim} independently verified.
 
-The corrected picture is narrower and more reproducible: T1c separates the
-specific CaDiCaL and kissat configurations tested here. Because the CaDiCaL
-runs used PySAT's bundled build and defaults, the experiment does not isolate
-which implementation or configuration choice explains the separation. A
-controlled comparison on the archived, byte-identical CNFs is therefore a
-natural follow-up. Likewise, a meaningful claim about LP-relaxation strength
-requires a maximization model with a nonzero objective; the zero-objective
-HiGHS feasibility runs reported here cannot provide that evidence.
+The native same-formula rerun narrows the correction further: T1c does not
+separate current native CaDiCaL and kissat by solvability, because both close
+20/20 T1b formulas. It separates the initial PySAT-bundled invocation from
+the native runs. On the initial heterogeneous-node array, kissat records lower
+wall time on 19/20 byte-identical instances; this is a deployment observation,
+not a processor-normalized speedup. The optimization-form HiGHS study
+also resolves the LP question. Window bounds tighten every T1b root LP and
+final MIP upper bound to exactly 44, but not below it. The resulting lesson
+is empirical rather than universal: window cuts expose an exceptionally
+tight decision boundary, and implementation details determine whether CDCL
+crosses it within the wall cap.
 
 \subsection{\texorpdfstring{What this means for $r_3(212)$}{What this means for r\_3(212)}}\label{what-this-means-for-r_3212}
 
-The combined CP-SAT, HiGHS, CaDiCaL, and kissat evidence --- 0
-\texttt{FEASIBLE}/\texttt{SAT} rows across millions of subproblems, every
-audited hard-pocket chunk closed \texttt{UNSAT}, and 99/100 of a fresh
-broad-residual sample closed within 2 hours --- strongly supports the
+The combined CP-SAT, HiGHS, CaDiCaL, and kissat evidence --- no
+\texttt{FEASIBLE} or \texttt{SAT} rows across millions of subproblems, every
+audited hard-pocket chunk closed \texttt{UNSAT}, and a solver portfolio
+closing 6,045/6,071 T2 chunks --- strongly supports the
 OEIS-conjectured value $r_3(212) = 43$, and the kissat results
 substantially change the outlook on proving it. The lower bound
 $r_3(212) \geq 43$ from the verified witness in §2 is unaffected; the trivial
@@ -1020,24 +1282,26 @@ upper bound $r_3(212) \leq 44$ follows from monotonicity and OEIS
 $r_3(211) = 43$, so the gap between our certified bounds is exactly one.
 
 What blocks the upper bound is complete coverage and certification of the
-remaining search space: closing it requires certifying the full
-12,582,912-chunk depth-24 sweep (T3), of which this campaign processed the
-100,000-chunk expansion plus samples. The T2 pilot's observed rate
-(99/100 within 2 h/chunk, single-core) suggests that a larger kissat sweep
-is plausible, but one sampled T2 survivor and the unprocessed T3 remainder
-leave the cost and tail behavior uncertain. A certified sweep would be
+remaining search space. The deployed witness-prefix cover contains
+12,582,912 chunks, of which this campaign processed the 100,000-chunk
+expansion plus samples. The split-policy audit supplies an alternative,
+equally complete global-degree cover with 96,847 survivors, but its sampled
+survivors are individually harder at the 60-s CP-SAT cap. The full T2 survey leaves 26/6,071
+chunks unresolved after the two-solver portfolio, and its 1,776.43
+single-core hours measure the heavy tail directly. A certified sweep would be
 of the same general character as the Pythagorean-triples and Schur-five
-campaigns \cite{heule-kullmann-marek-2016,heule-2018-schur}, with the
-witness-split generator providing the cube decomposition. We release the
+campaigns \cite{heule-kullmann-marek-2016,heule-2018-schur}, with a
+deterministic split generator providing the cube decomposition. We release the
 benchmark instances and generator in §5 so that this sweep, or a sharper
 per-chunk method, can be attempted directly.
 
 \section{Open problem and benchmark release}\label{open-problem-and-benchmark-release}
 
 The campaign establishes strong empirical support for $r_3(212) = 43$
-(§3.5, §4.4). Kissat closes every audited hard instance and 99\% of a
-fresh residual sample, while complete coverage and certification of T3
-remain open (§4.4). This
+(§3.5, §4.4). Native CaDiCaL and kissat both close every audited T1b
+instance, and their combined full-T2 portfolio closes 99.57\% of the
+6,071 broad residuals, while complete coverage and certification of T3
+remain open. This
 section states the residual problem cleanly and releases the instances
 as a tiered benchmark --- both as a concrete path toward R3-212-UB and as
 a solver-grading ladder for the tested CP-SAT, HiGHS, and CDCL
@@ -1067,18 +1331,18 @@ below pinpoint the subproblems on which solver technologies diverge.
 \subsection{Benchmark instance tiers}\label{benchmark-instance-tiers}
 
 We release five benchmark tiers. Each JSONL row records the chunk ID,
-fixed assignments, witness-pin prefix, solver status, and timing data; the
-common constraint family (3-AP triples, endpoint forcing, and OEIS window
-bounds) is reconstructed by the repository scripts. The tiers form a ladder
+fixed assignments, split-policy metadata, solver status, and timing data; the
+experiment-specific constraint family is reconstructed by the repository
+scripts. The tiers form a ladder
 from the smallest solver-resistant pocket to the full upper-bound proof.
 
-{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3pt}\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1000}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2000}}
-  r
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2400}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2400}}@{}}
+  >{\raggedright\arraybackslash}p{0.07\linewidth}
+  >{\raggedright\arraybackslash}p{0.15\linewidth}
+  >{\raggedright\arraybackslash}p{0.17\linewidth}
+  >{\raggedright\arraybackslash}p{0.32\linewidth}
+  >{\raggedright\arraybackslash}p{0.19\linewidth}@{}}
 \toprule\noalign{}
 Tier & Artifact & Size & Resistance level & Recommended target \\
 \midrule\noalign{}
@@ -1087,39 +1351,44 @@ Tier & Artifact & Size & Resistance level & Recommended target \\
 \endlastfoot
 T1a & T1a JSONL & 25 chunks & closed by HiGHS at 8h & reference / regression test \\
 $\mathrm{T1b}\setminus\mathrm{T1c}$ & T1b-minus-T1c JSONL & 18 chunks & HiGHS-resistant; closed by CDCL; all 18/18 emitted DRAT proofs verified by \texttt{drat-trim} & certified CDCL benchmark \\
-T1c & T1c JSONL & 2 chunks & resist CP-SAT, HiGHS LP-MIP, CaDiCaL @ 12h; refuted by kissat 4.0.4, DRAT-certified & CDCL-implementation calibration point \\
-T2 & T2 JSONL & 6,071 chunks & survived 60-s CP-SAT broad pass with window bounds & full closure of the expansion residual \\
-T3 & deterministic generator & 12,582,912 chunks & unprocessed remainder of the witness-split lattice & full upper-bound proof \\
+T1c & T1c JSONL & 2 chunks & resisted the initial PySAT/CaDiCaL path; both native CaDiCaL and kissat close them; kissat DRAT-certified & native-CDCL performance calibration \\
+T2 & T2 JSONL & 6,071 chunks & survived 60-s CP-SAT; 6,045 closed by the native CDCL portfolio, 26 unresolved & certified closure of the expansion residual \\
+T3 & deterministic generators & 12,582,912 witness-prefix or 96,847 global-degree cubes & complete covers; global-degree survivors are harder at 60-s CP-SAT & full upper-bound proof \\
 \end{longtable}
 }
 
-The concrete filenames are \path{results/N212_K44_t1a25.jsonl},
+{\sloppy The concrete filenames are \path{results/N212_K44_t1a25.jsonl},
 \path{results/N212_K44_t1b_minus_t1c.jsonl},
 \path{results/N212_K44_t1c2.jsonl}, and
-\path{results/N212_K44_window100k_unknowns.jsonl}.
+\path{results/N212_K44_window100k_unknowns.jsonl}. The global-degree
+survivor sample and exact-count metadata are released as
+\path{results/global_degree_survivor_sample100.jsonl} and
+\path{results/global_degree_survivor_sample100_summary.json}.\par}
 
-Tier T1c is the benchmark's calibration point for CDCL implementations:
-the two chunks defeat CaDiCaL at a 12-hour wall and fall to kissat 4.0.4
-well within that budget, with end-to-end certified DRAT proofs (§4.4).
-The pair is useful as a compact regression and configuration-calibration
-set; lower solve or verification cost than the reported runs is a directly
-comparable benchmark improvement.
+Tier T1c is the benchmark's compact native-CDCL calibration point. The two
+chunks defeat the initial PySAT/CaDiCaL path, but native CaDiCaL 3.0.0 and
+kissat 4.0.4 both close them on byte-identical formulas; kissat records lower
+wall time on
+both and supplies end-to-end certified DRAT proofs (§4.4). Lower solve or
+verification cost than the reported runs is a directly comparable benchmark
+improvement.
 
-Tier T2 is the canonical ``close the campaign at the broad layer''
-target: closing all 6,071 chunks of the 100k expansion batch is
-necessary, though not sufficient, for a full upper-bound proof. The
-kissat pilot (99/100 within 2 h/chunk at median 121.7 s, §4.4)
-extrapolates to roughly 500 single-core CPU-hours of solving for the
-full tier, plus proof-logging and verification overhead and whatever
-the $\approx 1\%$ tail beyond the 2-hour horizon costs; chunk 98301 ---
-the one pilot survivor --- is the natural first target for anyone
-probing that tail.
+Tier T2 is the canonical ``close the campaign at the broad layer'' target:
+closing all 6,071 chunks of the 100k expansion batch is necessary, though
+not sufficient, for a full upper-bound proof. The completed no-proof survey
+uses 993.49 single-core hours for kissat on all 6,071 chunks and another
+782.94 hours for native CaDiCaL on the 112 kissat residuals. The portfolio
+closes 6,045 and leaves 26 unresolved. Those 26 formulas, together with a
+proof-producing reproduction of the 6,045 solver-attested closures, are the
+next concrete certification targets.
 
-Tier T3 is the full upper-bound certificate: closing the entire
-depth-24 AP-pruned sweep. The instance generator (§2.2) emits the
-required chunks deterministically from the witness file and the
-OEIS b-file; the storage cost of the full sweep is dominated by
-output rather than input.
+Tier T3 is the full upper-bound certificate: closure of any complete
+depth-24 AP-pruned cover suffices. The historical witness-prefix generator
+emits 12,582,912 survivors; the audited global-degree generator emits 96,847.
+Both covers are deterministic and sound because every omitted raw assignment
+already contains a pinned 3-AP. The smaller cover is not automatically easier:
+the matched ablation's three sampled global-degree survivors all time out at
+60 s, so conquer cost must be measured separately from cube count.
 
 \subsection{Minimum-viable proof requirements}\label{minimum-viable-proof-requirements}
 
@@ -1129,8 +1398,8 @@ A formal proof of $r_3(212)\leq 43$ from the released benchmark requires:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Closure of tier T3.} Every chunk in the depth-24 AP-pruned
-  sweep must return \texttt{INFEASIBLE} under a verified solver, or one
+  \textbf{Closure of tier T3.} Every chunk in one complete depth-24
+  AP-pruned cover must return \texttt{INFEASIBLE} under a verified solver, or one
   chunk must return a \texttt{FEASIBLE} 44-element witness.
 \item
   \textbf{Solver verification.} Every infeasibility result used in the proof
@@ -1143,25 +1412,27 @@ A formal proof of $r_3(212)\leq 43$ from the released benchmark requires:
   inequalities, the 22,154 window-cardinality inequalities, and
   the endpoint forcing must be checked against the formal
   definition of $r_3(N)$. The verifier \texttt{r3\_verify.py} performs
-  this check on any candidate witness; an analogous check for the
-  constraint generation is included in the repository.
+  this check on any candidate witness. A solver-independent, standard-library
+  audit regenerates the high-level constraints, checks monotonic unit
+  increments in the source b-file, reproduces both counts, and records
+  SHA-256 digests for the b-file, AP family, window family, and complete
+  high-level model; its JSON report is included in the artifact release.
 \end{enumerate}
 
-The minimum-viable result short of a full proof is the certified
-closure of tier T2: verified proofs for all 6,071 broad-residual
-chunks. The kissat pilot (§4.4) prices the solving at roughly 500
-single-core CPU-hours (extrapolating the pilot's mean closed-chunk
-time to all 6,071 chunks), with proof emission, verification, and the
-$\approx 1\%$ hard tail as the real cost drivers. This estimate is a
-planning figure from one sample, not a bound on the cost of T2 or T3. A
-separate optimization-form MIP experiment that maximizes $\sum_i x_i$
-would be needed to measure meaningful primal and dual bounds on T1b.
+The minimum-viable result short of a full proof is the certified closure of
+tier T2: verified proofs for all 6,071 broad-residual chunks. The completed
+survey measures 1,776.43 single-core hours of no-proof solving and leaves 26
+chunks unresolved. Proof emission and verification can dominate solving ---
+as the multi-gigabyte T1c certificates demonstrate --- so this observed
+solver cost is a lower planning baseline, not a forecast for certified T2
+or T3. The optimization-form MIP experiment of §4.3 supplies a complementary
+negative result: window cuts tighten every T1b upper bound to 44, but never
+below the decision threshold.
 
-\subsection{Approaches we could not test}\label{approaches-we-could-not-test}
+\subsection{Follow-on approaches}\label{approaches-we-could-not-test}
 
-The following techniques are plausibly stronger than CP-SAT and HiGHS
-on this pocket but were outside the scope of our campaign. We flag
-them as natural follow-on directions:
+The following techniques remain natural follow-on directions after the
+completed solver portfolio and optimization-form MIP study:
 
 \begin{itemize}
 \tightlist
@@ -1181,15 +1452,16 @@ them as natural follow-on directions:
   than any single-window family.
 \item
   \textbf{SAT with proof logging at scale.} A pure CNF encoding closed
-  18/20 T1b chunks under CaDiCaL (all DRAT-verified) and, per §4.4, the
-  remaining two under kissat 4.0.4 (also DRAT-verified). The
+  all 20 T1b chunks under both native CaDiCaL and kissat; all 18 proofs
+  from the initial PySAT/CaDiCaL closures and both kissat T1c proofs are
+  independently verified. The full no-proof T2 portfolio closes 6,045/6,071. The
   research target has therefore moved from single instances to the
   certified sweep: proof-producing kissat over all of T2 and ultimately
   T3, with verification and archival at Pythagorean-triples scale
   \cite{heule-kullmann-marek-2016}. Open per-instance questions remain
-  at the margins --- e.g.\ chunk 98301, the one pilot survivor, and
-  whether alternative cardinality encodings shrink the multi-GB
-  certificates of the hardest chunks.
+  at the margins --- especially the 26 full-survey residuals and whether
+  alternative cardinality encodings shrink the multi-GB certificates of
+  the hardest chunks.
 \item
   \textbf{Lean/formal-proof-search benchmark.} The repository now includes a compact
   Lean 4 / Mathlib 4 formalization \cite{lean4-2021,mathlib4} under \texttt{lean/}: shared definitions
@@ -1221,7 +1493,9 @@ toolkit.
 \subsection{Reproducibility and release}\label{reproducibility-and-release}
 
 The campaign code, configuration, and result logs are released at
-the repository accompanying this preprint. Specifically:
+the repository accompanying this preprint. A claim-to-artifact map and the
+shortest verification commands are collected in
+\texttt{ARTIFACT\_REPRODUCIBILITY.md}. Specifically:
 
 \begin{itemize}
 \tightlist
@@ -1235,10 +1509,13 @@ the repository accompanying this preprint. Specifically:
 \item
   The verified 43-witness, the OEIS A003002 b-file used for window
   bounds, the broad-pass result logs, the recap residuals, the
-  HiGHS attack logs, the T1a/T1b/T1c benchmark JSONLs, the Lean T1c
-  proof-search targets, environment/version captures for the main solver stack,
-  and the scripts needed to generate T3 are included in the repository or
-  its associated artifact archive.
+  HiGHS attack logs, the T1a/T1b/T1c benchmark JSONLs, the full T2 solver
+  survey, the native-CDCL same-formula and optimization-MIP comparisons, the
+  exact-value certificates at $N=80,90,100$, the Lean T1c proof-search
+  targets, the independent high-level model audit and SHA-256 report,
+  environment/version captures for the main solver stack, and the scripts
+  needed to generate T3 are included in the repository or its associated
+  artifact archive.
 \item
   Existing single-instance entry points (\texttt{r3\_split\_cpsat.py} and
   \texttt{r3\_highs\_attack.py}, and \texttt{r3\_sat\_attack.py}) can rerun any row of T1c,
@@ -1251,9 +1528,11 @@ CNF/DRAT proof artifacts for the 18 CDCL-closed
 $\mathrm{T1b}\setminus\mathrm{T1c}$ chunks, the available LRAT outputs,
 verification summaries, SLURM logs, solver outputs, SHA256 manifests, and
 reconstruction instructions for split archives
-\cite{ergezer-r3-212-artifacts-2026}. The certified T1c formula/proof pairs
-and provenance records were produced after version 1 and must be added in a
-versioned archive update before journal publication.
+\cite{ergezer-r3-212-artifacts-2026}. The journal-release version adds the
+certified T1c formula/proof pairs and provenance records, the full T2 survey,
+the same-formula solver and optimization-MIP outputs, and the exact-value DRAT/LRAT
+certificate suite. Each formula and proof is accompanied by a SHA-256 digest
+and a machine-readable provenance record.
 
 We welcome correspondence on partial results: any solver run that
 closes a strict subset of T1 or T2 is a meaningful incremental
@@ -1320,13 +1599,18 @@ limitations of the present implementation:
 \tightlist
 \item
   \textbf{Machine-checkable certificates cover every CDCL-resolved
-  hard-pocket chunk, but not the full campaign.} Follow-up proof-producing runs emitted DRAT
+  hard-pocket chunk and three exact regressions, but not the full campaign.}
+  Follow-up proof-producing runs emitted DRAT
   proofs for all 18 CaDiCaL-resolved
   $\mathrm{T1b}\setminus\mathrm{T1c}$ chunks, and independent
   \texttt{drat-trim} verification confirmed all 18/18, and the two
   kissat T1c proofs are likewise verified end-to-end against
-  sha256-pinned formulas (§4.4). The 99 kissat T2-survey closures ran
-  without proof logging by design; the 25 HiGHS-closed T1a chunks and the
+  sha256-pinned formulas (§4.4). In addition, the exact values at
+  $N=80,90,100$ are established end to end by independently verified lower
+  witnesses and \texttt{cake\_lpr}-checked LRAT upper-bound proofs
+  (§\ref{certified-exact-value-regressions}).
+  The 6,045 full-T2 portfolio closures ran without proof logging by design;
+  the 25 HiGHS-closed T1a chunks and the
   \textasciitilde{}93,929 broad-pass CP-SAT INFEASIBLE returns remain
   solver-attested rather than third-party-verified. Closing the CP-SAT/MIP
   side of this gap would require either a SAT re-encoding of each chunk or
@@ -1334,18 +1618,25 @@ limitations of the present implementation:
   the open MIP ecosystem.
 \item
   \textbf{Compute coverage is incomplete.} The campaign processed
-  100,000 of the 12,582,912 AP-pruned depth-24 chunks at the broad
-  layer, plus refinements and kissat surveys on samples. The kissat
-  results arrived at the end of the campaign; a full certified sweep
-  under a kissat-first strategy (priced in §5.3 for T2) is the natural
-  successor project rather than a rerun of this one.
+  100,000 of the 12,582,912 AP-pruned chunks in the historical witness-prefix
+  cover, plus refinements and a complete no-proof solver survey of all
+  6,071 T2 residuals. The audited global-degree policy yields a complete
+  96,847-cube cover, but only a targeted survivor sample has been run so far.
+  A full certified sweep under a CDCL-first strategy is the natural successor
+  project rather than a rerun of the historical cover.
+\item
+  \textbf{Most timing studies use heterogeneous cluster nodes.} Unity's
+  shared CPU partition includes multiple AMD and Intel processor generations.
+  Formula-level status and certificate conclusions are invariant to node
+  placement, but unnormalized wall-time ratios should be read as deployment
+  measurements rather than hardware-isolated solver speedups.
 \item
   \textbf{Witness dependence is structural, not adversarial.} The broad
   split is anchored to one specific 43-witness. A different
   witness would induce a different chunk-ID space and possibly a
   different hard pocket. We did not test whether the hard pocket
   is witness-invariant; if it is not, alternative witnesses might
-  bypass the T1c residual of §4.3.
+  yield a lower-cost partition of the same decision problem.
 \item
   \textbf{The Lean benchmark is not yet upstreamed.} We did not find a public
   A003002 / $r_3(N)$ entry in \texttt{google-deepmind/formal-conjectures} as of the
@@ -1364,32 +1655,35 @@ disjoint union.
 \subsection{\texorpdfstring{What the campaign suggests about $r_3$ upper-bound search}{What the campaign suggests about r\_3 upper-bound search}}\label{what-the-campaign-suggests-about-r_3-upper-bound-search}
 
 The dominant finding is configuration-level rather than paradigm-level. The
-tested CP-SAT and HiGHS formulations leave the same 20 T1b chunks unresolved,
-while the tested CaDiCaL configuration closes 18/20. The residual T1c set has
-size 2; it defeated that CaDiCaL setup but not kissat. A controlled comparison
-on byte-identical formulas is needed before attributing the gap to a specific
-solver mechanism.
+tested CP-SAT and HiGHS feasibility formulations leave the same 20 T1b chunks
+unresolved. The initial PySAT/CaDiCaL path closes 18/20, whereas native
+CaDiCaL 3.0.0 and kissat 4.0.4 both close 20/20 on byte-identical
+formulas. Kissat records lower wall time on 19/20, but the solvability gap disappears. The
+optimization-form MIP experiment adds a complementary formulation result:
+window cuts reduce node count by about 81\% and tighten every upper bound to
+44, yet none crosses below the target.
 
 Two narrower suggestions follow from the lever inventory of §4.5.
 First, the window-cardinality family from OEIS A003002 produced the largest
 measured CP-SAT improvement: an approximately 28-percentage-point reduction
-on controlled broad batches. Second, variable reordering changed the worst
-bucket by less than one percentage point and the single pair-AND trial was
-inconclusive. Longer wall caps did close 55/100 sampled broad residuals by
+on controlled broad batches. The intended variable-reordering A/B was an
+implementation no-op and supports no ordering conclusion; the single
+pair-AND trial was inconclusive. Longer wall caps did close 55/100 sampled broad residuals by
 300 seconds, but left a substantial tail. These results rank the tested
 interventions; they do not rule out untested formulations or search policies.
 
-The CDCL experiments (§4.3--§4.4) close all 20 audited T1b chunks: 18 under
-the tested CaDiCaL configuration and the remaining two under kissat. The
-CaDiCaL-to-kissat gap motivates a controlled solver study, but the present
-runs differ in build, invocation path, and defaults and therefore do not by
-themselves identify a causal implementation feature.
+The CDCL experiments (§4.3--§4.4) close all 20 audited T1b chunks under both
+native solvers. Extending the comparison to the full T2 tier produces a
+two-stage portfolio result: kissat closes 5,959/6,071 within two hours and
+CaDiCaL closes 86 of the 112 residuals within twelve hours. The remaining
+26 chunks define a substantially sharper practical target than the earlier
+6,071-chunk residual.
 
-Combined, these suggest three immediate follow-ups: a full kissat pass over
-T2, a controlled CaDiCaL/kissat comparison on identical CNFs, and an
-optimization-form MIP experiment that maximizes $\sum_i x_i$ to obtain
-meaningful LP and MIP bounds. The benchmark release of §5 is built to
-support these tests.
+Combined, these suggest three immediate follow-ups: proof-producing closure
+of the 26 T2 residuals, proof-producing reproduction of the 6,045
+solver-attested T2 closures, and a controlled comparison of decomposition
+policies at fixed cube count and solver budget. The benchmark release of §5
+is built to support these tests.
 
 The campaign's working hypothesis (§4.6) --- that T1c was resistant to
 current complete solvers under practical wall caps --- was refuted by the
@@ -1431,7 +1725,13 @@ drat-trim verification & $\sim61$ & jobs 58952708, 59058393, and 59383874; all 1
 Kissat T1c initial runs & $\sim8.8$ & two single-core solves, 31,826.6 retained solver-seconds \\
 Kissat T2 pilot & $\sim9.7$ & 100 single-core tasks, 34,819.8 retained solver-seconds \\
 Certified T1c rerun & $\sim25.2$ & two single-core solves plus two independent proof-verification runs \\
-Total retained logs & $\sim8{,}710$ & excludes interactive debugging, failed encode attempts, and logs not retained locally \\
+Native CDCL same-formula comparison & $\sim34.0$ & CaDiCaL 3.0.0 and kissat 4.0.4 on 20 byte-identical T1b formulas \\
+Optimization-form T1b MIP & $\sim640$ & 20 chunks with windows off/on; retained 2-hour MIP-cap runs \\
+Full T2 kissat survey & $\sim993.5$ & 6,071 single-core tasks; 3,576,567 retained solver-seconds \\
+T2 CaDiCaL residual pass & $\sim782.9$ & 112 single-core tasks; 2,818,578 retained solver-seconds \\
+Exact-value calibration and certification & $\sim8$ & $N=80,90,100$ solves, DRAT-to-LRAT conversion, and \texttt{cake\_lpr} checks \\
+Matched split-policy ablation & $\sim55.6$ & 500 raw assignments, five sequential policies, eight-worker CP-SAT; 25,042 retained solver-seconds \\
+Total retained logs & $\sim11{,}230$ & excludes interactive debugging, failed encode attempts, and logs not retained locally \\
 \end{longtable}
 }
 

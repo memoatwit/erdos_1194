@@ -103,8 +103,8 @@
 
 % --- Frontmatter ---
 \title[A Salem--Spencer solver benchmark]{Salem--Spencer sets as a
-  cross-solver benchmark: a witness-informed decomposition for
-  $\rthree{212}$}
+  cross-solver benchmark: decomposition, certification, and split-policy
+  effects at $\rthree{212}$}
 
 \author{Mehmet Ergezer}
 \thanks{ORCID: \href{https://orcid.org/0000-0001-6627-3667}{0000-0001-6627-3667}.}
@@ -133,35 +133,43 @@
   Lean
 }
 
-\date{July 12, 2026}
+\date{July 15, 2026}
 
 \begin{document}
 
 \begin{abstract}
-Deciding whether a $44$-element subset of $[1, 212]$ can avoid all
+Deciding whether a $44$-element subset of $[1,212]$ can avoid all
 three-term arithmetic progressions is the current frontier instance of the
-Salem--Spencer sequence $\rthree{N}$ (OEIS A003002). We present this
-family of finite combinatorial feasibility problems as a
-constraint-solving benchmark with a measured difficulty ladder. None of
-six tested monolithic configurations---CP-SAT, HiGHS feasibility MIP, and
-CaDiCaL, each with and without window constraints---resolves the instance
-within $24$ hours. Under a witness-informed cube-and-conquer
-split with window-cardinality implied constraints --- the single most
-effective pruning layer, worth $28$ percentage points of unresolved rate
---- millions of subproblems close with zero feasible $44$-sets, supporting
-but not proving the conjectured $\rthree{212} = 43$. Cross-solver
-analysis of the resistant residual then stratifies cleanly: an eight-hour
-HiGHS audit closes $25$ of $45$ survivors while leaving $20$ unresolved; CDCL
-(CaDiCaL) closes $18$ of those $20$, each with an independently verified
-DRAT proof; and the final two subproblems (\Tonec), which defeat CaDiCaL
-at $12$ hours, fall to kissat~4.0.4 well within that budget, with DRAT
-certificates independently verified end-to-end against sha256-pinned
-formula files. A kissat survey then closes $99$ of $100$ sampled
-broad-residual subproblems within two hours. These results suggest that a
-larger certified sweep is computationally plausible, but they do not close
-the unit-gap problem $\rthree{212} \in \{43, 44\}$. We
-release the tiered instances, verified certificates, deterministic
-generator, and a Lean encoding of \Tonec.
+Salem--Spencer sequence $\rthree{N}$ (OEIS A003002). We present this family
+of finite feasibility problems as a constraint-solving benchmark with a
+measured difficulty ladder. None of six monolithic configurations---CP-SAT,
+HiGHS feasibility MIP, and CaDiCaL, each with and without window
+constraints---resolves the instance within $24$ hours. Under a
+witness-informed cube-and-conquer split with window-cardinality implied
+constraints---the single most effective pruning layer, worth $28$ percentage
+points of unresolved rate---millions of subproblems close with zero feasible
+$44$-sets, supporting but not proving the conjectured $\rthree{212}=43$. A
+post-campaign implementation audit and matched five-policy ablation show that
+a global AP-degree prefix reduces the exact complete cube cover from
+$12{,}582{,}912$ to $96{,}847$ survivors, although every unpruned
+global-degree cube in the raw-assignment sample times out at $60$ seconds. An
+eight-hour HiGHS audit closes $25$ of $45$ sampled hard chunks. An initial
+CDCL configuration closes $18$ of the remaining $20$, and kissat~4.0.4
+supplies independently verified DRAT certificates for the final two. In a
+subsequent same-formula comparison on byte-identical CNFs, native
+CaDiCaL~3.0.0 and kissat both close all $20$ chunks, removing the apparent
+solvability separation. A full kissat survey closes $5{,}959/6{,}071$ broad residuals
+within two hours per chunk, and native CaDiCaL closes $86$ of the $112$
+survivors, giving $99.57\%$ solver-reported portfolio coverage. Corrected
+optimization-form MIP experiments show that window inequalities tighten all
+$20$ tested LP and MIP upper bounds to $44$ but do not cross the target. As
+an end-to-end ground-truth check, the pure encoding recovers
+$\rthree{80}=22$, $\rthree{90}=24$, and $\rthree{100}=27$ from independently
+verified lower witnesses and LRAT certificates accepted by the formally
+verified \texttt{cake\_lpr} checker. The unit-gap problem
+$\rthree{212}\in\{43,44\}$ remains open. We release the tiered instances,
+verified certificates, deterministic generator, and a Lean encoding of
+\Tonec.
 \end{abstract}
 
 \maketitle
@@ -177,6 +185,21 @@ Massachusetts Green High Performance Computing Center (MGHPCC) and its member
 institutions.  We acknowledge OEIS contributor Cariboni for the A003002 b-file
 at the current frontier $N \leq 211$.
 % [Add NSF/Wentworth funding line if applicable.]
+
+\section*{Data and code availability}
+Source code, benchmark generators, compact result tables, and manuscript
+sources are available at
+\url{https://github.com/memoatwit/erdos_1194}. Versioned solver artifacts,
+including formulas, proof objects, hashes, and provenance records, are
+archived at \url{https://doi.org/10.5281/zenodo.20463334}.
+
+\section*{Author contributions}
+M.E. conceived the study, designed and executed the computational campaign,
+verified the results, developed the released software and benchmarks, and
+wrote the manuscript.
+
+\section*{Competing interests}
+The author declares no competing interests.
 
 
 % --- Use of generative AI ---

@@ -1,20 +1,15 @@
 # Venue and experiment plan
 
-Date: 2026-07-13
+Date: 2026-07-15
 
 ## Recommendation
 
-The current paper is a strong fit for **Constraints** after the factual
-corrections in this branch. The journal explicitly covers constraint
-programming, satisfiability, automated reasoning, combinatorial algorithms,
-discrete mathematics, and computational logic. This is the best
-acceptance-probability choice.
-
-The credible higher-impact stretch is **Mathematical Programming
-Computation (MPC)**. MPC explicitly welcomes comparative computational
-studies, libraries of problem instances, software, and reproducible
-computational results. It is also much more selective and expects a study
-that advances practical computation, not only a campaign narrative.
+The completed full-T2 portfolio, optimization-form MIP study, and formally
+checked exact regressions now support **Mathematical Programming Computation
+(MPC)** as the recommended first submission. MPC explicitly welcomes
+comparative computational studies, libraries of problem instances, software,
+and reproducible computational results. **Constraints** remains the strongest
+acceptance-probability fallback.
 
 Do not submit the uncorrected July 6 manuscript. Its interpretation of the
 HiGHS `mip_dual_bound = 0.0` field was invalid because the model had a zero
@@ -51,14 +46,18 @@ Job `61729298` is complete. With windows off, the 20 LP optima range from
 `73.0` to `84.5` and the final MIP upper bounds from `46` to `57`. With
 windows on, every LP optimum and MIP upper bound is numerically `44.0`:
 the valid inequalities close the relaxation to the decision threshold but do
-not certify `<44`. Full node and timing aggregates are in `SESSION_HANDOFF.md`.
+not certify `<44`. All 40 MIP cells reached the 7,200-s cap. Median final
+relative gaps are `26.92%` without windows and `12.82%` with windows; the
+window arm reduces total explored nodes from `32,089,555` to `6,014,774`.
+Full node and timing aggregates are in `SESSION_HANDOFF.md`.
 
 Job `61729294` is also complete. Native CaDiCaL 3.0.0 and kissat 4.0.4
 both close all 20 T1b chunks on paired, byte-identical CNFs. Kissat is faster
-on 19/20 pairs (median paired CaDiCaL/kissat time ratio `1.38`), but the
-controlled result removes the earlier apparent solvability separation. The
-paper should report a performance separation and attribute the old failure to
-the earlier PySAT/bundled-solver configuration, not to CaDiCaL as a solver.
+on 19/20 observed runs (median paired CaDiCaL/kissat time ratio `1.38`), but
+the array used heterogeneous Unity CPU nodes. The result removes the earlier
+apparent solvability separation, but the timing ratio is a deployment result,
+not a processor-normalized speedup. Job `61861327` repeats both solvers
+sequentially on the same AMD EPYC 7763 core per chunk.
 
 Job `61729241` is complete. Across all 6,071 T2 chunks, kissat reports
 `5,959 UNSAT` and `112 UNKNOWN` at the two-hour cap, with no `SAT` result.
@@ -88,7 +87,7 @@ plus the tail.
 ### 2. Controlled CaDiCaL-versus-Kissat comparison
 
 Run current native CaDiCaL and kissat binaries on byte-identical archived
-CNFs, on the same Unity node class, with the same wall and memory caps. Start
+CNFs, on the same Unity node and core, with the same wall and memory caps. Start
 with all 20 T1b chunks and report solve-time distributions rather than only
 the two T1c outcomes. Record exact versions and command lines.
 
@@ -134,12 +133,12 @@ Target MPC if all of the following are available:
 4. A Zenodo version containing the certified T1c CNF/DRAT/provenance bundle.
 5. At least one end-to-end known-value regression with a checked certificate.
 
-Items 1--3 are satisfied by jobs `61729241`, `61729294`, and `61729298`.
-Items 4--5 require the synchronized Zenodo update described below; the compute
-for item 5 is complete. Jobs `61848180` and `61850319` recovered and certified
-the exact values at `N=80,90,100` with verified lower witnesses and formally
-checked LRAT upper certificates. The experimental gate therefore supports an
-MPC submission after manuscript and artifact integration.
+Items 1, 3, and 5 are satisfied. Jobs `61848180` and `61850319` recovered and
+certified the exact values at `N=80,90,100` with verified lower witnesses and
+formally checked LRAT upper certificates. Item 2's formula control is complete,
+but its hardware control is being repaired by job `61861327`. Item 4 requires
+the synchronized Zenodo update described below. The experimental gate supports
+an MPC submission after that matched rerun and manuscript/artifact integration.
 
 ### Active MPC gate (submitted 2026-07-13)
 
@@ -177,11 +176,60 @@ converted with `drat-trim -L` and accepted by the formally verified
 and scratch4 workspaces; `/work` contains compact provenance and verification
 summaries.
 
+### Hardware-matched native CDCL rerun (submitted 2026-07-15)
+
+Job `61861327` runs native CaDiCaL 3.0.0 and kissat 4.0.4 sequentially within
+each of 20 array tasks, constrained to AMD EPYC 7763 nodes. Solver order
+alternates by chunk index. Each output records the formula digest, solver
+version, node identity, and `lscpu` data. This replaces the heterogeneous-node
+timing comparison in the final manuscript; status and certificate conclusions
+from the earlier run remain valid.
+
+### Split-policy audit and matched ablation (submitted 2026-07-15)
+
+An implementation audit established that the deployed broad prefix was the
+first 24 witness values after the generic set loader canonicalized them into
+numeric order, not the stored AP-incidence order. The exact deployed prefix is
+now stated in §2.2 and the surviving chunk IDs are described correctly as
+dense post-pruning identifiers rather than raw 24-bit integers. This affects
+the cube policy, not coverage or soundness.
+
+Job `61861953` compares five split policies on 500 uniformly sampled raw
+24-bit assignments: the deployed witness-numeric prefix, the intended
+witness-degree prefix, a fixed-seed random witness prefix, global AP-degree,
+and fixed-seed random global variables. All five policies run sequentially in
+each array task on AMD EPYC 7763 nodes with identical CP-SAT settings; policy
+order rotates by task. The paired ablation will report prefix-pruning,
+INFEASIBLE/UNKNOWN rates, and solver time. This is the remaining experiment
+most directly tied to the architectural contribution.
+
+Job `61861953` is complete with 500/500 matched samples and no FEASIBLE row.
+Exact enumeration gives 12,582,912 survivors for the deployed witness-numeric
+policy, 7,864,320 for witness-degree, 16,777,216 for witness-random,
+3,767,648 for global-random, and 96,847 for global AP-degree. Global degree
+improves the matched 60-s closed rate by 13.4 percentage points (bootstrap
+95% CI 10.4--16.4) and reduces mean solver seconds per raw assignment by
+10.55 s (95% CI 8.79--12.37), almost entirely through prefix pruning. All
+three sampled global-degree survivors remain UNKNOWN at 60 s, so the smaller
+cover requires a stronger conquer phase.
+
+Jobs `61862519` and `61862520` test a fixed-seed sample of 100 cubes drawn
+uniformly from the 96,847 global-degree survivors. The first applies the
+historical 60-s, eight-worker CP-SAT configuration; the second applies native
+kissat 4.0.4 for up to two hours. Together they measure survivor hardness
+without dilution by the 99.42% deterministic prefix-pruning rate.
+
+The independent model audit in `r3_model_audit.py` reproduces the 11,130 AP
+constraints and 22,154 active window inequalities without importing solver
+code. It records SHA-256 digests for the A003002 b-file, both constraint
+families, and the complete high-level model.
+
 ## Release blockers before either submission
 
-- Publish a new Zenodo version containing the two certified T1c formula/proof
-  pairs, provenance JSON files, hashes, and the new baseline outputs. Zenodo
-  version 1 predates the kissat work.
+- Publish a new Zenodo version containing the certified T1c formula/proof
+  pairs, full T2 and residual-arm outputs, controlled CDCL/MIP results, the
+  $N=80,90,100$ exact-certificate suite, provenance JSON files, and hashes.
+  Zenodo version 1 predates these experiments.
 - Update arXiv v2 only after the revised manuscript and artifact inventory
   agree.
 - Keep `paper.body.tex` as the maintained source. The Markdown sections are
