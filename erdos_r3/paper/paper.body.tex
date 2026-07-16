@@ -48,9 +48,11 @@ HiGHS leave a common residual pocket, while CDCL closes it. An initial
 PySAT-bundled CaDiCaL configuration left two audited chunks unresolved;
 kissat subsequently refuted both with independently verified DRAT proofs.
 A same-formula rerun on byte-identical CNFs then showed that current native
-CaDiCaL~3.0.0 and kissat~4.0.4 both close all 20 hard chunks. The observed
-deployment times differ, but the first array used heterogeneous processors;
-§4.4 reports that limitation separately from the solvability result. That layered behavior is
+CaDiCaL~3.0.0 and kissat~4.0.4 both close all 20 hard chunks. A subsequent
+hardware-matched rerun executed both solvers sequentially on AMD EPYC 7763
+nodes: kissat was faster on all 20 pairs, with geometric-mean
+CaDiCaL-to-kissat time ratio 1.477 (bootstrap 95\% interval 1.332--1.655).
+That layered behavior is
 precisely what makes the family interesting as a benchmark: it is natural,
 scalable in $N$, has verifiable ground truth at solved sizes, and grades
 solver configurations along a measured difficulty ladder rather than a
@@ -96,9 +98,10 @@ Fourth, the apparent pocket collapses under current native CDCL solvers.
 Kissat~4.0.4 refutes both T1c chunks on the pure 3-AP/cardinality encoding,
 and both refutations are certified end-to-end against sha256-pinned formula
 files (§4.4). In a same-formula 20-chunk comparison on byte-identical CNFs,
-native CaDiCaL~3.0.0 and kissat both close every chunk; kissat is faster on
-19/20 heterogeneous-node deployment runs, a timing observation that does not
-isolate solver speed. A full kissat pass over all 6,071 broad residuals closes 5,959
+native CaDiCaL~3.0.0 and kissat both close every chunk. In a controlled
+same-node rerun, kissat is faster on 20/20 pairs, with a geometric-mean
+CaDiCaL-to-kissat time ratio of 1.477 (bootstrap 95\% CI 1.332--1.655).
+A full kissat pass over all 6,071 broad residuals closes 5,959
 within a 2-hour cap, and a 12-hour native-CaDiCaL pass closes 86 of the 112
 survivors. The resulting two-solver portfolio leaves 26 unresolved chunks
 and no feasible row, for 99.57\% measured coverage
@@ -143,8 +146,9 @@ study, not a new exact value of A003002. We provide:
   A characterization of the structural hard pocket across CP-SAT, HiGHS,
   and multiple CDCL configurations. The pocket that initially appeared
   robust across formulations is closed by both native CaDiCaL~3.0.0 and
-  kissat~4.0.4; the initial timing data are reported as a heterogeneous-node
-  deployment comparison rather than a processor-normalized speedup.
+  kissat~4.0.4. A hardware-matched sequential comparison on AMD EPYC 7763
+  nodes finds kissat faster on all 20 byte-identical formulas, with a paired
+  geometric-mean time ratio and bootstrap interval.
 \item
   A reproducible witness-split plus window-cardinality architecture for
   exact $r_3(N)$ upper-bound search, parametric in $(N, K)$
@@ -749,15 +753,17 @@ overridden in an experiment:
 
 The retained Unity environment used Python 3.12, OR-Tools 9.15.6755,
 HiGHS 1.14.0, and PySAT 1.9.dev4. The no-proof \texttt{pysat:auto}
-path selected the \texttt{cadical195} backend; the later native solver was
-kissat 4.0.4. Exact command lines and environment captures accompany the
-released logs.
+path selected the \texttt{cadical195} backend; the later native solvers were
+CaDiCaL 3.0.0 and kissat 4.0.4. Exact command lines and environment captures
+accompany the released logs.
 
 Unity's shared CPU partition is heterogeneous. Large array jobs were not
 pinned to one processor model, so their wall times characterize the deployed
 configurations rather than processor-normalized solver performance. Status
 comparisons, formula hashes, and certificates are unaffected by this caveat;
-timing comparisons are labeled accordingly.
+timing comparisons are labeled accordingly. The dedicated native-CDCL
+comparison in §4.4 is the exception: both solvers run sequentially within
+each task on AMD EPYC 7763 nodes, with order rotated across the 20 pairs.
 
 The SLURM emitter, shard collector, tail emitter, and proof-state manager
 implement the workload pipeline. Output is
@@ -1241,21 +1247,24 @@ Solver & Closed & Median (s) & 90th pct. (s) & Maximum (s) & Total (s) \\
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-CaDiCaL 3.0.0 & 20/20 & 734.0 & 9,700.0 & 28,635.8 & 79,421.8 \\
-kissat 4.0.4 & 20/20 & 429.0 & 3,467.8 & 13,425.5 & 42,782.3 \\
+CaDiCaL 3.0.0 & 20/20 & 584.7 & 10,613.1 & 31,044.4 & 81,849.3 \\
+kissat 4.0.4 & 20/20 & 416.4 & 4,683.5 & 13,426.0 & 45,482.1 \\
 \end{longtable}
 }
 
-All 20 paired formula hashes match. Kissat records lower wall time on 19/20
-chunks, with a median paired CaDiCaL-to-kissat time ratio of 1.38. These
-array tasks ran opportunistically on heterogeneous Unity CPU nodes, so the
-ratio describes the deployed configurations rather than a
-processor-normalized speedup. On the two
-historical T1c chunks, native CaDiCaL takes 28,635.8 and 18,077.7 seconds,
-while kissat takes 13,425.5 and 9,963.9 seconds. Thus the original
-solvability separation does not survive the same-formula rerun; the first
-array establishes only a deployment-time difference between the tested native
-builds, not a processor-normalized performance separation.
+All 20 paired formula hashes match. In the hardware-matched experiment, each
+array cell runs both solvers sequentially on one AMD EPYC 7763 node, with
+solver order alternating by array index. Kissat records lower wall time on
+20/20 chunks. The paired geometric mean of
+$t_{\mathrm{CaDiCaL}}/t_{\mathrm{kissat}}$ is 1.477, with a 10,000-resample
+bootstrap 95\% interval of 1.332--1.655; the median ratio is 1.390. The
+order-stratified geometric means are 1.551 when CaDiCaL runs first and 1.406
+when kissat runs first, so the direction survives the order rotation. On the
+two historical T1c chunks, native CaDiCaL takes 31,044.4 and 17,792.7
+seconds, while kissat takes 13,426.0 and 13,134.7 seconds. Thus the original
+solvability separation does not survive the same-formula rerun, while the
+controlled paired experiment establishes a reproducible performance
+difference for these binaries, formulas, and AMD EPYC 7763 nodes.
 (A windowed kissat variant exceeded the 16 GB encode-time memory budget on
 both T1c chunks and produced no solver result.)
 
@@ -1295,7 +1304,7 @@ Recursive deepening & Refinement at depths 40, 48, 56 & All 500 stratified-sampl
 HiGHS feasibility MIP & Replace CP-SAT entirely & 0/45 closed at 1 hour; 25/45 closed in the full 8-hour audit, while 20/45 remained unresolved. \\
 HiGHS optimization MIP & Maximize $\sum_i x_i$ on T1b, windows off/on & Windows reduce nodes by 81\% and tighten all root LP and final upper bounds to 44, but none below 44. \\
 Initial PySAT/CaDiCaL CDCL & Encode T1b as CNF with 3-AP clauses + cardinality + pins, no windows & 18/20 HiGHS-resistant chunks closed \texttt{UNSAT} in 4 hours; 2/20 remained \texttt{UNKNOWN}; no \texttt{SAT} rows. \\
-Native CDCL same-formula study (§4.4) & Native CaDiCaL 3.0.0 and kissat 4.0.4 on byte-identical CNFs & Both close 20/20; kissat records lower wall time on 19/20 heterogeneous-node runs. \\
+Native CDCL same-formula study (§4.4) & Native CaDiCaL 3.0.0 and kissat 4.0.4 on byte-identical CNFs & Both close 20/20; on matched AMD EPYC 7763 nodes kissat is faster on 20/20 pairs, geometric-mean time ratio 1.477 (95\% CI 1.332--1.655). \\
 Full T2 portfolio (§\ref{full-t2-solver-portfolio}) & Kissat on 6,071 chunks, then CaDiCaL on 112 residuals & 6,045/6,071 closed \texttt{UNSAT} (99.57\%); 26 remain \texttt{UNKNOWN}; no proofs logged. \\
 \end{longtable}
 }
@@ -1321,9 +1330,10 @@ chunks, which \texttt{drat-trim} independently verified.
 The native same-formula rerun narrows the correction further: T1c does not
 separate current native CaDiCaL and kissat by solvability, because both close
 20/20 T1b formulas. It separates the initial PySAT-bundled invocation from
-the native runs. On the initial heterogeneous-node array, kissat records lower
-wall time on 19/20 byte-identical instances; this is a deployment observation,
-not a processor-normalized speedup. The optimization-form HiGHS study
+the native runs. The hardware-matched same-node experiment does separate the
+tested native binaries operationally: kissat is faster on all 20 pairs, and
+the bootstrap interval for the paired geometric-mean ratio excludes 1. The
+optimization-form HiGHS study
 also resolves the LP question. Window bounds tighten every T1b root LP and
 final MIP upper bound to exactly 44, but not below it. The resulting lesson
 is empirical rather than universal: window cuts expose an exceptionally
@@ -1431,13 +1441,16 @@ conquer outputs and compact analysis are
 \path{results/global_degree_survivor_cpsat100.jsonl},
 \path{results/global_degree_survivor_kissat100.jsonl}, and
 \path{results/global_degree_survivor_solver_summary.json}. The independent
-cover audit is \path{results/global_degree_cover_independent_audit.json}.\par}
+cover audit is \path{results/global_degree_cover_independent_audit.json}.
+The hardware-matched native-CDCL aggregate is
+\path{results/cdcl_paired_amd7763_summary.json}, with its 20 pair summaries
+and 40 raw solver rows under \path{results/cdcl_paired_amd7763/}.\par}
 
 Tier T1c is the benchmark's compact native-CDCL calibration point. The two
 chunks defeat the initial PySAT/CaDiCaL path, but native CaDiCaL 3.0.0 and
-kissat 4.0.4 both close them on byte-identical formulas; kissat records lower
-wall time on
-both and supplies end-to-end certified DRAT proofs (§4.4). Lower solve or
+kissat 4.0.4 both close them on byte-identical formulas. In the matched
+AMD EPYC 7763 experiment kissat is faster on both, and it supplies end-to-end
+certified DRAT proofs (§4.4). Lower solve or
 verification cost than the reported runs is a directly comparable benchmark
 improvement.
 
@@ -1700,7 +1713,9 @@ limitations of the present implementation:
   shared CPU partition includes multiple AMD and Intel processor generations.
   Formula-level status and certificate conclusions are invariant to node
   placement, but unnormalized wall-time ratios should be read as deployment
-  measurements rather than hardware-isolated solver speedups.
+  measurements rather than hardware-isolated solver speedups. The native
+  CaDiCaL/kissat comparison in §4.4 is explicitly hardware-matched and rotates
+  solver order, so its paired ratio is not subject to this limitation.
 \item
   \textbf{Witness dependence is structural, not adversarial.} The broad
   split is anchored to one specific 43-witness. A different
@@ -1729,7 +1744,9 @@ The dominant finding is configuration-level rather than paradigm-level. The
 tested CP-SAT and HiGHS feasibility formulations leave the same 20 T1b chunks
 unresolved. The initial PySAT/CaDiCaL path closes 18/20, whereas native
 CaDiCaL 3.0.0 and kissat 4.0.4 both close 20/20 on byte-identical
-formulas. Kissat records lower wall time on 19/20, but the solvability gap disappears. The
+formulas. On matched AMD EPYC 7763 nodes, kissat records lower wall time on
+20/20 pairs and a geometric-mean paired time ratio of 1.477 (bootstrap 95\%
+CI 1.332--1.655), while the solvability gap disappears. The
 optimization-form MIP experiment adds a complementary formulation result:
 window cuts reduce node count by about 81\% and tighten every upper bound to
 44, yet none crosses below the target.
@@ -1796,14 +1813,15 @@ drat-trim verification & $\sim61$ & jobs 58952708, 59058393, and 59383874; all 1
 Kissat T1c initial runs & $\sim8.8$ & two single-core solves, 31,826.6 retained solver-seconds \\
 Kissat T2 pilot & $\sim9.7$ & 100 single-core tasks, 34,819.8 retained solver-seconds \\
 Certified T1c rerun & $\sim25.2$ & two single-core solves plus two independent proof-verification runs \\
-Native CDCL same-formula comparison & $\sim34.0$ & CaDiCaL 3.0.0 and kissat 4.0.4 on 20 byte-identical T1b formulas \\
+Native CDCL heterogeneous-node comparison & $\sim34.0$ & CaDiCaL 3.0.0 and kissat 4.0.4 on 20 byte-identical T1b formulas \\
+Hardware-matched native CDCL comparison & $\sim35.4$ & both solvers sequentially on 20 AMD EPYC 7763 tasks \\
 Optimization-form T1b MIP & $\sim640$ & 20 chunks with windows off/on; retained 2-hour MIP-cap runs \\
 Full T2 kissat survey & $\sim993.5$ & 6,071 single-core tasks; 3,576,567 retained solver-seconds \\
 T2 CaDiCaL residual pass & $\sim782.9$ & 112 single-core tasks; 2,818,578 retained solver-seconds \\
 Exact-value calibration and certification & $\sim8$ & $N=80,90,100$ solves, DRAT-to-LRAT conversion, and \texttt{cake\_lpr} checks \\
 Matched split-policy ablation & $\sim55.6$ & 500 raw assignments, five sequential policies, eight-worker CP-SAT; 25,042 retained solver-seconds \\
 Global-degree survivor conquer sample & $\sim94.2$ & 100 paired cubes; eight-worker CP-SAT contributes 13.3 worker-hours and single-core kissat 80.8 hours \\
-Total retained logs & $\sim11{,}324$ & excludes interactive debugging, failed encode attempts, and logs not retained locally \\
+Total retained logs & $\sim11{,}359$ & excludes interactive debugging, failed encode attempts, and logs not retained locally \\
 \end{longtable}
 }
 

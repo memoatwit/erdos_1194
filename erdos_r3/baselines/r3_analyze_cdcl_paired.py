@@ -36,6 +36,16 @@ def geometric_mean(values: list[float]) -> float:
     return math.exp(statistics.mean(math.log(value) for value in values))
 
 
+def load_single_json_rows(pattern: str) -> list[dict[str, Any]]:
+    rows = []
+    for name in sorted(glob.glob(pattern)):
+        lines = [line for line in Path(name).read_text().splitlines() if line.strip()]
+        if len(lines) != 1:
+            raise ValueError(f"expected one JSON row in {name}, found {len(lines)}")
+        rows.append(json.loads(lines[0]))
+    return rows
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -45,6 +55,14 @@ def main() -> None:
     parser.add_argument(
         "--output",
         default="results/baselines/cdcl_paired_amd7763_summary.json",
+    )
+    parser.add_argument(
+        "--cadical-glob",
+        default="results/baselines/cdcl_paired_amd7763/cadical_idx*.jsonl",
+    )
+    parser.add_argument(
+        "--kissat-glob",
+        default="results/baselines/cdcl_paired_amd7763/kissat_idx*.jsonl",
     )
     parser.add_argument("--expected", type=int, default=20)
     parser.add_argument("--bootstrap-samples", type=int, default=10_000)
@@ -64,6 +82,20 @@ def main() -> None:
     if any(row["cadical_status"] == "SAT" or row["kissat_status"] == "SAT" for row in rows):
         raise ValueError("SAT row requires immediate witness verification")
 
+    cadical_rows = load_single_json_rows(args.cadical_glob)
+    kissat_rows = load_single_json_rows(args.kissat_glob)
+    if len(cadical_rows) != args.expected or len(kissat_rows) != args.expected:
+        raise ValueError("raw solver-row count does not match expected paired count")
+    for pair, cadical_row, kissat_row in zip(rows, cadical_rows, kissat_rows):
+        chunk_ids = {pair["chunk_id"], cadical_row["chunk_id"], kissat_row["chunk_id"]}
+        hashes = {pair["cnf_sha256"], cadical_row["cnf_sha256"], kissat_row["cnf_sha256"]}
+        if len(chunk_ids) != 1 or len(hashes) != 1:
+            raise ValueError(f"paired formula mismatch at array index {pair['array_index']}")
+        if cadical_row["status"] != pair["cadical_status"]:
+            raise ValueError(f"CaDiCaL status mismatch at array index {pair['array_index']}")
+        if kissat_row["status"] != pair["kissat_status"]:
+            raise ValueError(f"kissat status mismatch at array index {pair['array_index']}")
+
     cadical = [float(row["cadical_seconds"]) for row in rows]
     kissat = [float(row["kissat_seconds"]) for row in rows]
     ratios = [c / k for c, k in zip(cadical, kissat)]
@@ -81,9 +113,8 @@ def main() -> None:
     output = {
         "hardware_constraint": "amd7763",
         "paired_instances": len(rows),
-        "pair_builder_verified_cnf_hash_equality": all(
-            bool(row.get("cnf_sha256")) for row in rows
-        ),
+        "raw_solver_rows_verified_cnf_hash_equality": True,
+        "raw_solver_rows_match_pair_summaries": True,
         "statuses": {
             "cadical": {status: sum(row["cadical_status"] == status for row in rows) for status in sorted({row["cadical_status"] for row in rows})},
             "kissat": {status: sum(row["kissat_status"] == status for row in rows) for status in sorted({row["kissat_status"] for row in rows})},

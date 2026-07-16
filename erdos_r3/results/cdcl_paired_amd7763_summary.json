@@ -1,0 +1,48 @@
+{
+  "bootstrap_samples": 10000,
+  "bootstrap_seed": 20260715,
+  "hardware_constraint": "amd7763",
+  "paired_instances": 20,
+  "paired_speed": {
+    "cadical_faster": 0,
+    "geometric_mean_ratio": 1.4766534427933955,
+    "geometric_mean_ratio_bootstrap_95ci": [
+      1.3317670055792417,
+      1.655085437327737
+    ],
+    "kissat_faster": 20,
+    "median_ratio": 1.3902056060107686,
+    "order_strata_geometric_mean_ratio": {
+      "cadical-then-kissat": 1.5511647802494024,
+      "kissat-then-cadical": 1.4057213120600875
+    },
+    "ratio_definition": "cadical_seconds / kissat_seconds",
+    "ties": 0
+  },
+  "raw_solver_rows_match_pair_summaries": true,
+  "raw_solver_rows_verified_cnf_hash_equality": true,
+  "solver_seconds": {
+    "cadical": {
+      "max": 31044.407007217407,
+      "mean": 4092.4662481188775,
+      "median": 584.6942893266678,
+      "p90": 10613.074143791211,
+      "sum": 81849.32496237755
+    },
+    "kissat": {
+      "max": 13426.027448654175,
+      "mean": 2274.104810023308,
+      "median": 416.4067590236664,
+      "p90": 4683.541388988508,
+      "sum": 45482.096200466156
+    }
+  },
+  "statuses": {
+    "cadical": {
+      "UNSAT": 20
+    },
+    "kissat": {
+      "UNSAT": 20
+    }
+  }
+}

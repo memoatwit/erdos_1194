@@ -98,6 +98,12 @@ The six-row selection and its provenance are
 `results/global_degree_cert_sample6.jsonl` and
 `results/global_degree_cert_sample6_summary.json`.
 
+The hardware-matched native-CDCL run completed 20/20 pairs on AMD EPYC 7763
+nodes. Both solvers returned `UNSAT` on every byte-identical formula; kissat
+was faster on all 20 pairs. `r3_analyze_cdcl_paired.py` verifies raw-row hash
+identity and reports a geometric-mean CaDiCaL/kissat time ratio of `1.477`
+(bootstrap 95% CI `1.332--1.655`).
+
 ## Further follow-up (optional)
 
 Cube-and-conquer head-to-head: compare witness-informed cubes against

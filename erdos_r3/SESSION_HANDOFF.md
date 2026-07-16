@@ -1161,3 +1161,26 @@ not retain proof objects. Compact artifacts are
 - Every certificate cell requires survey-identical CNF SHA-256, DRAT
   verification and conversion to LRAT, and `cake_lpr` acceptance. Heavy files
   are split between the existing scratch3 and scratch4 project workspaces.
+
+### Completed: hardware-matched native CDCL job 61861327
+
+All 20 array cells completed on AMD EPYC 7763 nodes. Each cell ran native
+CaDiCaL 3.0.0 and kissat 4.0.4 sequentially on the same generated CNF, with
+solver order alternating by array index:
+
+- Both solvers: `20/20 UNSAT`, `0 SAT`; all raw-row and pair-summary CNF
+  SHA-256 values agree.
+- CaDiCaL: median `584.694 s`, p90 `10,613.074 s`, maximum `31,044.407 s`,
+  total `81,849.325 s`.
+- kissat: median `416.407 s`, p90 `4,683.541 s`, maximum `13,426.027 s`,
+  total `45,482.096 s`.
+- Kissat is faster on `20/20` pairs. The geometric mean of
+  `CaDiCaL_seconds / kissat_seconds` is `1.476653`; 10,000-resample bootstrap
+  95% CI `1.331767--1.655085`; median ratio `1.390206`.
+- Order-stratified geometric means: `1.551165` for CaDiCaL-then-kissat and
+  `1.405721` for kissat-then-CaDiCaL.
+- T1c chunk `40959`: CaDiCaL `31,044.407 s`, kissat `13,426.027 s`.
+- T1c chunk `48895`: CaDiCaL `17,792.671 s`, kissat `13,134.653 s`.
+
+Compact local artifacts are `results/cdcl_paired_amd7763_summary.json` and
+the 20 paired plus 40 raw solver rows under `results/cdcl_paired_amd7763/`.

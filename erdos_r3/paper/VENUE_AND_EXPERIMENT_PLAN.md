@@ -56,8 +56,11 @@ both close all 20 T1b chunks on paired, byte-identical CNFs. Kissat is faster
 on 19/20 observed runs (median paired CaDiCaL/kissat time ratio `1.38`), but
 the array used heterogeneous Unity CPU nodes. The result removes the earlier
 apparent solvability separation, but the timing ratio is a deployment result,
-not a processor-normalized speedup. Job `61861327` repeats both solvers
-sequentially on the same AMD EPYC 7763 core per chunk.
+not a processor-normalized speedup. The hardware-matched replacement is now
+complete as job `61861327`: kissat is faster on all 20 same-node pairs, with
+geometric-mean CaDiCaL/kissat time ratio `1.4767` (10,000-resample bootstrap
+95% CI `1.3318--1.6551`). The order-stratified ratios are `1.5512` for
+CaDiCaL-first and `1.4057` for kissat-first tasks.
 
 Job `61729241` is complete. Across all 6,071 T2 chunks, kissat reports
 `5,959 UNSAT` and `112 UNKNOWN` at the two-hour cap, with no `SAT` result.
@@ -176,14 +179,16 @@ converted with `drat-trim -L` and accepted by the formally verified
 and scratch4 workspaces; `/work` contains compact provenance and verification
 summaries.
 
-### Hardware-matched native CDCL rerun (submitted 2026-07-15)
+### Hardware-matched native CDCL rerun (completed 2026-07-16)
 
-Job `61861327` runs native CaDiCaL 3.0.0 and kissat 4.0.4 sequentially within
+Job `61861327` ran native CaDiCaL 3.0.0 and kissat 4.0.4 sequentially within
 each of 20 array tasks, constrained to AMD EPYC 7763 nodes. Solver order
 alternates by chunk index. Each output records the formula digest, solver
-version, node identity, and `lscpu` data. This replaces the heterogeneous-node
-timing comparison in the final manuscript; status and certificate conclusions
-from the earlier run remain valid.
+version, node identity, and `lscpu` data. Both solvers returned `20/20 UNSAT`,
+and all raw-row CNF hashes match. Kissat was faster on `20/20`; the paired
+geometric-mean CaDiCaL/kissat ratio is `1.4767` (bootstrap 95% CI
+`1.3318--1.6551`), with order-stratified ratios `1.5512` and `1.4057`.
+This replaces the heterogeneous-node timing comparison in the manuscript.
 
 ### Split-policy audit and matched ablation (submitted 2026-07-15)
 

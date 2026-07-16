@@ -63,7 +63,7 @@ files are drafting history and do not overwrite it.
 | Verified 43-element witness | `results/N212_K43_witness.json` | `r3_verify.py` |
 | High-level model counts and hashes | `results/N212_K44_model_audit.json` | `r3_model_audit.py` |
 | Historical T1a/T1b/T1c ladder | `results/N212_K44_t1a25.jsonl`, `N212_K44_t1b_minus_t1c.jsonl`, `N212_K44_t1c2.jsonl` | T1 CNF/DRAT/provenance bundle on Zenodo |
-| All 20 audited T1b chunks close under native CDCL | same T1b/T1c JSONLs | native CaDiCaL/kissat same-formula outputs and hashes on Zenodo |
+| All 20 audited T1b chunks close under native CDCL; matched paired time ratio 1.477 | `results/cdcl_paired_amd7763_summary.json` | native CaDiCaL/kissat same-node outputs, pair summaries, and hashes on Zenodo |
 | T2 portfolio closes 6,045/6,071 | `results/baselines/t2_full/residual_unknown112_summary.json` | complete kissat and residual-CaDiCaL JSONLs on Zenodo |
 | Exact values at N=80,90,100 recovered end to end | `results/baselines/known_exact_certified/N*/` | CNF, DRAT, LRAT, and `cake_lpr` checker logs on Zenodo |
 | Split-policy cover-size/hardness tradeoff | `results/split_policy_ablation_summary.json` | `baselines/r3_split_policy_ablation.py` and its SLURM driver |
@@ -120,6 +120,19 @@ The certificate sample is selected deterministically at solve-time quantiles
 `0, .2, .4, .6, .8, 1` from those 79 rows. Each task requires its regenerated
 CNF hash to equal the survey hash before DRAT-to-LRAT conversion and
 `cake_lpr` checking.
+
+The hardware-matched CDCL summary is reproduced with:
+
+```bash
+python3 baselines/r3_analyze_cdcl_paired.py \
+  --input-glob 'results/cdcl_paired_amd7763/paired_idx*.json' \
+  --cadical-glob 'results/cdcl_paired_amd7763/cadical_idx*.jsonl' \
+  --kissat-glob 'results/cdcl_paired_amd7763/kissat_idx*.jsonl' \
+  --output results/cdcl_paired_amd7763_summary.json
+```
+
+The analyzer checks all 20 raw CaDiCaL/kissat formula hashes against each
+other and their pair summaries before computing paired statistics.
 
 ## Scope
 

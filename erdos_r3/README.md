@@ -16,7 +16,10 @@ Current result snapshot:
   historical T1c chunks have independently verified DRAT proofs.
 - On byte-identical T1b formulas, native CaDiCaL 3.0.0 and kissat 4.0.4 both
   close 20/20. The original T1c solvability gap was an invocation/configuration
-  effect, not a persistent solver separation.
+  effect, not a persistent solver separation. In a hardware-matched sequential
+  rerun on AMD EPYC 7763 nodes, kissat is faster on all 20 pairs; the
+  geometric-mean CaDiCaL/kissat time ratio is 1.477 (bootstrap 95% CI
+  1.332--1.655), with the same direction in both solver-order strata.
 - A full no-proof T2 portfolio closes 6,045/6,071 chunks (99.57%): kissat
   closes 5,959, then native CaDiCaL closes 86 of the 112 residuals. No SAT row
   appears; 26 chunks remain unresolved.

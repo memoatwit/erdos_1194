@@ -1,0 +1,13 @@
+{
+  "array_index": 17,
+  "cadical_seconds": 561.2576086521149,
+  "cadical_status": "UNSAT",
+  "chunk_id": 97782,
+  "cnf_sha256": "d336c41086ede97ec5f4e70f82c0235fca9b66bfac37593cb5006f109c68b5f2",
+  "kissat_seconds": 436.2106099128723,
+  "kissat_status": "UNSAT",
+  "order": [
+    "kissat",
+    "cadical"
+  ]
+}
