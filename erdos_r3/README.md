@@ -46,7 +46,10 @@ Current result snapshot:
   CP-SAT configuration. Native kissat 4.0.4 closes 79/100 `UNSAT` within two
   hours (Wilson 95% interval 70.0--85.8%); 21 remain `UNKNOWN` and no `SAT`
   row appears. These survey closures are solver-attested because proof logging
-  was disabled.
+  was disabled. Six deterministic solve-time quantiles from the 79 closures
+  were rerun with proof logging; all six regenerated the survey-identical CNF,
+  verified through DRAT-to-LRAT conversion, and were accepted by the formally
+  verified `cake_lpr` checker.
 
 The full `r_3(212)` upper bound remains open because the complete T3 cube
 space has not been certified.

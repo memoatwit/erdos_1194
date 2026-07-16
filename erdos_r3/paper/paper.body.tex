@@ -164,7 +164,10 @@ study, not a new exact value of A003002. We provide:
   byte-for-byte with the production generator on the canonical survivor list.
   A fixed-seed 100-survivor follow-up measures the
   conquer phase directly: 100/100 remain \texttt{UNKNOWN} under the historical
-  CP-SAT configuration, whereas kissat closes 79/100 within two hours.
+  CP-SAT configuration, whereas kissat closes 79/100 within two hours. Six
+  deterministic solve-time quantiles from those closures are independently
+  reproduced with survey-identical formula hashes and LRAT certificates
+  accepted by \texttt{cake\_lpr}.
 \item
   Three independently checked exact-value regressions at $N=80,90,100$,
   including verified lower witnesses, archived pure CNFs, DRAT-to-LRAT
@@ -933,6 +936,18 @@ for the same deterministic sample. The 79 kissat closures are solver-attested
 because this survey intentionally disabled proof logging; they do not by
 themselves certify any part of the complete 96,847-cube cover.
 
+We therefore selected six of the 79 closures at deterministic solve-time
+quantiles $0,.2,.4,.6,.8,1$ and reran them with proof logging. All six
+returned \texttt{UNSAT}; every regenerated CNF SHA-256 equals its survey
+hash, every DRAT proof was verified and converted to LRAT by
+\texttt{drat-trim}, and every LRAT certificate was accepted by the formally
+verified \texttt{cake\_lpr} checker. Proof-producing solve times range from
+131.7 to 10,316.1 seconds (median 2,285.2; total 20,032.3). The six DRAT
+proofs total 15.71 GB and the LRAT certificates total 54.96 GB;
+\texttt{drat-trim} and \texttt{cake\_lpr} consumed 35,618 and 3,930 seconds,
+respectively. This verifies certificate transfer across the sampled hardness
+range, but it does not certify the remaining global-degree cover.
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{figures/split_policy_ablation.pdf}
@@ -945,6 +960,7 @@ separate conquer-cost measurement. W and G abbreviate witness-restricted and
 global policies, respectively.}
 \label{fig:split-policy-ablation}
 \end{figure}
+\clearpage
 
 \subsection{Full T2 solver portfolio}\label{full-t2-solver-portfolio}
 
@@ -1031,7 +1047,7 @@ $N=212$ sweep.
 
 The dominant retained costs are the 100k broad expansion, the
 sample-500 refinement, the full-T1 long-wall HiGHS audit, and the final
-T2 solver portfolio. The total retained-log estimate is roughly 11,324
+T2 solver portfolio. The total retained-log estimate is roughly 11,376
 worker-hours; Appendix~\ref{app:compute}
 itemizes the accounting per campaign layer. A full depth-24 sweep of
 the 12,582,912 AP-pruned chunks of the deployed witness-prefix lattice was
@@ -1425,8 +1441,8 @@ Tier & Artifact & Size & Resistance level & Recommended target \\
 T1a & T1a JSONL & 25 chunks & closed by HiGHS at 8h & reference / regression test \\
 $\mathrm{T1b}\setminus\mathrm{T1c}$ & T1b-minus-T1c JSONL & 18 chunks & HiGHS-resistant; closed by CDCL; all 18/18 emitted DRAT proofs verified by \texttt{drat-trim} & certified CDCL benchmark \\
 T1c & T1c JSONL & 2 chunks & resisted the initial PySAT/CaDiCaL path; both native CaDiCaL and kissat close them; kissat DRAT-certified & native-CDCL performance calibration \\
-T2 & T2 JSONL & 6,071 chunks & survived 60-s CP-SAT; 6,045 closed by the native CDCL portfolio, 26 unresolved & certified closure of the expansion residual \\
-T3 & deterministic generators & 12,582,912 witness-prefix or 96,847 global-degree cubes & complete covers; on 100 global-degree survivors CP-SAT closes 0 and kissat closes 79 without proofs & full upper-bound proof \\
+T2 & T2 JSONL & 6,071 chunks & survived 60-s CP-SAT; 6,045 closed by the native CDCL portfolio, 26 unresolved & portfolio benchmark / residual certification target \\
+T3 & deterministic generators & 12,582,912 witness-prefix or 96,847 global-degree cubes & complete covers; on 100 global-degree survivors CP-SAT closes 0 and kissat closes 79; six solve-time quantiles are LRAT-certified & full upper-bound proof \\
 \end{longtable}
 }
 
@@ -1442,6 +1458,9 @@ conquer outputs and compact analysis are
 \path{results/global_degree_survivor_kissat100.jsonl}, and
 \path{results/global_degree_survivor_solver_summary.json}. The independent
 cover audit is \path{results/global_degree_cover_independent_audit.json}.
+The six certificate-transfer provenance rows and aggregate are under
+\path{results/global_degree_cert_sample6_provenance/} and
+\path{results/global_degree_cert_sample6_verification_summary.json}.
 The hardware-matched native-CDCL aggregate is
 \path{results/cdcl_paired_amd7763_summary.json}, with its 20 pair summaries
 and 40 raw solver rows under \path{results/cdcl_paired_amd7763/}.\par}
@@ -1691,7 +1710,9 @@ limitations of the present implementation:
   sha256-pinned formulas (§4.4). In addition, the exact values at
   $N=80,90,100$ are established end to end by independently verified lower
   witnesses and \texttt{cake\_lpr}-checked LRAT upper-bound proofs
-  (§\ref{certified-exact-value-regressions}).
+  (§\ref{certified-exact-value-regressions}). Six solve-time-stratified
+  global-degree survivor closures also have survey-identical CNF hashes and
+  \texttt{cake\_lpr}-accepted LRAT certificates (§3.7).
   The 6,045 full-T2 portfolio closures ran without proof logging by design;
   the 25 HiGHS-closed T1a chunks and the
   \textasciitilde{}93,929 broad-pass CP-SAT INFEASIBLE returns remain
@@ -1705,7 +1726,9 @@ limitations of the present implementation:
   cover, plus refinements and a complete no-proof solver survey of all
   6,071 T2 residuals. The audited global-degree policy yields a complete
   96,847-cube cover, but only a fixed-seed sample of 100 survivors has been
-  run so far: CP-SAT closes 0 and kissat closes 79 without proof logging.
+  run so far: CP-SAT closes 0 and kissat closes 79. Six deterministic
+  solve-time quantiles among those 79 are certified, but this does not certify
+  the untested survivors or the 21 sampled timeouts.
   A full certified sweep under a CDCL-first strategy is the natural successor
   project rather than a rerun of the historical cover.
 \item
@@ -1821,7 +1844,8 @@ T2 CaDiCaL residual pass & $\sim782.9$ & 112 single-core tasks; 2,818,578 retain
 Exact-value calibration and certification & $\sim8$ & $N=80,90,100$ solves, DRAT-to-LRAT conversion, and \texttt{cake\_lpr} checks \\
 Matched split-policy ablation & $\sim55.6$ & 500 raw assignments, five sequential policies, eight-worker CP-SAT; 25,042 retained solver-seconds \\
 Global-degree survivor conquer sample & $\sim94.2$ & 100 paired cubes; eight-worker CP-SAT contributes 13.3 worker-hours and single-core kissat 80.8 hours \\
-Total retained logs & $\sim11{,}359$ & excludes interactive debugging, failed encode attempts, and logs not retained locally \\
+Global-degree certificate sample & $\sim16.6$ & six proof-producing solves, DRAT-to-LRAT conversions, and \texttt{cake\_lpr} checks \\
+Total retained logs & $\sim11{,}376$ & excludes interactive debugging, failed encode attempts, and logs not retained locally \\
 \end{longtable}
 }
 

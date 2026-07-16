@@ -1,0 +1,22 @@
+{
+  "artifact_root": "/scratch4/workspace/ergezerm_wit_edu-soft_speech/r3_global_degree_cert_sample6/chunk_2128016",
+  "cake_lpr_seconds": 406,
+  "cake_lpr_status": "VERIFIED",
+  "chunk_id": 2128016,
+  "cnf_bytes": 1013013,
+  "cnf_hash_matches_survey": true,
+  "cnf_sha256": "fbd6bacf5b7451f7ca860e993be0545ef3119e89035fdd1fb3192256bcaf7c07",
+  "drat_bytes": 1459587758,
+  "drat_sha256": "f8c628bc213bc69b8bdd3231909eb7a28b30cc633788f255b1cf7baabf27c5ba",
+  "drat_trim_seconds": 2313,
+  "drat_trim_status": "VERIFIED",
+  "kissat_version": "4.0.4",
+  "lrat_bytes": 5478273859,
+  "lrat_sha256": "5e2f4ad418022d123d8a33bfe063f3cda9540958d8fee549872ee8e41e214c6d",
+  "prior_cnf_sha256": "fbd6bacf5b7451f7ca860e993be0545ef3119e89035fdd1fb3192256bcaf7c07",
+  "prior_solver_seconds": 948.1715767383575,
+  "proof_solver_seconds": 1551.5002279281616,
+  "selection_quantile": 0.4,
+  "selection_rank": 31,
+  "status": "UNSAT"
+}

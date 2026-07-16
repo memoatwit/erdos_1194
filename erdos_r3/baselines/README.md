@@ -97,6 +97,10 @@ pipeline:
 The six-row selection and its provenance are
 `results/global_degree_cert_sample6.jsonl` and
 `results/global_degree_cert_sample6_summary.json`.
+All six certificate cells completed successfully: survey-identical CNF hashes,
+verified DRAT-to-LRAT conversion, and `cake_lpr` acceptance. The compact
+aggregate is `results/global_degree_cert_sample6_verification_summary.json`;
+rerun it with `r3_analyze_global_degree_cert_sample.py`.
 
 The hardware-matched native-CDCL run completed 20/20 pairs on AMD EPYC 7763
 nodes. Both solvers returned `UNSAT` on every byte-identical formula; kissat

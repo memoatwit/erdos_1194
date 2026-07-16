@@ -1147,7 +1147,7 @@ not retain proof objects. Compact artifacts are
 `results/global_degree_survivor_{cpsat100,kissat100}.jsonl` and
 `results/global_degree_survivor_solver_summary.json`.
 
-### Submitted: final cover audit and certificate-transfer sample
+### Completed: final cover audit and certificate-transfer sample
 
 - Job `61883592`: independent C-versus-Python audit of the complete global
   AP-degree cover. It completed `VERIFIED`: both implementations agree on the
@@ -1161,6 +1161,21 @@ not retain proof objects. Compact artifacts are
 - Every certificate cell requires survey-identical CNF SHA-256, DRAT
   verification and conversion to LRAT, and `cake_lpr` acceptance. Heavy files
   are split between the existing scratch3 and scratch4 project workspaces.
+
+Job `61883609` completed all six cells successfully:
+
+- `6/6 UNSAT`, all regenerated CNF hashes equal the corresponding survey
+  hashes, all DRAT proofs verify and convert to LRAT, and all LRAT
+  certificates are accepted by `cake_lpr`.
+- Proof-producing solve time: `131.740--10,316.086 s`, median `2,285.183 s`,
+  total `20,032.267 s`.
+- `drat-trim`: `162--19,634 s`, median `3,388 s`, total `35,618 s`.
+- `cake_lpr`: `40--1,663 s`, median `551 s`, total `3,930 s`.
+- Artifact totals: CNF `6,078,080` bytes, DRAT `15,712,553,602` bytes, LRAT
+  `54,963,026,605` bytes.
+- Compact artifacts are the six files under
+  `results/global_degree_cert_sample6_provenance/` and
+  `results/global_degree_cert_sample6_verification_summary.json`.
 
 ### Completed: hardware-matched native CDCL job 61861327
 

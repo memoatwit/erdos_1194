@@ -133,7 +133,7 @@
   Lean
 }
 
-\date{July 15, 2026}
+\date{July 16, 2026}
 
 \begin{document}
 
@@ -155,6 +155,10 @@ witness prefix. On a fixed-seed sample of $100$ global-degree survivors,
 all remain unresolved under the historical $60$-second CP-SAT configuration,
 whereas kissat closes $79$ within two hours (Wilson $95\%$ interval
 $70.0$--$85.8\%$), quantifying the cover-size versus conquer-cost tradeoff.
+Six deterministic solve-time quantiles from those $79$ closures are then
+re-solved with proof logging; all six retain survey-identical formula hashes
+and yield LRAT certificates accepted by the formally verified
+\texttt{cake\_lpr} checker.
 On byte-identical hard-pocket formulas run sequentially on matched AMD EPYC
 7763 nodes, native CaDiCaL~3.0.0 and kissat~4.0.4 both close all $20$ tested
 chunks; kissat is faster on all $20$ pairs, with geometric-mean

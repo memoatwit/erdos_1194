@@ -238,7 +238,7 @@ constraints and 22,154 active window inequalities without importing solver
 code. It records SHA-256 digests for the A003002 b-file, both constraint
 families, and the complete high-level model.
 
-### Final cover and certificate checks (submitted 2026-07-15)
+### Final cover and certificate checks (completed 2026-07-16)
 
 Job `61883592` independently audits the complete global AP-degree cover. A
 standalone C implementation recomputes AP degrees, the depth-24 variable set,
@@ -248,14 +248,18 @@ the result is `VERIFIED`: both implementations produce the same 24 variables,
 132 masks, 96,847 survivors, and ordered-list SHA-256
 `44da22d51937282e209dbeec7c2369516ec499fd8d39fbf63b798c268f1d6464`.
 
-Job `61883609` transfers the certificate chain to the new cover on six
+Job `61883609` transferred the certificate chain to the new cover on six
 deterministically selected kissat-closed survivors. The selected ranks are
 the nearest ranks to solve-time quantiles 0, .2, .4, .6, .8, and 1 among the
 79 UNSAT survey rows. Prior solve times span 87.34--6,492.29 s. Each cell
-requires byte-identical CNF SHA-256 relative to the survey, then emits DRAT,
-converts to LRAT, and checks the result with `cake_lpr`. This is the final
-bounded experiment before submission; it is not a precursor to a full cover
-sweep.
+required byte-identical CNF SHA-256 relative to the survey, then emitted DRAT,
+converted to LRAT, and checked the result with `cake_lpr`. All six completed
+`UNSAT` with matching hashes, verified DRAT/LRAT chains, and `cake_lpr`
+acceptance. Proof-producing solve times span `131.74--10,316.09 s` and total
+`20,032.27 s`; DRAT verification totals `35,618 s`, and `cake_lpr` totals
+`3,930 s`. The six DRAT and LRAT artifacts total `15.71 GB` and `54.96 GB`.
+This is the final bounded experiment before submission; it is not a precursor
+to a full cover sweep.
 
 ## Release blockers before either submission
 

@@ -69,6 +69,7 @@ files are drafting history and do not overwrite it.
 | Split-policy cover-size/hardness tradeoff | `results/split_policy_ablation_summary.json` | `baselines/r3_split_policy_ablation.py` and its SLURM driver |
 | Alternative global-degree cover has 96,847 cubes | `results/global_degree_survivor_sample100_summary.json` | survivor generator and solver-arm outputs |
 | Global-degree survivor sample: CP-SAT 0/100, kissat 79/100 | `results/global_degree_survivor_solver_summary.json` | `results/global_degree_survivor_cpsat100.jsonl`, `results/global_degree_survivor_kissat100.jsonl`, and the two SLURM drivers |
+| Six solve-time-stratified survivor closures verify end to end | `results/global_degree_cert_sample6_verification_summary.json` | per-chunk provenance locally; CNF, DRAT, and LRAT artifacts in project scratch / Zenodo release |
 | Independent full-cover identity check | `results/global_degree_cover_independent_audit.json` | production Python generator, standalone C enumerator, and canonical survivor-list hashes |
 
 ## Certificate Chain
@@ -119,7 +120,13 @@ emit proof objects, so those 79 rows are solver-attested rather than certified.
 The certificate sample is selected deterministically at solve-time quantiles
 `0, .2, .4, .6, .8, 1` from those 79 rows. Each task requires its regenerated
 CNF hash to equal the survey hash before DRAT-to-LRAT conversion and
-`cake_lpr` checking.
+`cake_lpr` checking. All six completed `UNSAT` with matching hashes,
+`drat-trim` verification, LRAT output, and `cake_lpr` acceptance. Reproduce
+the compact aggregate with:
+
+```bash
+python3 baselines/r3_analyze_global_degree_cert_sample.py
+```
 
 The hardware-matched CDCL summary is reproduced with:
 

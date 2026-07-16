@@ -1,0 +1,130 @@
+{
+  "all_cake_lpr_verified": true,
+  "all_cnf_hashes_match_survey": true,
+  "all_drat_trim_verified": true,
+  "all_unsat": true,
+  "artifact_bytes": {
+    "cnf_sum": 6078080,
+    "drat_sum": 15712553602,
+    "lrat_sum": 54963026605
+  },
+  "cake_lpr_seconds": {
+    "max": 1663.0,
+    "median": 551.0,
+    "min": 40.0,
+    "sum": 3930.0
+  },
+  "drat_trim_seconds": {
+    "max": 19634.0,
+    "median": 3388.0,
+    "min": 162.0,
+    "sum": 35618.0
+  },
+  "prior_solver_seconds": {
+    "max": 6492.2912085056305,
+    "median": 1366.7889651060104,
+    "min": 87.34498500823975,
+    "sum": 12450.523119688034
+  },
+  "proof_solver_seconds": {
+    "max": 10316.08604979515,
+    "median": 2285.1825630664825,
+    "min": 131.74019289016724,
+    "sum": 20032.26744365692
+  },
+  "rows": [
+    {
+      "cake_lpr_seconds": 406,
+      "chunk_id": 2128016,
+      "cnf_bytes": 1013013,
+      "cnf_sha256": "fbd6bacf5b7451f7ca860e993be0545ef3119e89035fdd1fb3192256bcaf7c07",
+      "drat_bytes": 1459587758,
+      "drat_sha256": "f8c628bc213bc69b8bdd3231909eb7a28b30cc633788f255b1cf7baabf27c5ba",
+      "drat_trim_seconds": 2313,
+      "lrat_bytes": 5478273859,
+      "lrat_sha256": "5e2f4ad418022d123d8a33bfe063f3cda9540958d8fee549872ee8e41e214c6d",
+      "prior_solver_seconds": 948.1715767383575,
+      "proof_solver_seconds": 1551.5002279281616,
+      "selection_quantile": 0.4
+    },
+    {
+      "cake_lpr_seconds": 1663,
+      "chunk_id": 2168896,
+      "cnf_bytes": 1013015,
+      "cnf_sha256": "1a395dab19b1960bd7307e0568a8c6e449198c8a3fa4d8488b680643cad95219",
+      "drat_bytes": 7233654614,
+      "drat_sha256": "b1c37380076e126f8c8083ba8aa34518494ebdfa14f0f38c66888c3d5515810a",
+      "drat_trim_seconds": 19634,
+      "lrat_bytes": 24344297028,
+      "lrat_sha256": "ebc8472edd74d183a00c234ce10dabd831dba7b308b8825c6d9f3423eeca69e2",
+      "prior_solver_seconds": 6492.2912085056305,
+      "proof_solver_seconds": 10316.08604979515,
+      "selection_quantile": 1.0
+    },
+    {
+      "cake_lpr_seconds": 696,
+      "chunk_id": 8520965,
+      "cnf_bytes": 1013014,
+      "cnf_sha256": "960f8d7d34f4a4b0affcdad598afccd087ed0819006f671402ea21d44c9ab7f1",
+      "drat_bytes": 2475357114,
+      "drat_sha256": "ad760c0bab020903386e65c2eb004a5b3c0be8d6ccc64365092c2833bffdf458",
+      "drat_trim_seconds": 4463,
+      "lrat_bytes": 8835850693,
+      "lrat_sha256": "168e089fc6566ec7fbb5f6ac95702f3a5ab8f1c16c87d45e2d59470e425369bb",
+      "prior_solver_seconds": 1785.4063534736633,
+      "proof_solver_seconds": 3018.8648982048035,
+      "selection_quantile": 0.6
+    },
+    {
+      "cake_lpr_seconds": 912,
+      "chunk_id": 9471264,
+      "cnf_bytes": 1013014,
+      "cnf_sha256": "d0a56299112d54a758026ce732500cb10fe5075c3a09145048c602280a28e5d3",
+      "drat_bytes": 3540184525,
+      "drat_sha256": "0d6261c8461a69813e5277591e0a284cacdf4b3a0f7262fff1487a70a22c64a8",
+      "drat_trim_seconds": 7756,
+      "lrat_bytes": 12475245931,
+      "lrat_sha256": "bb29fae3ab4c9e69e560f87650c34bb48d09935bcba7b0423d1809f0895dd172",
+      "prior_solver_seconds": 2602.866504907608,
+      "proof_solver_seconds": 4205.802319288254,
+      "selection_quantile": 0.8
+    },
+    {
+      "cake_lpr_seconds": 213,
+      "chunk_id": 15729936,
+      "cnf_bytes": 1013013,
+      "cnf_sha256": "5b9da7a9d5d6f2998b5a8fb8f614aebef4d3174977563ae036e2f44c6fd832a0",
+      "drat_bytes": 872678535,
+      "drat_sha256": "f789db91e4ac8b46c8b35e7d395406aa0e31f220e74e61f8567d370539596287",
+      "drat_trim_seconds": 1290,
+      "lrat_bytes": 3351211139,
+      "lrat_sha256": "1338556b92d4671b336d8527d59f7cff2beb1082734ec954e0f4d2eba1fade8b",
+      "prior_solver_seconds": 534.4424910545349,
+      "proof_solver_seconds": 808.2737555503845,
+      "selection_quantile": 0.2
+    },
+    {
+      "cake_lpr_seconds": 40,
+      "chunk_id": 15764552,
+      "cnf_bytes": 1013011,
+      "cnf_sha256": "16a7a06021323cc038e693a7c82262d28668edc29336bb7d1b7e279a652e70e2",
+      "drat_bytes": 131091056,
+      "drat_sha256": "080b1950814c2c16c358ff644d6574e2a38265d54b6848e629a041b3926cc7ca",
+      "drat_trim_seconds": 162,
+      "lrat_bytes": 478147955,
+      "lrat_sha256": "dd6f06c029fb36bc30731c21d98f3439dbcc056297b25fcadfafaaeb78f0c205",
+      "prior_solver_seconds": 87.34498500823975,
+      "proof_solver_seconds": 131.74019289016724,
+      "selection_quantile": 0.0
+    }
+  ],
+  "selected_cases": 6,
+  "selection_quantiles": [
+    0.0,
+    0.2,
+    0.4,
+    0.6,
+    0.8,
+    1.0
+  ]
+}
