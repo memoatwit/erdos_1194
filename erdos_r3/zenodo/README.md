@@ -1,10 +1,13 @@
 # `r_3(212)` computational campaign artifacts
 
 This dataset accompanies the preprint
-*Witness-split + window-cardinality refinement for `r_3(N)`: architecture,
-empirical results, and a structural hard pocket*.
+*Salem--Spencer sets as a cross-solver benchmark: decomposition,
+certification, and split-policy effects at `r_3(212)`*.
 
 Dataset DOI: <https://doi.org/10.5281/zenodo.20463334>
+
+Public source snapshot:
+<https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.1/erdos_r3>
 
 It contains the large proof and solver artifacts that are too large for arXiv
 ancillary files. The small benchmark files and Lean proof-search targets can
@@ -23,21 +26,21 @@ No feasible 44-set was found. The lower bound `r_3(212) >= 43` is witnessed by
 `results/N212_K43_witness.json`; the remaining unit gap is
 `r_3(212) in {43, 44}`.
 
-The most certificate-ready result in this dataset is:
+The hard-pocket certificate result is:
 
 ```text
-T1b \ T1c: 18 / 18 CDCL-closed chunks have DRAT proofs independently
-verified by drat-trim.
+All 20 T1b chunks are CDCL-closed. The original 18 and the two historical
+T1c chunks have independently verified proof chains.
 ```
 
-The remaining hard core is:
+The remaining released solver residual is:
 
 ```text
-T1c = {40959, 48895}
+T2 portfolio: 6,045 / 6,071 solver-reported UNSAT, 26 UNKNOWN, 0 SAT.
 ```
 
-These two chunks resisted CP-SAT, HiGHS LP-MIP, pure CDCL at 12h, and windowed
-CDCL at 4h in this campaign.
+The full upper bound remains open because neither complete cube cover has been
+certified.
 
 ## Recommended archive layout
 
@@ -225,7 +228,7 @@ shasum -a 256 -c MANIFEST.sha256
 Title:
 
 ```text
-Artifacts for the r_3(212) witness-split computational campaign
+Artifacts for Salem-Spencer sets as a cross-solver benchmark at r_3(212)
 ```
 
 Description:
@@ -233,10 +236,10 @@ Description:
 ```text
 Large proof and solver artifacts for a computational campaign on the
 unit-gap problem r_3(212) in {43,44}. The archive includes benchmark JSONL
-instances, Lean proof-search targets for the T1c hard core, CNF/DRAT proof
-artifacts for the 18 CDCL-closed T1b \\ T1c chunks, drat-trim verification
-summaries showing 18/18 VERIFIED, and SLURM solver logs from CP-SAT, HiGHS,
-and CDCL runs.
+instances, historical T1c Lean proof-search targets, certified CNF/DRAT/LRAT
+bundles for the CDCL-closed hard-pocket chunks, exact-value regression
+certificates, a solve-time-stratified global-degree certificate sample, and
+SLURM solver logs from CP-SAT, HiGHS, and CDCL runs.
 ```
 
 Keywords:
@@ -249,8 +252,8 @@ CP-SAT; HiGHS; Lean; AlphaProof Nexus; OEIS A003002
 Related identifiers:
 
 ```text
-isSupplementTo: <arXiv DOI or arXiv URL once assigned>
-isSupplementTo: <GitHub repository URL / commit SHA>
+isSupplementTo: https://arxiv.org/abs/2606.04016
+isSupplementTo: https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.1/erdos_r3
 ```
 
 License recommendation: CC-BY 4.0 for metadata and logs; confirm whether proof

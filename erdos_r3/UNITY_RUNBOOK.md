@@ -1,4 +1,4 @@
-# Unity SLURM Runbook for r_3(212) = 43
+# Unity SLURM Runbook for the r_3(212) upper-bound campaign
 
 Step-by-step for running the upper-bound proof campaign on the UMass Unity
 cluster.
@@ -35,7 +35,7 @@ python3 -c "from ortools.sat.python import cp_model; print('OK', cp_model.CpSolv
 From your laptop:
 
 ```bash
-LOCAL=~/Documents/GitHub/OneModelAnySensor_demo/erdos_1194/erdos_r3
+LOCAL=~/Documents/GitHub/erdos_1194/erdos_r3
 RDIR=ergezerm_wit_edu@unity.rc.umass.edu:~/erdos_r3
 
 # Source files
