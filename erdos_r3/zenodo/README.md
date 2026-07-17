@@ -4,10 +4,14 @@ This dataset accompanies the preprint
 *Salem--Spencer sets as a cross-solver benchmark: decomposition,
 certification, and split-policy effects at `r_3(212)`*.
 
-Dataset DOI: <https://doi.org/10.5281/zenodo.20463334>
+Version 2 DOI: <https://doi.org/10.5281/zenodo.21413746>
+
+All-versions concept DOI: <https://doi.org/10.5281/zenodo.20463333>
+
+Previous Version 1 DOI: <https://doi.org/10.5281/zenodo.20463334>
 
 Public source snapshot:
-<https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.2/erdos_r3>
+<https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.3/erdos_r3>
 
 It contains the large proof and solver artifacts that are too large for arXiv
 ancillary files. The small benchmark files and Lean proof-search targets can
@@ -253,7 +257,7 @@ Related identifiers:
 
 ```text
 isSupplementTo: https://arxiv.org/abs/2606.04016
-isSupplementTo: https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.2/erdos_r3
+isSupplementTo: https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.3/erdos_r3
 ```
 
 License recommendation: CC-BY 4.0 for metadata and logs; confirm whether proof
@@ -267,10 +271,10 @@ Cite the dataset as:
 ```bibtex
 @dataset{ergezer_r3_212_artifacts_2026,
   author       = {Ergezer, Mehmet},
-  title        = {Artifacts for the r_3(212) witness-split computational campaign},
+  title        = {Artifacts for Salem-Spencer sets as a cross-solver benchmark at r_3(212)},
   year         = {2026},
   publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.20463334},
-  url          = {https://doi.org/10.5281/zenodo.20463334}
+  doi          = {10.5281/zenodo.21413746},
+  url          = {https://doi.org/10.5281/zenodo.21413746}
 }
 ```

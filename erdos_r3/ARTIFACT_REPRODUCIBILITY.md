@@ -2,9 +2,9 @@
 
 This guide maps the manuscript's main computational claims to the smallest
 released artifact and check needed to inspect them. Large CNF and proof files
-are versioned at [Zenodo](https://doi.org/10.5281/zenodo.20463334); compact
+are versioned at [Zenodo](https://doi.org/10.5281/zenodo.21413746); compact
 generators, summaries, and manuscript sources live in the public
-[`mpc-submission-v1.2` repository snapshot](https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.2/erdos_r3).
+[`mpc-submission-v1.3` repository snapshot](https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.3/erdos_r3).
 
 ## Fast Checks
 

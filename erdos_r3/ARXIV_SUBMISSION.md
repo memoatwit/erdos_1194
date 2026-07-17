@@ -39,7 +39,7 @@ into a publishable arXiv preprint. Skip any item already done.
 - [ ] **arXiv "Comments" field** (the metadata line, not the paper body).
       Format: `X pages, Y figures, Z tables; ancillary files: JSONL
       benchmarks, verified DRAT summaries, Lean encoding. Source code at
-      https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.2/erdos_r3.`
+      https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.3/erdos_r3.`
 
 - [ ] **License.** Default to CC-BY 4.0 unless an institutional contract
       requires otherwise. arXiv perpetual non-exclusive is the minimum.
@@ -129,7 +129,7 @@ not fit. Plan:
 
 - [x] **External hosting for the proof artifacts.** The DRAT proofs, available
       LRAT artifacts, scratch CNFs, solver logs, and SLURM scripts go on
-      Zenodo at <https://doi.org/10.5281/zenodo.20463334>. Tag the upload
+      Zenodo at <https://doi.org/10.5281/zenodo.21413746>. Tag the upload
       as `r_3-212-campaign-v1` with the arXiv preprint ID once it assigns.
       The dataset README is provided at `zenodo/README.md`.
 

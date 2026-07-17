@@ -46,7 +46,7 @@ as a benchmark. The main contributions:
 
 The code, benchmark instances, result logs, 18 CaDiCaL DRAT certificates,
 and a Lean 4 encoding are openly released (arXiv:2606.04016; Zenodo DOI
-10.5281/zenodo.20463334, CC-BY). The two certified kissat formula/proof
+10.5281/zenodo.21413746, CC-BY). The two certified kissat formula/proof
 pairs and provenance records will be included in a versioned Zenodo update
 before journal publication. The campaign is reproducible from the released
 scripts and archived inputs.

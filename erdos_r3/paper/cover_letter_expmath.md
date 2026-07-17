@@ -19,7 +19,7 @@ refinement for r_3(N): architecture, empirical results, and a structural hard
 pocket"* for consideration in Experimental Mathematics. The preprint is posted
 at arXiv:2606.04016 (https://arxiv.org/abs/2606.04016). All campaign artifacts,
 including verified DRAT/LRAT proofs and the Lean encoding of the residual
-problem, are deposited at Zenodo (DOI 10.5281/zenodo.20463334).
+problem, are deposited at Zenodo (DOI 10.5281/zenodo.21413746).
 
 The paper describes a reproducible computational framework for upper-bound
 search on r_3(N), the maximum size of a 3-term-arithmetic-progression-free
@@ -124,7 +124,7 @@ reproduce the campaign and verify every certificate-track claim are available
 under open license at:
 
   * Preprint: arXiv:2606.04016
-  * Dataset: 10.5281/zenodo.20463334 (CC-BY)
+  * Dataset: 10.5281/zenodo.21413746 (CC-BY)
 
 I look forward to the editor's response and the reviewers' comments.
 

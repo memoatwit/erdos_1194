@@ -43,8 +43,8 @@ verification:
    upper bound to the decision threshold 44, but not below it.
 
 The paper is accompanied by source code and benchmark generators at
-https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.2/erdos_r3 and versioned artifacts at
-https://doi.org/10.5281/zenodo.20463334. A synchronized journal-submission
+https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.3/erdos_r3 and versioned artifacts at
+https://doi.org/10.5281/zenodo.21413746. A synchronized journal-submission
 version of the archive will include the new formulas, solver outputs, proof
 objects, hashes, model audit, and machine-readable provenance reported here,
 including the six global-degree certificate bundles (15.71 GB DRAT and

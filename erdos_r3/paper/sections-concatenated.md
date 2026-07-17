@@ -900,7 +900,7 @@ the repository accompanying this preprint. Specifically:
   T1b, or T2 by chunk ID.
 
 The large solver artifacts are archived on Zenodo at
-<https://doi.org/10.5281/zenodo.20463334>. This archive contains the
+<https://doi.org/10.5281/zenodo.21413746>. This archive contains the
 CNF/DRAT proof artifacts for the `18` CDCL-closed T1b \ T1c chunks,
 the available LRAT outputs, verification summaries, SLURM logs, solver
 outputs, SHA256 manifests, and reconstruction instructions for split
