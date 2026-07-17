@@ -7,7 +7,7 @@ certification, and split-policy effects at `r_3(212)`*.
 Dataset DOI: <https://doi.org/10.5281/zenodo.20463334>
 
 Public source snapshot:
-<https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.1/erdos_r3>
+<https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.2/erdos_r3>
 
 It contains the large proof and solver artifacts that are too large for arXiv
 ancillary files. The small benchmark files and Lean proof-search targets can
@@ -253,7 +253,7 @@ Related identifiers:
 
 ```text
 isSupplementTo: https://arxiv.org/abs/2606.04016
-isSupplementTo: https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.1/erdos_r3
+isSupplementTo: https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.2/erdos_r3
 ```
 
 License recommendation: CC-BY 4.0 for metadata and logs; confirm whether proof

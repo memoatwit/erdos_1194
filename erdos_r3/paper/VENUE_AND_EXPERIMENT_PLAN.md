@@ -264,9 +264,9 @@ to a full cover sweep.
 ## Release blockers before either submission
 
 - **Completed 2026-07-17:** the GitHub repository is public, and the immutable
-  `mpc-submission-v1.1` tag identifies the synchronized submission snapshot. The tagged
+  `mpc-submission-v1.2` tag identifies the synchronized submission snapshot. The tagged
   project URL is
-  <https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.1/erdos_r3>.
+  <https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.2/erdos_r3>.
   Archive this tag in the synchronized Zenodo version.
 - Publish a new Zenodo version containing the certified T1c formula/proof
   pairs, full T2 and residual-arm outputs, controlled CDCL/MIP results, the

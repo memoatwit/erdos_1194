@@ -47,7 +47,7 @@ set -euo pipefail
 # Section B.  RSYNC FROM LAPTOP TO UNITY — run on the laptop.
 ###############################################################################
 
-LOCAL_REPO="${HOME}/Documents/GitHub/OneModelAnySensor_demo/erdos_1194/erdos_r3"
+LOCAL_REPO="${HOME}/Documents/GitHub/erdos_1194/erdos_r3"
 UNITY_USER="ergezerm_wit_edu"
 UNITY_HOST="unity.rc.umass.edu"
 REMOTE="${UNITY_USER}@${UNITY_HOST}:~/erdos_r3"

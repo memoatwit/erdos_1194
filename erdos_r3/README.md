@@ -4,7 +4,7 @@
 
 - Preprint: [arXiv:2606.04016](https://arxiv.org/abs/2606.04016)
 - Dataset: [Zenodo 10.5281/zenodo.20463334](https://doi.org/10.5281/zenodo.20463334)
-- Submission snapshot: [`mpc-submission-v1.1`](https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.1/erdos_r3)
+- Submission snapshot: [`mpc-submission-v1.2`](https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.2/erdos_r3)
 - Maintained manuscript: [`paper/paper.tex`](paper/paper.tex) and
   [`paper/paper.body.tex`](paper/paper.body.tex)
 - Venue and follow-up plan: [`paper/VENUE_AND_EXPERIMENT_PLAN.md`](paper/VENUE_AND_EXPERIMENT_PLAN.md)

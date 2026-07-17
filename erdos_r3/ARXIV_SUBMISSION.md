@@ -39,7 +39,7 @@ into a publishable arXiv preprint. Skip any item already done.
 - [ ] **arXiv "Comments" field** (the metadata line, not the paper body).
       Format: `X pages, Y figures, Z tables; ancillary files: JSONL
       benchmarks, verified DRAT summaries, Lean encoding. Source code at
-      https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.1/erdos_r3.`
+      https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.2/erdos_r3.`
 
 - [ ] **License.** Default to CC-BY 4.0 unless an institutional contract
       requires otherwise. arXiv perpetual non-exclusive is the minimum.
