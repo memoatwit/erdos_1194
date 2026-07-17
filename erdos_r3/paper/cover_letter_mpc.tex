@@ -4,6 +4,7 @@
 \usepackage{lmodern}
 \usepackage[margin=0.72in]{geometry}
 \usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
 \usepackage{microtype}
 \usepackage{enumitem}
 
@@ -19,7 +20,7 @@ Mehmet Ergezer\\
 Wentworth Institute of Technology\\
 550 Huntington Avenue\\
 Boston, MA 02115, USA\\
-July 16, 2026
+\today
 \end{flushright}
 
 Editors\\
@@ -67,15 +68,21 @@ computation, comparative testing, reusable software, and verification:
   and MIP upper bound to the decision threshold 44, but not below it.
 \end{itemize}
 
-Source code and benchmark generators are available in the
-\href{https://github.com/memoatwit/erdos_1194/tree/main/erdos_r3}{GitHub repository}.
-Versioned artifacts are archived in the
-\href{https://doi.org/10.5281/zenodo.20463334}{Zenodo dataset}. The
+Source code and benchmark generators are available at
+\url{https://github.com/memoatwit/erdos_1194/tree/main/erdos_r3}.
+Versioned artifacts are archived at
+\url{https://doi.org/10.5281/zenodo.20463334}. The
 journal-submission version of the archive includes formulas, solver outputs,
 proof objects, hashes, an independent model audit, and machine-readable
 provenance, including the six global-degree certificate bundles. The preprint
 is available as arXiv:2606.04016. The manuscript is not under consideration at
 another journal.
+
+For Technical Editor review, \texttt{ARTIFACT\_REPRODUCIBILITY.md} maps each
+claim to its data and reproduction command. The $N=80$ exact-value regression
+is the fastest end-to-end route and runs in minutes on a workstation; the
+archived certificates can also be checked with \texttt{drat-trim} and
+\texttt{cake\_lpr} without re-solving the instances.
 
 The paper retains and explicitly refutes a working hypothesis formed during
 the campaign. We believe this is methodologically useful: it demonstrates why

@@ -52,6 +52,12 @@ including the six global-degree certificate bundles (15.71 GB DRAT and
 The preprint is available as arXiv:2606.04016; it is not under consideration
 at another journal.
 
+For Technical Editor review, `ARTIFACT_REPRODUCIBILITY.md` maps each claim to
+its data and reproduction command. The N=80 exact-value regression is the
+fastest end-to-end route and runs in minutes on a workstation; the archived
+certificates can also be checked with `drat-trim` and `cake_lpr` without
+re-solving the instances.
+
 The manuscript also reports a working hypothesis that the experiments
 subsequently refuted. We retain that history because it illustrates the value
 of archiving unresolved instances and rerunning them under controlled solver
