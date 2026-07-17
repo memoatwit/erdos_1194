@@ -1,0 +1,97 @@
+\documentclass[10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=0.72in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.12em,topsep=0.2em}
+\setlength{\parskip}{0.32em}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{flushright}
+Mehmet Ergezer\\
+Wentworth Institute of Technology\\
+550 Huntington Avenue\\
+Boston, MA 02115, USA\\
+July 16, 2026
+\end{flushright}
+
+Editors\\
+\textit{Mathematical Programming Computation}
+
+Dear Editors,
+
+Please consider the manuscript
+\textit{``Salem--Spencer sets as a cross-solver benchmark: decomposition,
+certification, and split-policy effects at $r_3(212)$''}
+for publication in \textit{Mathematical Programming Computation}.
+
+The manuscript presents a reproducible computational study and benchmark
+family built from the open frontier decision problem for OEIS A003002. It does
+not claim to resolve $r_3(212)$. Instead, it develops and evaluates a
+witness-informed cube decomposition, quantifies the effect of
+problem-specific window-cardinality cuts, compares CP-SAT, LP/MIP, and CDCL
+formulations, and releases a graded instance library with machine-checkable
+proof artifacts.
+
+The study contains five results aligned with MPC's emphasis on practical
+computation, comparative testing, reusable software, and verification:
+
+\begin{itemize}
+\item Six monolithic 24-hour baselines fail. A matched five-policy ablation
+  exposes a cover-size versus conquer-cost tradeoff: global AP-degree reduces
+  the exact emitted cover from 12,582,912 to 96,847 cubes, but leaves
+  individually harder subproblems under the historical CP-SAT cap. A
+  standalone C implementation independently reproduces the complete cover.
+\item A two-stage CDCL survey closes 6,045 of 6,071 broad residuals (99.57\%)
+  with no feasible result, while 26 released instances remain as a sharply
+  defined challenge tier.
+\item On 20 byte-identical hard-pocket formulas run sequentially on matched
+  AMD EPYC 7763 nodes, CaDiCaL 3.0.0 and kissat 4.0.4 both close every
+  instance. Kissat wins all 20 pairs, with geometric-mean CaDiCaL-to-kissat
+  time ratio 1.477 (bootstrap 95\% interval 1.332--1.655).
+\item Six solve-time-stratified survivors from the alternative global-degree
+  cover reproduce the survey CNF hashes, verify through DRAT-to-LRAT
+  conversion, and are accepted by the formally verified \texttt{cake\_lpr}
+  checker. Separate end-to-end regressions recover the known exact values
+  $r_3(80)=22$, $r_3(90)=24$, and $r_3(100)=27$ from independently verified
+  lower witnesses and \texttt{cake\_lpr}-checked upper certificates.
+\item Optimization-form HiGHS experiments show that window inequalities
+  reduce the T1b node count by approximately 81\% and tighten every tested LP
+  and MIP upper bound to the decision threshold 44, but not below it.
+\end{itemize}
+
+Source code and benchmark generators are available in the
+\href{https://github.com/memoatwit/erdos_1194/tree/main/erdos_r3}{GitHub repository}.
+Versioned artifacts are archived in the
+\href{https://doi.org/10.5281/zenodo.20463334}{Zenodo dataset}. The
+journal-submission version of the archive includes formulas, solver outputs,
+proof objects, hashes, an independent model audit, and machine-readable
+provenance, including the six global-degree certificate bundles. The preprint
+is available as arXiv:2606.04016. The manuscript is not under consideration at
+another journal.
+
+The paper retains and explicitly refutes a working hypothesis formed during
+the campaign. We believe this is methodologically useful: it demonstrates why
+unresolved instances, solver configurations, and proof objects should be
+archived and retested under controlled pipelines.
+
+Generative-AI use is disclosed in the manuscript. The author made all final
+scientific and experimental decisions, independently checked the numerical
+and mathematical claims, and takes full responsibility for the work.
+
+Sincerely,
+
+\vspace{0.8em}
+Mehmet Ergezer\\
+Wentworth Institute of Technology\\
+\href{mailto:ergezerm@wit.edu}{ergezerm@wit.edu}\\
+ORCID: \href{https://orcid.org/0000-0001-6627-3667}{0000-0001-6627-3667}
+
+\end{document}

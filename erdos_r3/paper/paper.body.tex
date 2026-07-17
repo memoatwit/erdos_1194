@@ -1047,7 +1047,7 @@ $N=212$ sweep.
 
 The dominant retained costs are the 100k broad expansion, the
 sample-500 refinement, the full-T1 long-wall HiGHS audit, and the final
-T2 solver portfolio. The total retained-log estimate is roughly 11,376
+T2 solver portfolio. The total retained-log estimate is roughly 11,310
 worker-hours; Appendix~\ref{app:compute}
 itemizes the accounting per campaign layer. A full depth-24 sweep of
 the 12,582,912 AP-pruned chunks of the deployed witness-prefix lattice was
@@ -1632,8 +1632,9 @@ verification summaries, SLURM logs, solver outputs, SHA256 manifests, and
 reconstruction instructions for split archives
 \cite{ergezer-r3-212-artifacts-2026}. The journal-release version adds the
 certified T1c formula/proof pairs and provenance records, the full T2 survey,
-the same-formula solver and optimization-MIP outputs, and the exact-value DRAT/LRAT
-certificate suite. Each formula and proof is accompanied by a SHA-256 digest
+the same-formula solver and optimization-MIP outputs, the exact-value DRAT/LRAT
+certificate suite, and the six solve-time-stratified global-degree survivor
+CNF/DRAT/LRAT bundles with their provenance records. Each formula and proof is accompanied by a SHA-256 digest
 and a machine-readable provenance record.
 
 We welcome correspondence on partial results: any solver run that
@@ -1845,7 +1846,7 @@ Exact-value calibration and certification & $\sim8$ & $N=80,90,100$ solves, DRAT
 Matched split-policy ablation & $\sim55.6$ & 500 raw assignments, five sequential policies, eight-worker CP-SAT; 25,042 retained solver-seconds \\
 Global-degree survivor conquer sample & $\sim94.2$ & 100 paired cubes; eight-worker CP-SAT contributes 13.3 worker-hours and single-core kissat 80.8 hours \\
 Global-degree certificate sample & $\sim16.6$ & six proof-producing solves, DRAT-to-LRAT conversions, and \texttt{cake\_lpr} checks \\
-Total retained logs & $\sim11{,}376$ & excludes interactive debugging, failed encode attempts, and logs not retained locally \\
+Total retained logs & $\sim11{,}310$ & sum of the rounded rows above; excludes interactive debugging, failed encode attempts, and logs not retained locally \\
 \end{longtable}
 }
 

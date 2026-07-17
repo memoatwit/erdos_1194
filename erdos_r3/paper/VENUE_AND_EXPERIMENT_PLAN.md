@@ -272,8 +272,13 @@ to a full cover sweep.
   reviewer-access procedure and provide the editor with working credentials.
 - Publish a new Zenodo version containing the certified T1c formula/proof
   pairs, full T2 and residual-arm outputs, controlled CDCL/MIP results, the
-  $N=80,90,100$ exact-certificate suite, provenance JSON files, and hashes.
-  Zenodo version 1 predates these experiments.
+  $N=80,90,100$ exact-certificate suite, the six global-degree survivor
+  CNF/DRAT/LRAT certificate bundles, provenance JSON files, and hashes. Zenodo
+  version 1 predates these experiments. If Zenodo assigns a new DOI that
+  should replace the current citation, update all three manuscript-source
+  locations: the Data and Code Availability statement in `paper.tex`, the
+  artifact paragraph in Section 5.5 of `paper.body.tex`, and the `Erg26`
+  entry in `refs.bib`.
 - Update arXiv v2 only after the revised manuscript and artifact inventory
   agree.
 - Keep `paper.body.tex` as the maintained source. The Markdown sections are

@@ -1,4 +1,4 @@
-July 2026
+July 16, 2026
 
 Dear Editors of *Mathematical Programming Computation*,
 
@@ -15,7 +15,7 @@ problem-specific window-cardinality cuts, compares CP-SAT, LP/MIP, and CDCL
 formulations, and releases a graded instance library with machine-checkable
 proof artifacts.
 
-The revised study contains four results that I believe fit MPC's emphasis on
+The revised study contains five results that I believe fit MPC's emphasis on
 practical computation, comparative testing, reusable software, and
 verification:
 
@@ -27,18 +27,28 @@ verification:
 2. A full two-stage CDCL survey closes 6,045 of 6,071 broad residuals
    (99.57%) with no feasible result, while 26 released instances remain as a
    sharply defined challenge tier.
-3. Optimization-form HiGHS experiments show that window inequalities reduce
+3. On 20 byte-identical hard-pocket formulas run sequentially on matched AMD
+   EPYC 7763 nodes, native CaDiCaL 3.0.0 and kissat 4.0.4 both close every
+   instance; kissat wins all 20 pairs with a geometric-mean time ratio of
+   1.477 (bootstrap 95% interval 1.332--1.655).
+4. Six solve-time-stratified survivors from the alternative global-degree
+   cover were independently rerun with proof logging. All six reproduce the
+   survey CNF hashes, verify through DRAT-to-LRAT conversion, and are accepted
+   by the formally verified cake_lpr checker. Separate end-to-end regressions
+   recover the known exact values r_3(80)=22, r_3(90)=24, and r_3(100)=27
+   using independently verified lower witnesses and cake_lpr-checked upper
+   certificates.
+5. Optimization-form HiGHS experiments show that window inequalities reduce
    the T1b node count by approximately 81% and tighten every tested LP and MIP
    upper bound to the decision threshold 44, but not below it.
-4. End-to-end regressions recover the known exact values r_3(80)=22,
-   r_3(90)=24, and r_3(100)=27 using independently verified lower witnesses,
-   DRAT-to-LRAT conversion, and the formally verified cake_lpr checker.
 
 The paper is accompanied by source code and benchmark generators at
 https://github.com/memoatwit/erdos_1194/tree/main/erdos_r3 and versioned artifacts at
 https://doi.org/10.5281/zenodo.20463334. A synchronized journal-submission
 version of the archive will include the new formulas, solver outputs, proof
-objects, hashes, model audit, and machine-readable provenance reported here.
+objects, hashes, model audit, and machine-readable provenance reported here,
+including the six global-degree certificate bundles (15.71 GB DRAT and
+54.96 GB LRAT in aggregate).
 The preprint is available as arXiv:2606.04016; it is not under consideration
 at another journal.
 
