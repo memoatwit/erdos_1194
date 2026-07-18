@@ -34,7 +34,10 @@ pack() {
   echo "[pack] $output"
   tar -I "zstd -T${SLURM_CPUS_PER_TASK} -${ZSTD_LEVEL}" -cf "$tmp" "$@"
   mv "$tmp" "$output"
-  sha256sum "$output" > "${output}.sha256"
+  (
+    cd "$OUTDIR"
+    sha256sum "$(basename "$output")" > "$(basename "$output").sha256"
+  )
   ls -lh "$output" "${output}.sha256"
 }
 

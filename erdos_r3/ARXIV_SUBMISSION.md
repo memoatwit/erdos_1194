@@ -1,6 +1,6 @@
-# arXiv submission plan
+# arXiv replacement plan
 
-Target: arXiv preprint, math.CO primary, cs.DM and cs.LO secondary.
+Target: arXiv:2606.04016v2, math.CO primary, cs.DM and cs.LO secondary.
 
 This document is a single-pass checklist for converting `WRITEUP_DRAFT.md`
 into a publishable arXiv preprint. Skip any item already done.
@@ -9,10 +9,9 @@ into a publishable arXiv preprint. Skip any item already done.
 
 ## 1. Identity and metadata
 
-- [ ] **Title.** Current working title:
-      *"Witness-split + window-cardinality refinement for r_3(N):
-      architecture, empirical results, and a structural hard pocket."*
-      Consider shortening; arXiv listings truncate at ~120 chars.
+- [x] **Title.** Current title:
+      *"Salem--Spencer sets as a cross-solver benchmark: decomposition,
+      certification, and split-policy effects at r_3(212)."*
 
 - [ ] **Author list.** Single-author or multi-author? Confirm order, ORCID,
       affiliation, contact email. Mehmet Ergezer (Wentworth Institute of
@@ -37,8 +36,10 @@ into a publishable arXiv preprint. Skip any item already done.
         DRAT/LRAT certificate release and the Lean encoding)
 
 - [ ] **arXiv "Comments" field** (the metadata line, not the paper body).
-      Format: `X pages, Y figures, Z tables; ancillary files: JSONL
-      benchmarks, verified DRAT summaries, Lean encoding. Source code at
+      Use: `30 pages, 3 figures; substantially revised and expanded. Adds
+      monolithic baselines, matched CDCL comparisons, split-policy ablation,
+      a global-degree cover audit, certified exact-value regressions, and
+      updated artifacts. Source code at
       https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.3/erdos_r3.`
 
 - [ ] **License.** Default to CC-BY 4.0 unless an institutional contract
@@ -123,7 +124,11 @@ not fit. Plan:
       anc/N212_K44_window100k_unknowns.jsonl
       anc/b003002.txt
       anc/lean/   (R3Base, R3_212_Witness, R3_T1c_{40959,48895})
-      anc/README.md
+      anc/N212_K44_model_audit.json
+      anc/split_policy_ablation_summary.json
+      anc/global_degree_survivor_sample100*.json*
+      anc/known_exact_certified/N{80,90,100}/
+      anc/ARTIFACT_REPRODUCIBILITY.md
       ```
       Total estimated size: ~20 MB.
 
@@ -171,11 +176,14 @@ not fit. Plan:
       ```
       T1a    = 25     (HiGHS 8h INFEASIBLE, dual=inf)
       T1b    = 20     (HiGHS 8h UNKNOWN, dual=0.0)
-      T1b\T1c = 18    (CDCL UNSAT in first run)
-      T1c    =  2     (40959, 48895; resistant to four paradigms)
+      T1b\T1c = 18    (CDCL UNSAT in the first run)
+      historical T1c = 2 (40959, 48895; subsequently kissat-closed)
 
       DRAT proofs emitted: 18 / 18
       drat-trim VERIFIED:  18 / 18
+      audited T1b closed: 20 / 20
+      T2 portfolio: 6,045 / 6,071 UNSAT, 26 UNKNOWN, 0 SAT
+      global-degree sample: CP-SAT 0 / 100, kissat 79 / 100
       ```
       Search every section for stale intermediate certificate phrasing such as
       `12 / 17`, `11 / 17`, `15 / 18`, `17 emitted`, or `verification TIMEOUT`
