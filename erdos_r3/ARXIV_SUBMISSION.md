@@ -40,7 +40,7 @@ into a publishable arXiv preprint. Skip any item already done.
       monolithic baselines, matched CDCL comparisons, split-policy ablation,
       a global-degree cover audit, certified exact-value regressions, and
       updated artifacts. Source code at
-      https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.3/erdos_r3.`
+      https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.4/erdos_r3.`
 
 - [ ] **License.** Default to CC-BY 4.0 unless an institutional contract
       requires otherwise. arXiv perpetual non-exclusive is the minimum.
