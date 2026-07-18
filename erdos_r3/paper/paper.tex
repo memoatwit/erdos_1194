@@ -102,8 +102,8 @@
 \newcommand{\Tthree}{\ensuremath{\mathsf{T3}}}
 
 % --- Frontmatter ---
-\title[A Salem--Spencer solver benchmark]{Salem--Spencer sets as a
-  cross-solver benchmark: decomposition, certification, and split-policy
+\title[A Salem--Spencer constraint benchmark]{Salem--Spencer sets as a
+  constraint-solving benchmark: decomposition, certification, and split-policy
   effects at $\rthree{212}$}
 
 \author{Mehmet Ergezer}
@@ -121,16 +121,11 @@
 
 \keywords{
   constraint programming,
+  cube decomposition,
+  implied constraints,
+  certified solving,
   benchmark instances,
-  Salem--Spencer numbers,
-  arithmetic progressions,
-  OEIS A003002,
-  CP-SAT,
-  MIP,
-  CDCL,
-  DRAT proofs,
-  formal verification,
-  Lean
+  arithmetic progressions
 }
 
 \date{July 18, 2026}
@@ -138,43 +133,30 @@
 \begin{document}
 
 \begin{abstract}
-Deciding whether a $44$-element subset of $[1,212]$ can avoid all
-three-term arithmetic progressions is the current frontier instance of the
-Salem--Spencer sequence $\rthree{N}$ (OEIS A003002). We present this family
-of finite feasibility problems as a cross-solver benchmark with a measured
-difficulty ladder. None of six monolithic CP-SAT, HiGHS, and CDCL
-configurations resolves the instance within $24$ hours. A witness-informed
-cube-and-conquer campaign closes millions of subproblems with no feasible
-$44$-set, supporting but not proving $\rthree{212}=43$; OEIS-derived
-window-cardinality inequalities reduce the controlled broad-pass unresolved
-rate by about $28$ percentage points. A post-campaign implementation audit,
-matched five-policy ablation, and independent exhaustive cover check identify
-a global AP-degree prefix with
-$96{,}847$ surviving cubes, compared with $12{,}582{,}912$ for the deployed
-witness prefix. On a fixed-seed sample of $100$ global-degree survivors,
-all remain unresolved under the historical $60$-second CP-SAT configuration,
-whereas kissat closes $79$ within two hours (Wilson $95\%$ interval
-$70.0$--$85.8\%$), quantifying the cover-size versus conquer-cost tradeoff.
-Six deterministic solve-time quantiles from those $79$ closures are then
-re-solved with proof logging; all six retain survey-identical formula hashes
-and yield LRAT certificates accepted by the formally verified
-\texttt{cake\_lpr} checker.
-On byte-identical hard-pocket formulas run sequentially on matched AMD EPYC
-7763 nodes, native CaDiCaL~3.0.0 and kissat~4.0.4 both close all $20$ tested
-chunks; kissat is faster on all $20$ pairs, with geometric-mean
-CaDiCaL-to-kissat time ratio $1.477$ (bootstrap $95\%$ interval
-$1.332$--$1.655$). The two historically hardest kissat refutations are
-independently DRAT-verified. A
-full two-stage CDCL survey closes $6{,}045/6{,}071$ broad residuals
-($99.57\%$) without proof logging. Optimization-form MIP experiments show
-that window inequalities tighten all $20$ tested LP and MIP upper bounds to
-$44$ but do not cross the decision threshold. As an end-to-end ground-truth
-check, the pure encoding recovers $\rthree{80}=22$, $\rthree{90}=24$, and
-$\rthree{100}=27$ from independently verified lower witnesses and LRAT
-certificates accepted by the formally verified \texttt{cake\_lpr} checker.
-The unit gap $\rthree{212}\in\{43,44\}$ remains open. We release the tiered
-instances, deterministic generators, verified certificates, model audit, and
-formal-proof-search targets.
+We study the frontier Salem--Spencer decision problem of whether a
+$44$-element subset of $[1,212]$ can avoid every three-term arithmetic
+progression, and use it as a scalable benchmark for constraint solving. The
+benchmark combines Boolean 3-AP constraints, exact cardinality, endpoint
+forcing, implied window-cardinality constraints, deterministic cube
+decomposition, and independently checkable infeasibility certificates. Six
+monolithic CP-SAT, HiGHS, and CDCL configurations remain unresolved after
+$24$ hours. In the decomposed search, window constraints reduce the
+controlled CP-SAT unresolved rate by about $28$ percentage points. A matched
+split-policy ablation and an independent exhaustive cover audit expose a
+cover-size versus conquer-cost tradeoff: global AP-degree reduces the complete
+depth-24 cover from $12{,}582{,}912$ to $96{,}847$ cubes, but all $100$
+sampled survivors time out under the historical $60$-second CP-SAT
+configuration, whereas kissat closes $79$ within two hours. On $20$
+byte-identical hard-pocket formulas executed sequentially on matched hardware,
+CaDiCaL~3.0.0 and kissat~4.0.4 both close every instance; kissat wins all
+$20$ pairs, with geometric-mean time ratio $1.477$. A two-stage CDCL survey
+closes $6{,}045$ of $6{,}071$ broad residuals. Selected closures yield LRAT
+certificates accepted by the formally verified \texttt{cake\_lpr} checker,
+and end-to-end regressions recover the known exact values
+$\rthree{80}=22$, $\rthree{90}=24$, and $\rthree{100}=27$. The unit gap
+$\rthree{212}\in\{43,44\}$ remains open. We release the generators, tiered
+instances, model audit, solver outputs, and verified certificates as a
+reusable constraint-solving benchmark.
 \end{abstract}
 
 \maketitle
@@ -194,7 +176,7 @@ at the current frontier $N \leq 211$.
 \section*{Data and code availability}
 Source code, benchmark generators, compact result tables, and manuscript
 sources are available at
-\url{https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.4/erdos_r3}. Versioned solver artifacts,
+\url{https://github.com/memoatwit/erdos_1194/tree/constraints-submission-v1.5/erdos_r3}. Versioned solver artifacts,
 including formulas, proof objects, hashes, and provenance records, are
 archived at \url{https://doi.org/10.5281/zenodo.21413746}.
 

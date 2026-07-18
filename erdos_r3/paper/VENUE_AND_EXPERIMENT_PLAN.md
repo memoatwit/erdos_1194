@@ -1,15 +1,21 @@
 # Venue and experiment plan
 
-Date: 2026-07-15
+Date: 2026-07-18
 
 ## Recommendation
 
-The completed full-T2 portfolio, optimization-form MIP study, and formally
-checked exact regressions now support **Mathematical Programming Computation
-(MPC)** as the recommended first submission. MPC explicitly welcomes
-comparative computational studies, libraries of problem instances, software,
-and reproducible computational results. **Constraints** remains the strongest
-acceptance-probability fallback.
+Submit next to **Constraints**. Its readership is the natural audience for the
+paper's evaluated constraint methodology: problem-specific implied
+constraints, deterministic cube decomposition, configuration-level solver
+comparisons, benchmark instances, and independently checked certificates.
+**ACM Journal of Experimental Algorithmics** is the preferred fallback if a
+broader experimental-algorithms framing is needed.
+
+The submission to Mathematical Programming Computation, MPC-2026-140, was
+desk-rejected on 2026-07-18 because the manuscript did not meet that journal's
+expectations for a contribution to mathematical optimization. The decision
+was immediate and did not include a technical review. No additional compute is
+needed before the Constraints submission.
 
 Do not submit the uncorrected July 6 manuscript. Its interpretation of the
 HiGHS `mip_dual_bound = 0.0` field was invalid because the model had a zero
@@ -20,12 +26,12 @@ the HiGHS runs as feasibility-closure experiments only.
 
 | Venue | Fit | Impact / visibility | Acceptance outlook for this paper |
 |---|---|---|---|
-| Mathematical Programming Computation | Strong only after the experiments below | Highest realistic journal target | Stretch |
-| Constraints | Excellent | Core CP/SAT audience | Best balance of fit and acceptance |
-| The Computer Journal, Section A | Broad but plausible | Slightly higher metric than Constraints, less targeted readership | Reasonable fallback, not a better first choice |
-| Journal of Automated Reasoning | Good for certified proof systems, weaker for an incomplete benchmark campaign | Lower journal metric | Use only if formal verification becomes the primary contribution |
+| Constraints | Excellent | Core CP/SAT audience | Current target |
+| ACM Journal of Experimental Algorithmics | Strong methodological fallback | Experimental-algorithms audience | Preferred fallback |
+| The Computer Journal, Section A | Broad but plausible | General computing audience | Secondary fallback |
+| Journal of Automated Reasoning | Good only if certification becomes the primary contribution | Formal reasoning audience | Specialized fallback |
 
-## Experiments that would justify an MPC submission
+## Completed experiments supporting the journal submission
 
 ### Unity run status (submitted 2026-07-12)
 
@@ -263,11 +269,12 @@ to a full cover sweep.
 
 ## Release blockers before either submission
 
-- **Completed 2026-07-17:** the GitHub repository is public, and the immutable
-  `mpc-submission-v1.4` tag identifies the synchronized submission snapshot. The tagged
-  project URL is
-  <https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.4/erdos_r3>.
-  Archive this tag in the synchronized Zenodo version.
+- Freeze and push the immutable `constraints-submission-v1.5` tag after the
+  Constraints-specific title, abstract, cover letter, and release metadata
+  pass. The tagged project URL will be
+  <https://github.com/memoatwit/erdos_1194/tree/constraints-submission-v1.5/erdos_r3>.
+  Archive this tag in the synchronized Zenodo version. The earlier
+  `mpc-submission-v1.4` tag remains an immutable historical snapshot.
 - Publish a new Zenodo version containing the certified T1c formula/proof
   pairs, full T2 and residual-arm outputs, controlled CDCL/MIP results, the
   $N=80,90,100$ exact-certificate suite, the six global-degree survivor

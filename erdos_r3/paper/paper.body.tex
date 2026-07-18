@@ -129,8 +129,10 @@ the 60-s CP-SAT cap, while kissat closes 79 within two hours (Wilson 95\% CI
 conquer-cost tradeoff rather than a simple speedup
 (§\ref{split-policy-ablation}).
 
-This paper's contribution is the benchmark and the cross-solver empirical
-study, not a new exact value of A003002. We provide:
+This paper's contribution is an evaluated constraint-solving methodology and
+certified benchmark, not a new exact value of A003002. It measures how
+problem-specific implied constraints, cube-selection policies, and solver
+configurations interact on one reproducible family. We provide:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -241,7 +243,7 @@ CSPLib \cite{gent-walsh-1999-csplib}, MIPLIB \cite{gleixner-miplib-2021},
 the SAT Competition suites --- have repeatedly steered solver research
 toward documented failure modes. The tiered release of §5 is offered in
 that tradition: a natural family, scalable in $N$, with verifiable
-ground truth at solved sizes and a measured cross-solver difficulty
+ground truth at solved sizes and a measured constraint-solving difficulty
 ladder. On the certification side, the CDCL-closed tier ships with
 DRAT proofs verified by \texttt{drat-trim}
 \cite{heule-hunt-biere-drat-2014,cruz-filipe-lrat-2017}; the absence of
@@ -1393,7 +1395,7 @@ instance, and their combined full-T2 portfolio closes 99.57\% of the
 remain open. This
 section states the residual problem cleanly and releases the instances
 as a tiered benchmark --- both as a concrete path toward R3-212-UB and as
-a solver-grading ladder for the tested CP-SAT, HiGHS, and CDCL
+a configuration-grading ladder for the tested CP-SAT, HiGHS, and CDCL
 configurations.
 
 \subsection{Statement of the open problem}\label{statement-of-the-open-problem}

@@ -10,7 +10,7 @@ into a publishable arXiv preprint. Skip any item already done.
 ## 1. Identity and metadata
 
 - [x] **Title.** Current title:
-      *"Salem--Spencer sets as a cross-solver benchmark: decomposition,
+      *"Salem--Spencer sets as a constraint-solving benchmark: decomposition,
       certification, and split-policy effects at r_3(212)."*
 
 - [ ] **Author list.** Single-author or multi-author? Confirm order, ORCID,
@@ -40,7 +40,7 @@ into a publishable arXiv preprint. Skip any item already done.
       monolithic baselines, matched CDCL comparisons, split-policy ablation,
       a global-degree cover audit, certified exact-value regressions, and
       updated artifacts. Source code at
-      https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.4/erdos_r3.`
+      https://github.com/memoatwit/erdos_1194/tree/constraints-submission-v1.5/erdos_r3.`
 
 - [ ] **License.** Default to CC-BY 4.0 unless an institutional contract
       requires otherwise. arXiv perpetual non-exclusive is the minimum.

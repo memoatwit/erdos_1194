@@ -1,80 +1,72 @@
-# Cover letter — Constraints (Springer)
+# Cover letter - Constraints
 
 Mehmet Ergezer
 Wentworth Institute of Technology
 550 Huntington Avenue, Boston, MA 02115, USA
 ergezerm@wit.edu | ORCID: 0000-0001-6627-3667
 
-July 12, 2026
+July 18, 2026
 
 The Editors
-Constraints
+*Constraints*
 
 Dear Editors,
 
-I am pleased to submit the manuscript *"Salem-Spencer sets as a
-cross-solver benchmark: a witness-informed decomposition for
-r_3(212)"* for consideration in
-Constraints as a **benchmark paper**.
+Please consider the manuscript **"Salem--Spencer sets as a
+constraint-solving benchmark: decomposition, certification, and split-policy
+effects at r_3(212)"** for publication in *Constraints*.
 
-The paper presents the Salem–Spencer family (OEIS A003002) as a natural,
-scalable constraint-solving benchmark, and reports a reproducible campaign
-on its frontier instance: does a 44-element subset of [1, 212] exist with
-no three-term arithmetic progression? The family separates solver
-technologies at three measured heights, which is what makes it valuable
-as a benchmark. The main contributions:
+The manuscript studies a natural finite-domain feasibility family at the
+frontier of OEIS A003002. It does not claim to resolve r_3(212). Instead, it
+develops and evaluates a reproducible constraint-solving methodology that
+combines implied window-cardinality constraints, deterministic cube
+decomposition, controlled solver comparisons, and independently checkable
+infeasibility certificates.
 
-1. A measured difficulty ladder. None of six tested monolithic CP-SAT,
-   HiGHS, or CaDiCaL configurations resolves the instance in 24 hours.
-   Under a witness-informed cube-and-conquer split, HiGHS closes 25 of 45
-   selected survivors; CaDiCaL closes 18 of the remaining 20 with verified
-   DRAT proofs; and the final two audited subproblems fall to kissat 4.0.4,
-   again with independently verified certificates.
-2. A reproducible solver-configuration separation. The two hardest audited
-   chunks defeat the tested PySAT/CaDiCaL configuration at 12 hours but are
-   certified by kissat within 6.5 hours. The manuscript states the build and
-   configuration caveat explicitly and releases the formulas for controlled
-   remeasurement. A fresh kissat survey closes 99/100 sampled broad residuals
-   within two hours (median 122 s; Wilson 95% interval 94.6%-99.8%).
-3. A problem-specific pruning family (window-cardinality implied
-   constraints derived from known r_3(L) values) that produces the largest
-   measured CP-SAT improvement, reducing the unresolved rate by 28 percentage
-   points — a concrete data point on the value of domain constraints
-   over solver tuning.
-4. A tiered instance release (JSONL plus DIMACS CNF and MiniZinc
-   exports) with controlled A/B experiments behind every design claim.
+The main contributions for the constraint-programming community are:
 
-The code, benchmark instances, result logs, 18 CaDiCaL DRAT certificates,
-and a Lean 4 encoding are openly released (arXiv:2606.04016; Zenodo DOI
-10.5281/zenodo.21413746, CC-BY). The two certified kissat formula/proof
-pairs and provenance records will be included in a versioned Zenodo update
-before journal publication. The campaign is reproducible from the released
-scripts and archived inputs.
+1. A witness-informed CP-SAT architecture in which valid window-cardinality
+   constraints reduce the controlled unresolved rate by about 28 percentage
+   points, substantially more than the generic search interventions tested.
+2. A matched five-policy split ablation and independent exhaustive cover
+   audit that quantify a cover-size versus conquer-cost tradeoff. Global
+   AP-degree reduces the complete depth-24 cover from 12,582,912 to 96,847
+   cubes, but produces harder survivors under the historical CP-SAT cap.
+3. Controlled configuration-level comparisons on released formulas. Native
+   CaDiCaL 3.0.0 and kissat 4.0.4 close all 20 hard-pocket instances on
+   matched hardware; a two-stage CDCL survey closes 6,045 of 6,071 broad
+   residuals and leaves a compact 26-instance challenge tier.
+4. A certificate and regression pipeline. Selected closures yield LRAT
+   certificates accepted by the formally verified cake_lpr checker, while
+   end-to-end tests recover the known exact values r_3(80)=22, r_3(90)=24,
+   and r_3(100)=27 from independently checked lower and upper evidence.
 
-This manuscript is not under consideration elsewhere. An earlier version
-was briefly considered at a mathematics journal and was not sent to
-review; the present version is reframed for the constraint-programming
-community, which is its natural audience. A preprint is posted on arXiv
-to establish a citable timestamp.
+The released benchmark is intended for research on decomposition,
+problem-specific implied constraints, search configuration, empirical
+hardness, and auditable constraint solving. It includes deterministic
+generators, tiered JSONL and CNF instances, matched solver outputs, model and
+cover audits, proof objects, hashes, and machine-readable provenance.
 
-**Declarations.** The author has no competing interests. Computations
-were performed on the Unity HPC platform (MGHPCC). Generative-AI tools
-were used for drafting and revision, code assistance, experiment planning,
-and computational orchestration under the author's direction, as disclosed
-in the manuscript; the author made all final scientific decisions and takes
-full responsibility for all content.
+Source code and compact artifacts are available in the
+[tagged GitHub snapshot](https://github.com/memoatwit/erdos_1194/tree/constraints-submission-v1.5/erdos_r3).
+The versioned dataset is archived on
+[Zenodo](https://doi.org/10.5281/zenodo.21413746), and the preprint is
+available as [arXiv:2606.04016](https://arxiv.org/abs/2606.04016).
+ARTIFACT_REPRODUCIBILITY.md maps the principal claims to
+their data and reproduction commands; the N=80 exact-value regression is the
+fastest complete check and runs in minutes on a workstation. The manuscript
+is not under consideration elsewhere.
 
-Suggested reviewers with directly relevant expertise:
-
-- Marijn J. H. Heule, Carnegie Mellon University — SAT solving of
-  Ramsey-type combinatorial problems; DRAT/drat-trim verification.
-- Laurent Perron, Google — OR-Tools CP-SAT lead.
-- Ciaran McCreesh, University of Glasgow — proof logging and certified
-  constraint solving.
-- Jakob Nordström, University of Copenhagen / Lund University —
-  proof complexity and certified solving.
+Generative-AI use is disclosed in the manuscript. The author made all final
+scientific and experimental decisions, reviewed the generated text and code,
+independently checked the reported claims, and takes full responsibility for
+the work. The author declares no competing interests.
 
 Thank you for your consideration.
 
 Sincerely,
+
 Mehmet Ergezer
+Wentworth Institute of Technology
+ergezerm@wit.edu
+ORCID: 0000-0001-6627-3667

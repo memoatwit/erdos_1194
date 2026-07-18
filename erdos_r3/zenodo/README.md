@@ -1,7 +1,7 @@
 # `r_3(212)` computational campaign artifacts
 
 This dataset accompanies the preprint
-*Salem--Spencer sets as a cross-solver benchmark: decomposition,
+*Salem--Spencer sets as a constraint-solving benchmark: decomposition,
 certification, and split-policy effects at `r_3(212)`*.
 
 Version 2 DOI: <https://doi.org/10.5281/zenodo.21413746>
@@ -11,7 +11,7 @@ All-versions concept DOI: <https://doi.org/10.5281/zenodo.20463333>
 Previous Version 1 DOI: <https://doi.org/10.5281/zenodo.20463334>
 
 Public source snapshot:
-<https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.4/erdos_r3>
+<https://github.com/memoatwit/erdos_1194/tree/constraints-submission-v1.5/erdos_r3>
 
 It contains the large proof and solver artifacts that are too large for arXiv
 ancillary files. The small benchmark files and Lean proof-search targets can
@@ -232,7 +232,7 @@ shasum -a 256 -c MANIFEST.sha256
 Title:
 
 ```text
-Artifacts for Salem-Spencer sets as a cross-solver benchmark at r_3(212)
+Artifacts for Salem-Spencer sets as a constraint-solving benchmark at r_3(212)
 ```
 
 Description:
@@ -257,7 +257,7 @@ Related identifiers:
 
 ```text
 isSupplementTo: https://arxiv.org/abs/2606.04016
-isSupplementTo: https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.4/erdos_r3
+isSupplementTo: https://github.com/memoatwit/erdos_1194/tree/constraints-submission-v1.5/erdos_r3
 ```
 
 License recommendation: CC-BY 4.0 for metadata and logs; confirm whether proof
@@ -271,7 +271,7 @@ Cite the dataset as:
 ```bibtex
 @dataset{ergezer_r3_212_artifacts_2026,
   author       = {Ergezer, Mehmet},
-  title        = {Artifacts for Salem-Spencer sets as a cross-solver benchmark at r_3(212)},
+  title        = {Artifacts for Salem-Spencer sets as a constraint-solving benchmark at r_3(212)},
   year         = {2026},
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.21413746},

@@ -2,7 +2,7 @@
 
 LaTeX source for the arXiv preprint.
 
-Submission snapshot: [`mpc-submission-v1.4`](https://github.com/memoatwit/erdos_1194/tree/mpc-submission-v1.4/erdos_r3/paper)
+Submission snapshot: [`constraints-submission-v1.5`](https://github.com/memoatwit/erdos_1194/tree/constraints-submission-v1.5/erdos_r3/paper)
 
 ## Contents
 
