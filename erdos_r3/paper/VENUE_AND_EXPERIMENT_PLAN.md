@@ -11,11 +11,18 @@ comparisons, benchmark instances, and independently checked certificates.
 **ACM Journal of Experimental Algorithmics** is the preferred fallback if a
 broader experimental-algorithms framing is needed.
 
-The submission to Mathematical Programming Computation, MPC-2026-140, was
-desk-rejected on 2026-07-18 because the manuscript did not meet that journal's
-expectations for a contribution to mathematical optimization. The decision
-was immediate and did not include a technical review. No additional compute is
-needed before the Constraints submission.
+The first submission, to *Experimental Mathematics* as manuscript 261481897,
+was declined by Editor-in-Chief Alexander Kasprzyk on 2026-07-02 as unsuitable
+for that journal. The decision supplied no technical review. It triggered the
+subsequent expansion into a constraint-solving benchmark paper: monolithic
+baselines, split-policy ablation, controlled solver comparisons, certified
+closures, exact-value regressions, and the synchronized artifact release.
+
+The second submission, to *Mathematical Programming Computation* as
+MPC-2026-140, was desk-rejected on 2026-07-18 because the manuscript did not
+meet that journal's expectations for a contribution to mathematical
+optimization. That decision was also immediate and did not include a technical
+review. No additional compute is needed before the Constraints submission.
 
 Do not submit the uncorrected July 6 manuscript. Its interpretation of the
 HiGHS `mip_dual_bound = 0.0` field was invalid because the model had a zero
